@@ -68,6 +68,5 @@ input.input4{width:288px;padding-left:10px;font-size:16px;}
 #resendVeri span{color:#06C;}
 .nobt{border-top:none;}
 
-
-
-
+#userTip3.onError,#userTip31.onError{background:#FFEACA;text-indent:1em;color:#C0987C;}
+.isbtn {color: #137BD4!important;}
