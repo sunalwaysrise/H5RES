@@ -120,16 +120,22 @@ _.a0={
 	},
 	hasOutGet:true,
 	outGet:function(){
-		var r=cp2y.util.getArgs2('r').split(','),b=cp2y.util.getArgs2('b').split(','),i=0,o=$('.gb');
-		for(i;i<33;i++){
-			if(r.indexOf(Number(o.eq(i).html()))!=-1){
-				o.eq(i).addClass('rb');
+		var r=cp2y.util.getArgs2('r'),b=cp2y.util.getArgs2('b'),i=0,o=$('.gb');
+		if(r){
+			r=r.split(',');
+			for(i;i<33;i++){
+				if(r.indexOf(Number(o.eq(i).html()))!=-1){
+					o.eq(i).addClass('rb');
+				}
 			}
 		}
-		i=0;o=$('.gb2');
-		for(i;i<16;i++){
-			if(b.indexOf(Number(o.eq(i).html()))!=-1){
-				o.eq(i).addClass('bb');
+		if(b){
+			b=b.split(',');
+			i=0;o=$('.gb2');
+			for(i;i<16;i++){
+				if(b.indexOf(Number(o.eq(i).html()))!=-1){
+					o.eq(i).addClass('bb');
+				}
 			}
 		}
 	}
