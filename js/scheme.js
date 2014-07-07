@@ -60,7 +60,10 @@ cp2y.user={
 					/* 竞彩足球 */
 					html.push('<p class="jcScheme1">'+data.schemeData.schemeType+data.traceData[0].issue+'期,'+data.schemeData.numberType+',');
 					try{
-			html.push(data.schemeData.schemeContent[0].matchCount+'场，'+data.schemeData.schemeContent[0].pass+',');
+                      if(data.schemeData.schemeContent[0].matchCount){
+                        html.push(data.schemeData.schemeContent[0].matchCount+'场，');
+                      }
+			          html.push(data.schemeData.schemeContent[0].pass+',');
 					}catch(e){}
 					html.push(data.traceData[0].multiple+'倍，共'+data.traceData[0].money+'元</p>');
 					
@@ -71,58 +74,114 @@ cp2y.user={
 						}
 					}
 					if(data.schemeData.open==1 || tf){
-						if(data.isJingCai==1){
-							html.push('<table class="jcScheme2"><thead><tr><td>投注球队</td><td>赔率</td><td>是否中奖</td></tr></thead><tbody>');
-							var i=0,td=data.schemeData.schemeContent[0].matches,len=td.length,dd='';
-							for(i;i<len;i++){
-								if(!td[i].matchResult){
-									dd="";
-								}else{
-									dd=td[i].matchResult;
-								}
-							html.push('<tr><td>'+td[i].hostName+'</td><td>'+td[i].rate+'</td><td>'+dd+'</td></tr>');
-							}
-							html.push('</body></table>');
-						}else{
-							html.push('<table class="jcScheme2"><thead><tr><td>场次</td><td>对阵</td><td>投注</td><td>彩果</td>');
-							var i=0,td=data.schemeData.schemeContent[0].matches,len=td.length,ss='--',dd='',hasDan=false;
-							for(i;i<len;i++){
-								if(td[i].dan){hasDan=true;break;}
-							}
-							if(hasDan){
-								html.push('<td>定胆</td>');
-							}
-							html.push('</tr></thead><tbody>');
-							i=0;
-							var ww=['周日','周一','周二','周三','周四','周五','周六'],mc;
-							for(i;i<len;i++){
-								if(data.schemeData.numberType!='胜平负复式'){
-									if(td[i].rate>0){
-										dd="<span class='red'>+"+td[i].rate+"</span>";
-									}else{
-										dd="<span class='green'>"+td[i].rate+"</span>";
-									}
-								}
-								var matchResult=td[i].matchResult,w='';
-								if(matchResult){
-									matchResult=matchResult.split('/').join('<br/>');
-								}else{
-									matchResult='待定';
-								}
-								mc=td[i].matchCode.substr(0,8);
-								mc=mc.substr(0,4)+'-'+mc.substr(4,2)+'-'+mc.substr(6,2);
-								w=new Date(mc).getDay();
-								html.push('<tr><td>'+ww[w]+'<br/>'+td[i].matchCode.substr(8,3)+'</td><td onclick="cp2y.discover.init('+td[i].matchCode+');"><a>'+td[i].hostName+dd+'<br/>'+(td[i].lastScore?td[i].lastScore:'--')+'<br/>'+td[i].guestName+'</a></td><td>'+td[i].msg+'</td><td>'+matchResult+'</td>');
-								if(hasDan){
-									html.push('<td>'+(td[i].dan?"√":"×")+'</td>');
-								}
-								html.push('</tr>');
-							}
-							html.push('</body></table>');
-						}
-					}else{
-						html.push('<div class="userTip4">该方案未公开</div>');
-					}
+                      if(data.isJingCai==1){
+                          html.push('<table class="jcScheme2"><thead><tr><td>投注球队</td><td>赔率</td><td>是否中奖</td></tr></thead><tbody>');
+                          var i=0,td=data.schemeData.schemeContent[0].matches,len=td.length,dd='';
+                          for(i;i<len;i++){
+                              if(!td[i].matchResult){
+                                  dd="";
+                              }else{
+                                  dd=td[i].matchResult;
+                              }
+                          html.push('<tr><td>'+td[i].hostName+'</td><td>'+td[i].rate+'</td><td>'+dd+'</td></tr>');
+                          }
+                          html.push('</body></table>');
+                      }else{
+                          html.push('<table class="jcScheme2"><thead><tr><td>场次</td><td>对阵</td><td>投注</td><td>彩果</td>');
+                        var i=0,td=data.schemeData.schemeContent[0].matches,len,ss='--',dd='',hasDan=false;
+                        if(data.lotteryId == 10057){
+                          td=data.schemeData.schemeContent[0].matches.matches;
+                          var dc
+                        }
+                        len=td.length;
+                        for(i;i<len;i++){
+                              if(td[i].dan){hasDan=true;break;}
+                          }
+                          if(hasDan){
+                              html.push('<td>定胆</td>');
+                          }
+                          html.push('</tr></thead><tbody>');
+                          i=0;
+                          
+                        if(data.lotteryId == 10057){
+                          dc=data.schemeData.schemeContent[0].matches.matches[i].dc;
+                          var msg,matchResult;
+                          for(i;i<len;i++){
+                            switch(data.schemeData.schemeContent[0].betType){
+                              case 274:// 让球胜平负复式
+                              case 275:// 让球胜平负单式
+                                if(td[i].rate>0){
+                                    dd="<span class='red'>+"+td[i].dc.rate+"</span>";
+                                }else if(td[i].rate<0){
+                                    dd="<span class='green'>"+td[i].dc.rate+"</span>";
+                                }
+                                var tmparr=['负','平','','胜'];
+                                matchResult=dc.rqSpfResult?dc.rqSpfResult:'--';
+                                break;
+                              case 276:// 总进球数复式
+                              case 277:// 总进球数单式
+                                var tmparr=['0','1','2','3','4','5','6','7+'];
+                                matchResult=dc.zjqResult?dc.zjqResult:'--';
+                                break;
+                              case 278:// 上下单双复式
+                              case 279:// 上下单双单式
+                                var tmparr=['上+单','上+双','下+单','下+双'];
+                                matchResult=dc.sxdsResult?dc.sxdsResult:'--';
+                                break;
+                              case 280:// 比分复式
+                              case 281:// 比分单式
+                                var tmparr=['1:0','2:0','2:1','3:0','3:1','3:2','4:0','4:1','4:2','胜其他','0:0','1:1','2:2','3:3','平其他','0:1','0:2','1:2','0:3','1:3','2:3','0:4','1:4','2:4','负其他'];
+                                matchResult=dc.bfResult?dc.bfResult:'--';
+                                break;
+                              case 282:// 半全场复式
+                              case 283:// 半全场单式
+                                var tmparr=['胜胜','胜平','胜负','平胜','平平','平负','负胜','负平','负负'];
+                                matchResult=dc.bqcResult?dc.bqcResult:'--';
+                                break;
+                            }
+                            var dcData=td[i].match.choose,dcI=0,dcLen=dcData.length;
+                            msg=[];
+                            for(dcI;dcI<dcLen;dcI++){
+                              msg.push([tmparr[dcData[dcI]]]);
+                            }
+                            msg=msg.join(',');
+                            html.push('<tr><td>'+td[i].match.title+'</td><td><a>'+td[i].match.host+dd+'<br/>'+(td[i].dc.lastScore?td[i].dc.lastScore:'--')+'<br/>'+td[i].match.guest+'</a></td><td>'+msg+'</td><td>'+matchResult+'</td>');
+                            if(hasDan){
+                                html.push('<td>'+(td[i].dan?"√":"×")+'</td>');
+                            }
+                            html.push('</tr>');
+                          }
+                        }else{
+                          var ww=['周日','周一','周二','周三','周四','周五','周六'],mc;
+                          for(i;i<len;i++){
+                              if(data.schemeData.numberType!='胜平负复式'){
+                                  if(td[i].rate>0){
+                                      dd="<span class='red'>+"+td[i].rate+"</span>";
+                                  }else{
+                                      dd="<span class='green'>"+td[i].rate+"</span>";
+                                  }
+                              }
+                              var matchResult=td[i].matchResult,w='';
+                              if(matchResult){
+                                  matchResult=matchResult.split('/').join('<br/>');
+                              }else{
+                                  matchResult='待定';
+                              }
+                              mc=td[i].matchCode.substr(0,8);
+                              mc=mc.substr(0,4)+'-'+mc.substr(4,2)+'-'+mc.substr(6,2);
+                              w=new Date(mc).getDay();
+                              html.push('<tr><td>'+ww[w]+'<br/>'+td[i].matchCode.substr(8,3)+'</td><td onclick="cp2y.discover.init('+td[i].matchCode+');"><a>'+td[i].hostName+dd+'<br/>'+(td[i].lastScore?td[i].lastScore:'--')+'<br/>'+td[i].guestName+'</a></td><td>'+td[i].msg+'</td><td>'+matchResult+'</td>');
+                              if(hasDan){
+                                  html.push('<td>'+(td[i].dan?"√":"×")+'</td>');
+                              }
+                              html.push('</tr>');
+                          }
+                        }
+                        html.push('</body></table>');
+                      }
+                  }else{
+                      html.push('<div class="userTip4">该方案未公开</div>');
+                  }
 				}else{
 					/* 非竞彩 */
 					//方案内容展示Start 

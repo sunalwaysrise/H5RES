@@ -842,7 +842,7 @@ cp2y.buy = {
 	}
 	,
 	setMul: function () {
-		var t = $("#MulBox"),v;
+		var t = $("#MulBox"),v=t.val();
 		if (!t.val().isInt()) {
 			v = 1;
 		}

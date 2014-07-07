@@ -67,7 +67,7 @@ cp2y.user={
 			var i=0,len=data.buyHistoryData.length,html=[];
 			for(i;i<len;i++){
 				html.push('<div class="icons1">');
-				if(BT.jc.indexOf(data.buyHistoryData[i].lotteryId)!=-1 && data.buyHistoryData[i].lotteryId!=10059){
+				if(BT.jc.indexOf(data.buyHistoryData[i].lotteryId)!=-1 && data.buyHistoryData[i].lotteryId!=(10059 || 10057)){
 					html.push('<a>');
 				}else{
 					html.push('<a href="/lottery/detail#scheme='+data.buyHistoryData[i].schemeId+'&index=1">');
