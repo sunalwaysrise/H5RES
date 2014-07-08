@@ -95,7 +95,7 @@ cp2y.buy={
 	pay:function(){
 		var p = ['submitAction=submitAction','lid=10059','ajax=true'],content=[],scheme=jcDom.betList.children("li"),i=0,len=scheme.length;
         for(i;i<len;i++){
-        	content.push((Number(scheme.eq(i).attr('data_id'))+1).addZero()+"`"+scheme.eq(i).attr('data_code')+"`"+scheme.eq(i).attr('data_sp'));
+        	content.push(scheme.eq(i).attr('data_id')+"`"+scheme.eq(i).attr('data_code')+"`"+scheme.eq(i).attr('data_sp'));
         }
         p={
         	lotteryId:_.bt,

@@ -35,7 +35,7 @@ _.a0={
 					img=data.datalist[i].imgG.split('/');
 					img=img[img.length-1];
 					if(data.datalist[i].status == 0  && data.datalist[i].sellStatus == 0){
-						html0.push('<li onclick="cp2y.buy.select(this)" data_id="'+i+'" data_t="'+data.datalist[i].teamNameG+'" data_sp="'+data.datalist[i].sp+'" >');
+						html0.push('<li onclick="cp2y.buy.select(this)" data_id="'+data.datalist[i].jcId+'" data_t="'+data.datalist[i].teamNameG+'" data_sp="'+data.datalist[i].sp+'" >');
 						html0.push('<i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/'+img+'" /><em></em></i>');
 						html0.push('<div><section><span>名称</span><b>'+data.datalist[i].teamNameG+'</b></section><section><span>当前赔率</span><b>'+data.datalist[i].sp+'</b></section><section><span>投注支持率</span><b>'+t[i]+'%</b></section></div></li>');
 						len2++;
