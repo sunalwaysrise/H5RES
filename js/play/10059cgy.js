@@ -110,7 +110,7 @@ _.a1={
 				var html0=[],i=0,len=data.datalist.length,len2=0;
 				for(i;i<len;i++){
 					if(data.datalist[i].status == 0  && data.datalist[i].sellStatus == 0){
-						html0.push('<li onclick="cp2y.buy.select(this)" data_id="'+i+'" data_t="'+data.datalist[i].teamNameG+'" data_sp="'+data.datalist[i].sp+'" ><i>'+(i+1).addZero()+'</i><div>'+data.datalist[i].teamNameG+'<span>'+data.datalist[i].sp+'</span></div></li>');
+						html0.push('<li onclick="cp2y.buy.select(this)" data_id="'+data.datalist[i].jcId+'" data_t="'+data.datalist[i].teamNameG+'" data_sp="'+data.datalist[i].sp+'" ><i>'+(i+1).addZero()+'</i><div>'+data.datalist[i].teamNameG+'<span>'+data.datalist[i].sp+'</span></div></li>');
 						len2++;
 					}else{
 						var wo;
@@ -166,14 +166,14 @@ _.a2={
 					}
 					if(data.datalist[i].status == 0  && data.datalist[i].sellStatus == 0){
 						if(i==len-1){
-							html0.push('<li onclick="cp2y.buy.select(this)" data_id="'+i+'" data_t="'+data.datalist[i].teamNameG+'" data_sp="'+data.datalist[i].sp+'" >');
+							html0.push('<li onclick="cp2y.buy.select(this)" data_id="'+data.datalist[i].jcId+'" data_t="'+data.datalist[i].teamNameG+'" data_sp="'+data.datalist[i].sp+'" >');
 							html0.push('<div><section>');
 							html0.push('<i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/o.png" /><em></em></i><article>'+data.datalist[i].teamNameG+'</article>');
 							html0.push('</section>');
 							html0.push('<section><span>+</span><b>'+data.datalist[i].sp+'</b></section>');
 							html0.push('<section><article>'+data.datalist[i].teamNameG+'</article><i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/o.png" /><em></em></i></section></div></li>');
 						}else{
-							html0.push('<li onclick="cp2y.buy.select(this)" data_id="'+i+'" data_t="'+data.datalist[i].teamNameG+' VS '+data.datalist[i].teamNameY+'" data_sp="'+data.datalist[i].sp+'" >');
+							html0.push('<li onclick="cp2y.buy.select(this)" data_id="'+data.datalist[i].jcId+'" data_t="'+data.datalist[i].teamNameG+' VS '+data.datalist[i].teamNameY+'" data_sp="'+data.datalist[i].sp+'" >');
 							html0.push('<div><section>');
 							html0.push('<i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/'+img+'" /><em></em></i><article>'+data.datalist[i].teamNameG+'</article>');
 							html0.push('</section>');
@@ -196,8 +196,7 @@ _.a2={
 						if(i==len-1){
 							html0.push('<li class="out">');
 							html0.push('<div><section>');
-							html0.push('<i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/o.png" /><em></em></i><div>'+data.datalist[i].teamNameG+'</div>');
-							html0.push('</section>');
+							html0.push('<i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/o.png" /><em></em></i>'+data.datalist[i].teamNameG+'</section>');
 							html0.push('<section><span>+</span><b>'+data.datalist[i].sp+'</b></section>');
 							html0.push('<section>'+data.datalist[i].teamNameG+'<i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/o.png" /><em></em></i></section></div></li>');
 						}else{
