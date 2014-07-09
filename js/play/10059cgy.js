@@ -40,18 +40,18 @@ _.a0={
 						html0.push('<div><section><span>名称</span><b>'+data.datalist[i].teamNameG+'</b></section><section><span>当前赔率</span><b>'+data.datalist[i].sp+'</b></section><section><span>投注支持率</span><b>'+t[i]+'%</b></section></div></li>');
 						len2++;
 					}else{
-						var wo;
-						if(data.datalist[i].sellStatus==1){
-							wo='停售';
-						}else if(data.datalist[i].sellStatus==2){
-							wo='已出局';
-						}else if(data.datalist[i].sellStatus==3){
-							wo='冠军';
-						}else{
-							wo='';
-						}
-						html0.push('<li class="out"><i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/'+img+'" /><em></em></i>');
-						html0.push('<div><section><span>名称</span><b>'+data.datalist[i].teamNameG+'</b></section><section><span>'+wo+'</span><b></b></section><section><span>投注支持率</span><b>'+t[i]+'%</b></section></div></li>');
+//						var wo;
+//						if(data.datalist[i].sellStatus==1){
+//							wo='停售';
+//						}else if(data.datalist[i].sellStatus==2){
+//							wo='已出局';
+//						}else if(data.datalist[i].sellStatus==3){
+//							wo='冠军';
+//						}else{
+//							wo='';
+//						}
+//						html0.push('<li class="out"><i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/'+img+'" /><em></em></i>');
+//						html0.push('<div><section><span>名称</span><b>'+data.datalist[i].teamNameG+'</b></section><section><span>'+wo+'</span><b></b></section><section><span>投注支持率</span><b>'+t[i]+'%</b></section></div></li>');
 					}
 				}
 				jcDom.choose.html(html0.join(''));
@@ -183,30 +183,30 @@ _.a2={
 						len2++;
 						
 					}else{
-						var wo;
-						if(data.datalist[i].sellStatus==1){
-							wo='停售';
-						}else if(data.datalist[i].sellStatus==2){
-							wo='已出局';
-						}else if(data.datalist[i].sellStatus==3){
-							wo='冠军';
-						}else{
-							wo='';
-						}
-						if(i==len-1){
-							html0.push('<li class="out">');
-							html0.push('<div><section>');
-							html0.push('<i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/o.png" /><em></em></i>'+data.datalist[i].teamNameG+'</section>');
-							html0.push('<section><span>+</span><b>'+data.datalist[i].sp+'</b></section>');
-							html0.push('<section>'+data.datalist[i].teamNameG+'<i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/o.png" /><em></em></i></section></div></li>');
-						}else{
-							html0.push('<li class="out">');
-							html0.push('<div><section>');
-							html0.push('<i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/'+img+'" /><em></em></i><article>'+data.datalist[i].teamNameG+'</article>');
-							html0.push('</section>');
-							html0.push('<section><span>+</span><b>'+data.datalist[i].sp+'</b></section>');
-							html0.push('<section><article>'+data.datalist[i].teamNameY+'</article><i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/'+img2+'" /><em></em></i></section></div></li>');
-						}
+//						var wo;
+//						if(data.datalist[i].sellStatus==1){
+//							wo='停售';
+//						}else if(data.datalist[i].sellStatus==2){
+//							wo='已出局';
+//						}else if(data.datalist[i].sellStatus==3){
+//							wo='冠军';
+//						}else{
+//							wo='';
+//						}
+//						if(i==len-1){
+//							html0.push('<li class="out">');
+//							html0.push('<div><section>');
+//							html0.push('<i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/o.png" /><em></em></i>'+data.datalist[i].teamNameG+'</section>');
+//							html0.push('<section><span>+</span><b>'+data.datalist[i].sp+'</b></section>');
+//							html0.push('<section>'+data.datalist[i].teamNameG+'<i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/o.png" /><em></em></i></section></div></li>');
+//						}else{
+//							html0.push('<li class="out">');
+//							html0.push('<div><section>');
+//							html0.push('<i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/'+img+'" /><em></em></i><article>'+data.datalist[i].teamNameG+'</article>');
+//							html0.push('</section>');
+//							html0.push('<section><span>+</span><b>'+data.datalist[i].sp+'</b></section>');
+//							html0.push('<section><article>'+data.datalist[i].teamNameY+'</article><i><img src="'+WebAppUrl.RESOURCE_URL+'/flag/'+img2+'" /><em></em></i></section></div></li>');
+//						}
 					}
 				}
 				jcDom.choose.addClass('gyj').html(html0.join(''));
