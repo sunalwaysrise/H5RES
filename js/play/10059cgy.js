@@ -15,7 +15,7 @@ var _={
 		}
 		html.push('<a data="a0" href="'+WebAppUrl.HOME_APP_URL+'/caiguanya?type=a0" '+v1+' data2="冠军">冠军</a>');
 		//html.push('<a data="a1" href="'+WebAppUrl.HOME_APP_URL+'/caiguanya?type=a1" '+v2+' data2="欧冠杯">欧冠杯</a>');
-		html.push('<a data="a2" href="'+WebAppUrl.HOME_APP_URL+'/caiguanya?type=a2" '+v3+' data2="冠亚军">冠亚军</a>');
+		//html.push('<a data="a2" href="'+WebAppUrl.HOME_APP_URL+'/caiguanya?type=a2" '+v3+' data2="冠亚军">冠亚军</a>');
 		return html.join('');
 	}
 };

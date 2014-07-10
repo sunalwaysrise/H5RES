@@ -104,9 +104,9 @@ cp2y.user={
                           i=0;
                           
                         if(data.lotteryId == 10057){
-                          dc=data.schemeData.schemeContent[0].matches.matches[i].dc;
                           var msg,matchResult;
                           for(i;i<len;i++){
+                            dc=data.schemeData.schemeContent[0].matches.matches[i].dc;
                             switch(data.schemeData.schemeContent[0].betType){
                               case 274:// 让球胜平负复式
                               case 275:// 让球胜平负单式
