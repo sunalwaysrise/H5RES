@@ -289,9 +289,9 @@ input.input4{width:288px;padding-left:10px;font-size:16px;}
 
 .userPartBox5{background:#fff;float:left;}
 .userPartBox5 label{width:100px;height:38px;float:left;text-align:right;text-indent:0;line-height:38px;}
-.input5,.input6{height:28px;margin:5px;float:left;border:1px #ddd solid;}
+.input5,.input6,.input7{height:28px;margin:5px;float:left;border:1px #ddd solid;}
 .input6{width:180px;margin:3px 0 3px 5px;}
-.input7{}
+.input7{width:160px;margin:3px 0 3px 5px;}
 .input8{width:15px;height:15px;border:1px #ddd solid;margin:13px 0 0 13px;}
 .issueCheck{width:15px;height:15px;border:1px #ddd solid;margin-top:13px!important;background:#fff;}
 .input9{width:48px;height:27px;border:none;line-height:27px;text-align:center;border:1px #ddd solid;color:red;font-size:14px;}
@@ -334,9 +334,10 @@ background-position:center center;background-repeat:no-repeat;background-size:co
 .userPartBox6 li{line-height:40px;height:40px;width:100%;}
 .userPartBox6 li label{width:110px;height:40px;float:left;text-align:right;}
 .userPartBox6 li p{float:left;height:40px;overflow:hidden;width:175px;}
-.userPartBox61{text-align:center;line-height:20px;color:rgb(190,190,190);padding:15px 0 40px 0;}
+.userPartBox61{text-align:center;line-height:20px;color:rgb(190,190,190);padding:15px 0;}
 .userPartBox61 a{color:#ccc;}
-.userPartBox62{text-align:center;line-height:30px;padding:10px 0 25px 0;}
+.userPartBox62{text-align:center;line-height:30px;padding:10px 0;}
+.userPartBox63{padding:5px 10px;color:#767676;line-height:20px;font-size:9px;}
 #logDetail{}
 .logStep{width:100%;height:50px;position:relative;overflow:hidden;}
 .logStep span{width:28%;position:absolute;left:0;height:3px;top:15px;}
