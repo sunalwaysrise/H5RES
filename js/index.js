@@ -98,16 +98,6 @@ cp2y.mainPage=function(){
 				html.push('<div class="banner" id="banner"></div>');
 			}
 			for(i;i<len;i++){
-				if(i==1){
-					html.push('<a href="/caiguanya"><div class="playType">');
-					html.push('<div class="img2">');
-					html.push('<img src="'+WebAppUrl.Icon+'10059cgy.png" /><span>冠军竞猜</span>');
-					html.push('</div>');
-					html.push('<div class="playTypeArea">');
-					html.push('<p class="p11">冠军竞猜</p>');
-					html.push('<p>世界杯冠军、世界杯冠亚军</p>');
-					html.push('</div></div></a>');
-				}
 				tmp='';
 				switch(data.list[i].lotteryId){
 					case 10032:

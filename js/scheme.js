@@ -110,10 +110,10 @@ cp2y.user={
                             switch(data.schemeData.schemeContent[0].betType){
                               case 274:// 让球胜平负复式
                               case 275:// 让球胜平负单式
-                                if(td[i].rate>0){
-                                    dd="<span class='red'>+"+td[i].dc.rate+"</span>";
-                                }else if(td[i].rate<0){
-                                    dd="<span class='green'>"+td[i].dc.rate+"</span>";
+                                if(dc.rate>0){
+                                    dd="<span class='red'>+"+dc.rate+"</span>";
+                                }else if(dc.rate<0){
+                                    dd="<span class='green'>"+dc.rate+"</span>";
                                 }
                                 var tmparr=['负','平','','胜'];
                                 matchResult=dc.rqSpfResult?dc.rqSpfResult:'--';
@@ -396,10 +396,16 @@ cp2y.user={
 				var i=0,len=data.schemeParticipantData.listData.length,html=[];
 				for(i;i<len;i++){
 					if(cp2y.user.participantId.indexOf(data.schemeParticipantData.listData[i].participantId)==-1){
-						html.push('<div class="Participant"><span>'+data.schemeParticipantData.listData[i].userName+'</span>');
-						html.push('<p>认购'+data.schemeParticipantData.listData[i].money+'元</p>');
-						html.push('<span>占股'+data.schemeParticipantData.listData[i].proportion+'%</span></div>');
-					}
+                    var userName;
+                    if(data.schemeParticipantData.listData[i].userName.substr(0,2)=="m-"){
+                      userName=data.schemeParticipantData.listData[i].userName.substr(0,9)+"****";
+                    }else{
+                      userName=data.schemeParticipantData.listData[i].userName;
+                    }
+                    html.push('<div class="Participant"><span>'+userName+'</span>');
+                    html.push('<p>认购'+data.schemeParticipantData.listData[i].money+'元</p>');
+                    html.push('<span>占股'+data.schemeParticipantData.listData[i].proportion+'%</span></div>');
+				  }
 				}
 				hT.html(html.join(''));
 			}

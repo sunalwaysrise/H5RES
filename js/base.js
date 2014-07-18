@@ -87,7 +87,8 @@ cp2y.util={
 				return value;
 			}
 		}
-	},getArgs2:function(argName){
+	},
+    getArgs2:function(argName){
 		if(!argName){return false;}
 		var args = {},query = location.search.substring(1),pairs = query.split("&");
 		for(var i = 0; i < pairs.length; i++) {
