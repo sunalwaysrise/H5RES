@@ -95,14 +95,13 @@ cp2y.user={
                         }
                         len=td.length;
                         for(i;i<len;i++){
-                              if(td[i].dan){hasDan=true;break;}
-                          }
-                          if(hasDan){
-                              html.push('<td>定胆</td>');
-                          }
-                          html.push('</tr></thead><tbody>');
-                          i=0;
-                          
+                          if(td[i].match.dan){hasDan=true;break;}
+                        }
+                        if(hasDan){
+                          html.push('<td>定胆</td>');
+                        }
+                        html.push('</tr></thead><tbody>');
+                        i=0;
                         if(data.lotteryId == 10057){
                           var msg,matchResult;
                           for(i;i<len;i++){
@@ -111,9 +110,11 @@ cp2y.user={
                               case 274:// 让球胜平负复式
                               case 275:// 让球胜平负单式
                                 if(dc.rate>0){
-                                    dd="<span class='red'>+"+dc.rate+"</span>";
+                                  dd="<span class='red'>+"+dc.rate+"</span>";
                                 }else if(dc.rate<0){
-                                    dd="<span class='green'>"+dc.rate+"</span>";
+                                  dd="<span class='green'>"+dc.rate+"</span>";
+                                }else{
+                                  dd="";
                                 }
                                 var tmparr=['负','平','','胜'];
                                 matchResult=dc.rqSpfResult?dc.rqSpfResult:'--';
