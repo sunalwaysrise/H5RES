@@ -148,7 +148,7 @@ cp2y.user={
                             msg=msg.join(',');
                             html.push('<tr><td>'+td[i].match.title+'</td><td><a>'+td[i].match.host+dd+'<br/>'+(td[i].dc.lastScore?td[i].dc.lastScore:'--')+'<br/>'+td[i].match.guest+'</a></td><td>'+msg+'</td><td>'+matchResult+'</td>');
                             if(hasDan){
-                                html.push('<td>'+(td[i].dan?"√":"×")+'</td>');
+                              html.push('<td>'+(td[i].match.dan?"√":"×")+'</td>');
                             }
                             html.push('</tr>');
                           }

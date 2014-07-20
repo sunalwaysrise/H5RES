@@ -137,7 +137,7 @@ cp2y.buy = {
           for (key in this.schemes) {
               size++;
           }
-          if(size>=15){
+          if(size>15){
               return cp2y.dialog.alert('最多选择15场比赛');
           }
 		}
