@@ -34,7 +34,7 @@ cp2y.user={
 			beforeSend:function(){$("#myScoreLoading").show();},
 			success:function(data){$("#myScoreLoading").hide();
 				if(data.flag==1){
-					$("#balance span").html("余额:"+data.balance+"元<br/>彩金:"+data.hongbao+"元");
+					$("#balance").html("<p>余额:"+data.balance+"元</p><p>彩金:"+data.hongbao+"元</p>");
 				}
 			},error:function(){$("#myScoreLoading").hide();}
 		});

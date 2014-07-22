@@ -32,12 +32,17 @@ cp2y.user={
 	},
 	totalPage:0,
 	init:function(){
-		dom.m.click(function(){cp2y.user.toggleMore();});
-		dom.t.click(function(){cp2y.user.toggleMore();});
-		dom.mL.click(function(){cp2y.user.toggleMore();});
-		var t=localStorage.getItem('logType');
-		if(!t){t=0;}
-		this.log(t);
+      dom.m.click(function(){cp2y.user.toggleMore();});
+      dom.t.click(function(){cp2y.user.toggleMore();});
+      dom.mL.click(function(){cp2y.user.toggleMore();});
+      var t;
+      if(cp2y.util.getArgs('t')){
+        t=cp2y.util.getArgs('t');
+      }else{
+        t=localStorage.getItem('logType');
+        if(!t){t=0;}
+      }
+      this.log(t);
 	},
 	buildPages:function(c,m){
 		var i=1,html=[];
