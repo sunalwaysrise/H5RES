@@ -34,7 +34,7 @@ cp2y.user={
 			beforeSend:function(){$("#myScoreLoading").show();},
 			success:function(data){$("#myScoreLoading").hide();
 				if(data.flag==1){
-					$("#balance").html("<p>余额:"+data.balance+"元</p><p>彩金:"+data.hongbao+"元</p>");
+					$("#balance").html("<p>余额:<span>"+data.balance+"元</span></p><p>彩金:<span>"+data.hongbao+"元</span></p>");
 				}
 			},error:function(){$("#myScoreLoading").hide();}
 		});
@@ -50,58 +50,42 @@ cp2y.user={
 		});
 	},
 	status:function(){
-		$.ajax({
-			url:WebAppUrl.HOME_APP_URL+"/user/checkLogin",
-			anysc:false,
-			type:"post",
-			success:function(data){
-				$("#userHeader").html(data.username);
-			}
-		});
+      $.ajax({
+        url:WebAppUrl.HOME_APP_URL+"/user/checkLogin",
+        anysc:false,
+        type:"post",
+        success:function(data){
+          $("#userHeader").html(data.username);
+        }
+      });
 	},
 	home:function(){
-		this.status();
-		this.setbalance();
-		this.getScore();
-		this._schemeHistory(0,5,function(data){
-			var i=0,len=data.buyHistoryData.length,html=[];
-			for(i;i<len;i++){
-				html.push('<div class="icons1">');
-				if(BT.jc.indexOf(data.buyHistoryData[i].lotteryId)!=-1 && data.buyHistoryData[i].lotteryId!=(10059 || 10057)){
-					html.push('<a>');
-				}else{
-					html.push('<a href="/lottery/detail#scheme='+data.buyHistoryData[i].schemeId+'&index=1">');
-				}
-				html.push('<p>'+data.buyHistoryData[i].lotteryName+'</p>');
-				html.push('<p><b>'+data.buyHistoryData[i].schemeAmount+'元</b>');
-				html.push('<span>'+data.buyHistoryData[i].issue+'期</span></p>');
-				html.push('<p><b class="has'+data.buyHistoryData[i].status+'">'+data.buyHistoryData[i].statusDesc+'</b>');
-				html.push('<span>'+data.buyHistoryData[i].initiateTimeStr+'</span></p></a></div>');
-			}
-			if(len==0){
-				html.push('<div class="noRecord"><a href="/"></a></div>');
-			}else{
-				html.push('<div class="icons1 nob"><a href="/limit/user/betRecords">更多购彩记录</a></div>');
-			}
-			$("#mySH").html(html.join(''));
-		});
-		$.ajax({
-			url:WebAppUrl.HOME_APP_URL+'/activity/isshowact',
-			success:function(data){
-				if(data.isShow){
-					$("#balance").append('<a href="/activity/songcaijin">送彩金</a>');
-				}else{
-					$.ajax({
-						url:WebAppUrl.HOME_APP_URL+'/activity/isshowchong50song50',
-						success:function(data){
-							if(data.isShow){
-								$("#balance").append('<a href="/activity/songcaijin">送彩金</a>');
-							}
-						}
-					});
-				}
-			}
-		});
+      this.status();
+      this.setbalance();
+      this.getScore();
+      $.ajax({
+        url:WebAppUrl.HOME_APP_URL+'/activity/isshowact',
+        success:function(data){
+          if(data.isShow){
+            $("#balance").append('<a href="/activity/songcaijin">送彩金</a>');
+          }else{
+            $.ajax({
+              url:WebAppUrl.HOME_APP_URL+'/activity/isshowchong50song50',
+              success:function(data){
+                if(data.isShow){
+                  $("#balance").append('<a href="/activity/songcaijin">送彩金</a>');
+                }
+              }
+            });
+          }
+        }
+      });
+      $("#Nmore").click(function(){
+        $(this).next().toggle();
+      });
+      $("#Nmore2").click(function(){
+        $(this).parent().hide();
+      });
 	},
 	signOut:function(){
 		$.ajax({
