@@ -31,19 +31,22 @@ cp2y.events={
 		});
 	},
 	myEvent:function(){
-		$.ajax({
-			url:WebAppUrl.HOME_APP_URL+"/core/activity/showValidActList",
-			beforeSend:function(){cp2y.dialog.loading();},
-			success:function(data){
-				cp2y.dialog.clearLoading();
-				var data=data.activitylist,i=0,len=data.length,html=[];
-				for(i;i<len;i++){
-					html.push('<div><a class="eventBanner'+i+'" href="/activity/actdetail?id='+data[i].id+'">'+data[i].activityName +'</a></div>');
-				}
-				$("#eventList").html(html.join(''));
-			},
-			error:function(){cp2y.dialog.clearLoading();}
-		});
+      $.ajax({
+        url:WebAppUrl.HOME_APP_URL+"/core/activity/showValidActList",
+        beforeSend:function(){cp2y.dialog.loading();},
+        success:function(data){
+          cp2y.dialog.clearLoading();
+          var data=data.activitylist,i=0,len=data.length,html=[];
+          for(i;i<len;i++){
+            html.push('<div><a class="eventBanner'+i+'" href="/activity/actdetail?id='+data[i].id+'">'+data[i].activityName +'</a></div>');
+          }
+          if(len==0){
+            html.push('<p class="Etip">您尚未参与活动，去<a href="/activity/list">活动页面</a>看看</p>');
+          }
+          $("#eventList").html(html.join(''));
+        },
+        error:function(){cp2y.dialog.clearLoading();}
+      });
 	},
 	event1:function(id){
 		$.ajax({

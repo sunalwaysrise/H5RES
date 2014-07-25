@@ -148,6 +148,7 @@ cp2y.mainPage=function(){
 						hot='a3';
 						break;
 					case 10059:
+                    case 10057:
 						hot='a0';
 						break;
 				}
