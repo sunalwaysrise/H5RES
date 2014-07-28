@@ -115,7 +115,7 @@ cp2y.mainPage=function(){
 						tmp='<p><span>'+cp2y.util.setIssue1(data.list[i].lastIssue)+'期奖号:</span>'+cp2y.util.splitNumber1(data.list[i].drawNumber)+'</p>';
 						break;
 					case 10059:
-						tmp='<p>周日加奖17%,赚翻了！</p>';
+						tmp='<p>赛前15分钟截止投注！</p>';
 						break;
 				}
 				switch(data.list[i].lotteryId){
