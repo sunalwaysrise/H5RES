@@ -114,8 +114,11 @@ cp2y.mainPage=function(){
 					case 10065:
 						tmp='<p><span>'+cp2y.util.setIssue1(data.list[i].lastIssue)+'期奖号:</span>'+cp2y.util.splitNumber1(data.list[i].drawNumber)+'</p>';
 						break;
-					case 10059:
-						tmp='<p>赛前15分钟截止投注！</p>';
+					case 10057:
+						tmp='<p>浮动奖金，2元可中500万</p>';
+						break;
+                    case 10059:
+						tmp='<p>欧冠新一轮比赛来了！</p>';
 						break;
 				}
 				switch(data.list[i].lotteryId){
@@ -164,15 +167,6 @@ cp2y.mainPage=function(){
 					html.push('</div></div></a>');
 				}
 			}
-			
-			html.push('<a href="/more"><div class="playType">');
-			html.push('<div class="img2">');
-			html.push('<img src="'+WebAppUrl.Icon+'more.png" style="margin-top:13px" />');
-			html.push('</div>');
-			html.push('<div class="playTypeArea">');
-			html.push('<p class="p11">更多彩种</p>');
-			html.push('<p>老时时彩、七乐彩、幸运赛车...</p>');
-			html.push('</div></div></a>');
 			$("#mainPage").html(html.join(''));
 			window.scrollTo(0,0);
 			if(sessionStorage.getItem('isShowBanner')!=1){

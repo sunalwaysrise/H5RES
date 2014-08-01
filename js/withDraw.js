@@ -87,12 +87,24 @@ cp2y.user={
 					html.push('<li><label>开户行所在地：</label><p>'+data.bankProvince+data.bankCity+'</p></li>');
 					html.push('<li><label>开户人姓名：</label><p>'+data.name+'</p></li>');
 					html.push('<li><label>开户人证件号：</label><p>'+data.identify+'</p></li>');
-                  html.push('<li><label>提款金额：</label><p><input type="tel" id="withdrawals" class="input7" placeholder="每次至少5元，每天可提现3次"/></p></li></ul>');
-                  html.push('<p class="userPartBox62">可提款余额：<span id="wdV"></span>元</p>');
-                  html.push('<a class="btn1 mt10" onclick="cp2y.user.withdrawals()">提款</a>');
-                  
-				  html.push('<p class="userPartBox61">绑定修改，需联系客服<a href="tel:4006667575">400-666-7575</a></p>'); 
-                  html.push('<p class="userPartBox62">提款规则</p><p class="userPartBox63">一 提款手续费：<br/>1.提款手续费2元/笔，由银行收取；<br/>2.当月累计消费满1000元，当月最多可免提款手续费3次。</p><p class="userPartBox63">二 审核时间：<br/>周一到周日 09:00-17:00（法定节假日除外）</p><p class="userPartBox63">三 到账时间：<br/>工行、农行、建行、招行审核后2小时内到账，其他银行一般需要1-3个工作日。</p><p class="userPartBox63">四 风控规则：<br/>1.彩金及部分活动规则列明的充值本金不可提现。<br/>2.为了防止利用信用卡套现和洗钱行为，银行针对异常提款做出以下规定：<br/>（1）单笔充值后消费不满30%的提款申请，将加收最高10%（最少10元起）的异常提款处理费用。<br/>（2）异常提款到账日自提出申请之日起不得少于15个工作日。<br/>（3）异常提款首次系统将自动驳回并短信通知用户原因，如再次申请将按异常提款处理。</p>');
+                    html.push('<li><label>提款金额：</label><p><input type="tel" id="withdrawals" class="input7" placeholder="每次至少5元，每天可提现3次"/></p></li></ul>');
+                    html.push('<p class="userPartBox62">可提款余额：<span id="wdV"></span>元</p>');
+                    html.push('<a class="btn1 mt10" onclick="cp2y.user.withdrawals()">提款</a>');
+                    html.push('<p class="userPartBox61">绑定修改，需联系客服<a href="tel:4006667575">400-666-7575</a></p>');
+                    html.push('<p class="userPartBox62">提款规则</p>');
+                    html.push('<p class="userPartBox63">一 提款转账费：<br/>');
+                    html.push('1、提款转账费2元/笔<br/>');
+                    html.push('2、新注册并充值用户首次体验提款转账费由网站代付（异常提款除外）<br/>');
+                    html.push('3、单次提款金额大于100元，每位用户每月享有3次的免费提款机会（转账费由网站代付，异常提款除外）</p>');
+                    html.push('<p class="userPartBox63">二 审核时间：<br/>');
+                    html.push('周一到周日  09：00-17：00（法定节假日除外）</p>');
+                    html.push('<p class="userPartBox63">三 到账时间：<br/>');
+                    html.push('招行最快10分钟内可到账，工行、农行、建行、在当天财务审核处理后一般2小时内到账，其他银行一般需要1-3个工作日</p>');
+                    html.push('<p class="userPartBox63">四 风控规则：<br/>');
+                    html.push('1、提款申请人的银行卡姓名与本站填写的真实姓名必须一致，否则款项无法汇出<br/>');
+                    html.push('2、凡遇网站活动期间，用户充值本金及赠送彩金，只能用于购彩，不能提现<br/>');
+                    html.push('3、为了防止利用信用卡套现和洗钱行为，银行针对异常提款做出如下规定：<br/>');
+                    html.push('（1）单笔消费后不满30%的提款申请，将加收最高10%（最少10元起）的异常提款处理费用。<br/>（2）异常提款首次系统将自动驳回并短信通知用户原因，如再次申请将按异常提款（最高10%提款手续费）处理。<br/>（3）异常提款到账时间自申请之日起不得低于15个工作日。</p>');
 				}else{
 					html.push('<a class="userPartBox5 input4 mt40"><label>银行:</label><select id="banks" class="input5"></select></a>');
 					html.push('<a class="userPartBox5 input4 nobt"><label>卡号:</label><input type="number" id="card" class="input6" /></a>');

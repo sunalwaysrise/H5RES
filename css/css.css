@@ -71,6 +71,8 @@ background-position:center center;background-repeat:no-repeat;background-size:co
 #More.on{transition:.3s;-webkit-transform:rotateX(180deg);-moz-transform:rotateX(180deg);-o-transform:rotateX(180deg);-ms-transform:rotateX(180deg);}
 #userCenter,#drawCenter{position:relative;width:100%;float:left;min-height:300px;display:none;}
 .playType{min-width:320px;height:80px;display:block;border-bottom:1px #ddd solid;/*background:url(../images/arr1.png) right top no-repeat;background-size:contain;*/}
+.indexMoreBtn{height:40px;padding:12px 12px 0 12px;background:#F2F3F5;}
+.indexMoreBtn a{background:#2888ea;display:block;border-radius:5px;color:#fff;text-align:center;font-size:15px;line-height:40px;}
 /*.playType .img,*/
 .playType .img2{width:80px;height:80px;border-right:1px #ddd solid;float:left;}
 /*.playType .img img{width:60px;height:60px;border-radius:34px;margin:10px;}*/
@@ -466,7 +468,7 @@ background-repeat:no-repeat;background-size:contain;display:block;-moz-animation
 .Participant span{width:33%;height:30px;float:left;text-overflow:ellipsis;overflow:hidden;white-space: nowrap;}
 .Participant p{width:33%;height:30px;float:left;}
 .radioType{width:14px;height:14px;}
-.FaqTel{width:100%;height:40px;line-height:40px;text-align:center;background:#F2F3F5;}
+.FaqTel{width:100%;height:40px;line-height:36px;text-align:center;background:#F2F3F5;}
 .isbtn{color:#137BD4!important;}
 .jc .isbtn{color:#1B9332!important;}
 #getWfC{padding:0 10px;}
@@ -809,7 +811,11 @@ header.newsHeader a {height:45px;}
 
 .leaguePage2{display:none;}
 
-.discoverIndex{padding-top:10px;}
+.discoverIndex{}
+.discoverIndex div:nth-child(3){border-bottom:1px rgb(216,216,216) solid;}
+.discoverIndex div:nth-child(3) a{border-bottom:none;}
+.discoverIndex div:nth-child(4){border-bottom:1px rgb(216,216,216) solid;}
+.discoverIndex div:nth-child(4) a{border-bottom:none;}
 .ownIndex .userLin span{padding-left:10px;height:45px;line-height:45px;float:left;width:70px;}
 .ownIndex .userLin p{height:45px;float:left;color:#999;line-height:45px;}
 .ownIndex .userLin p em{color:rgb(60,140,231);font-style:normal;line-height:45px;display:inline-block;margin-top:-3px;}
