@@ -9,14 +9,14 @@ var _ = {
 		html.push('<b data="a0" data2="一星">一星</b>');
 		html.push('<b data="a1" data2="四星">四星</b>');
 		html.push('<b data="a2" data2="五星">五星</b>');
-		html.push('<b data="a3" data2="五星通选">五星通选<em>奖</em></b>');
+		html.push('<b data="a3" data2="五星通选">五星通选</b>');
 		html.push('<span></span>');
 		html.push('<b data="a4" data2="二星组选">二星组选</b>');
-		html.push('<b data="a5" data2="三星组3">三星组3<em>奖</em></b>');
-		html.push('<b data="a6" data2="三星组6">三星组6<em>奖</em></b>');
+		html.push('<b data="a5" data2="三星组3">三星组3</b>');
+		html.push('<b data="a6" data2="三星组6">三星组6</b>');
 		html.push('<span></span>');
 		html.push('<b data="a7"  data2="任选1">任选1</b>');
-		html.push('<b data="a8" data2="任选2">任选2<em>奖</em></b>');
+		html.push('<b data="a8" data2="任选2">任选2</b>');
 		html.push('<b data="a9"  data2="大小单双">大小单双</b>');
 		html.push('<span></span>');
 		html.push('<b data="a10" data2="二星直选">二星直选<em>奖</em></b>');

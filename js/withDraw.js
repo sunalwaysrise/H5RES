@@ -87,7 +87,7 @@ cp2y.user={
 					html.push('<li><label>开户行所在地：</label><p>'+data.bankProvince+data.bankCity+'</p></li>');
 					html.push('<li><label>开户人姓名：</label><p>'+data.name+'</p></li>');
 					html.push('<li><label>开户人证件号：</label><p>'+data.identify+'</p></li>');
-                    html.push('<li><label>提款金额：</label><p><input type="tel" id="withdrawals" class="input7" placeholder="每次至少5元，每天可提现3次"/></p></li></ul>');
+                    html.push('<li><label>提款金额：</label><p><input type="tel" id="withdrawals" class="input7" placeholder="每次至少10元，每天可提现3次"/></p></li></ul>');
                     html.push('<p class="userPartBox62">可提款余额：<span id="wdV"></span>元</p>');
                     html.push('<a class="btn1 mt10" onclick="cp2y.user.withdrawals()">提款</a>');
                     html.push('<p class="userPartBox61">绑定修改，需联系客服<a href="tel:4006667575">400-666-7575</a></p>');
@@ -173,8 +173,8 @@ cp2y.user={
 		if(!money.isInt()){
 			return cp2y.dialog.tip("请输入数字");
 		}
-		if(money<5){
-			return cp2y.dialog.tip("每次至少5元");
+		if(money<10){
+			return cp2y.dialog.tip("每次至少10元");
 		}
 		$.ajax({
 			url:WebAppUrl.HOME_APP_URL+"/core/user/withdraw",

@@ -51,7 +51,7 @@ _.a0 = {
 						var betCounter = data2[j].betCounter ? data2[j].betCounter.split(',') : ["-", "-", "-"];
 						html.push('<li class="' + data2[j].leagueName + '"><div class="jc_line1"  data="{no:' + data2[j].matchCode + ',end:false,name:\'' + data[i].dayOfWeekStr + '0' + (j + 1).addZero() + '\',h:\'' + data2[j].hostName + '\',g:\'' + data2[j].guestName + '\',rq:\'' + data2[j].rate + '\',dw:\'' + data[i].dayOfWeekStr + '\'}">');
 						html.push('<strong><em>' + data2[j].leagueName + '</em>');
-						html.push('<var>' + '0' + (j + 1).addZero() + '</var>');
+						html.push('<var>' + data2[j].matchCode.substr(8,3) + '</var>');
 						html.push('<time>' + data2[j].sellEndTime.substr(11, 5) + '截止</time>');
 						html.push('</strong><div>');
 						var rq='';
@@ -139,7 +139,7 @@ _.a5 = {
 						var betCounter = data2[j].betCounter ? data2[j].betCounter.split(',') : ["-", "-", "-"];
 						html.push('<li class="' + data2[j].leagueName + '"><div class="jc_line1 jc_line11"  data="{no:' + data2[j].matchCode + ',end:false,name:\'' + data[i].dayOfWeekStr + '0' + (j + 1).addZero() + '\',h:\'' + data2[j].hostName + '\',g:\'' + data2[j].guestName + '\',rq:\'' + data2[j].rate + '\',dw:\'' + data[i].dayOfWeekStr + '\'}">');
 						html.push('<strong><em>' + data2[j].leagueName + '</em>');
-						html.push('<var>' + '0' + (j + 1).addZero() + '</var>');
+						html.push('<var>' + data2[j].matchCode.substr(8,3)  + '</var>');
 						html.push('<time>' + data2[j].sellEndTime.substr(11, 5) + '截止</time>');
 						html.push('</strong>');
 						/* 胜平负 开始 */
