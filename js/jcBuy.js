@@ -156,7 +156,46 @@ cp2y.buy = {
 		}
 		this.switchDanChk();
 		jcDom.curBets.html(this.selectMatchCount());
-	}
+	},
+  bdSelect2:function(_this, f){
+    var size = 0, key;
+    var p = $(_this).parent().parent(),
+      d = eval('(' + p.attr('data') + ')'),
+      t = p.parent();
+    if (d.end) {
+      return cp2y.dialog.alert('该场比赛已截止投注。');
+    }
+    if ($(_this).hasClass('jcSelect')) {
+      $(_this).removeClass('jcSelect');
+    }
+    else {
+      $(_this).addClass('jcSelect');
+      for (key in this.schemes) {
+        size++;
+      }
+      if(size>15){
+        return cp2y.dialog.alert('最多选择15场比赛');
+      }
+    }
+    this.content(t, d);
+    if (f) {
+      this.showPassWay();
+      //展示过关方式
+      this.setPassWay();
+      //过关方式 写入内存
+      if ($(_this).hasClass('jcSelect')) {
+        this.reSelect($(_this).attr("data_class"), true);
+      }
+      else {
+        this.reSelect($(_this).attr("data_class"), false);
+      }
+    }
+    this.switchDanChk();
+    jcDom.curBets.html(this.selectMatchCount());
+  },
+  bdUnSelect:function(_this){
+    $(_this).removeClass('');
+  }
 	,
 	addContent: function () {
 		var k = 0,

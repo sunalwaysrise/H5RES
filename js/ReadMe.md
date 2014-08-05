@@ -5,7 +5,7 @@ js  			//JS目录  [ 所有发布的资源都必须压缩加密 发布格式 xx.
 ├─draw.js      		开奖 min
 ├─buy.js       		数字彩 购买流程核心文件 min
 ├─jcBuy.js     		竞彩 购买核心文件 min
-├─hemai.js   		合买核心文件＊
+├─hemai.js   		合买核心文件 min
 ├─jcBuyCGY.js     	竞彩猜冠亚军 购买核心文件 min
 ├─sign.js      		账户相关操作[未登录] min
 ├─user.js      		用户核心文件 min

@@ -1,15 +1,6 @@
 /**
  * @author luwenbin
  */
-playDom.GoSelectArea.click(function(){
-	cp2y.buy.step1();
-});//返回投注区
-playDom.GoMyBets.click(function(){
-	cp2y.buy.step2();
-});//返回我的选项区
-playDom.More.click(function(){
-	
-});//投注区域展开查看更多玩法
 $("#pStop").blur(function(){
 	if($(this).val()>9999){
 		$(this).val(9999);
