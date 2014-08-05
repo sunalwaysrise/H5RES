@@ -395,7 +395,7 @@ _.a4={
             html.push('<ul>' +
               '<li class="jcBet a'+data2[j].matchKey+'_0" data="0" data_s="'+data2[j].bjdcSp.shangD+'" data_class="a'+data2[j].matchKey+'_0">上单<br/>'+data2[j].bjdcSp.t0+'</li>' +
               '<li class="jcBet a'+data2[j].matchKey+'_1" data="1" data_s="'+data2[j].bjdcSp.shangS+'" data_class="a'+data2[j].matchKey+'_1">上双<br/>'+data2[j].bjdcSp.t1+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_2" data="2" data_s="'+data2[j].bjdcSp.xiaD+'" data_class="a'+data2[j].matchKey+'_2">2下单<br/>'+data2[j].bjdcSp.t2+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_2" data="2" data_s="'+data2[j].bjdcSp.xiaD+'" data_class="a'+data2[j].matchKey+'_2">下单<br/>'+data2[j].bjdcSp.t2+'</li>' +
               '<li class="jcBet a'+data2[j].matchKey+'_3" data="3" data_s="'+data2[j].bjdcSp.xiaS+'" data_class="a'+data2[j].matchKey+'_3">下双<br/>'+data2[j].bjdcSp.t3+'</li>' +
               '</ul>');
             html.push('<nav><var onclick="cp2y.buy.bdUnSelect(this);">取消选择</var><var onclick="cp2y.buy.bdSelect2(this,false);">确定</var></nav></article>');
