@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="edbe29b9-2971-4b46-9520-920b10f7c406" name="Default" comment="">
+    <list default="true" id="edbe29b9-2971-4b46-9520-920b10f7c406" name="Default" comment="updata">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/play/10057.js" afterPath="$PROJECT_DIR$/js/play/10057.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/jcBuy.js" afterPath="$PROJECT_DIR$/js/jcBuy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/jcBuy.min.js" afterPath="$PROJECT_DIR$/js/jcBuy.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/css.css" afterPath="$PROJECT_DIR$/css/css.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/hemai.js" afterPath="$PROJECT_DIR$/js/hemai.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/hemai.min.js" afterPath="$PROJECT_DIR$/js/hemai.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="res.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407224978924" ignored="false" />
+    <file path="/Dummy.txt" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407395969743" ignored="false" />
     <file path="/10057.js" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407224256207" ignored="false" />
     <file path="/a.js" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407204318273" ignored="false" />
-    <file path="/css.css" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407223047169" ignored="false" />
+    <file path="/css.css" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407393790299" ignored="false" />
     <file path="/jcBuy.js" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407213292269" ignored="false" />
     <file path="/jcBuy.min.js" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407223311775" ignored="false" />
+    <file path="/hemai.min.js" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407390611000" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,28 +37,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="jcBdBuy.min.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/jcBdBuy.min.js">
+      <file leaf-file-name="hemai.min.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/hemai.min.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="32" selection-start="0" selection-end="7968" vertical-scroll-proportion="0.0">
+            <state line="1" column="0" selection-start="4077" selection-end="4077" vertical-scroll-proportion="0.034802783">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jcBuy.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/jcBuy.js">
+      <file leaf-file-name="hemai.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/hemai.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1257" column="136" selection-start="34326" selection-end="34326" vertical-scroll-proportion="0.0">
+            <state line="205" column="3" selection-start="6341" selection-end="6341" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jcBuy.min.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/jcBuy.min.js">
+      <file leaf-file-name="css.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/css.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="17805" selection-end="17805" vertical-scroll-proportion="0.027075812">
+            <state line="866" column="0" selection-start="82645" selection-end="82645" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#69034#69749#1" expanded="true" />
+                <element signature="e#72049#73436#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="10057.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/play/10057.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="125" selection-start="561" selection-end="1050" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -79,18 +95,18 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/js/jcBdBuy.min.js" />
-        <option value="$PROJECT_DIR$/css/css.css" />
         <option value="$PROJECT_DIR$/js/jcBuy.js" />
-        <option value="$PROJECT_DIR$/js/play/10057.js" />
         <option value="$PROJECT_DIR$/js/jcBuy.min.js" />
+        <option value="$PROJECT_DIR$/css/css.css" />
+        <option value="$PROJECT_DIR$/js/play/10057.js" />
+        <option value="$PROJECT_DIR$/js/hemai.js" />
+        <option value="$PROJECT_DIR$/js/hemai.min.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="13" />
-    <option name="y" value="22" />
-    <option name="width" value="1247" />
-    <option name="height" value="713" />
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -192,7 +208,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="preferences.sourceCode.JavaScript" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="FullScreen" value="false" />
+    <property name="FullScreen" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
@@ -218,14 +234,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="13" y="22" width="1247" height="713" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12418301" sideWeight="0.67058825" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14797136" sideWeight="0.67045456" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924837" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -235,6 +250,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -304,52 +320,51 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/js/play/10059.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="10" selection-start="4632" selection-end="4640" vertical-scroll-proportion="0.3167421">
-          <folding>
-            <element signature="e#692#4574#0" expanded="false" />
-            <marker date="1407138482000" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1407138482000" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
+        <state line="103" column="10" selection-start="4632" selection-end="4640" vertical-scroll-proportion="0.3167421" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/css.css">
+    <entry file="file://$PROJECT_DIR$/js/jcBuy.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="488" column="0" selection-start="41241" selection-end="41241" vertical-scroll-proportion="0.89169675">
-          <folding />
-        </state>
+        <state line="1" column="0" selection-start="17805" selection-end="17805" vertical-scroll-proportion="0.027075812" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jcBuy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1257" column="136" selection-start="34326" selection-end="34326" vertical-scroll-proportion="0.6480144" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/jcBdBuy.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="32" selection-start="0" selection-end="7968" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="98" column="32" selection-start="0" selection-end="7968" vertical-scroll-proportion="-4.2527075" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/css.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="866" column="0" selection-start="82645" selection-end="82645" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#69034#69749#1" expanded="true" />
+            <element signature="e#72049#73436#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/play/10057.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="397" column="139" selection-start="23543" selection-end="23543" vertical-scroll-proportion="0.3501805">
-          <folding>
-            <element signature="e#1081#4627#0" expanded="false" />
-            <element signature="e#4635#9128#0" expanded="false" />
-            <element signature="e#9136#16719#0" expanded="false" />
-            <element signature="e#16727#20942#0" expanded="false" />
-            <element signature="e#16854#20940#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/jcBuy.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1257" column="136" selection-start="34326" selection-end="34326" vertical-scroll-proportion="0.0">
+        <state line="26" column="125" selection-start="561" selection-end="1050" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/jcBuy.min.js">
+    <entry file="file://$PROJECT_DIR$/js/hemai.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="17805" selection-end="17805" vertical-scroll-proportion="0.027075812">
+        <state line="205" column="3" selection-start="6341" selection-end="6341" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/hemai.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="4077" selection-end="4077" vertical-scroll-proportion="0.034802783">
           <folding />
         </state>
       </provider>

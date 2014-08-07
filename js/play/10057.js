@@ -21,10 +21,10 @@ var _ = {
         break;
     }
     html.push('<a data="a0" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a0" ' + v1 + ' data2="让球胜平负">让球胜平负</a>');
-    html.push('<a data="a1" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a1" ' + v2 + ' data2="半全场">半全场</a>');
-    html.push('<a data="a2" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a2" ' + v3 + ' data2="比分">比分</a>');
-    html.push('<a data="a3" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a3" ' + v4 + ' data2="总进球">总进球</a>');
-    html.push('<a data="a4" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a4" ' + v5 + ' data2="上下单双">上下单双</a>');
+//    html.push('<a data="a1" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a1" ' + v2 + ' data2="半全场">半全场</a>');
+//    html.push('<a data="a2" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a2" ' + v3 + ' data2="比分">比分</a>');
+//    html.push('<a data="a3" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a3" ' + v4 + ' data2="总进球">总进球</a>');
+//    html.push('<a data="a4" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a4" ' + v5 + ' data2="上下单双">上下单双</a>');
     return html.join('');
   }
 };
