@@ -793,9 +793,10 @@ header.newsHeader a {height:45px;}
 .hemaiT1 section{float:left;background:rgb(210,240,253);color:#1AB5F7;padding:0 3px;}
 .hemaiT1 section span{display:inline;}
 .hemaiT{width:80px;height:80px;float:left;font-size:12px;position:relative;text-align:center;}
-.hemaiT b{text-align:left;width:80px;height:38px;display:block;text-indent:10px;position:relative;line-height:38px;font-size:34px;color:rgb(217,26,28);text-shadow:1px 1px 1px #fff;}
-.hemaiT b em{font-size:16px;font-style:normal;position:absolute;bottom:-5px;margin-left:-10px;}
+.hemaiT b{text-align:left;width:80px;height:38px;display:block;text-indent:14px;position:relative;line-height:38px;font-size:34px;color:rgb(217,26,28);text-shadow:1px 1px 1px #fff;}
+.hemaiT b em{font-size:16px;font-style:normal;position:absolute;bottom:-5px;margin-left:-13px;}
 .hemaiT p{width:80px;height:17px;text-align:center;line-height:17px;display:block;font-size:14px;color:rgb(217,26,28);padding-top:8px;}
+.hemaiT i{position:absolute;left:0;top:33px;width:16px;height:16px;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACkUlEQVRYR8WXTUhUURTHf1fDAaEaIw3BiiIiovwISgxrEa0iiIhWbSKCvnBpE+WiaBG4icikVkVErbJyGURItRESR5EwJAi0D4esZqE56jzP4zHM4Jt73x1nXt7NwNz7zvndc8+5538VKzyU04ljzeDwV9YmUMRJ0ye/z1WMb9bf51lYGMBSA45gQC/z3FDXGFwOSHEAGY8eSDcztKvr/CsEpDQAWY+DpDiqOpiwhQgGaDgHG/bAmzZYSNnY/SpZ1Sq5MW6z2AxQtQ3OfIKyVR7AQJeNTQQgzg9a1G05lIBhBmi+AgdveSbGeuHFsSB72XmHLomCUJuHGeD0EFTv9iyMv4dnB4Ls5QKkpUz3qssMmD7SAzRdhMP3st8mBOZRgz2Au9LhpUTheGEAlTXQ0gFNl0CV5QAMC0B9oQBp5thkqgovAo0XYHUd1O6DOglzecTv6PcYvLvq///nR/jzRQ/m0CZR0GavB9Bufxv7PM1Lor8+DyOP80M49AjACR1h8QCu5YVZuL8RphN+Pw6jArAjXADX+tNWmPiQz09SKmFtuADuMXTXwqzbLP1DAFS4AP2d0BfTJmL4AK8kxz736AD+wxE8aYbv/boqCDkJU0m4ux7ScytUhvEH3j2gG1YXUXQrVEilZK7eddvh0B2orDZfvW7dP9wl9T+p272rlDabtIG+GUWiUH8Wdp6CGrcJLamkqVFRgydFokqP0O9+Gc0on7GKNRDdApEqESflMDMFv0bMCsnViUW1Y3Pwg2dLIkiC3ejOPi5ibL8o5OkgE8GiNMiCf76EorRw50Miy4+UVpbbQGQfJjGbsOeaLO4IMk8zxc0g8Wnuhja79NYkRT9NSnkNS5G9Lcnj1N53OCsXAffvEDB2Dl4wAAAAAElFTkSuQmCC) no-repeat;background-size:contain;}
 .hemaiT strong{text-align:center;display:inline-block;font-weight:normal;background:#2889EA;color:#fff;border-radius:10px;padding:0 5px;}
 .hemaiT strong .fr{float:inherit;}
 .hemaiC{float:left;height:75px;width:210px;overflow:hidden;padding:0 19px 5px 10px;}
