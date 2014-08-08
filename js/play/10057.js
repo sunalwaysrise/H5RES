@@ -239,15 +239,15 @@ _.a2={
               '</ul>');
             html.push('<h4>主负</h4>');
             html.push('<ul>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_15" data="15" data_s="'+data2[j].bjdcSp.f01+'" data_class="a'+data2[j].matchKey+'_15">1:0<br/>'+data2[j].bjdcSp.f01+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_16" data="16" data_s="'+data2[j].bjdcSp.f02+'" data_class="a'+data2[j].matchKey+'_16">2:0<br/>'+data2[j].bjdcSp.f02+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_17" data="17" data_s="'+data2[j].bjdcSp.f03+'" data_class="a'+data2[j].matchKey+'_17">3:0<br/>'+data2[j].bjdcSp.f03+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_18" data="18" data_s="'+data2[j].bjdcSp.f04+'" data_class="a'+data2[j].matchKey+'_18">4:0<br/>'+data2[j].bjdcSp.f04+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_19" data="19" data_s="'+data2[j].bjdcSp.f12+'" data_class="a'+data2[j].matchKey+'_19">2:1<br/>'+data2[j].bjdcSp.f12+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_20" data="20" data_s="'+data2[j].bjdcSp.f13+'" data_class="a'+data2[j].matchKey+'_20">3:1<br/>'+data2[j].bjdcSp.f13+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_21" data="21" data_s="'+data2[j].bjdcSp.f14+'" data_class="a'+data2[j].matchKey+'_21">4:1<br/>'+data2[j].bjdcSp.f14+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_22" data="22" data_s="'+data2[j].bjdcSp.f23+'" data_class="a'+data2[j].matchKey+'_22">3:2<br/>'+data2[j].bjdcSp.f23+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_23" data="23" data_s="'+data2[j].bjdcSp.f24+'" data_class="a'+data2[j].matchKey+'_23">4:2<br/>'+data2[j].bjdcSp.f24+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_15" data="15" data_s="'+data2[j].bjdcSp.f01+'" data_class="a'+data2[j].matchKey+'_15">0:1<br/>'+data2[j].bjdcSp.f01+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_16" data="16" data_s="'+data2[j].bjdcSp.f02+'" data_class="a'+data2[j].matchKey+'_16">0:2<br/>'+data2[j].bjdcSp.f02+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_17" data="17" data_s="'+data2[j].bjdcSp.f03+'" data_class="a'+data2[j].matchKey+'_17">0:3<br/>'+data2[j].bjdcSp.f03+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_18" data="18" data_s="'+data2[j].bjdcSp.f04+'" data_class="a'+data2[j].matchKey+'_18">0:4<br/>'+data2[j].bjdcSp.f04+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_19" data="19" data_s="'+data2[j].bjdcSp.f12+'" data_class="a'+data2[j].matchKey+'_19">1:2<br/>'+data2[j].bjdcSp.f12+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_20" data="20" data_s="'+data2[j].bjdcSp.f13+'" data_class="a'+data2[j].matchKey+'_20">1:3<br/>'+data2[j].bjdcSp.f13+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_21" data="21" data_s="'+data2[j].bjdcSp.f14+'" data_class="a'+data2[j].matchKey+'_21">1:4<br/>'+data2[j].bjdcSp.f14+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_22" data="22" data_s="'+data2[j].bjdcSp.f23+'" data_class="a'+data2[j].matchKey+'_22">2:3<br/>'+data2[j].bjdcSp.f23+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_23" data="23" data_s="'+data2[j].bjdcSp.f24+'" data_class="a'+data2[j].matchKey+'_23">2:4<br/>'+data2[j].bjdcSp.f24+'</li>' +
               '<li class="jcBet a'+data2[j].matchKey+'_24" data="24" data_s="'+data2[j].bjdcSp.fother+'" data_class="a'+data2[j].matchKey+'_24">负其他<br/>'+data2[j].bjdcSp.fother+'</li>' +
               '</ul></main></aside>');
             html.push('<nav><var onclick="cp2y.buy.bdUnSelect(this);">取消选择</var><var onclick="cp2y.buy.bdSelect2(this,false);">确定</var></nav></article>');

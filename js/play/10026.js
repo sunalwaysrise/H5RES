@@ -136,6 +136,27 @@ _.a0={
 			}
 		});
 		this.count();
+	},
+  hasOutGet:true,
+	outGet:function(){
+		var r=cp2y.util.getArgs2('r'),b=cp2y.util.getArgs2('b'),i=0,o=$('.gb');
+		if(r){
+			r=r.split(',');
+			for(i;i<35;i++){
+				if(r.indexOf(Number(o.eq(i).html()))!=-1){
+					o.eq(i).addClass('rb');
+				}
+			}
+		}
+		if(b){
+			b=b.split(',');
+			i=0;o=$('.gb2');
+			for(i;i<12;i++){
+				if(b.indexOf(Number(o.eq(i).html()))!=-1){
+					o.eq(i).addClass('bb');
+				}
+			}
+		}
 	}
 };
 _.a1={

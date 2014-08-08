@@ -178,9 +178,10 @@ cp2y.buy = {
         size++;
       }
       if(size>15){
-        b.each(function(i,v){
-          $(v).removeClass('onn');
-        });
+        var i=0;
+        for(i;i< b.length;i++){
+          $(b[i]).removeClass('onn');
+        }
         return cp2y.dialog.alert('最多选择15场比赛');
       }else{
         $(_this).parent().parent().parent().children('code').html(e.join(' '));
@@ -843,8 +844,7 @@ cp2y.buy = {
         xlen = v.length,
         tmp2 = [];
       for (x;x < xlen;x++) {
-        var y = 0;
-        ylen = v[x].v.length, tmp = [];
+        var y = 0,ylen = v[x].v.length, tmp = [];
         for (y;y < ylen;y++) {
           var o = $.extend(true, {}, v[x]);
           o.v = v[x].v[y];
@@ -870,8 +870,7 @@ cp2y.buy = {
       fun([],0);
       detail.push(newArr);
     });
-    var xx = 0;
-    xxlen = detail.length, piao = [];
+    var xx = 0,xxlen = detail.length, piao = [];
     for (xx;xx < xxlen;xx++) {
       var yy = 0,
         yylen = detail[xx].length;
@@ -891,10 +890,21 @@ cp2y.buy = {
       maxPrizeScopeA.push([this.schemes[sch].no, tmp.max()]);
       minPrizeScopeA.push(tmp.min());
     }
+    minPrizeScopeA.sort();
+    var li= 0,llen=cp2y.buy.passWay.length,ldata=[];
+    for(li;li<llen;li++){
+      var kli=Number(cp2y.buy.passWay[li].substring(0,1));
+      if(!kli){
+        kli=1;
+      }
+      if(ldata.indexOf(kli)==-1){
+        ldata.push(kli);
+      }
+    }
+    minPrizeScopeA=minPrizeScopeA.slice(0,ldata.sort()[0]);
     // console.log(maxPrizeScopeA);//输出每场比赛的最大赔率投注项
     // console.log(minPrizeScopeA);//输出每场比赛的最小赔率投注项
-    var pI = 0;
-    pLen = piao.length, finalAyy = [];
+    var pI = 0,pLen = piao.length, finalAyy = [];
     for (pI;pI < pLen;pI++) {
       var pJ = 0,
         pJen = piao[pI].length,
@@ -912,8 +922,7 @@ cp2y.buy = {
     }
     //console.log(finalAyy);
     //console.log(piao);
-    var fI = 0;
-    fLen = finalAyy.length, sum = 0;
+    var fI = 0,fLen = finalAyy.length, sum = 0;
     for (fI;fI < fLen;fI++) {
       var fJ = 0,
         fJen = finalAyy[fI].length,
