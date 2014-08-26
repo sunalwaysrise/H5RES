@@ -94,8 +94,14 @@ cp2y.user={
                           var dc
                         }
                         len=td.length;
-                        for(i;i<len;i++){
-                          if(td[i].match.dan){hasDan=true;break;}
+                        if(data.lotteryId == 10057){
+                          for(i;i<len;i++){   
+                            if(td[i].match.dan){hasDan=true;break;}
+                          }
+                        }else{
+                          for(i;i<len;i++){
+                            if(td[i].dan){hasDan=true;break;}
+                          }
                         }
                         if(hasDan){
                           html.push('<td>定胆</td>');

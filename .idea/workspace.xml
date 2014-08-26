@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="edbe29b9-2971-4b46-9520-920b10f7c406" name="Default" comment="updata">
+    <list default="true" id="edbe29b9-2971-4b46-9520-920b10f7c406" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/play/10057.js" afterPath="$PROJECT_DIR$/js/play/10057.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/css.css" afterPath="$PROJECT_DIR$/css/css.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/hemai.js" afterPath="$PROJECT_DIR$/js/hemai.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/hemai.min.js" afterPath="$PROJECT_DIR$/js/hemai.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/recharge.min.js" afterPath="$PROJECT_DIR$/js/recharge.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scheme.js" afterPath="$PROJECT_DIR$/js/scheme.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scheme.min.js" afterPath="$PROJECT_DIR$/js/scheme.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/user.js" afterPath="$PROJECT_DIR$/js/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/user.min.js" afterPath="$PROJECT_DIR$/js/user.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/userUtil.css" afterPath="$PROJECT_DIR$/css/userUtil.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/userUtil.js" afterPath="$PROJECT_DIR$/js/userUtil.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/userUtil.min.js" afterPath="$PROJECT_DIR$/js/userUtil.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="res.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407395969743" ignored="false" />
+    <file path="/Dummy.txt" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1408086228010" ignored="false" />
     <file path="/10057.js" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407224256207" ignored="false" />
     <file path="/a.js" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407204318273" ignored="false" />
-    <file path="/css.css" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407393790299" ignored="false" />
-    <file path="/jcBuy.js" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407213292269" ignored="false" />
+    <file path="/css.css" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407397620370" ignored="false" />
+    <file path="/jcBuy.js" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407483317871" ignored="false" />
     <file path="/jcBuy.min.js" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407223311775" ignored="false" />
     <file path="/hemai.min.js" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407390611000" ignored="false" />
+    <file path="/jcBdBuy.js" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407484998157" ignored="false" />
+    <file path="/jcBdBuy.min.js" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1407485630371" ignored="false" />
+    <file path="/userUtil.min.js" changelist="edbe29b9-2971-4b46-9520-920b10f7c406" time="1408086849298" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,47 +45,7 @@
     <favorites_list name="res" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="hemai.min.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/hemai.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="4077" selection-end="4077" vertical-scroll-proportion="0.034802783">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hemai.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/hemai.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="205" column="3" selection-start="6341" selection-end="6341" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="css.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/css.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="866" column="0" selection-start="82645" selection-end="82645" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#69034#69749#1" expanded="true" />
-                <element signature="e#72049#73436#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="10057.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/play/10057.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="125" selection-start="561" selection-end="1050" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -87,6 +56,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
     <option name="myDateState">
       <MyDateState />
     </option>
@@ -94,13 +64,19 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/js/jcBdBuy.min.js" />
-        <option value="$PROJECT_DIR$/js/jcBuy.js" />
-        <option value="$PROJECT_DIR$/js/jcBuy.min.js" />
-        <option value="$PROJECT_DIR$/css/css.css" />
-        <option value="$PROJECT_DIR$/js/play/10057.js" />
         <option value="$PROJECT_DIR$/js/hemai.js" />
         <option value="$PROJECT_DIR$/js/hemai.min.js" />
+        <option value="$PROJECT_DIR$/css/css.css" />
+        <option value="$PROJECT_DIR$/js/jcBdBuy.min.js" />
+        <option value="$PROJECT_DIR$/js/jcBdBuy.js" />
+        <option value="$PROJECT_DIR$/js/jcBuy.js" />
+        <option value="$PROJECT_DIR$/js/jcBuy.min.js" />
+        <option value="$PROJECT_DIR$/js/scheme.min.js" />
+        <option value="$PROJECT_DIR$/js/scheme.js" />
+        <option value="$PROJECT_DIR$/js/play/10057.js" />
+        <option value="$PROJECT_DIR$/js/user.min.js" />
+        <option value="$PROJECT_DIR$/css/userUtil.css" />
+        <option value="$PROJECT_DIR$/js/userUtil.min.js" />
       </list>
     </option>
   </component>
@@ -167,38 +143,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="play" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -207,12 +151,20 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="preferences.sourceCode.JavaScript" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pages/activity" />
     <property name="FullScreen" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -230,22 +182,34 @@
       <created>1407224983743</created>
       <updated>1407224983743</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="updata">
+      <created>1407396088845</created>
+      <updated>1407396088845</updated>
+    </task>
+    <task id="LOCAL-00004" summary="updata">
+      <created>1407397822486</created>
+      <updated>1407397822486</updated>
+    </task>
+    <task id="LOCAL-00005" summary="updata">
+      <created>1407487475668</created>
+      <updated>1407487475668</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328125" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14797136" sideWeight="0.67045456" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980111" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17263326" sideWeight="0.67471594" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924837" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252841" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -323,48 +287,99 @@
         <state line="103" column="10" selection-start="4632" selection-end="4640" vertical-scroll-proportion="0.3167421" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/jcBuy.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="17805" selection-end="17805" vertical-scroll-proportion="0.027075812" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/jcBuy.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1257" column="136" selection-start="34326" selection-end="34326" vertical-scroll-proportion="0.6480144" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/jcBdBuy.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="32" selection-start="0" selection-end="7968" vertical-scroll-proportion="-4.2527075" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/css.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="866" column="0" selection-start="82645" selection-end="82645" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#69034#69749#1" expanded="true" />
-            <element signature="e#72049#73436#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/play/10057.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="125" selection-start="561" selection-end="1050" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/hemai.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="205" column="3" selection-start="6341" selection-end="6341" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="76" column="29" selection-start="1934" selection-end="1943" vertical-scroll-proportion="0.027075812" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/hemai.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="4077" selection-end="4077" vertical-scroll-proportion="0.034802783">
+        <state line="1" column="0" selection-start="4077" selection-end="4077" vertical-scroll-proportion="0.027075812" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jcBuy.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="17974" selection-end="17974" vertical-scroll-proportion="0.022624435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jcBdBuy.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="5617" selection-end="5617" vertical-scroll-proportion="0.022624435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scheme.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="71" selection-start="0" selection-end="9891" vertical-scroll-proportion="0.022624435" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/play/10057.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="113" selection-start="542" selection-end="542" vertical-scroll-proportion="0.3846154" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scheme.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="133" column="194" selection-start="5463" selection-end="5614" vertical-scroll-proportion="3.00905">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/user.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="39" selection-start="5605" selection-end="5605" vertical-scroll-proportion="0.022624435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="33" selection-start="0" selection-end="10871" vertical-scroll-proportion="0.520362">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jcBuy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="315" column="34" selection-start="9692" selection-end="9692" vertical-scroll-proportion="0.022624435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jcBdBuy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="189" column="14" selection-start="5475" selection-end="5475" vertical-scroll-proportion="0.022624435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/css.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="300" column="0" selection-start="29219" selection-end="29342" vertical-scroll-proportion="0.33281004">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/userUtil.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="352" column="0" selection-start="13801" selection-end="13801" vertical-scroll-proportion="0.36651585">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/userUtil.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="36" selection-start="9536" selection-end="9536" vertical-scroll-proportion="0.81900454">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/userUtil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="335" column="52" selection-start="14051" selection-end="14051" vertical-scroll-proportion="0.2760181">
           <folding />
         </state>
       </provider>

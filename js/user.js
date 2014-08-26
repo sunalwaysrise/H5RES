@@ -101,62 +101,62 @@ cp2y.user={
 	isupdateuname:0,
 	bindingIdentify:0,
 	detail:function(_this){
-		$.ajax({
-			url:WebAppUrl.HOME_APP_URL+"/core/user/my_info",
-			beforeSend:function(){cp2y.dialog.loading();},
-			success:function(data){
-				cp2y.dialog.clearLoading();
-				var html=[];
-				$("#uname").html(localStorage.getItem('username'));
-				$("#mobile").html(data.mobile+" <em>(重新绑定)</em>");
-				if(data.isupdateuname==1){
-					html.push('<div id="changeUsername" class="userLin mt40"><a class="icons2"><span id="changeUsernames0">设置账户</span><p id="changeUsernames"><input type="text" id="updataUsername" placeholder="'+data.username+'" class="input13" /></p></a></div>');
-				}else{
-					cp2y.user.isupdateuname=1;
-					html.push('<div onclick="cp2y.dialog.alert(\'请联系客服\')" class="userLin mt40"><a class="icons2"><span>登录账户</span><p>'+data.username+'</p></a></div>');
-				}
-				if(data.bindingIdentify==1){
-					cp2y.user.bindingIdentify=1;
-					html.push('<div onclick="cp2y.dialog.alert(\'请联系客服\')" class="userLin"><a class="icons2"><span>真实姓名</span><p>'+data.name+'</p></a></div>');
-					html.push('<div onclick="cp2y.dialog.alert(\'请联系客服\')" class="userLin"><a class="icons2"><span>身份证号</span><p>'+data.identify+'</p></a></div>');
-				}else{
-					html.push('<div class="userLin"><a class="icons2"><span>真实姓名</span><p id="nameSaved"><input type="text" id="updataNick" placeholder="填写后不可更改" class="input13" /></p></a></div>');
-					html.push('<div class="userLin"><a class="icons2"><span>身份证号</span><p id="idSaved"><input type="text" id="updataId" placeholder="填写后不可更改" class="input13" /></p></a></div>');
-				}
-				$("#hasBinds").html(html.join(''));
-				if(cp2y.util.getArgs('recharge')==1){
-					var tip;
-					if(cp2y.user.bindingIdentify==1 && cp2y.user.isupdateuname==1){
-						tip='充50送50';
-					}else{
-						tip='完善资料，充50送50';
-					}
-					$('.userPartBox61').prepend('<span class="red">剩余彩金请到首页-活动中心领取</span><br/>');
-					$('#saveOwn').html(tip).attr({'data':'2'});
-				}else{
-					$.ajax({
-						url:WebAppUrl.HOME_APP_URL+'/activity/isshowact',
-						success:function(data){
-							if(data.isShow){
-								$('#saveOwn').html('完善资料，领取3元彩金').attr({'data':'1'});
-							}else{
-								$.ajax({
-									url:WebAppUrl.HOME_APP_URL+'/activity/isshowchong50song50',
-									success:function(data){
-										if(data.isShow){
-											$('#saveOwn').html('充50送50').attr({'href':'/recharge/index'});
-										}else{
-											$('#saveOwn').remove();
-										}
-									}
-								});
-							}
-						}
-					});
-				}
-			},
-			error:function(){cp2y.dialog.clearLoading();}
-		});
+      $.ajax({
+        url:WebAppUrl.HOME_APP_URL+"/core/user/my_info",
+        beforeSend:function(){cp2y.dialog.loading();},
+        success:function(data){
+          cp2y.dialog.clearLoading();
+          var html=[];
+          $("#uname").html(localStorage.getItem('username'));
+          $("#mobile").html(data.mobile+" <em>(重新绑定)</em>");
+          if(data.isupdateuname==1){
+            html.push('<div id="changeUsername" class="userLin mt40"><a class="icons2"><span id="changeUsernames0">设置账户</span><p id="changeUsernames"><input type="text" id="updataUsername" placeholder="'+data.username+'" class="input13" /></p></a></div>');
+          }else{
+            cp2y.user.isupdateuname=1;
+            html.push('<div onclick="cp2y.dialog.alert(\'请联系客服\')" class="userLin mt40"><a class="icons2"><span>登录账户</span><p>'+data.username+'</p></a></div>');
+          }
+          if(data.bindingIdentify==1){
+            cp2y.user.bindingIdentify=1;
+            html.push('<div onclick="cp2y.dialog.alert(\'请联系客服\')" class="userLin"><a class="icons2"><span>真实姓名</span><p>'+data.name+'</p></a></div>');
+            html.push('<div onclick="cp2y.dialog.alert(\'请联系客服\')" class="userLin"><a class="icons2"><span>身份证号</span><p>'+data.identify+'</p></a></div>');
+          }else{
+            html.push('<div class="userLin"><a class="icons2"><span>真实姓名</span><p id="nameSaved"><input type="text" id="updataNick" placeholder="填写后不可更改" class="input13" /></p></a></div>');
+            html.push('<div class="userLin"><a class="icons2"><span>身份证号</span><p id="idSaved"><input type="text" id="updataId" placeholder="填写后不可更改" class="input13" /></p></a></div>');
+          }
+          $("#hasBinds").html(html.join(''));
+          if(cp2y.util.getArgs('recharge')==1){
+            var tip;
+            if(cp2y.user.bindingIdentify==1 && cp2y.user.isupdateuname==1){
+              tip='充50送50';
+            }else{
+              tip='完善资料，充50送50';
+            }
+            $('.userPartBox61').prepend('<span class="red">剩余彩金请到首页-活动中心领取</span><br/>');
+            $('#saveOwn').html(tip).attr({'data':'2'});
+          }else{
+              $.ajax({
+                  url:WebAppUrl.HOME_APP_URL+'/activity/isshowact',
+                  success:function(data){
+                      if(data.isShow){
+                          $('#saveOwn').html('完善资料，领取3元彩金').attr({'data':'1'});
+                      }else{
+                          $.ajax({
+                              url:WebAppUrl.HOME_APP_URL+'/activity/isshowchong50song50',
+                              success:function(data){
+                                  if(data.isShow){
+                                      $('#saveOwn').html('充50送50').attr({'href':'/recharge/index'});
+                                  }else{
+                                      $('#saveOwn').remove();
+                                  }
+                              }
+                          });
+                      }
+                  }
+              });
+          }
+        },
+        error:function(){cp2y.dialog.clearLoading();}
+      });
 	},
 	updataPhone:function(m){
 		var validateCode=$("#veri").val().trim();
@@ -175,7 +175,7 @@ cp2y.user={
 					if(data.flag==1){
 						userDom.GoIndex3.click();
 					}else{
-						
+						cp2y.dialog.alert(data.message);
 					}
 				}
 			});
@@ -295,22 +295,22 @@ cp2y.user={
 		});
 	},
 	updataUsername:function(data){
-		$.ajax({
-			url:WebAppUrl.HOME_APP_URL+'/core/user/updateusername',
-			data:data,
-			beforeSend:function(){cp2y.dialog.loading();},
-			success:function(data2){
-				cp2y.dialog.clearLoading();
-				if(data2.flag==1){
-					$('#changeUsernames').html(data.username);
-					cp2y.user.isupdateuname=1;
-				}else{
-					cp2y.dialog.alert(data2.message);
-				}
-				cp2y.user.saveCallBack();
-			},
-			error:function(){cp2y.dialog.clearLoading();}
-		});
+      $.ajax({
+          url:WebAppUrl.HOME_APP_URL+'/core/user/updateusername',
+          data:data,
+          beforeSend:function(){cp2y.dialog.loading();},
+          success:function(data2){
+              cp2y.dialog.clearLoading();
+              if(data2.flag==1){
+                  $('#changeUsernames').html(data.username);
+                  cp2y.user.isupdateuname=1;
+              }else{
+                  cp2y.dialog.alert(data2.message);
+              }
+              cp2y.user.saveCallBack();
+          },
+          error:function(){cp2y.dialog.clearLoading();}
+      });
 	},
 	_balance:function(){
 		var balance=[];
@@ -339,20 +339,20 @@ cp2y.user={
 		});
 	},
 	getCj:function(){
-		$.ajax({
-			url:WebAppUrl.HOME_APP_URL+'/activity/zhucesongmoney',
-			beforeSend:function(){cp2y.dialog.loading();},
-			success:function(data){
-				cp2y.dialog.clearLoading();
-				if(data.flag==1){
-					cp2y.dialog.alert(data.message,function(){
-						location.reload();
-					});
-				}else{
-					return cp2y.dialog.alert(data.message);
-				}
-			},
-			error:function(){cp2y.dialog.clearLoading();}
-		});
+      $.ajax({
+        url:WebAppUrl.HOME_APP_URL+'/activity/zhucesongmoney',
+        beforeSend:function(){cp2y.dialog.loading();},
+        success:function(data){
+          cp2y.dialog.clearLoading();
+          if(data.flag==1){
+            cp2y.dialog.alert(data.message,function(){
+              location.reload();
+            });
+          }else{
+            return cp2y.dialog.alert(data.message);
+          }
+        },
+        error:function(){cp2y.dialog.clearLoading();}
+      });
 	}
 };

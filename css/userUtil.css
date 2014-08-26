@@ -67,6 +67,7 @@ input.input4{width:288px;padding-left:10px;font-size:16px;}
 #resendVeri{width:110px;height:40px;margin:0 auto 10px;background:#CCC;text-align: center;line-height:40px;}
 #resendVeri span{color:#06C;}
 .nobt{border-top:none;}
-
+.yourNumber{width:100%;height:40px;line-height:40px;text-align:center;font-size:18px;}
+.yourNumber span{padding-left:10px;}
 #userTip3.onError,#userTip31.onError{background:#FFEACA;text-indent:1em;color:#C0987C;}
 .isbtn {color: #137BD4!important;}

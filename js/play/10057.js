@@ -21,10 +21,10 @@ var _ = {
         break;
     }
     html.push('<a data="a0" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a0" ' + v1 + ' data2="让球胜平负">让球胜平负</a>');
-//    html.push('<a data="a1" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a1" ' + v2 + ' data2="半全场">半全场</a>');
-//    html.push('<a data="a2" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a2" ' + v3 + ' data2="比分">比分</a>');
-//    html.push('<a data="a3" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a3" ' + v4 + ' data2="总进球">总进球</a>');
-//    html.push('<a data="a4" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a4" ' + v5 + ' data2="上下单双">上下单双</a>');
+    html.push('<a data="a1" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a1" ' + v2 + ' data2="半全场">半全场</a>');
+    html.push('<a data="a2" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a2" ' + v3 + ' data2="比分">比分</a>');
+    html.push('<a data="a3" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a3" ' + v4 + ' data2="总进球">总进球</a>');
+    html.push('<a data="a4" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10057?type=a4" ' + v5 + ' data2="上下单双">上下单双</a>');
     return html.join('');
   }
 };
@@ -217,15 +217,17 @@ _.a2={
             html.push('<code></code>');
             html.push('<article class="dbContent"><h3>'+data2[j].bjdcMatch.hostName+' VS '+data2[j].bjdcMatch.guestName+'</h3><aside><main>');
             html.push('<h4>主胜</h4>');
+
+            //['1:0','2:0','2:1','3:0','3:1','3:2','4:0','4:1','4:2','胜其他','0:0','1:1','2:2','3:3','平其他','0:1','0:2','1:2','0:3','1:3','2:3','0:4','1:4','2:4','负其他']
             html.push('<ul>' +
               '<li class="jcBet a'+data2[j].matchKey+'_0" data="0" data_s="'+data2[j].bjdcSp.s10+'" data_class="a'+data2[j].matchKey+'_0">1:0<br/>'+data2[j].bjdcSp.s10+'</li>' +
               '<li class="jcBet a'+data2[j].matchKey+'_1" data="1" data_s="'+data2[j].bjdcSp.s20+'" data_class="a'+data2[j].matchKey+'_1">2:0<br/>'+data2[j].bjdcSp.s20+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_2" data="2" data_s="'+data2[j].bjdcSp.s30+'" data_class="a'+data2[j].matchKey+'_2">3:0<br/>'+data2[j].bjdcSp.s30+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_3" data="3" data_s="'+data2[j].bjdcSp.s40+'" data_class="a'+data2[j].matchKey+'_3">4:0<br/>'+data2[j].bjdcSp.s40+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_4" data="4" data_s="'+data2[j].bjdcSp.s21+'" data_class="a'+data2[j].matchKey+'_4">2:1<br/>'+data2[j].bjdcSp.s21+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_5" data="5" data_s="'+data2[j].bjdcSp.s31+'" data_class="a'+data2[j].matchKey+'_5">3:1<br/>'+data2[j].bjdcSp.s31+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_6" data="6" data_s="'+data2[j].bjdcSp.s41+'" data_class="a'+data2[j].matchKey+'_6">4:1<br/>'+data2[j].bjdcSp.s41+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_7" data="7" data_s="'+data2[j].bjdcSp.s32+'" data_class="a'+data2[j].matchKey+'_7">3:2<br/>'+data2[j].bjdcSp.s32+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_3" data="3" data_s="'+data2[j].bjdcSp.s30+'" data_class="a'+data2[j].matchKey+'_3">3:0<br/>'+data2[j].bjdcSp.s30+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_6" data="6" data_s="'+data2[j].bjdcSp.s40+'" data_class="a'+data2[j].matchKey+'_6">4:0<br/>'+data2[j].bjdcSp.s40+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_2" data="2" data_s="'+data2[j].bjdcSp.s21+'" data_class="a'+data2[j].matchKey+'_2">2:1<br/>'+data2[j].bjdcSp.s21+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_4" data="4" data_s="'+data2[j].bjdcSp.s31+'" data_class="a'+data2[j].matchKey+'_4">3:1<br/>'+data2[j].bjdcSp.s31+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_7" data="7" data_s="'+data2[j].bjdcSp.s41+'" data_class="a'+data2[j].matchKey+'_7">4:1<br/>'+data2[j].bjdcSp.s41+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_5" data="5" data_s="'+data2[j].bjdcSp.s32+'" data_class="a'+data2[j].matchKey+'_5">3:2<br/>'+data2[j].bjdcSp.s32+'</li>' +
               '<li class="jcBet a'+data2[j].matchKey+'_8" data="8" data_s="'+data2[j].bjdcSp.s42+'" data_class="a'+data2[j].matchKey+'_8">4:2<br/>'+data2[j].bjdcSp.s42+'</li>' +
               '<li class="jcBet a'+data2[j].matchKey+'_9" data="9" data_s="'+data2[j].bjdcSp.sother+'" data_class="a'+data2[j].matchKey+'_9">胜其他<br/>'+data2[j].bjdcSp.sother+'</li>' +
               '</ul>');
@@ -241,12 +243,12 @@ _.a2={
             html.push('<ul>' +
               '<li class="jcBet a'+data2[j].matchKey+'_15" data="15" data_s="'+data2[j].bjdcSp.f01+'" data_class="a'+data2[j].matchKey+'_15">0:1<br/>'+data2[j].bjdcSp.f01+'</li>' +
               '<li class="jcBet a'+data2[j].matchKey+'_16" data="16" data_s="'+data2[j].bjdcSp.f02+'" data_class="a'+data2[j].matchKey+'_16">0:2<br/>'+data2[j].bjdcSp.f02+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_17" data="17" data_s="'+data2[j].bjdcSp.f03+'" data_class="a'+data2[j].matchKey+'_17">0:3<br/>'+data2[j].bjdcSp.f03+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_18" data="18" data_s="'+data2[j].bjdcSp.f04+'" data_class="a'+data2[j].matchKey+'_18">0:4<br/>'+data2[j].bjdcSp.f04+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_19" data="19" data_s="'+data2[j].bjdcSp.f12+'" data_class="a'+data2[j].matchKey+'_19">1:2<br/>'+data2[j].bjdcSp.f12+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_20" data="20" data_s="'+data2[j].bjdcSp.f13+'" data_class="a'+data2[j].matchKey+'_20">1:3<br/>'+data2[j].bjdcSp.f13+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_21" data="21" data_s="'+data2[j].bjdcSp.f14+'" data_class="a'+data2[j].matchKey+'_21">1:4<br/>'+data2[j].bjdcSp.f14+'</li>' +
-              '<li class="jcBet a'+data2[j].matchKey+'_22" data="22" data_s="'+data2[j].bjdcSp.f23+'" data_class="a'+data2[j].matchKey+'_22">2:3<br/>'+data2[j].bjdcSp.f23+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_18" data="18" data_s="'+data2[j].bjdcSp.f03+'" data_class="a'+data2[j].matchKey+'_18">0:3<br/>'+data2[j].bjdcSp.f03+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_21" data="21" data_s="'+data2[j].bjdcSp.f04+'" data_class="a'+data2[j].matchKey+'_21">0:4<br/>'+data2[j].bjdcSp.f04+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_17" data="17" data_s="'+data2[j].bjdcSp.f12+'" data_class="a'+data2[j].matchKey+'_17">1:2<br/>'+data2[j].bjdcSp.f12+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_19" data="19" data_s="'+data2[j].bjdcSp.f13+'" data_class="a'+data2[j].matchKey+'_19">1:3<br/>'+data2[j].bjdcSp.f13+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_22" data="22" data_s="'+data2[j].bjdcSp.f14+'" data_class="a'+data2[j].matchKey+'_22">1:4<br/>'+data2[j].bjdcSp.f14+'</li>' +
+              '<li class="jcBet a'+data2[j].matchKey+'_20" data="20" data_s="'+data2[j].bjdcSp.f23+'" data_class="a'+data2[j].matchKey+'_20">2:3<br/>'+data2[j].bjdcSp.f23+'</li>' +
               '<li class="jcBet a'+data2[j].matchKey+'_23" data="23" data_s="'+data2[j].bjdcSp.f24+'" data_class="a'+data2[j].matchKey+'_23">2:4<br/>'+data2[j].bjdcSp.f24+'</li>' +
               '<li class="jcBet a'+data2[j].matchKey+'_24" data="24" data_s="'+data2[j].bjdcSp.fother+'" data_class="a'+data2[j].matchKey+'_24">负其他<br/>'+data2[j].bjdcSp.fother+'</li>' +
               '</ul></main></aside>');

@@ -8,12 +8,12 @@ var _={
 		var html=[];
 		html.push('<i>普通</i>');
 		html.push('<b data="a0" class="onn" data2="普通-直选">直选</b>');
-		html.push('<b data="a1" data2="普通-组三">组三<em>奖</em></b>');
-		html.push('<b data="a2" data2="普通-组六">组六<em>奖</em></b>');
+		html.push('<b data="a1" data2="普通-组三">组三</b>');
+		html.push('<b data="a2" data2="普通-组六">组六</b>');
 		html.push('<i>胆拖</i>');
 		html.push('<b data="a5" data2="胆拖-直选">直选</b>');
-		html.push('<b data="a3" data2="胆拖-组三">组三<em>奖</em></b>');
-		html.push('<b data="a4" data2="胆拖-组六">组六<em>奖</em></b>');
+		html.push('<b data="a3" data2="胆拖-组三">组三</b>');
+		html.push('<b data="a4" data2="胆拖-组六">组六</b>');
 		return html.join('');
 	}
 };
