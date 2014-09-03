@@ -625,7 +625,7 @@ header.header a.more.showBtn{display:block;}
 #setSthSimple div span{width:255px;height:40px;text-align:center;border-right:1px #ddd solid;float:left;}
 #setSthSimple div .input8{float:left}
 #setSthSimple div:first-child{border-bottom:1px #ddd solid;}
-.InputBoxJc .header{background:#1B9332;}
+.InputBoxJc .header{background:#1B9332;position:absolute;}
 .InputBoxJc .header a.GoIndex{display:block;background-color:#138829;}
 .InputBoxJc .btn1{background:#1B9332;}
 .jcDraw{background:rgb(246,246,246);}

@@ -235,7 +235,7 @@ cp2y.buy = {
     this.setPassWay();
     this.step2();
     //console.log(this.schemes);
-    this.chaipiao();
+    //this.chaipiao();
   }
   ,
   showPassWay: function () {

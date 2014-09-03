@@ -45,71 +45,72 @@ var _={
 	}
 };
 _.a0={
-	playName:_.playName,
-	playType:"前1直选",
-	input:"onePoly",
-	num:1,
-	bet:function(){
-		var html0=[],i=1;
-		html0.push('<p>至少选择1个号码</p>');
-		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
-		}
-		return html0.join('');
-	},
-	select:function(_this){
-		$(_this).toggleClass("rb");
-		cp2y.buy.count();
-	},
-	count:function(){
-		var rb=[],i=0,o=this.getBall(),len=o.length,units,s=1;
-		for(i;i<len;i++){
-			if(o.eq(i).hasClass("rb")){
-				rb.push(o.eq(i));
-			}
-		}
-		if(rb.length>0){s=3;}
-		this.setClear(s);
-		units= cp2y.util.comp(rb.length,this.num);
-		dom.CurBets.html(units);
-		dom.CurMoney.html(units*2);
-	},
-	random:function(u){
-		var i=1,o=[],ball=[],rb=[];
-		for(i;i<12;i++){ball.push(i.addZero());}
-		i=0;
-		for(i;i<u;i++){
-			rb=ball.random({len:this.num});
-			o.push('<li data_input="'+this.input+'" data_bets="1" data_code="'+rb.join(',')+'">');
-			o.push('<div><a class="r">'+rb.join('</a><a class="r">')+'</a></div>');
-			o.push('<p>'+this.playType+'：1注2元</p>');
-			o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
-		}
-		this.addRecord(o.join(''));
-	},
-	addContent:function(){
-		var rb=[],i=0,o=this.getBall(),len=o.length;
-		for(i;i<len;i++){
-			if(o.eq(i).hasClass("rb")){
-				rb.push(o.eq(i).html());
-			}
-		}
-		var units = cp2y.util.comp(rb.length,this.num);
-		if(units==0){
-			if(rb.length>0){
-				return cp2y.dialog.alert('您选的方案不能构成一注');
-			}else{
-				return cp2y.buy.random(1);
-			}
-		}
-		var o='<li data_input="'+this.input+'" data_bets="'+units+'" data_code="'+rb.join(',')+'">'+
-			'<div><a class="r">'+rb.join('</a><a class="r">')+'</a></div>'+
-			'<p>'+this.playType+'：'+units+'注'+units*2+'元</p>'+
-			'<i class="delI" onclick="cp2y.buy.del(this)"></i></li>';
-		this.addRecord(o);
-		this.clear();
-		this.step2();
-	}
+  playName:_.playName,
+  playType:"前1直选",
+  input:"onePoly",
+  num:1,
+  bet:function(){
+    var html0=[],i=1;
+    html0.push('<p>至少选择1个号码</p>');
+    for(i;i<12;i++){
+        html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+    }
+    return html0.join('');
+  },
+  select:function(_this){
+    $(_this).toggleClass("rb");
+    cp2y.buy.count();
+  },
+  count:function(){
+    var rb=[],i=0,o=this.getBall(),len=o.length,units,s=1;
+    for(i;i<len;i++){
+        if(o.eq(i).hasClass("rb")){
+            rb.push(o.eq(i));
+        }
+    }
+    if(rb.length>0){s=3;}
+    this.setClear(s);
+    units= cp2y.util.comp(rb.length,this.num);
+    dom.CurBets.html(units);
+    dom.CurMoney.html(units*2);
+  },
+  random:function(u){
+      var i=1,o=[],ball=[],rb=[];
+      for(i;i<12;i++){ball.push(i.addZero());}
+      i=0;
+      for(i;i<u;i++){
+          rb=ball.random({len:this.num});
+          o.push('<li data_input="'+this.input+'" data_bets="1" data_code="'+rb.join(',')+'">');
+          o.push('<div><a class="r">'+rb.join('</a><a class="r">')+'</a></div>');
+          o.push('<p>'+this.playType+'：1注2元</p>');
+          o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
+      }
+      this.addRecord(o.join(''));
+  },
+  addContent:function(){
+      var rb=[],i=0,o=this.getBall(),len=o.length;
+      for(i;i<len;i++){
+          if(o.eq(i).hasClass("rb")){
+              rb.push(o.eq(i).html());
+          }
+      }
+      var units = cp2y.util.comp(rb.length,this.num);
+      if(units==0){
+          if(rb.length>0){
+              return cp2y.dialog.alert('您选的方案不能构成一注');
+          }else{
+              return cp2y.buy.random(1);
+          }
+      }
+      var o='<li data_input="'+this.input+'" data_bets="'+units+'" data_code="'+rb.join(',')+'">'+
+          '<div><a class="r">'+rb.join('</a><a class="r">')+'</a></div>'+
+          '<p>'+this.playType+'：'+units+'注'+units*2+'元</p>'+
+          '<i class="delI" onclick="cp2y.buy.del(this)"></i></li>';
+      this.addRecord(o);
+      this.clear();
+      this.step2();
+  },
+  hasOutGet:false
 };
 _.a1={
 	playName:_.playName,
@@ -127,7 +128,8 @@ _.a1={
 	select:_.a0.select,
 	count:_.a0.count,
 	random:_.a0.random,
-	addContent:_.a0.addContent
+	addContent:_.a0.addContent,
+  hasOutGet:_.a0.hasOutGet
 };
 _.a2={
 	playName:_.playName,
@@ -227,9 +229,11 @@ _.a2={
 		this.addRecord(o);
 		this.clear();
 		this.step2();
-	}
+	},
+  hasOutGet:_.a0.hasOutGet
 };
 _.a3={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"前2直选",
 	input:"twoDirectPoly",
@@ -294,106 +298,128 @@ _.a3={
 	}
 };
 _.a4={
-	playName:_.playName,
-	playType:"前2直选定位",
-	input:"twoDirect",
-	num:2,
-	bet:function(){
-		var html0=[],i=1;
-		html0.push('<p>选择第一位</p>');
-		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'</a>');
-		}
-		i=1;
-		html0.push('<p>选择第二位</p>');
-		for(i;i<12;i++){
-			html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'</a>');
-		}
-		return html0.join('');
-	},
-	select:function(_this,i){
-		if(i==1){
-			$(_this).toggleClass("rb");
-		}else if(i==2){
-			$(_this).toggleClass("bb");
-		}
-		cp2y.buy.count();
-	},
-	count:function(){
-		var a1=[],a2=[],i=0,o=this.getBall(),len=o.length,units = 0,s=1;
-		for(i;i<len;i++){
-			if(o.eq(i).hasClass("rb")){
-				a1.push(o.eq(i).html());
-			}else if(o.eq(i).hasClass("bb")){
-				a2.push(o.eq(i).html());
-			}
-		}
-		if(a1.length>0 || a2.length>0){s=3;}
-		this.setClear(s);
-		if(a1.length==0 || a2.length==0){
-			units=0;
-		}else{
-			for(var a=0;a<a1.length;a++){
-				for(var b=0;b<a2.length;b++){
-					if(a1[a]!=a2[b]){units++;};
-				}
-			}
-		}
-		dom.CurBets.html(units);
-		dom.CurMoney.html(units*2);
-	},
-	random:function(u){
-		var i=1,o=[],ball=[],t=[],d;
-		for(i;i<12;i++){ball.push(i.addZero());}
-		i=0;
-		for(i;i<u;i++){
-			t=ball.random({len:this.num});
-			d=t.pop();
-			o.push('<li data_input="'+this.input+'" data_bets="1" data_code="'+d+'-'+t.join(' ')+'">');
-			o.push('<div>(<a class="r">'+d+'</a>)<a class="b">'+t.join('</a><a class="b">')+'</a></div>');
-			o.push('<p>'+this.playType+'：1注2元</p>');
-			o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
-		}
-		this.addRecord(o.join(''));
-	},
-	addContent:function(){
-		var a1=[],a2=[],i=0,o=this.getBall(),len=o.length,units = 0;;
-		for(i;i<len;i++){
-			if(o.eq(i).hasClass("rb")){
-				a1.push(o.eq(i).html());
-			}else if(o.eq(i).hasClass("bb")){
-				a2.push(o.eq(i).html());
-			}
-		}
-		this.setClear(a1.length,0);
-		if(a1.length==0 || a2.length==0){
-			units=0;
-		}else{
-			var a=0,a1l=a1.length;
-			for(a;a<a1l;a++){
-				var b=0,a2l=a2.length;
-				for(b;b<a2l;b++){
-					if(a1[a]!=a2[b]){units++;};
-				}
-			}
-		}
-		if(units==0){
-			if(a1.length>0 || a2.length>0){
-				return cp2y.dialog.alert('您选的方案不能构成一注');
-			}else{
-				return cp2y.buy.random(1);
-			}
-		}
-		var o='<li data_input="'+this.input+'" data_bets="'+units+'" data_code="'+a1.join(' ')+'-'+a2.join(' ')+'">'+
-			'<div>（<a class="r">'+a1.join('</a><a class="r">')+'</a>）<a class="b">'+a2.join('</a><a class="b">')+'</a></div>'+
-			'<p>'+this.playType+'：'+units+'注'+units*2+'元</p>'+
-			'<i class="delI" onclick="cp2y.buy.del(this)"></i></li>';
-		this.addRecord(o);
-		this.clear();
-		this.step2();
-	}
+  hasOutGet:true,
+  outGet:function(){
+    var r=cp2y.util.getArgs2('w1'),r2=cp2y.util.getArgs2('w2'),i=0,o=$('.gb'),o2=$('.gb2');
+    if(r){
+      r=r.split(',');
+      for(i;i<11;i++){
+        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb');
+        }
+      }
+    }
+    i=0;
+    if(r2){
+      r2=r2.split(',');
+      for(i;i<11;i++){
+        if(r2.indexOf(Number(o2.eq(i).html()))!=-1){
+          o2.eq(i).addClass('bb');
+        }
+      }
+    }
+  },
+  playName:_.playName,
+  playType:"前2直选定位",
+  input:"twoDirect",
+  num:2,
+  bet:function(){
+      var html0=[],i=1;
+      html0.push('<p>选择第一位</p>');
+      for(i;i<12;i++){
+          html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'</a>');
+      }
+      i=1;
+      html0.push('<p>选择第二位</p>');
+      for(i;i<12;i++){
+          html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'</a>');
+      }
+      return html0.join('');
+  },
+  select:function(_this,i){
+      if(i==1){
+          $(_this).toggleClass("rb");
+      }else if(i==2){
+          $(_this).toggleClass("bb");
+      }
+      cp2y.buy.count();
+  },
+  count:function(){
+      var a1=[],a2=[],i=0,o=this.getBall(),len=o.length,units = 0,s=1;
+      for(i;i<len;i++){
+          if(o.eq(i).hasClass("rb")){
+              a1.push(o.eq(i).html());
+          }else if(o.eq(i).hasClass("bb")){
+              a2.push(o.eq(i).html());
+          }
+      }
+      if(a1.length>0 || a2.length>0){s=3;}
+      this.setClear(s);
+      if(a1.length==0 || a2.length==0){
+          units=0;
+      }else{
+          for(var a=0;a<a1.length;a++){
+              for(var b=0;b<a2.length;b++){
+                  if(a1[a]!=a2[b]){units++;};
+              }
+          }
+      }
+      dom.CurBets.html(units);
+      dom.CurMoney.html(units*2);
+  },
+  random:function(u){
+      var i=1,o=[],ball=[],t=[],d;
+      for(i;i<12;i++){ball.push(i.addZero());}
+      i=0;
+      for(i;i<u;i++){
+          t=ball.random({len:this.num});
+          d=t.pop();
+          o.push('<li data_input="'+this.input+'" data_bets="1" data_code="'+d+'-'+t.join(' ')+'">');
+          o.push('<div>(<a class="r">'+d+'</a>)<a class="b">'+t.join('</a><a class="b">')+'</a></div>');
+          o.push('<p>'+this.playType+'：1注2元</p>');
+          o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
+      }
+      this.addRecord(o.join(''));
+  },
+  addContent:function(){
+      var a1=[],a2=[],i=0,o=this.getBall(),len=o.length,units = 0;;
+      for(i;i<len;i++){
+          if(o.eq(i).hasClass("rb")){
+              a1.push(o.eq(i).html());
+          }else if(o.eq(i).hasClass("bb")){
+              a2.push(o.eq(i).html());
+          }
+      }
+      this.setClear(a1.length,0);
+      if(a1.length==0 || a2.length==0){
+          units=0;
+      }else{
+          var a=0,a1l=a1.length;
+          for(a;a<a1l;a++){
+              var b=0,a2l=a2.length;
+              for(b;b<a2l;b++){
+                  if(a1[a]!=a2[b]){units++;};
+              }
+          }
+      }
+      if(units==0){
+          if(a1.length>0 || a2.length>0){
+              return cp2y.dialog.alert('您选的方案不能构成一注');
+          }else{
+              return cp2y.buy.random(1);
+          }
+      }
+      var o='<li data_input="'+this.input+'" data_bets="'+units+'" data_code="'+a1.join(' ')+'-'+a2.join(' ')+'">'+
+          '<div>（<a class="r">'+a1.join('</a><a class="r">')+'</a>）<a class="b">'+a2.join('</a><a class="b">')+'</a></div>'+
+          '<p>'+this.playType+'：'+units+'注'+units*2+'元</p>'+
+          '<i class="delI" onclick="cp2y.buy.del(this)"></i></li>';
+      this.addRecord(o);
+      this.clear();
+      this.step2();
+  }
 };
 _.a5={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"前2直选胆拖",
 	input:"twoDirectDraw",
@@ -478,24 +504,37 @@ _.a5={
 	}
 };
 _.a6={
-	playName:_.playName,
-	playType:"前2组选",
-	input:"twoGroupPoly",
-	num:2,
-	bet:function(){
-		var html0=[],i=1;
-		html0.push('<p>至少选择2个号码</p>');
-		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
-		}
-		return html0.join('');
-	},
-	select:_.a1.select,
-	count:_.a1.count,
-	random:_.a1.random,
-	addContent:_.a1.addContent
+  hasOutGet:true,
+  outGet:function(){
+    var r=cp2y.util.getArgs2('w1'),i=0,o=$('.gb');
+    if(r){
+      r=r.split(',');
+      for(i;i<11;i++){
+        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb');
+        }
+      }
+    }
+  },
+  playName:_.playName,
+  playType:"前2组选",
+  input:"twoGroupPoly",
+  num:2,
+  bet:function(){
+      var html0=[],i=1;
+      html0.push('<p>至少选择2个号码</p>');
+      for(i;i<12;i++){
+          html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+      }
+      return html0.join('');
+  },
+  select:_.a1.select,
+  count:_.a1.count,
+  random:_.a1.random,
+  addContent:_.a1.addContent
 };
 _.a7={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"前2组选胆拖",
 	input:"twoGroupDraw",
@@ -507,6 +546,7 @@ _.a7={
 	addContent:_.a2.addContent
 };
 _.a8={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"任选3",
 	input:"threePoly",
@@ -518,6 +558,7 @@ _.a8={
 	addContent:_.a1.addContent
 };
 _.a9={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"任选3胆拖",
 	input:"threeDraw",
@@ -546,6 +587,7 @@ _.a9={
 	addContent:_.a2.addContent
 };
 _.a10={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"前3直选",
 	input:"threeDirectPoly",
@@ -598,123 +640,154 @@ _.a10={
 	}
 };
 _.a11={
-	playName:_.playName,
-	playType:"前3直选定位",
-	input:"threeDirect",
-	num:3,
-	bet:function(){
-		var html0=[],i=1,ilen=12;
-		html0.push('<p>第一位</p>');
-		for(i;i<ilen;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'</a>');
-		}
-		i=1;
-		html0.push('<p>第二位</p>');
-		for(i;i<ilen;i++){
-			html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'</a>');
-		}
-		i=1;
-		html0.push('<p>第三位</p>');
-		for(i;i<ilen;i++){
-			html0.push('<a class="gb3" onclick="cp2y.buy.select(this,3)">'+i.addZero()+'</a>');
-		}
-		return html0.join('');
-	},
-	select:function(_this,b){
-		var cls=b==1?"":"bb";
-		if(b==1){
-			$(_this).toggleClass("rb");
-		}else if(b==2){
-			$(_this).toggleClass("bb");
-		}else if(b==3){
-			$(_this).toggleClass("yb");
-		}
-		this.count();
-	},
-	count:function(){
-		var a1=[],a2=[],a3=[],i=0,o=this.getBall(),len=o.length,units=0,s=1;
-		for(i;i<len;i++){
-			if(o.eq(i).hasClass("rb")){
-				a1.push(o.eq(i).html());
-			}else if(o.eq(i).hasClass("bb")){
-				a2.push(o.eq(i).html());
-			}else if(o.eq(i).hasClass("yb")){
-				a3.push(o.eq(i).html());
-			}
-		}
-		if(a1.length==0 || a2.length==0|| a3.length==0){
-			units= 0;
-		}else{
-			var a=0,al=a1.length;
-			for(a;a<al;a++){
-				var b=0,bl=a2.length;
-				for(b;b<bl;b++){
-					var c=0,cl=a3.length;
-					for(c;c<cl;c++){
-						if(a1[a]!=a2[b] && a2[b]!=a3[c] && a3[c]!=a1[a]){units++;}
-					}
-				}
-			}
-		}
-		if(a1.length>0||a2.length>0||a3.length>0){s=3;}
-		this.setClear(s);
-		dom.CurBets.html(units);
-		dom.CurMoney.html(units*2);
-	},
-	random:function(u){
-		var i=1,o=[],ball=[],rb=[];
-		for(i;i<12;i++){
-			ball.push(i.addZero());
-		}
-		i=0;
-		for(i;i<u;i++){
-			rb=ball.random({len:this.num});
-			o.push('<li data_input="'+this.input+'" data_bets="1" data_code="'+rb.join('-')+'">');
-			o.push('<div><a class="r">'+rb.join('</a><a class="r">')+'</a></div>');
-			o.push('<p>'+this.playType+'：1注2元</p>');
-			o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
-		}
-		this.addRecord(o.join(''));
-	},
-	addContent:function(){
-		var a1=[],a2=[],a3=[],i=0,o=this.getBall(),len=o.length,units=0;
-		for(i;i<len;i++){
-			if(o.eq(i).hasClass("rb")){
-				a1.push(o.eq(i).html());
-			}else if(o.eq(i).hasClass("bb")){
-				a2.push(o.eq(i).html());
-			}else if(o.eq(i).hasClass("yb")){
-				a3.push(o.eq(i).html());
-			}
-		}
-		if(a1.length==0 || a2.length==0 || a3.length==0){
-			if(a1.length>0 || a2.length>0 || a3.length>0){
-				return cp2y.dialog.alert('您选的方案不能构成一注');
-			}else{
-				return cp2y.buy.random(1);
-			}
-		}else{
-			var a=0,al=a1.length;
-			for(a;a<al;a++){
-				var b=0,bl=a2.length;
-				for(b;b<bl;b++){
-					var c=0,cl=a3.length;
-					for(c;c<cl;c++){
-						if(a1[a]!=a2[b] && a2[b]!=a3[c] && a3[c]!=a1[a]){units++;}
-					}
-				}
-			}
-		}
-		var o='<li data_input="'+this.input+'" data_bets="'+units+'" data_code="'+a1.join(' ')+'-'+a2.join(' ')+'-'+a3.join(' ')+'">'+
-			'<div>(<a class="r">'+a1.join('</a><a class="r">')+'</a>)(<a class="b">'+a2.join('</a><a class="b">')+'</a>)(<a class="y">'+a3.join('</a><a class="y">')+'</a>)</div>'+
-			'<p>'+this.playType+'：'+units+'注'+units*2+'元</p>'+
-			'<i class="delI" onclick="cp2y.buy.del(this)"></i></li>';
-		this.addRecord(o);
-		this.clear();
-		this.step2();
-	}
+  hasOutGet:true,
+  outGet:function(){
+    var r=cp2y.util.getArgs2('w1'),r2=cp2y.util.getArgs2('w2'),r3=cp2y.util.getArgs2('w3'),i=0,o=$('.gb'),o2=$('.gb2'),o3=$('.gb3');
+    if(r){
+      r=r.split(',');
+      for(i;i<11;i++){
+        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb');
+        }
+      }
+    }
+    i=0;
+    if(r2){
+      r2=r2.split(',');
+      for(i;i<11;i++){
+        if(r2.indexOf(Number(o2.eq(i).html()))!=-1){
+          o2.eq(i).addClass('bb');
+        }
+      }
+    }
+    i=0;
+    if(r3){
+      r3=r3.split(',');
+      for(i;i<11;i++){
+        if(r3.indexOf(Number(o3.eq(i).html()))!=-1){
+          o3.eq(i).addClass('yb');
+        }
+      }
+    }
+  },
+  playName:_.playName,
+  playType:"前3直选定位",
+  input:"threeDirect",
+  num:3,
+  bet:function(){
+    var html0=[],i=1,ilen=12;
+    html0.push('<p>第一位</p>');
+    for(i;i<ilen;i++){
+        html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'</a>');
+    }
+    i=1;
+    html0.push('<p>第二位</p>');
+    for(i;i<ilen;i++){
+        html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'</a>');
+    }
+    i=1;
+    html0.push('<p>第三位</p>');
+    for(i;i<ilen;i++){
+        html0.push('<a class="gb3" onclick="cp2y.buy.select(this,3)">'+i.addZero()+'</a>');
+    }
+    return html0.join('');
+  },
+  select:function(_this,b){
+    var cls=b==1?"":"bb";
+    if(b==1){
+        $(_this).toggleClass("rb");
+    }else if(b==2){
+        $(_this).toggleClass("bb");
+    }else if(b==3){
+        $(_this).toggleClass("yb");
+    }
+    this.count();
+  },
+  count:function(){
+    var a1=[],a2=[],a3=[],i=0,o=this.getBall(),len=o.length,units=0,s=1;
+    for(i;i<len;i++){
+        if(o.eq(i).hasClass("rb")){
+            a1.push(o.eq(i).html());
+        }else if(o.eq(i).hasClass("bb")){
+            a2.push(o.eq(i).html());
+        }else if(o.eq(i).hasClass("yb")){
+            a3.push(o.eq(i).html());
+        }
+    }
+    if(a1.length==0 || a2.length==0|| a3.length==0){
+        units= 0;
+    }else{
+        var a=0,al=a1.length;
+        for(a;a<al;a++){
+            var b=0,bl=a2.length;
+            for(b;b<bl;b++){
+                var c=0,cl=a3.length;
+                for(c;c<cl;c++){
+                    if(a1[a]!=a2[b] && a2[b]!=a3[c] && a3[c]!=a1[a]){units++;}
+                }
+            }
+        }
+    }
+    if(a1.length>0||a2.length>0||a3.length>0){s=3;}
+    this.setClear(s);
+    dom.CurBets.html(units);
+    dom.CurMoney.html(units*2);
+  },
+  random:function(u){
+    var i=1,o=[],ball=[],rb=[];
+    for(i;i<12;i++){
+        ball.push(i.addZero());
+    }
+    i=0;
+    for(i;i<u;i++){
+        rb=ball.random({len:this.num});
+        o.push('<li data_input="'+this.input+'" data_bets="1" data_code="'+rb.join('-')+'">');
+        o.push('<div><a class="r">'+rb.join('</a><a class="r">')+'</a></div>');
+        o.push('<p>'+this.playType+'：1注2元</p>');
+        o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
+    }
+    this.addRecord(o.join(''));
+  },
+  addContent:function(){
+    var a1=[],a2=[],a3=[],i=0,o=this.getBall(),len=o.length,units=0;
+    for(i;i<len;i++){
+        if(o.eq(i).hasClass("rb")){
+            a1.push(o.eq(i).html());
+        }else if(o.eq(i).hasClass("bb")){
+            a2.push(o.eq(i).html());
+        }else if(o.eq(i).hasClass("yb")){
+            a3.push(o.eq(i).html());
+        }
+    }
+    if(a1.length==0 || a2.length==0 || a3.length==0){
+        if(a1.length>0 || a2.length>0 || a3.length>0){
+            return cp2y.dialog.alert('您选的方案不能构成一注');
+        }else{
+            return cp2y.buy.random(1);
+        }
+    }else{
+        var a=0,al=a1.length;
+        for(a;a<al;a++){
+            var b=0,bl=a2.length;
+            for(b;b<bl;b++){
+                var c=0,cl=a3.length;
+                for(c;c<cl;c++){
+                    if(a1[a]!=a2[b] && a2[b]!=a3[c] && a3[c]!=a1[a]){units++;}
+                }
+            }
+        }
+    }
+    var o='<li data_input="'+this.input+'" data_bets="'+units+'" data_code="'+a1.join(' ')+'-'+a2.join(' ')+'-'+a3.join(' ')+'">'+
+        '<div>(<a class="r">'+a1.join('</a><a class="r">')+'</a>)(<a class="b">'+a2.join('</a><a class="b">')+'</a>)(<a class="y">'+a3.join('</a><a class="y">')+'</a>)</div>'+
+        '<p>'+this.playType+'：'+units+'注'+units*2+'元</p>'+
+        '<i class="delI" onclick="cp2y.buy.del(this)"></i></li>';
+    this.addRecord(o);
+    this.clear();
+    this.step2();
+  }
 };
 _.a12={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"前3直选胆拖",
 	input:"threeDirectDraw",
@@ -797,6 +870,7 @@ _.a12={
 	}
 };
 _.a13={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"前3直选和值",
 	input:"threeDirectSum",
@@ -864,24 +938,37 @@ _.a13={
 	}
 };
 _.a14={
-	playName:_.playName,
-	playType:"前3组选",
-	input:"threeGroupPoly",
-	num:3,
-	bet:function(){
-		var html0=[],i=1;
-		html0.push('<p>至少选择3个号码</p>');
-		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
-		}
-		return html0.join('');
-	},
-	select:_.a0.select,
-	count:_.a0.count,
-	random:_.a0.random,
-	addContent:_.a0.addContent
+  hasOutGet:true,
+  outGet:function(){
+    var r=cp2y.util.getArgs2('w1'),i=0,o=$('.gb');
+    if(r){
+      r=r.split(',');
+      for(i;i<11;i++){
+        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb');
+        }
+      }
+    }
+  },
+  playName:_.playName,
+  playType:"前3组选",
+  input:"threeGroupPoly",
+  num:3,
+  bet:function(){
+      var html0=[],i=1;
+      html0.push('<p>至少选择3个号码</p>');
+      for(i;i<12;i++){
+          html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+      }
+      return html0.join('');
+  },
+  select:_.a0.select,
+  count:_.a0.count,
+  random:_.a0.random,
+  addContent:_.a0.addContent
 };
 _.a15={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"前3组选胆拖",
 	input:"threeGroupDraw",
@@ -893,39 +980,53 @@ _.a15={
 	addContent:_.a2.addContent
 };
 _.a16={
-	playName:_.playName,
-	playType:"前3组选和值",
-	input:"threeGroupSum",
-	num:1,
-	units:[0,0,0,0,0,0,1,1,2,3,4,5,7,8,10,11,12,12,13,12,12,11,10,8,7,5,4,3,2,1,1],
-	bet:_.a13.bet,
-	select:_.a13.select,
-	count:_.a13.count,
-	random:_.a13.random,
-	addContent:_.a13.addContent
+  hasOutGet:_.a0.hasOutGet,
+  playName:_.playName,
+  playType:"前3组选和值",
+  input:"threeGroupSum",
+  num:1,
+  units:[0,0,0,0,0,0,1,1,2,3,4,5,7,8,10,11,12,12,13,12,12,11,10,8,7,5,4,3,2,1,1],
+  bet:_.a13.bet,
+  select:_.a13.select,
+  count:_.a13.count,
+  random:_.a13.random,
+  addContent:_.a13.addContent
 };
 
 _.a17={
-	playName:_.playName,
-	playType:"任选4",
-	input:"fourPoly",
-	num:4,
-	bet:_.a1.bet,
-	select:_.a0.select,
-	count:_.a0.count,
-	random:_.a0.random,
-	addContent:_.a0.addContent
+  hasOutGet:_.a0.hasOutGet,
+  playName:_.playName,
+  playType:"任选4",
+  input:"fourPoly",
+  num:4,
+  bet:_.a1.bet,
+  select:_.a0.select,
+  count:_.a0.count,
+  random:_.a0.random,
+  addContent:_.a0.addContent
 };
 _.a19={
-	playName:_.playName,
-	playType:"任选5",
-	input:"fivePoly",
-	num:5,
-	bet:_.a1.bet,
-	select:_.a0.select,
-	count:_.a0.count,
-	random:_.a0.random,
-	addContent:_.a0.addContent
+  playName:_.playName,
+  playType:"任选5",
+  input:"fivePoly",
+  num:5,
+  bet:_.a1.bet,
+  select:_.a0.select,
+  count:_.a0.count,
+  random:_.a0.random,
+  addContent:_.a0.addContent,
+  hasOutGet:true,
+  outGet:function(){
+    var r=cp2y.util.getArgs2('w1'),i=0,o=$('.gb');
+    if(r){
+        r=r.split(',');
+        for(i;i<11;i++){
+            if(r.indexOf(Number(o.eq(i).html()))!=-1){
+                o.eq(i).addClass('rb');
+            }
+        }
+    }
+  }
 };
 _.a21={
 	playName:_.playName,

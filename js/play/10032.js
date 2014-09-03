@@ -33,7 +33,7 @@ _.a0={
 		var cls=b==1?"":"bb";
 		if(b==1){
 			if(!$(_this).hasClass("rb")){
-				if($(".rb").size()>19){
+				if($("#choose .rb").size()>19){
 					return cp2y.dialog.alert("最多20个红球");
 				}else{
 					$(_this).addClass("rb");

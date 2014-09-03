@@ -70,3 +70,7 @@ background-repeat:no-repeat;background-size:contain;display:block;-moz-animation
 .help p{border:1px #D7D8D9 solid;border-top:none;padding:10px 15px;font-size:16px;color:#444;text-indent:0;}
 .help p.on{display:none;}
 .help p span{color:#0040ff;}
+
+.play{margin:10px;padding:0;border-top:1px #D7D8D9 solid;}
+.play h2{line-height:25px;border:1px #D7D8D9 solid;border-top:none;padding:5px 15px;font-size:16px;color:#000;background:#FFF;text-align:left;}
+.play h2 a{color:#000;}

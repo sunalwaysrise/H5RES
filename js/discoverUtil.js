@@ -571,8 +571,8 @@ cp2y.discover={
         a1=a[1].split(',');
         if(a0.length==1){a0=['-','-','-'];}
         if(a1.length==1){a1=['-','-','-'];}
-        html.push('<tr><td rowspan="2">'+M[i].cname+'</td><td class="VST61">初盘</td><td>'+a0[0]+'</td><td>'+a0[2]+'</td><td>'+a1[1]+'</td></tr>');
-        html.push('<tr><td class="VST62">现盘</td><td>'+a0[1]+'</td><td>'+a1[0]+'</td><td>'+a1[2]+'</td></tr>');
+        html.push('<tr><td rowspan="2">'+M[i].cname+'</td><td class="VST61">初盘</td><td>'+a0[0]+'</td><td>'+a0[1]+'</td><td>'+a0[2]+'</td></tr>');
+        html.push('<tr><td class="VST62">现盘</td><td>'+a1[0]+'</td><td>'+a1[1]+'</td><td>'+a1[2]+'</td></tr>');
       }
       html.push('</tbody></table>');
       
@@ -602,8 +602,9 @@ cp2y.discover={
         }else{
           a4='>'+a2[2];
         }
-        html.push('<tr><td rowspan="2">'+M[i].cname+'</td><td>初盘</td><td '+a3+'</td><td>'+a2[1]+'</td><td'+a4+'</td></tr>');
-        html.push('<tr><td>现盘</td><td>'+a1[0]+'</td><td>'+a1[1]+'</td><td>'+a1[2]+'</td></tr>');
+        html.push('<tr><td rowspan="2">'+M[i].cname+'</td><td>初盘</td><td>'+a1[0]+'</td><td>'+a1[1]+'</td><td>'+a1[2]+'</td></tr>');
+        html.push('<tr><td>现盘</td><td '+a3+'</td><td>'+a2[1]+'</td><td'+a4+'</td></tr>');
+        
       }
       html.push('</tbody></table>');
       $('#lenka2').html(html.join(''));//亚盘

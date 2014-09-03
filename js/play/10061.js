@@ -25,6 +25,7 @@ var _ = {
 	}
 };
 _.a0 = {
+  hasOutGet:false,
 	playName : _.playName,
 	playType : "一星",
 	input : "oneStar",
@@ -91,6 +92,46 @@ _.a0 = {
 	}
 };
 _.a1 = {
+  hasOutGet:true,
+  outGet:function(){
+    var r=cp2y.util.getArgs2('w1'),r2=cp2y.util.getArgs2('w2'),r3=cp2y.util.getArgs2('w3'),r4=cp2y.util.getArgs2('w4'),i=0,o=$('.gb');
+    if(r){
+      r=r.split(',');
+      for(i;i<10;i++){
+        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb4');
+        }
+      }
+    }
+    if(r2){
+      r2=r2.split(',');
+      i=10
+      for(i;i<20;i++){
+        if(r2.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb3');
+        }
+      }
+    }
+    if(r3){
+      r3=r3.split(',');
+      i=20
+      for(i;i<30;i++){
+        if(r3.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb2');
+        }
+      }
+    }
+    if(r4){
+      r4=r4.split(',');
+      i=30
+      for(i;i<40;i++){
+        if(r4.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb1');
+        }
+      }
+    }
+  },
+	playName : _.playName,
 	playName : _.playName,
 	playType : "四星",
 	input : "fourStarPoly",
@@ -194,6 +235,55 @@ _.a1 = {
 	}
 };
 _.a2 = {
+  hasOutGet:true,
+  outGet:function(){
+    var r=cp2y.util.getArgs2('w1'),r2=cp2y.util.getArgs2('w2'),r3=cp2y.util.getArgs2('w3'),r4=cp2y.util.getArgs2('w4'),r5=cp2y.util.getArgs2('w5'),i=0,o=$('.gb');
+    if(r){
+      r=r.split(',');
+      for(i;i<10;i++){
+        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb5');
+        }
+      }
+    }
+    if(r2){
+      r2=r2.split(',');
+      i=10
+      for(i;i<20;i++){
+        if(r2.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb4');
+        }
+      }
+    }
+    if(r3){
+      r3=r3.split(',');
+      i=20
+      for(i;i<30;i++){
+        if(r3.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb3');
+        }
+      }
+    }
+    if(r4){
+      r4=r4.split(',');
+      i=30
+      for(i;i<40;i++){
+        if(r4.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb2');
+        }
+      }
+    }
+    if(r5){
+      r5=r5.split(',');
+      i=40
+      for(i;i<50;i++){
+        if(r5.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb1');
+        }
+      }
+    }
+  },
+	playName : _.playName,
 	playName : _.playName,
 	playType : "五星",
 	input : "fiveStarPoly",
@@ -308,6 +398,7 @@ _.a2 = {
 	}
 };
 _.a3 = {
+  hasOutGet:_.a0.hasOutGet,
 	playName : _.playName,
 	playType : "五星通选",
 	input : "fiveStarAllPoly",
@@ -319,6 +410,7 @@ _.a3 = {
 	addContent : _.a2.addContent
 };
 _.a4 = {
+  hasOutGet:_.a0.hasOutGet,
 	playName : _.playName,
 	playType : "二星组选",
 	input : "twoStarGroupPoly",
@@ -344,6 +436,7 @@ _.a4 = {
 	addContent : _.a0.addContent
 };
 _.a5 = {
+  hasOutGet:_.a0.hasOutGet,
 	playName : _.playName,
 	playType : "三星组3",
 	input : "threeStarGroup3Poly",
@@ -404,6 +497,7 @@ _.a5 = {
 	}
 };
 _.a6 = {
+  hasOutGet:_.a0.hasOutGet,
 	playName : _.playName,
 	playType : "三星组6",
 	input : "threeStarGroup6Poly",
@@ -448,6 +542,7 @@ _.a6 = {
 	}
 };
 _.a7 = {
+  hasOutGet:_.a0.hasOutGet,
 	playName : _.playName,
 	playType : "任选1",
 	input : "renOne",
@@ -547,6 +642,7 @@ _.a7 = {
 	}
 };
 _.a8 = {
+  hasOutGet:_.a0.hasOutGet,
 	playName : _.playName,
 	playType : "任选2",
 	input : "renTwo",
@@ -666,6 +762,7 @@ _.a8 = {
 	}
 };
 _.a9 = {
+  hasOutGet:_.a0.hasOutGet,
 	playName : _.playName,
 	playType : "大小单双",
 	input : "dxds",
@@ -745,6 +842,27 @@ _.a9 = {
 	}
 };
 _.a10 = {
+  hasOutGet:true,
+  outGet:function(){
+    var r=cp2y.util.getArgs2('w1'),r2=cp2y.util.getArgs2('w2'),i=0,o=$('.gb');
+    if(r){
+      r=r.split(',');
+      for(i;i<10;i++){
+        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb2');
+        }
+      }
+    }
+    if(r2){
+      r2=r2.split(',');
+      i=10
+      for(i;i<20;i++){
+        if(r2.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb1');
+        }
+      }
+    }
+  },
 	playName : _.playName,
 	playType : "二星直选",
 	input : "twoStarDirectPoly",
@@ -807,6 +925,36 @@ _.a10 = {
 	}
 };
 _.a11 = {
+  hasOutGet:true,
+  outGet:function(){
+    var r=cp2y.util.getArgs2('w1'),r2=cp2y.util.getArgs2('w2'),r3=cp2y.util.getArgs2('w3'),i=0,o=$('.gb');
+    if(r){
+      r=r.split(',');
+      for(i;i<10;i++){
+        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb3');
+        }
+      }
+    }
+    if(r2){
+      r2=r2.split(',');
+      i=10
+      for(i;i<20;i++){
+        if(r2.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb2');
+        }
+      }
+    }
+    if(r3){
+      r3=r3.split(',');
+      i=20
+      for(i;i<30;i++){
+        if(r3.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb1');
+        }
+      }
+    }
+  },
 	playName : _.playName,
 	playType : "三星直选",
 	input : "threeStarDirectPoly",

@@ -275,11 +275,11 @@ _.a10={
     $.ajax({
       url: WebAppUrl.HOME_APP_URL + this.url,
       beforeSend: function () {cp2y.dialog.loading();},
-      success: function (data) {
+      success: function (D) {
         cp2y.dialog.clearLoading();
-        cp2y.buy.sels = data.sels.split(',');
-        cp2y.buy.betType = data.betType;
-        var leagues = data.leagues.split(','),data = data.data,html = [],i = 0,len = data.length;
+        cp2y.buy.sels = D.sels.split(',');
+        cp2y.buy.betType = D.betType;
+        var leagues = D.leagues.split(','),data = D.data,html = [],i = 0,len = data.length;
         cp2y.buy.issue = data[0].issueId;
         for(i;i<len;i++){
           var j=0,data2=data[i].matches,jlen=data2.length,vh,vg,vhn,vgn,vhr,vgr,Dgp=[],minV=[];
@@ -301,7 +301,7 @@ _.a10={
               minV=[vhr,data2[j].matchCode,data2[j].hostName,vh,vhn,vhr,data2[j].guestName,vg,vgn,vgr,data[i].dayOfWeekStr+'0'+(j+1).addZero()];
             }
             Dgp.push(minV);
-            html.push('<div data="{name:\''+data[i].dayOfWeekStr + '0' + (j + 1).addZero()+'\',time:\''+data2[j].sellEndTime.substr(11, 5)+'\',matchCode:\''+data2[j].matchCode+'\',hostName:\''+data2[j].hostName+'\',hostV:\''+vh+'\',hostTitle:\''+vhn+'\',hostRate:\''+vhr+'\',guestName:\''+data2[j].guestName+'\',guestV:\''+vg+'\',guestTitle:\''+vgn+'\',guestRate:\''+vgr+'\'}" onclick="cp2y.buy.addContent(this);">投注</div></li>');
+            html.push('<div data="{name:\''+data[i].dayOfWeekStr + '0' + (j + 1).addZero()+'\',time:\''+data2[j].sellEndTime.substr(11, 5)+'\',matchCode:\''+data2[j].matchCode+'\',hostName:\''+data2[j].hostName+'\',hostV:\''+vh+'\',hostTitle:\''+vhn+'\',hostRate:\''+vhr+'\',guestName:\''+data2[j].guestName+'\',guestV:\''+vg+'\',guestTitle:\''+vgn+'\',guestRate:\''+vgr+'\'}" id="Y'+data2[j].matchCode+'" onclick="cp2y.buy.addContent(this);">投注</div></li>');
           }
           html.push("</ul>");
         }
@@ -322,7 +322,16 @@ _.a10={
         });
         cp2y.buy.showLine2();
         window.scrollTo(0,0);
-        $(".jc_line4").eq(0).children('div').click();
+        if(D.showMatchCodes.length>0){
+          var o=$("#Y"+D.showMatchCodes[0]);
+          if(o.size()==0){
+            $(".jc_line4").eq(0).children('div').click();
+          }else{
+            o.click();
+          }
+        }else{
+          $(".jc_line4").eq(0).children('div').click();
+        }
       },
       error: function () {cp2y.dialog.clearLoading();}
     });

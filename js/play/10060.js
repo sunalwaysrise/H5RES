@@ -45,6 +45,7 @@ var _={
 	}
 };
 _.a0={
+  hasOutGet:false,
 	playName:_.playName,
 	playType:"前1直选",
 	input:"onePoly",
@@ -112,24 +113,26 @@ _.a0={
 	}
 };
 _.a1={
-	playName:_.playName,
-	playType:"任选2",
-	input:"twoPoly",
-	num:2,
-	bet:function(){
-		var html0=[],i=1;
-		html0.push('<p>至少选择'+cp2y.buy.num+'个号码</p>');
-		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
-		}
-		return html0.join('');
-	},
-	select:_.a0.select,
-	count:_.a0.count,
-	random:_.a0.random,
-	addContent:_.a0.addContent
+  hasOutGet:_.a0.hasOutGet,
+  playName:_.playName,
+  playType:"任选2",
+  input:"twoPoly",
+  num:2,
+  bet:function(){
+    var html0=[],i=1;
+    html0.push('<p>至少选择'+cp2y.buy.num+'个号码</p>');
+    for(i;i<12;i++){
+      html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+    }
+    return html0.join('');
+  },
+  select:_.a0.select,
+  count:_.a0.count,
+  random:_.a0.random,
+  addContent:_.a0.addContent
 };
 _.a2={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"任选2胆拖",
 	input:"twoDraw",
@@ -230,6 +233,7 @@ _.a2={
 	}
 };
 _.a3={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"前2直选",
 	input:"twoDirectPoly",
@@ -294,6 +298,27 @@ _.a3={
 	}
 };
 _.a4={
+  hasOutGet:true,
+  outGet:function(){
+    var r=cp2y.util.getArgs2('w1'),r2=cp2y.util.getArgs2('w2'),i=0,o=$('.gb'),o2=$('.gb2');
+    if(r){
+      r=r.split(',');
+      for(i;i<11;i++){
+        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb');
+        }
+      }
+    }
+    i=0;
+    if(r2){
+      r2=r2.split(',');
+      for(i;i<11;i++){
+        if(r2.indexOf(Number(o2.eq(i).html()))!=-1){
+          o2.eq(i).addClass('bb');
+        }
+      }
+    }
+  },
 	playName:_.playName,
 	playType:"前2直选定位",
 	input:"twoDirect",
@@ -394,6 +419,7 @@ _.a4={
 	}
 };
 _.a5={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"前2直选胆拖",
 	input:"twoDirectDraw",
@@ -478,24 +504,37 @@ _.a5={
 	}
 };
 _.a6={
-	playName:_.playName,
-	playType:"前2组选",
-	input:"twoGroupPoly",
-	num:2,
-	bet:function(){
-		var html0=[],i=1;
-		html0.push('<p>至少选择2个号码</p>');
-		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
-		}
-		return html0.join('');
-	},
-	select:_.a1.select,
-	count:_.a1.count,
-	random:_.a1.random,
-	addContent:_.a1.addContent
+  hasOutGet:true,
+  outGet:function(){
+    var r=cp2y.util.getArgs2('w1'),i=0,o=$('.gb');
+    if(r){
+      r=r.split(',');
+      for(i;i<11;i++){
+        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb');
+        }
+      }
+    }
+  },
+  playName:_.playName,
+  playType:"前2组选",
+  input:"twoGroupPoly",
+  num:2,
+  bet:function(){
+      var html0=[],i=1;
+      html0.push('<p>至少选择2个号码</p>');
+      for(i;i<12;i++){
+          html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+      }
+      return html0.join('');
+  },
+  select:_.a1.select,
+  count:_.a1.count,
+  random:_.a1.random,
+  addContent:_.a1.addContent
 };
 _.a7={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"前2组选胆拖",
 	input:"twoGroupDraw",
@@ -507,6 +546,7 @@ _.a7={
 	addContent:_.a2.addContent
 };
 _.a8={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"任选3",
 	input:"threePoly",
@@ -518,6 +558,7 @@ _.a8={
 	addContent:_.a1.addContent
 };
 _.a9={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"任选3胆拖",
 	input:"threeDraw",
@@ -546,6 +587,7 @@ _.a9={
 	addContent:_.a2.addContent
 };
 _.a10={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"前3直选",
 	input:"threeDirectPoly",
@@ -598,6 +640,36 @@ _.a10={
 	}
 };
 _.a11={
+  hasOutGet:true,
+  outGet:function(){
+    var r=cp2y.util.getArgs2('w1'),r2=cp2y.util.getArgs2('w2'),r3=cp2y.util.getArgs2('w3'),i=0,o=$('.gb'),o2=$('.gb2'),o3=$('.gb3');
+    if(r){
+      r=r.split(',');
+      for(i;i<11;i++){
+        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb');
+        }
+      }
+    }
+    i=0;
+    if(r2){
+      r2=r2.split(',');
+      for(i;i<11;i++){
+        if(r2.indexOf(Number(o2.eq(i).html()))!=-1){
+          o2.eq(i).addClass('bb');
+        }
+      }
+    }
+    i=0;
+    if(r3){
+      r3=r3.split(',');
+      for(i;i<11;i++){
+        if(r3.indexOf(Number(o3.eq(i).html()))!=-1){
+          o3.eq(i).addClass('yb');
+        }
+      }
+    }
+  },
 	playName:_.playName,
 	playType:"前3直选定位",
 	input:"threeDirect",
@@ -715,6 +787,7 @@ _.a11={
 	}
 };
 _.a12={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"前3直选胆拖",
 	input:"threeDirectDraw",
@@ -797,6 +870,7 @@ _.a12={
 	}
 };
 _.a13={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"前3直选和值",
 	input:"threeDirectSum",
@@ -864,24 +938,37 @@ _.a13={
 	}
 };
 _.a14={
-	playName:_.playName,
-	playType:"前3组选",
-	input:"threeGroupPoly",
-	num:3,
-	bet:function(){
-		var html0=[],i=1;
-		html0.push('<p>至少选择3个号码</p>');
-		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
-		}
-		return html0.join('');
-	},
-	select:_.a0.select,
-	count:_.a0.count,
-	random:_.a0.random,
-	addContent:_.a0.addContent
+  hasOutGet:true,
+  outGet:function(){
+    var r=cp2y.util.getArgs2('w1'),i=0,o=$('.gb');
+    if(r){
+      r=r.split(',');
+      for(i;i<11;i++){
+        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+          o.eq(i).addClass('rb');
+        }
+      }
+    }
+  },
+  playName:_.playName,
+  playType:"前3组选",
+  input:"threeGroupPoly",
+  num:3,
+  bet:function(){
+    var html0=[],i=1;
+    html0.push('<p>至少选择3个号码</p>');
+    for(i;i<12;i++){
+      html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+    }
+    return html0.join('');
+  },
+  select:_.a0.select,
+  count:_.a0.count,
+  random:_.a0.random,
+  addContent:_.a0.addContent
 };
 _.a15={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"前3组选胆拖",
 	input:"threeGroupDraw",
@@ -893,6 +980,7 @@ _.a15={
 	addContent:_.a2.addContent
 };
 _.a16={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"前3组选和值",
 	input:"threeGroupSum",
@@ -906,6 +994,7 @@ _.a16={
 };
 
 _.a17={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"任选4",
 	input:"fourPoly",
@@ -917,17 +1006,30 @@ _.a17={
 	addContent:_.a0.addContent
 };
 _.a19={
-	playName:_.playName,
-	playType:"任选5",
-	input:"fivePoly",
-	num:5,
-	bet:_.a1.bet,
-	select:_.a0.select,
-	count:_.a0.count,
-	random:_.a0.random,
-	addContent:_.a0.addContent
+  hasOutGet:true,
+  outGet:function(){
+    var r=cp2y.util.getArgs2('w1'),i=0,o=$('.gb');
+    if(r){
+        r=r.split(',');
+        for(i;i<11;i++){
+            if(r.indexOf(Number(o.eq(i).html()))!=-1){
+                o.eq(i).addClass('rb');
+            }
+        }
+    }
+  },
+  playName:_.playName,
+  playType:"任选5",
+  input:"fivePoly",
+  num:5,
+  bet:_.a1.bet,
+  select:_.a0.select,
+  count:_.a0.count,
+  random:_.a0.random,
+  addContent:_.a0.addContent
 };
 _.a21={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"任选6",
 	input:"sixPoly",
@@ -939,6 +1041,7 @@ _.a21={
 	addContent:_.a0.addContent
 };
 _.a23={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"任选7",
 	input:"sevenPoly",
@@ -950,6 +1053,7 @@ _.a23={
 	addContent:_.a0.addContent
 };
 _.a25={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"任选8",
 	input:"eightPoly",
@@ -962,6 +1066,7 @@ _.a25={
 };
 
 _.a18={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"任选4胆拖",
 	input:"fourDraw",
@@ -991,6 +1096,7 @@ _.a18={
 };
 
 _.a20={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"任选5胆拖",
 	input:"fiveDraw",
@@ -1003,6 +1109,7 @@ _.a20={
 };
 
 _.a22={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"任选6胆拖",
 	input:"sixDraw",
@@ -1014,6 +1121,7 @@ _.a22={
 	addContent:_.a2.addContent
 };
 _.a24={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"任选7胆拖",
 	input:"sevenDraw",
@@ -1025,6 +1133,7 @@ _.a24={
 	addContent:_.a2.addContent
 };
 _.a26={
+  hasOutGet:_.a0.hasOutGet,
 	playName:_.playName,
 	playType:"任选8胆拖",
 	input:"eightDraw",
