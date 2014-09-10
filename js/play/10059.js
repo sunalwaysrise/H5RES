@@ -19,7 +19,7 @@ var _ = {
 		}
 		html.push('<a data="a0" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10059?type=a0" ' + v1 + ' data2="胜平负">胜平负</a>');
 		html.push('<a data="a1" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10059?type=a1" ' + v2 + ' data2="让球胜平负">让球胜平负</a>');
-		html.push('<a data="a5" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10059?type=a5" ' + v5 + ' data2="二合一">二合一</a>');
+		html.push('<a data="a5" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10059?type=a5" ' + v5 + ' data2="混合投注">混合投注</a>');
       html.push('<a data="a6" href="' + WebAppUrl.HOME_APP_URL + '/lottery/10059?type=a6" ' + v6 + ' data2="二选一">二选一</a>');
        html.push('<a data="a10" href="' + WebAppUrl.HOME_APP_URL + '/lottery/yczhisheng" ' + v10 + ' data2="一场制胜">一场制胜</a>');
 		return html.join('');
@@ -73,7 +73,7 @@ _.a0 = {
 						
 						html.push('<i data="1" data_s="' + data2[j].ping + '" data_class="a' + data2[j].matchCode + '_1" class="jcBet a' + data2[j].matchCode + '_1"><span>VS</span><b>平' + data2[j].ping + '</b></i>');
 						html.push('<i data="0" data_s="' + data2[j].fu + '" data_class="a' + data2[j].matchCode + '_0" class="jcBet a' + data2[j].matchCode + '_0"><span>' + data2[j].guestName + '</span><b>主负' + data2[j].fu + '</b></i>');
-						html.push('</div></div><div class="jc_line2"><table class="jc_table"  onclick="cp2y.discover.init('+data2[j].matchCode+');">');
+						html.push('</div></div><div class="jc_line2"><table class="jc_table"  onclick="cp2y.discoverUtil.init('+data2[j].matchCode+');">');
 						html.push('<tr><td>两队排名</td><td>'+(data2[j].hostRank ? data2[j].hostRank : '--')+'</td><td>'+(data2[j].visitRank ? data2[j].visitRank : '--')+'</td><td rowspan="4" style="display:none;"></td></tr>');
 						var historyScore=(data2[j].historyScore?data2[j].historyScore:'-,-,-').split(',');
 						html.push('<tr><td>历史交锋</td><td colspan="2">主队'+historyScore[0]+'胜'+historyScore[1]+'平'+historyScore[2]+'负</td></tr>');
@@ -118,7 +118,7 @@ _.a5 = {
 	jcType:5,
 	bt: _.bt,
 	playName: _.playName,
-	playType: "二合一",
+	playType: "混合投注",
 	maxMatch: 8,
 	url: "/lottery/jzhh/",
 	bet: function () {
@@ -169,7 +169,7 @@ _.a5 = {
 						html.push('<i data="400" data_s="' + data2[j].rqFu + '" data_class="a' + data2[j].matchCode + '_400" class="jcBet a' + data2[j].matchCode + '_400"><span>' + data2[j].guestName + '</span><b>主负' + data2[j].rqFu + '</b></i>');
 						html.push('</div>');
 						/* 让球胜平负 截止 */
-						html.push('</div><div class="jc_line2"><table class="jc_table"  onclick="cp2y.discover.init('+data2[j].matchCode+');">');
+						html.push('</div><div class="jc_line2"><table class="jc_table"  onclick="cp2y.discoverUtil.init('+data2[j].matchCode+');">');
 						html.push('<tr><td>两队排名</td><td>'+(data2[j].hostRank ? data2[j].hostRank : '--')+'</td><td>'+(data2[j].visitRank ? data2[j].visitRank : '--')+'</td><td rowspan="4" style="display:none;"></td></tr>');
 						var historyScore=(data2[j].historyScore?data2[j].historyScore:'-,-,-').split(',');
 						html.push('<tr><td>历史交锋</td><td colspan="2">主队'+historyScore[0]+'胜'+historyScore[1]+'平'+historyScore[2]+'负</td></tr>');
@@ -235,7 +235,7 @@ _.a6 = {
             html.push('<i data="'+vh+'" data_s="' + vhr + '" data_class="a' + data2[j].matchCode + '_'+vh+'" class="jcBet a' + data2[j].matchCode + '_'+vh+'"><span>' + data2[j].hostName + '</span><b>'+vhn+ vhr + '</b></i>');
             html.push('<i data="'+vg+'" data_s="' + vgr + '" data_class="a' + data2[j].matchCode + '_'+vg+'" class="jcBet a' + data2[j].matchCode + '_'+vg+'"><span>' + data2[j].guestName + '</span><b>'+vgn + vgr + '</b></i>');
             html.push('</div></div>');
-            html.push('<div class="jc_line2"><table class="jc_table"  onclick="cp2y.discover.init('+data2[j].matchCode+');">');
+            html.push('<div class="jc_line2"><table class="jc_table"  onclick="cp2y.discoverUtil.init('+data2[j].matchCode+');">');
             html.push('<tr><td>两队排名</td><td>'+(data2[j].hostRank ? data2[j].hostRank : '--')+'</td><td>'+(data2[j].visitRank ? data2[j].visitRank : '--')+'</td><td rowspan="4" style="display:none;"></td></tr>');
             var historyScore=(data2[j].historyScore?data2[j].historyScore:'-,-,-').split(',');
             html.push('<tr><td>历史交锋</td><td colspan="2">主队'+historyScore[0]+'胜'+historyScore[1]+'平'+historyScore[2]+'负</td></tr>');

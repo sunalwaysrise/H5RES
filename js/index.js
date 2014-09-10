@@ -118,7 +118,7 @@ cp2y.mainPage=function(){
 						tmp='<p>浮动奖金，2元可中500万</p>';
 						break;
                     case 10059:
-						tmp='<p>欧冠新一轮比赛来了！</p>';
+						tmp='<p></p>';
 						break;
 				}
 				switch(data.list[i].lotteryId){

@@ -43,25 +43,25 @@ cp2y.discover={
       }
   },
   setSeason:function(o){//用户选择选择赛季
-      if(o){
-          $("#curSeason").html(this.leagueCondition.leagueName+o.t);
-          this.leagueCondition.season=o.v;//设置赛季
-      }
-      cp2y.dialog.loading();
-      $.getScript(WebAppUrl.zs+'league/lunci/'+this.leagueCondition.season+'?callback=cp2y.discover.getRound',function(){});//获取该赛季所有伦次
+    if(o){
+      $("#curSeason").html(this.leagueCondition.leagueName+o.t);
+      this.leagueCondition.season=o.v;//设置赛季
+    }
+    cp2y.dialog.loading();
+    $.getScript(WebAppUrl.zs+'league/lunci/'+this.leagueCondition.season+'?callback=cp2y.discover.getRound',function(){});//获取该赛季所有伦次
   },
   getRound:function(data){
-      cp2y.dialog.clearLoading();
-      if(data.flag==1){
-          var i=data.lunci,html=[];
-          for(i;i>0;i--){
-              html.push('<option value='+i+'>第'+i+'轮</option>');
-          }
-          $('#chooseRound').html(html.join(''));
-          this.leagueCondition.round=data.lunci;//自动设置该赛季伦次
-          $('#curRound').html(cp2y.discover.leagueCondition.round);
-          this.setRound();
+    cp2y.dialog.clearLoading();
+    if(data.flag==1){
+      var i=data.lunci,html=[];
+      for(i;i>0;i--){
+        html.push('<option value='+i+'>第'+i+'轮</option>');
       }
+      $('#chooseRound').html(html.join(''));
+      this.leagueCondition.round=data.lunci;//自动设置该赛季伦次
+      $('#curRound').html(cp2y.discover.leagueCondition.round);
+      this.setRound();
+    }
   },
   leagueCur:0,
   setRound:function(o){
@@ -127,7 +127,7 @@ cp2y.discover={
           var i=0,data=data.newscheduleList,len=data.length,html=[],tmp=[];
           for(i;i<len;i++){
               tmp=data[i].lite.split('|');
-              html.push('<tr><td><a onclick="cp2y.discover.leagueTeam('+data[i].htid+')">'+data[i].home+'</a></td><td><b>'+data[i].hs+':'+data[i].as_+'</b></td><td><a onclick="cp2y.discover.leagueTeam('+data[i].atid+')">'+data[i].away+'</a></td><td>'+data[i].bc+'</td><td>'+tmp[0].split(',')[1]+'</td><td>'+data[i].mtime+'</td><td onclick="cp2y.discover.odds(1,'+data[i].mid+')"><a>综合</a></td><td onclick="cp2y.discover.odds(2,'+data[i].mid+')"><a>欧赔</a></td><td onclick="cp2y.discover.odds(3,'+data[i].mid+')"><a>亚盘</a></td></tr>');
+              html.push('<tr><td><a onclick="cp2y.discover.leagueTeam('+data[i].htid+')">'+data[i].home+'</a></td><td><b>'+data[i].hs+':'+data[i].as_+'</b></td><td><a onclick="cp2y.discover.leagueTeam('+data[i].atid+')">'+data[i].away+'</a></td><td>'+data[i].bc+'</td><td>'+tmp[0].split(',')[1]+'</td><td>'+data[i].mtime+'</td><td onclick="cp2y.discoverUtil.init(20'+data[i].xid+')"><a>综合</a></td><td onclick="cp2y.discover.odds(2,'+data[i].mid+')"><a>欧赔</a></td><td onclick="cp2y.discover.odds(3,'+data[i].mid+')"><a>亚盘</a></td></tr>');
           }
           $("#matchlist").html(html.join(''));
       }
@@ -326,11 +326,11 @@ cp2y.discover={
   },
   oddsId:1,
   odds:function(t,mid){
-      cp2y.dialog.loading();
-      this.oddsId=t;
-      var url=(t=='1'?'analysis':t==2?"europe":"asia");
-      url+='/'+mid;
-      $.getScript(WebAppUrl.zs+'odds/'+url+'?callback=cp2y.discover.odds'+t,function(){});
+    cp2y.dialog.loading();
+    this.oddsId=t;
+    var url=(t=='1'?'analysis':t==2?"europe":"asia");
+    url+='/'+mid;
+    $.getScript(WebAppUrl.zs+'odds/'+url+'?callback=cp2y.discover.odds'+t,function(){});
   },
   odds1:function(data){
       cp2y.dialog.clearLoading();
@@ -808,7 +808,7 @@ cp2y.discover={
               html.push('<td><a>'+(o[0]?o[0]:'--')+'</a></td>');
               html.push('<td><a>'+(o[1]?o[1]:'--')+'</a></td>');
               html.push('<td><a>'+(o[2]?o[2]:'--')+'</a></td>');
-              html.push('<td rowspan="2" onclick="cp2y.discover.odds(1,'+d[i].mid+')"><a>综合</a></td>');
+              html.push('<td rowspan="2" onclick="cp2y.discoverUtil.init(20'+d[i].xid+')"><a>综合</a></td>');
               html.push('<td rowspan="2" onclick="cp2y.discover.odds(2,'+d[i].mid+')"><a>欧赔</a></td>');
               html.push('<td rowspan="2" onclick="cp2y.discover.odds(3,'+d[i].mid+')"><a>亚盘</a></td>');
               html.push('<td rowspan="2">'+Number(t2.getMonth()+1).addZero()+'-'+Number(t2.getDate()).addZero()+' '+Number(t2.getHours()).addZero()+':'+Number(t2.getMinutes()).addZero()+'</td>');
@@ -991,7 +991,7 @@ cp2y.discover={
                   }
                   if(this.scoreId==1){vs=D[j].hscore+':'+D[j].ascore;}else{vs="VS";}
 
-                  html.push('<li><div class="scoreListUl1"><b>'+D[j].ln+'</b><p><span>'+String(D[j].xid).substr(6,3)+'</span><span>'+ii[0]+':'+ii[1]+'</span></p></div><a onclick="cp2y.discover.odds(1,'+D[j].mid+')"><div class="scoreListUl2"><div><span>'+D[j].hteam+'</span><span class="y">'+vs+'</span><span>'+D[j].ateam+'</span></div><p>'+kc+'</p></div></a></li>');
+                  html.push('<li><div class="scoreListUl1"><b>'+D[j].ln+'</b><p><span>'+String(D[j].xid).substr(6,3)+'</span><span>'+ii[0]+':'+ii[1]+'</span></p></div><a onclick="cp2y.discoverUtil.init(20'+D[j].xid +')"><div class="scoreListUl2"><div><span>'+D[j].hteam+'</span><span class="y">'+vs+'</span><span>'+D[j].ateam+'</span></div><p>'+kc+'</p></div></a></li>');
               }
               html.push('</ul>');
           }

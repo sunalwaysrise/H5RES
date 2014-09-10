@@ -412,10 +412,7 @@ var dom={
 	addContent:$("#addContent"),
 	aPrize:$("#aboutPrize"),
 	MoreNav:$("#MoreNav"),
-	MoreLists:$(".MoreLists"),
-	getWf:$("#getWf"),
-	getTz:$("#getTz"),
-	getKj:$("#getKj")
+	MoreLists:$(".MoreLists")
 };
 
 cp2y.buy={
@@ -576,9 +573,7 @@ cp2y.buy={
 		dom.QRTi.click(function(){cp2y.buy.editScheme();});
 		dom.Edit.click(function(){cp2y.buy.editScheme();});
 		dom.MoreLocked.click(function(){cp2y.buy.toggleMore();});
-		dom.getTz.click(function(){cp2y.buy.getTz($(this));});
-		dom.getWf.click(function(){cp2y.buy.getWf($(this));});
-		dom.getKj.click(function(){cp2y.buy.getKj($(this));});
+		
 		if( play in _ ){
 			$.extend(cp2y.buy,_[play]);
 		}else{
@@ -625,7 +620,6 @@ cp2y.buy={
 		dom.cpt.html(_.playTypes).show();
 		dom.More.removeClass("on");
 		dom.MoreDetail.hide();
-		dom.getTz.addClass("cur");
 	},
 	creatChooseArea:function(){
 		dom.c.html(this.bet);//构造 投注区域
@@ -1051,98 +1045,110 @@ cp2y.buy={
 		this.YongJin=yj;
 	},
 	HMPrice:0,
-	setHMPrice:function(){
-		this.HMPrice=Number(this.RenGou)+Number(this.BaoDi);
-		$('#HMPrice').html(this.HMPrice+"元");
-	},
-	closeHemai:function(){
-		dom.MainStep2.show();
-		$("#hemai").hide();
-	},
-	toggleMore:function(){
-		if(dom.More.hasClass('on')){
-			dom.More.removeClass('on');
-			dom.MoreDetail.hide();
-			dom.MoreLocked.hide();
-		}else{
-			dom.More.addClass('on');
-			dom.MoreDetail.show();
-			dom.MoreLocked.show();
-		}
-		window.scrollTo(0,0);
-	},
-	getST:function(o){
-		dom.MoreNav.children().removeClass('cur');
-		o.addClass('cur');
-		dom.MoreLists.hide();
-		
-	},
-	getTz:function(o){
-		this.getST(o);
-		dom.MoreLists.eq(o.index()).show();
-	},
-	getWf:function(o){
-		this.getST(o);
-		$.ajax({
-			url:WebAppUrl.HOME_APP_URL+"/help/"+_.bt+".txt",
-			beforeSend:function(){cp2y.dialog.loading();},
-			success:function(data){
-				cp2y.dialog.clearLoading();
-				$("#getWfC").html(data).show();
-			},
-			error:function(){cp2y.dialog.clearLoading();}
-		});
-	},
-	getKj:function(o){
-		this.getST(o);
-		$.ajax({
-			url:WebAppUrl.HOME_APP_URL+"/lottery/query_his_notify?lotteryId="+_.bt,
-			beforeSend:function(){cp2y.dialog.loading();},
-			success:function(data){
-				cp2y.dialog.clearLoading();
-				var i=0,len=data.listsize,html=[];
-				for(i;i<len;i++){
-					var bolls=cp2y.util.setboll(data.list[i].drawNumber,_.bt);
-					html.push('<li class="drawList" onclick="cp2y.buy.getKj2(this,'+_.bt+','+data.list[i].issue+')">');
-					html.push('<p><span>'+data.list[i].issue+'期</span>开奖日期：'+data.list[i].drawTime+'</p>');
-					html.push('<div class="getKjline2">'+bolls.join('')+'</div>');
-					html.push('</li>');
-				}
-				$("#getKjC").html(html.join('')).show();
-			},
-			error:function(){cp2y.dialog.clearLoading();}
-		});
-	},
-	getKj2:function(t,b,i){
-		if($(t).children('#getKj2').length==1){
-			return $('#getKj2').remove();
-		}
-		$('#getKj2').remove();
-		$.ajax({
-			url:WebAppUrl.HOME_APP_URL+'/lottery/issue_detail?lotteryId='+b+'&issue='+i,
-			beforeSend:function(){cp2y.dialog.loading();},
-			success:function(data){
-				cp2y.dialog.clearLoading();
-				var data=data[0],html=[],i=0,len=data.items.length;
-				html.push('<div id="getKj2"><table class="table1">');
-				html.push('<thead><tr><td>奖项</td>');
-				if(BT.kk.indexOf(data.lotteryId)==-1){
-					html.push('<td>中奖数量</td>');
-				}
-				html.push('<td>奖金</td></tr></thead><tbody>');
-				for(i;i<len;i++){
-				html.push('<tr><td>'+data.items[i].prizeItem+'</td>');
-				if(BT.kk.indexOf(data.lotteryId)==-1){
-					html.push('<td>'+data.items[i].number+'</td>');
-				}
-				html.push('<td>'+data.items[i].prizeAmount+'</td></tr>');
-				}
-				html.push('</tbody></table></div>');
-				$(t).append(html.join(''));
-			},
-			error:function(){cp2y.dialog.clearLoading();}
-		});
-	}
+  setHMPrice:function(){
+    this.HMPrice=Number(this.RenGou)+Number(this.BaoDi);
+    $('#HMPrice').html(this.HMPrice+"元");
+  },
+  closeHemai:function(){
+    dom.MainStep2.show();
+    $("#hemai").hide();
+  },
+  toggleMore:function(){
+    if(dom.More.hasClass('on')){
+      dom.More.removeClass('on');
+      dom.MoreDetail.hide();
+      dom.MoreLocked.hide();
+    }else{
+      dom.More.addClass('on');
+      dom.MoreDetail.show();
+      dom.MoreLocked.show();
+    }
+    window.scrollTo(0,0);
+  },
+  toggleAssistant:function(){
+    $("#assistantC").toggle();
+  },
+  getST:function(t,o){
+    $("#getST").show();
+    $("#STT").html(t);
+    $("#STC").html(o);
+    $("#Warp").hide();
+  },
+  closeST:function(){
+    $("#Warp").show();
+    $("#getST").hide();
+  },
+  getWf:function(){
+    $.ajax({
+      url:WebAppUrl.HOME_APP_URL+"/help/"+_.bt+".txt",
+      beforeSend:function(){cp2y.dialog.loading();},
+      success:function(data){
+        cp2y.dialog.clearLoading();
+        cp2y.buy.getST('玩法',data);
+      },
+      error:function(){cp2y.dialog.clearLoading();}
+    });
+  },
+  getJq:function(){
+    $.ajax({
+      url:WebAppUrl.HOME_APP_URL+'/',
+      beforeSend:function(){cp2y.dialog.loading();},
+      success:function(data){
+        cp2y.dialog.clearLoading();
+        
+      },
+      error:function(){}
+    });
+  },
+  getKj:function(){
+    $.ajax({
+      url:WebAppUrl.HOME_APP_URL+"/lottery/query_his_notify?lotteryId="+_.bt,
+      beforeSend:function(){cp2y.dialog.loading();},
+      success:function(data){
+        cp2y.dialog.clearLoading();
+        var i=0,len=data.listsize,html=[];
+        for(i;i<len;i++){
+          var bolls=cp2y.util.setboll(data.list[i].drawNumber,_.bt);
+          html.push('<div class="drawList" onclick="cp2y.buy.getKj2(this,'+_.bt+','+data.list[i].issue+')">');
+          html.push('<p><span>'+data.list[i].issue+'期</span>开奖日期：'+data.list[i].drawTime+'</p>');
+          html.push('<div class="getKjline2">'+bolls.join('')+'</div>');
+          html.push('</div>');
+        }
+        cp2y.buy.getST('开奖',html.join(''));
+      },
+      error:function(){cp2y.dialog.clearLoading();}
+    });
+  },
+  getKj2:function(t,b,i){
+    if($(t).children('#getKj2').length==1){
+      return $('#getKj2').remove();
+    }
+    $('#getKj2').remove();
+    $.ajax({
+      url:WebAppUrl.HOME_APP_URL+'/lottery/issue_detail?lotteryId='+b+'&issue='+i,
+      beforeSend:function(){cp2y.dialog.loading();},
+      success:function(data){
+        cp2y.dialog.clearLoading();
+        var data=data[0],html=[],i=0,len=data.items.length;
+        html.push('<div id="getKj2"><table class="table1">');
+        html.push('<thead><tr><td>奖项</td>');
+        if(BT.kk.indexOf(data.lotteryId)==-1){
+          html.push('<td>中奖数量</td>');
+        }
+        html.push('<td>奖金</td></tr></thead><tbody>');
+        for(i;i<len;i++){
+          html.push('<tr><td>'+data.items[i].prizeItem+'</td>');
+          if(BT.kk.indexOf(data.lotteryId)==-1){
+            html.push('<td>'+data.items[i].number+'</td>');
+          }
+          html.push('<td>'+data.items[i].prizeAmount+'</td></tr>');
+        }
+        html.push('</tbody></table></div>');
+        $(t).append(html.join(''));
+      },
+      error:function(){cp2y.dialog.clearLoading();}
+    });
+  }
 };
 $('#HMtype a').click(function(){
 	$(this).addClass('cur').siblings().removeClass('cur');

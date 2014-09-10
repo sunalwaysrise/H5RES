@@ -59,6 +59,7 @@ _.a0={
                   for (j; j < jlen; j++) {
                       var betCounter = data2[j].betCounter ? data2[j].betCounter.split(',') : ["-", "-", "-"],d='',rq=data2[j].bjdcMatch.rate;
                     d=new Date(data2[j].bjdcMatchSellEndTime);
+                    console.log(d,data2[j].bjdcMatchSellEndTime);
                     d=d.getHours().addZero()+':'+d.getMinutes().addZero();
                       html.push('<li class="' + data2[j].bjdcMatch.leagueName + '"><div class="jc_line1 jc_line12"  data="{no:\'' + data2[j].matchKey + '\',end:false,h:\'' + data2[j].bjdcMatch.hostName + '\',g:\'' + data2[j].bjdcMatch.guestName + '\',rq:\'' + data2[j].bjdcMatch.rate + '\'}">');
                       html.push('<strong><em>' + data2[j].bjdcMatch.leagueName + '</em>');

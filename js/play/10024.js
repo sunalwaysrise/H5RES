@@ -3,23 +3,25 @@
  */
 var _={
 	bt:10024,
-	playName:"排列三",
+	playName:"排列3/5",
 	playTypes:function(){
-		var html=[];
-		html.push('<i>普通</i>');
-		html.push('<b data="a0" class="onn" data2="普通-组3">组3</b>');
-		html.push('<b data="a1" data2="普通-组6">组6</b>');
-		html.push('<b data="a2" data2="普通-直选">直选</b>');
-		html.push('<i>胆拖</i>');
-		html.push('<b data="a3" data2="胆拖-组3">组3</b>');
-		html.push('<b data="a4" data2="胆拖-组6">组6</b>');
-		html.push('<b data="a5" data2="胆拖-直选">直选</b>');
-		return html.join('');
+      var html=[];
+      html.push('<i>普通</i>');
+      html.push('<b data="a0" class="onn" data2="排3-普通-组3">组3</b>');
+      html.push('<b data="a1" data2="排列3-普通-组6">组6</b>');
+      html.push('<b data="a2" data2="排列3-普通-直选">直选</b>');
+      html.push('<i>胆拖</i>');
+      html.push('<b data="a3" data2="排列3-胆拖-组3">组3</b>');
+      html.push('<b data="a4" data2="排列3-胆拖-组6">组6</b>');
+      html.push('<b data="a5" data2="排列3-胆拖-直选">直选</b>');
+      html.push('<i>排列5</i>');
+      html.push('<b data="a6" data2="排列5-直选">直选</b>');
+      return html.join('');
 	}
 };
 _.a0={
 	playName:_.playName,
-	playType:"普通-组3",
+	playType:"排列3-普通-组3",
 	input:"group3Poly",
 	bet:function(){
 		var html0=[],i=0;
@@ -92,7 +94,7 @@ _.a0={
 };
 _.a1={
 	playName:_.playName,
-	playType:"普通-组6",
+	playType:"排列3-普通-组6",
 	input:"group6Poly",
 	bet:function(){
 		var html0=[],i=0;
@@ -170,7 +172,7 @@ _.a1={
 };
 _.a2={
 	playName:_.playName,
-	playType:"普通-直选",
+	playType:"排列3-普通-直选",
 	input:"direct",
 	bet:function(){
 		var html0=[],i=0;
@@ -266,7 +268,7 @@ _.a2={
 };
 _.a3={
 	playName:_.playName,
-	playType:"胆拖-组三",
+	playType:"排列3-胆拖-组三",
 	input:"group3Draw",
 	num:1,
 	n:"组3",
@@ -423,7 +425,7 @@ _.a3={
 };
 _.a4={
 	playName:_.playName,
-	playType:"胆拖-组六",
+	playType:"排列3-胆拖-组六",
 	input:"group6Draw",
 	n:'组6',
 	num:2,
@@ -503,100 +505,211 @@ _.a4={
 	}
 };
 _.a5={
-	playName:_.playName,
-	playType:"胆拖-直选",
-	input:"directDraw",
-	n:'组6',
-	num:2,
-	mul:4,
-	bet:_.a4.bet,
-	select:_.a3.select,
-	count:function(){
-		var d=[],t=[],i=0,o=this.getBall(),len=o.length,units=0,s=1;
-		for(i;i<len;i++){
-			if(o.eq(i).hasClass("rb")){
-				d.push(o.eq(i).html());
-			}else if(o.eq(i).hasClass("bb")){
-				t.push(o.eq(i).html());
-			}
-		}
-		if(d.length+t.length<this.mul){
-			units=0;
-		}else{
-			units=this.units(d.length,t.length);
-		}
-		if(d.length>0 || t.length>0){s=3;}
-		this.setClear(s);
-		dom.CurBets.html(units);
-		dom.CurMoney.html(units*2);
-	},
-	units:function(dn,tn){
-		var u = 0;
-		if(dn+tn==3){
-			u=0;
-		}else if(dn==1){
-			u=tn*(tn-1)/2*6;
-		}else if(dn==2){
-			u=tn*6;
-		}else if(dn==0){
-			u=0;
-		}
-		return u;
-	},
-	random:function(u){
-		var i=0,d,a1=[],o=[],ball=[];
-		for(i;i<10;i++){
-			ball.push(i);
-		}
-		i=0;
-		for(i;i<u;i++){
-			a1=ball.random({len:4});
-			d=a1.pop();
-			o.push('<li data_input="'+this.input+'" data_bets="18" data_code="'+d+","+a1.join("")+'">');
-			o.push('<div>(<a class="r">'+d+'</a>)<a class="r">'+a1.join('</a><a class="r">')+'</a></div>');
-			o.push('<p>'+this.playType+'：18注36元</p>');
-			o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
-		}
-		this.addRecord(o.join(''));
-	},
-	addContent:function(mul){
-		var d=[],t=[],i=0,o=this.getBall(),len=o.length,units=0;
-		for(i;i<len;i++){
-			if(o.eq(i).hasClass("rb")){
-				d.push(o.eq(i).html());
-			}else if(o.eq(i).hasClass("bb")){
-				t.push(o.eq(i).html());
-			}
-		}
-		if(d.length+t.length<this.mul){
-			units=0;
-		}else{
-			units=this.units(d.length,t.length);
-		}
-		if(units==0){
-			if(d.length>0 || t.length>0 ){
-				return cp2y.dialog.alert('您选的方案不能构成一注');
-			}else{
-				return cp2y.buy.setRandom();
-			}
-		}
-		var o='<li data_input="'+this.input+'" data_bets="'+units+'" data_code="'+d.join('')+','+t.join('')+'">'+
-			'<div>(<a class="r">'+d.join('</a><a class="r">')+'</a>)<a class="r">'+t.join('</a><a class="r">')+'</a></div>'+
-			'<p>'+this.playType+'：'+units+'注'+units*2+'元</p>'+
-			'<i class="delI" onclick="cp2y.buy.del(this)"></i></li>';
-		this.addRecord(o);
-		this.clear();
-	},
-	setRandom:function(){
-		var i=0,a1=[],ball=[];
-		for(i;i<10;i++){
-			ball.push(i);
-		}
-		a1=ball.random({len:4});
-		$('.gb').eq(a1[0]-1).addClass('rb');
-		$('.gb2').eq(a1[1]-1).addClass('bb');
-		$('.gb2').eq(a1[2]-1).addClass('bb');
-		$('.gb2').eq(a1[3]-1).addClass('bb');
-		this.count();
-	}
+  playName:_.playName,
+  playType:"排列3-胆拖-直选",
+  input:"directDraw",
+  n:'组6',
+  num:2,
+  mul:4,
+  bet:_.a4.bet,
+  select:_.a3.select,
+  count:function(){
+      var d=[],t=[],i=0,o=this.getBall(),len=o.length,units=0,s=1;
+      for(i;i<len;i++){
+          if(o.eq(i).hasClass("rb")){
+              d.push(o.eq(i).html());
+          }else if(o.eq(i).hasClass("bb")){
+              t.push(o.eq(i).html());
+          }
+      }
+      if(d.length+t.length<this.mul){
+          units=0;
+      }else{
+          units=this.units(d.length,t.length);
+      }
+      if(d.length>0 || t.length>0){s=3;}
+      this.setClear(s);
+      dom.CurBets.html(units);
+      dom.CurMoney.html(units*2);
+  },
+  units:function(dn,tn){
+      var u = 0;
+      if(dn+tn==3){
+          u=0;
+      }else if(dn==1){
+          u=tn*(tn-1)/2*6;
+      }else if(dn==2){
+          u=tn*6;
+      }else if(dn==0){
+          u=0;
+      }
+      return u;
+  },
+  random:function(u){
+      var i=0,d,a1=[],o=[],ball=[];
+      for(i;i<10;i++){
+          ball.push(i);
+      }
+      i=0;
+      for(i;i<u;i++){
+          a1=ball.random({len:4});
+          d=a1.pop();
+          o.push('<li data_input="'+this.input+'" data_bets="18" data_code="'+d+","+a1.join("")+'">');
+          o.push('<div>(<a class="r">'+d+'</a>)<a class="r">'+a1.join('</a><a class="r">')+'</a></div>');
+          o.push('<p>'+this.playType+'：18注36元</p>');
+          o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
+      }
+      this.addRecord(o.join(''));
+  },
+  addContent:function(mul){
+      var d=[],t=[],i=0,o=this.getBall(),len=o.length,units=0;
+      for(i;i<len;i++){
+          if(o.eq(i).hasClass("rb")){
+              d.push(o.eq(i).html());
+          }else if(o.eq(i).hasClass("bb")){
+              t.push(o.eq(i).html());
+          }
+      }
+      if(d.length+t.length<this.mul){
+          units=0;
+      }else{
+          units=this.units(d.length,t.length);
+      }
+      if(units==0){
+          if(d.length>0 || t.length>0 ){
+              return cp2y.dialog.alert('您选的方案不能构成一注');
+          }else{
+              return cp2y.buy.setRandom();
+          }
+      }
+      var o='<li data_input="'+this.input+'" data_bets="'+units+'" data_code="'+d.join('')+','+t.join('')+'">'+
+          '<div>(<a class="r">'+d.join('</a><a class="r">')+'</a>)<a class="r">'+t.join('</a><a class="r">')+'</a></div>'+
+          '<p>'+this.playType+'：'+units+'注'+units*2+'元</p>'+
+          '<i class="delI" onclick="cp2y.buy.del(this)"></i></li>';
+      this.addRecord(o);
+      this.clear();
+  },
+  setRandom:function(){
+      var i=0,a1=[],ball=[];
+      for(i;i<10;i++){
+          ball.push(i);
+      }
+      a1=ball.random({len:4});
+      $('.gb').eq(a1[0]-1).addClass('rb');
+      $('.gb2').eq(a1[1]-1).addClass('bb');
+      $('.gb2').eq(a1[2]-1).addClass('bb');
+      $('.gb2').eq(a1[3]-1).addClass('bb');
+      this.count();
+  }
+};
+_.a6={
+  playName:_.playName,
+  playType:"排列5-直选",
+  input:"pl5Poly",
+  num:5,
+  bet:function() {
+    var html0 = [], i = 0;
+    html0.push('<p>万位</p>');
+    for (i; i < 10; i++) {
+      html0.push('<a class="gb" onclick="cp2y.buy.select(this,5)">' + i + '</a>');
+    };
+    i = 0;
+    html0.push('<p>千位</p>');
+    for (i; i < 10; i++) {
+      html0.push('<a class="gb" onclick="cp2y.buy.select(this,4)">' + i + '</a>');
+    };
+    i = 0;
+    html0.push('<p>百位</p>');
+    for (i; i < 10; i++) {
+      html0.push('<a class="gb" onclick="cp2y.buy.select(this,3)">' + i + '</a>');
+    };
+    i = 0;
+    html0.push('<p>十位</p>');
+    for (i; i < 10; i++) {
+      html0.push('<a class="gb" onclick="cp2y.buy.select(this,2)">' + i + '</a>');
+    };
+    i = 0;
+    html0.push('<p>个位</p>');
+    for (i; i < 10; i++) {
+      html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">' + i + '</a>');
+    };
+    return html0.join('');
+  },
+  select : function(_this, x) {
+    $(_this).toggleClass("rb" + x);
+    cp2y.buy.count();
+  },
+  count : function() {
+    var rb1 = [], rb2 = [], rb3 = [], rb4 = [], rb5 = [], i = 0, o = this.getBall(), len = o.length, units, s = 1;
+    for (i; i < len; i++) {
+      if (o.eq(i).hasClass("rb1")) {
+        rb1.push(o.eq(i));
+      };
+      if (o.eq(i).hasClass("rb2")) {
+        rb2.push(o.eq(i));
+      };
+      if (o.eq(i).hasClass("rb3")) {
+        rb3.push(o.eq(i));
+      };
+      if (o.eq(i).hasClass("rb4")) {
+        rb4.push(o.eq(i));
+      };
+      if (o.eq(i).hasClass("rb5")) {
+        rb5.push(o.eq(i));
+      }
+    };
+    if (rb1.length > 0 || rb2.length > 0 || rb3.length > 0 || rb4.length > 0 || rb5.length > 0) {
+      s = 3;
+    };
+    this.setClear(s);
+    units = rb1.length * rb2.length * rb3.length * rb4.length * rb5.length;
+    dom.CurBets.html(units);
+    dom.CurMoney.html(units * 2);
+  },
+  random : function(u) {
+    var i = 0, o = [], ball = [], rb = [];
+    for (i; i < 10; i++) {
+        ball.push(i);
+    };
+    i = 0;
+    for (i; i < u; i++) {
+      rb = ball.random({len : this.num});
+      o.push('<li data_input="' + this.input + '" data_bets="1" data_code="' + rb.join('-') + '">');
+      o.push('<div><a class="r">' + rb.join('</a><a class="r">') + '</a></div>');
+      o.push('<p>' + this.playType + '：1注2元</p>');
+      o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
+    };
+    this.addRecord(o.join(''));
+  },
+  addContent : function() {
+    var rb1 = [], rb2 = [], rb3 = [], rb4 = [], rb5 = [], i = 0, o = this.getBall(), len = o.length;
+    for (i; i < len; i++) {
+      if (o.eq(i).hasClass("rb1")) {
+        rb1.push(o.eq(i).html());
+      };
+      if (o.eq(i).hasClass("rb2")) {
+        rb2.push(o.eq(i).html());
+      };
+      if (o.eq(i).hasClass("rb3")) {
+        rb3.push(o.eq(i).html());
+      };
+      if (o.eq(i).hasClass("rb4")) {
+        rb4.push(o.eq(i).html());
+      };
+      if (o.eq(i).hasClass("rb5")) {
+        rb5.push(o.eq(i).html());
+      }
+    };
+    var units = rb1.length * rb2.length * rb3.length * rb4.length * rb5.length;
+    if (units == 0) {
+      if (rb1.length > 0 || rb2.length > 0 || rb3.length > 0 || rb4.length > 0 || rb5.length > 0) {
+        return cp2y.dialog.alert('您选的方案不能构成一注');
+      } else {
+        return cp2y.buy.random(1);
+      }
+    };
+    var o = '<li data_input="' + this.input + '" data_bets="' + units + '" data_code="' + rb5.join('') + '-' + rb4.join('') + '-' + rb3.join('') + '-' + rb2.join('') + '-' + rb1.join('') + '">' + '<div><a class="r">' + rb5.join('</a><a class="r">') + '</a>-<a class="r">' + rb4.join('</a><a class="r">') + '</a>-<a class="r">' + rb3.join('</a><a class="r">') + '</a>-<a class="r">' + rb2.join('</a><a class="r">') + '</a>-<a class="r">' + rb1.join('</a><a class="r">') + '</a></div>' + '<p>' + this.playType + '：' + units + '注' + units * 2 + '元</p>' + '<i class="delI" onclick="cp2y.buy.del(this)"></i></li>';
+    this.addRecord(o);
+    this.clear();
+  }
 };

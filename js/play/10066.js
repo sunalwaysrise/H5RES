@@ -2,47 +2,47 @@
  * @author luwenbin@live.com
  */
 var _={
-	bt:10066,
-	playName:"上海11选5",
-	playTypes:function(){
-		var html=[];
-		html.push('<i>普通</i>');
-		html.push('<b data="a1" data2="任选2">任选2</b>');
-		html.push('<b data="a8" data2="任选3">任选3</b>');
-		html.push('<b data="a17" data2="任选4">任选4</b>');
-		html.push('<b data="a19" data2="任选5">任选5</b>');
-		html.push('<b data="a21" data2="任选6">任选6</b>');
-		html.push('<b data="a23" data2="任选7">任选7</b>');
-		html.push('<b data="a25" data2="任选8">任选8</b>');
-		html.push('<span></span>');
-		html.push('<b data="a0" data2="前1直选">前1直选</b>');
-		//html.push('<b data="a3"  data2="前2直选">前2直选</b>');
-		//html.push('<b data="a10"  data2="前3直选">前3直选</b>');
-		html.push('<b data2="前2直选" data="a4">前2直选</b>');
-		html.push('<b data2="前3直选" data="a11">前3直选</b>');
-		html.push('<span></span>');
-		html.push('<b data="a6" data2="前2组选">前2组选</b>');
-		html.push('<b data="a14" class="onn" data2="前3组选">前3组选</b>');
-		html.push('<i>胆拖</i>');
-		html.push('<b data="a2"  data2="任选2胆拖">任选2</b>');
-		html.push('<b data="a9"  data2="任选3胆拖">任选3</b>');
-		html.push('<b data="a18"  data2="任选4胆拖">任选4</b>');
-		html.push('<b data="a20"  data2="任选5胆拖">任选5</b>');
-		html.push('<b data="a22"  data2="任选6胆拖">任选6</b>');
-		html.push('<b data="a24"  data2="任选7胆拖">任选7</b>');
-		html.push('<b data="a26"  data2="任选8胆拖">任选8</b>');
-		html.push('<span></span>');
-		html.push('<b data="a5"  data2="前2直选胆拖">前2直选</b>');
-		html.push('<b data="a12"  data2="前3直选胆拖">前3直选</b>');
-		html.push('<span></span>');
-		html.push('<b data="a7" data2="前2组选胆拖">前2组选</b>');
-		html.push('<b data="a15" data2="前3组选胆拖">前3组选</b>');
-		html.push('<i>其他</i>');
-		
-		//html.push('<b class="b11" data="a13">前3直选和值</b>');
-		//html.push('<b class="b11" data="a16">前3组选和值</b>');
-		return html.join('');
-	}
+  bt:10066,
+  playName:"上海11选5",
+  playTypes:function(){
+    var html=[];
+    html.push('<i>普通</i>');
+    html.push('<b data="a1" data2="任选2">任选2</b>');
+    html.push('<b data="a8" data2="任选3">任选3<em>奖</em></b>');
+    html.push('<b data="a17" data2="任选4">任选4</b>');
+    html.push('<b data="a19" data2="任选5">任选5<em>奖</em></b>');
+    html.push('<b data="a21" data2="任选6">任选6</b>');
+    html.push('<b data="a23" data2="任选7">任选7<em>奖</em></b>');
+    html.push('<b data="a25" data2="任选8">任选8</b>');
+    html.push('<span></span>');
+    html.push('<b data="a0" data2="前1直选">前1直选</b>');
+    //html.push('<b data="a3"  data2="前2直选">前2直选</b>');
+    //html.push('<b data="a10"  data2="前3直选">前3直选</b>');
+    html.push('<b data2="前2直选" data="a4">前2直选</b>');
+    html.push('<b data2="前3直选" data="a11">前3直选</b>');
+    html.push('<span></span>');
+    html.push('<b data="a6" data2="前2组选">前2组选</b>');
+    html.push('<b data="a14" class="onn" data2="前3组选">前3组选<em>奖</em></b>');
+    html.push('<i>胆拖</i>');
+    html.push('<b data="a2"  data2="任选2胆拖">任选2</b>');
+    html.push('<b data="a9"  data2="任选3胆拖">任选3<em>奖</em></b>');
+    html.push('<b data="a18"  data2="任选4胆拖">任选4</b>');
+    html.push('<b data="a20"  data2="任选5胆拖">任选5<em>奖</em></b>');
+    html.push('<b data="a22"  data2="任选6胆拖">任选6</b>');
+    html.push('<b data="a24"  data2="任选7胆拖">任选7<em>奖</em></b>');
+    html.push('<b data="a26"  data2="任选8胆拖">任选8</b>');
+    html.push('<span></span>');
+    html.push('<b data="a5"  data2="前2直选胆拖">前2直选</b>');
+    html.push('<b data="a12"  data2="前3直选胆拖">前3直选</b>');
+    html.push('<span></span>');
+    html.push('<b data="a7" data2="前2组选胆拖">前2组选</b>');
+    html.push('<b data="a15" data2="前3组选胆拖">前3组选<em>奖</em></b>');
+    html.push('<i>其他</i>');
+
+    //html.push('<b class="b11" data="a13">前3直选和值</b>');
+    //html.push('<b class="b11" data="a16">前3组选和值</b>');
+    return html.join('');
+  }
 };
 _.a0={
 	playName:_.playName,

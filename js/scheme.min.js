@@ -177,7 +177,7 @@ cp2y.user={
                               mc=td[i].matchCode.substr(0,8);
                               mc=mc.substr(0,4)+'-'+mc.substr(4,2)+'-'+mc.substr(6,2);
                               w=new Date(mc).getDay();
-                              html.push('<tr><td>'+ww[w]+'<br/>'+td[i].matchCode.substr(8,3)+'</td><td onclick="cp2y.discover.init('+td[i].matchCode+');"><a>'+td[i].hostName+dd+'<br/>'+(td[i].lastScore?td[i].lastScore:'--')+'<br/>'+td[i].guestName+'</a></td><td>'+td[i].msg+'</td><td>'+matchResult+'</td>');
+                              html.push('<tr><td>'+ww[w]+'<br/>'+td[i].matchCode.substr(8,3)+'</td><td onclick="cp2y.discoverUtil.init('+td[i].matchCode+');"><a>'+td[i].hostName+dd+'<br/>'+(td[i].lastScore?td[i].lastScore:'--')+'<br/>'+td[i].guestName+'</a></td><td>'+td[i].msg+'</td><td>'+matchResult+'</td>');
                               if(hasDan){
                                   html.push('<td>'+(td[i].dan?"√":"×")+'</td>');
                               }

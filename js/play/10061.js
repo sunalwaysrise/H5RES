@@ -2,27 +2,27 @@
  * @author luwenbin@live.com
  */
 var _ = {
-	bt : 10061,
-	playName : "新时时彩",
-	playTypes : function() {
-		var html = [];
-		html.push('<b data="a0" data2="一星">一星</b>');
-		html.push('<b data="a1" data2="四星">四星</b>');
-		html.push('<b data="a2" data2="五星">五星</b>');
-		html.push('<b data="a3" data2="五星通选">五星通选</b>');
-		html.push('<span></span>');
-		html.push('<b data="a4" data2="二星组选">二星组选</b>');
-		html.push('<b data="a5" data2="三星组3">三星组3</b>');
-		html.push('<b data="a6" data2="三星组6">三星组6</b>');
-		html.push('<span></span>');
-		html.push('<b data="a7"  data2="任选1">任选1</b>');
-		html.push('<b data="a8" data2="任选2">任选2</b>');
-		html.push('<b data="a9"  data2="大小单双">大小单双</b>');
-		html.push('<span></span>');
-		html.push('<b data="a10" data2="二星直选">二星直选</b>');
-		html.push('<b data="a11" class="onn" data2="三星直选">三星直选</b>');
-		return html.join('');
-	}
+  bt : 10061,
+  playName : "江西时时彩",
+  playTypes : function() {
+    var html = [];
+    html.push('<b data="a0" data2="一星">一星</b>');
+    html.push('<b data="a1" data2="四星">四星</b>');
+    html.push('<b data="a2" data2="五星">五星</b>');
+    html.push('<b data="a3" data2="五星通选">五星通选</b>');
+    html.push('<span></span>');
+    html.push('<b data="a4" data2="二星组选">二星组选</b>');
+    html.push('<b data="a5" data2="三星组3">三星组3</b>');
+    html.push('<b data="a6" data2="三星组6">三星组6</b>');
+    html.push('<span></span>');
+    html.push('<b data="a7"  data2="任选1">任选1</b>');
+    html.push('<b data="a8" data2="任选2">任选2</b>');
+    html.push('<b data="a9"  data2="大小单双">大小单双</b>');
+    html.push('<span></span>');
+    html.push('<b data="a10" data2="二星直选">二星直选</b>');
+    html.push('<b data="a11" class="onn" data2="三星直选">三星直选</b>');
+    return html.join('');
+  }
 };
 _.a0 = {
   hasOutGet:false,
@@ -284,7 +284,6 @@ _.a2 = {
     }
   },
 	playName : _.playName,
-	playName : _.playName,
 	playType : "五星",
 	input : "fiveStarPoly",
 	num : 5,
@@ -399,15 +398,15 @@ _.a2 = {
 };
 _.a3 = {
   hasOutGet:_.a0.hasOutGet,
-	playName : _.playName,
-	playType : "五星通选",
-	input : "fiveStarAllPoly",
-	num : 5,
-	bet : _.a2.bet,
-	select : _.a2.select,
-	count : _.a2.count,
-	random : _.a2.random,
-	addContent : _.a2.addContent
+  playName : _.playName,
+  playType : "五星通选",
+  input : "fiveStarAllPoly",
+  num : 5,
+  bet : _.a2.bet,
+  select : _.a2.select,
+  count : _.a2.count,
+  random : _.a2.random,
+  addContent : _.a2.addContent
 };
 _.a4 = {
   hasOutGet:_.a0.hasOutGet,

@@ -1,5 +1,5 @@
 WebAppUrl.zs='http://zq.cp2y.com/';
-cp2y.discover={
+cp2y.discoverUtil={
   mid:0,
   matchCode:0,
   baseKey:0,
@@ -23,7 +23,7 @@ cp2y.discover={
     if(this.matchCode!=this.baseKey){
       this.baseKey=this.matchCode;
       cp2y.dialog.loading();
-      $.getScript(WebAppUrl.zs+'match/baseinfo/'+this.matchCode+'?callback=cp2y.discover._base',function(){});
+      $.getScript(WebAppUrl.zs+'match/baseinfo/'+this.matchCode+'?callback=cp2y.discoverUtil._base',function(){});
     }
   },
   _base:function(data){
@@ -54,7 +54,7 @@ cp2y.discover={
       if(this.mid!=this.thingKey){
           this.thingKey=this.mid;
           cp2y.dialog.loading();
-          $.getScript(WebAppUrl.zs+'match/thing/'+this.mid+'?callback=cp2y.discover._thing',function(){});
+          $.getScript(WebAppUrl.zs+'match/thing/'+this.mid+'?callback=cp2y.discoverUtil._thing',function(){});
       }
   },
   _thing:function(data){
@@ -112,7 +112,7 @@ cp2y.discover={
       if(this.mid!=this.aginstKey){
           this.aginstKey=this.mid;
           cp2y.dialog.loading();
-          $.getScript(WebAppUrl.zs+'match/aginst/'+this.mid+'?callback=cp2y.discover._aginst',function(){});
+          $.getScript(WebAppUrl.zs+'match/aginst/'+this.mid+'?callback=cp2y.discoverUtil._aginst',function(){});
       }
   },
   _aginst:function(data){
@@ -167,7 +167,7 @@ cp2y.discover={
     if(this.mid!=this.oddsKey){
       this.oddsKey=this.mid;
       cp2y.dialog.loading();
-      $.getScript(WebAppUrl.zs+'odds/analysis/'+this.mid+'?callback=cp2y.discover.odds2',function(){});
+      $.getScript(WebAppUrl.zs+'odds/analysis/'+this.mid+'?callback=cp2y.discoverUtil.odds2',function(){});
     }
   },
   odds2:function(data){
@@ -394,7 +394,7 @@ cp2y.discover={
     if(this.mid!=this.aidKey){
       this.aidKey=this.mid;
       cp2y.dialog.loading();
-      $.getScript(WebAppUrl.zs+'odds/asiaeurope/'+this.mid+'?callback=cp2y.discover._asiaeurope',function(){});
+      $.getScript(WebAppUrl.zs+'odds/asiaeurope/'+this.mid+'?callback=cp2y.discoverUtil._asiaeurope',function(){});
     }
   },
   _asiaeurope:function(data){
@@ -449,7 +449,7 @@ cp2y.discover={
     if(this.mid!=this.saishiKey){
       this.saishiKey=this.mid;
       cp2y.dialog.loading();
-      $.getScript(WebAppUrl.zs+'odds/analysis/'+this.mid+'?callback=cp2y.discover._saishi',function(){});
+      $.getScript(WebAppUrl.zs+'odds/analysis/'+this.mid+'?callback=cp2y.discoverUtil._saishi',function(){});
     }
   },
   _saishi:function(data){
@@ -555,7 +555,7 @@ cp2y.discover={
     if(this.mid!=this.aidKey){
       this.aidKey=this.mid;
       cp2y.dialog.loading();
-      $.getScript(WebAppUrl.zs+'odds/asiaeurope/'+this.mid+'?callback=cp2y.discover._asiaeurope',function(){});
+      $.getScript(WebAppUrl.zs+'odds/asiaeurope/'+this.mid+'?callback=cp2y.discoverUtil._asiaeurope',function(){});
     }
   },
   _asiaeurope:function(data){
