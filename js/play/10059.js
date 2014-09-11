@@ -55,7 +55,7 @@ _.a0 = {
 					html.push("<div class='tip tip2'>"+ data[i].dayKey +"(" + data[i].dayOfWeekStr + ")<b class='fr'>比赛场次：<span>" + data[i].matchCount + "场</span></b></div><ul>");
 					for (j; j < jlen; j++) {
 						var betCounter = data2[j].betCounter ? data2[j].betCounter.split(',') : ["-", "-", "-"];
-						html.push('<li class="' + data2[j].leagueName + '"><div class="jc_line1"  data="{no:' + data2[j].matchCode + ',end:false,name:\'' + data[i].dayOfWeekStr + '0' + (j + 1).addZero() + '\',h:\'' + data2[j].hostName + '\',g:\'' + data2[j].guestName + '\',rq:\'' + data2[j].rate + '\',dw:\'' + data[i].dayOfWeekStr + '\'}">');
+						html.push('<li class="' + data2[j].leagueName + '"><div class="jc_line1"  data="{no:' + data2[j].matchCode + ',end:false,name:\'' + data[i].dayOfWeekStr+data2[j].matchCode.substr(8,3)+ '\',h:\'' + data2[j].hostName + '\',g:\'' + data2[j].guestName + '\',rq:\'' + data2[j].rate + '\',dw:\'' + data[i].dayOfWeekStr + '\'}">');
 						html.push('<strong><em>' + data2[j].leagueName + '</em>');
 						html.push('<var>' + data2[j].matchCode.substr(8,3) + '</var>');
 						html.push('<time>' + data2[j].sellEndTime.substr(11, 5) + '截止</time>');
@@ -144,7 +144,7 @@ _.a5 = {
 					html.push("<div class='tip tip2'>"+ data[i].dayKey +"(" + data[i].dayOfWeekStr + ")<b class='fr'>比赛场次：<span>" + data[i].matchCount + "场</span></b></div><ul>");
 					for (j; j < jlen; j++) {
 						var betCounter = data2[j].betCounter ? data2[j].betCounter.split(',') : ["-", "-", "-"];
-						html.push('<li class="' + data2[j].leagueName + '"><div class="jc_line1 jc_line11"  data="{no:' + data2[j].matchCode + ',end:false,name:\'' + data[i].dayOfWeekStr + '0' + (j + 1).addZero() + '\',h:\'' + data2[j].hostName + '\',g:\'' + data2[j].guestName + '\',rq:\'' + data2[j].rate + '\',dw:\'' + data[i].dayOfWeekStr + '\'}">');
+						html.push('<li class="' + data2[j].leagueName + '"><div class="jc_line1 jc_line11"  data="{no:' + data2[j].matchCode + ',end:false,name:\'' + data[i].dayOfWeekStr + data2[j].matchCode.substr(8,3)+ '\',h:\'' + data2[j].hostName + '\',g:\'' + data2[j].guestName + '\',rq:\'' + data2[j].rate + '\',dw:\'' + data[i].dayOfWeekStr + '\'}">');
 						html.push('<strong><em>' + data2[j].leagueName + '</em>');
 						html.push('<var>' + data2[j].matchCode.substr(8,3)  + '</var>');
 						html.push('<time>' + data2[j].sellEndTime.substr(11, 5) + '截止</time>');
@@ -222,7 +222,7 @@ _.a6 = {
           html.push("<div class='tip tip2'>"+ data[i].dayKey +"(" + data[i].dayOfWeekStr + ")<b class='fr'>比赛场次：<span>" + data[i].matchCount + "场</span></b></div><ul>");
           for (j; j < jlen; j++) {
             var betCounter = data2[j].betCounter ? data2[j].betCounter.split(',') : ["-", "-", "-"];
-            html.push('<li class="' + data2[j].leagueName + '"><div class="jc_line1 jc_line3"  data="{no:' + data2[j].matchCode + ',end:false,name:\'' + data[i].dayOfWeekStr + '0' + (j + 1).addZero() + '\',h:\'' + data2[j].hostName + '\',g:\'' + data2[j].guestName + '\',rq:\'' + data2[j].rate + '\',dw:\'' + data[i].dayOfWeekStr + '\'}">');
+            html.push('<li class="' + data2[j].leagueName + '"><div class="jc_line1 jc_line3"  data="{no:' + data2[j].matchCode + ',end:false,name:\'' + data[i].dayOfWeekStr+data2[j].matchCode.substr(8,3)+ '\',h:\'' + data2[j].hostName + '\',g:\'' + data2[j].guestName + '\',rq:\'' + data2[j].rate + '\',dw:\'' + data[i].dayOfWeekStr + '\'}">');
             html.push('<strong><em>' + data2[j].leagueName + '</em>');
             html.push('<var>' + data2[j].matchCode.substr(8,3) + '</var>');
             html.push('<time>' + data2[j].sellEndTime.substr(11, 5) + '截止</time>');
@@ -301,7 +301,7 @@ _.a10={
               minV=[vhr,data2[j].matchCode,data2[j].hostName,vh,vhn,vhr,data2[j].guestName,vg,vgn,vgr,data[i].dayOfWeekStr+'0'+(j+1).addZero()];
             }
             Dgp.push(minV);
-            html.push('<div data="{name:\''+data[i].dayOfWeekStr + '0' + (j + 1).addZero()+'\',time:\''+data2[j].sellEndTime.substr(11, 5)+'\',matchCode:\''+data2[j].matchCode+'\',hostName:\''+data2[j].hostName+'\',hostV:\''+vh+'\',hostTitle:\''+vhn+'\',hostRate:\''+vhr+'\',guestName:\''+data2[j].guestName+'\',guestV:\''+vg+'\',guestTitle:\''+vgn+'\',guestRate:\''+vgr+'\'}" id="Y'+data2[j].matchCode+'" onclick="cp2y.buy.addContent(this);">投注</div></li>');
+            html.push('<div data="{name:\''+data[i].dayOfWeekStr +data2[j].matchCode.substr(8,3)+'\',time:\''+data2[j].sellEndTime.substr(11, 5)+'\',matchCode:\''+data2[j].matchCode+'\',hostName:\''+data2[j].hostName+'\',hostV:\''+vh+'\',hostTitle:\''+vhn+'\',hostRate:\''+vhr+'\',guestName:\''+data2[j].guestName+'\',guestV:\''+vg+'\',guestTitle:\''+vgn+'\',guestRate:\''+vgr+'\'}" id="Y'+data2[j].matchCode+'" onclick="cp2y.buy.addContent(this);">投注</div></li>');
           }
           html.push("</ul>");
         }

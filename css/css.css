@@ -142,6 +142,23 @@ color:#fff;border-color:#1E73CD;box-shadow:0px 1px 2px 0 #a6a6a6;font-weight:bol
 #choose a.gb3.yb{background:green;color:#fff;}
 #choose a.gb.lgb{width:270px;line-height:36px;}
 #choose a.gb.lgb em{font-style:normal;padding:0 5px;}
+#choose article{width:40px;height:50px;border:3px #fafafa solid;float:left;margin:10px 7px;border-radius:5px;}
+#choose article.on,#choose article#pks2.on{border-color:#ff2b21;}
+#choose article section{width:36px;height:48px;padding-left:2px;border:1px #d8d8d8 solid;display:block;border-radius:5px;}
+#choose article.on section{border-color:#fafafa;}
+#choose article section.pk1{background:#fff url(data:image/png;base64,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) no-repeat 25px 10px;background-size:9px 35px;}
+#choose article section.pkf1{line-height:18px;}
+#choose article section.pkf2{line-height:15px;font-size:13px;}
+#choose article section.pk2_1{background:#fff url(http://res2.cp2y.com/h5/res/images/pk2_1.png) no-repeat;background-size:contain;}
+#choose article section.pk2_2{background:#fff url(http://res2.cp2y.com/h5/res/images/pk2_2.png) no-repeat;background-size:contain;}
+#choose article section.pk2_3{background:#fff url(http://res2.cp2y.com/h5/res/images/pk2_3.png) no-repeat;background-size:contain;}
+#choose article section.pk2_4{background:#fff url(http://res2.cp2y.com/h5/res/images/pk2_4.png) no-repeat;background-size:contain;}
+#choose article#pks2{width:169px;height:46px;border:3px #fafafa solid;float:left;margin:10px 7px;border-radius:5px;}
+#choose article section.pk3_1{background:#fff url(http://res2.cp2y.com/h5/res/images/pk3_1.png) no-repeat;background-size:contain;}
+#choose article section.pk3_2{background:#fff url(http://res2.cp2y.com/h5/res/images/pk3_2.png) no-repeat;background-size:contain;}
+#choose article section.pk3_3{background:#fff url(http://res2.cp2y.com/h5/res/images/pk3_3.png) no-repeat;background-size:contain;}
+#choose article section.pk3_4{background:#fff url(http://res2.cp2y.com/h5/res/images/pk3_4.png) no-repeat;background-size:contain;}
+#choose article#pks2 section.pk4_1{width:165px;height:44px;background-position:155px 6px;background-size:8px auto;line-height:44px;text-indent:50px;}
 #betLists{position:absolute;left:0;top:45px;width:100%;background:#F7F7F7;display:none;}
 #betList{padding:0 10px 100px;border-top:3px #ddd solid;width:90%;margin:10px auto;}
 #betList li,#betList dd{height:50px;position:relative;border:1px #E4E4E4 solid;border-top:none;background:#fff;padding:10px;}
@@ -211,7 +228,7 @@ background:url(../images/del.png?v=20140202801) right center no-repeat;backgroun
 .IssuesBottom{bottom:0;}
 #clear,#cancelRandoms,#Randoms{display:none;}
 #countDown{position:relative;}
-#assistantB{position:absolute;top:5px;right:5px;width:40px;height:25px;line-height:25px;background:#E1A77F;text-align:center;border-radius:2px;color:#fff;text-indent:0;}
+#assistantB{position:absolute;top:3px;right:5px;width:45px;height:27px;line-height:27px;background:#f7f7f7;text-align:center;border-radius:5px;color:#444;text-indent:0;border:1px #dededd solid;box-shadow:1px 0 2px rgba(0,0,0,.1);}
 #assistantC{position:absolute;display:none;right:5px;top:36px;background:rgba(0,0,0,.75);border-radius:5px;}
 #assistantC a{width:80px;height:30px;display:block;line-height:30px;text-align:center;text-indent:0;color:#fff;}
 #countDown,.tip{width:100%;height:35px;line-height:35px;text-indent:10px;background:#fff;color:#444;border-bottom:1px #cecccc solid;box-shadow:0px 1px 2px 2px rgba(0,0,0,.06);}
@@ -973,7 +990,7 @@ p.dpgL41 span{color:#f60;}
 #VSDetail .VSDs div{height:25px;line-height:25px;background:rgb(240,240,240);text-align:center;}
 #VSDetail .VSDs2{width:80px;height:50px;line-height:50px;top:10px;left:50%;margin-left:-34px;position:absolute;text-align:center;font-size:28px;}
 .VSNav{padding:10px;height:37px;text-align:center;}
-.VSNav a{width:32%;border:1px rgb(221,219,211) solid;height:35px;line-height:35px;text-align:center;background:#fff;float:left;border-right:none;}
+.VSNav a{width:24%;border:1px rgb(221,219,211) solid;height:35px;line-height:35px;text-align:center;background:#fff;float:left;border-right:none;}
 .VSNav a.cur{background:#2889EA;color:#fff;border-color:#2889EA;}
 .VSNav a:first-child{border-radius:4px 0 0 4px;}
 .VSNav a:last-child{border-radius:0 4px 4px 0;border-right:1px rgb(221,219,211) solid;}

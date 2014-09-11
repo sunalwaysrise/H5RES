@@ -16,8 +16,8 @@ cp2y.discoverUtil={
     $("#Discover").show();
   },
   close:function(){
-      $("#Warp").show();
-      $("#Discover").hide();
+    $("#Warp").show();
+    $("#Discover").hide();
   },
   base:function(){
     if(this.matchCode!=this.baseKey){
@@ -44,6 +44,9 @@ cp2y.discoverUtil={
         $("#VSDetail").html(html.join(''));
         //this.thing();
         this.saishi();//新版
+      }else{
+        cp2y.dialog.alert('抱歉，暂无数据');
+        return this.close();
       }
     }else{
       this.close();
@@ -611,8 +614,52 @@ cp2y.discoverUtil={
     }
   },
   daxiaoKey:0,
-  daxiao:function(){},
-  _daxiao:function(){}
+  daxiao:function(){
+    if(this.mid!=this.daxiaoKey){
+      this.daxiaoKey=this.mid;
+      cp2y.dialog.loading();
+      $.getScript(WebAppUrl.zs+'odds/daXiao/'+this.mid+'?callback=cp2y.discoverUtil._daxiao',function(){});
+    }
+  },
+  _daxiao:function(data){
+    cp2y.dialog.clearLoading();
+    var html=[],i=0,M=data.daXiaoList,len=M.length;
+    html.push('<table class="table2 table3 table6">');
+    html.push('<thead><tr><td colspan="2">赔率公司</td><td>主水</td><td>盘口</td><td>客水</td></tr></thead><tbody>');
+    for(i;i<len;i++){
+      a=M[i].lite.split('|');
+      a1=a[0].split(',');
+      a2=a[1].split(',');
+      if(a2[0]>a1[0]){
+        a3=' class="up" >'+a2[0]+'↑';
+      }else if(a2[0]<a1[0]){
+        a3=' class="down">'+a2[0]+'↓';
+      }else{
+        a3='>'+a2[0];
+      }
+      if(a2[2]>a1[2]){
+        a4=' class="up" >'+a2[2]+'↑';
+      }else if(a2[2]<a1[2]){
+        a4=' class="down">'+a2[2]+'↓';
+      }else{
+        a4='>'+a2[2];
+      }
+      html.push('<tr><td rowspan="2">'+M[i].cname+'</td><td>初盘</td><td>'+a1[0]+'</td><td>'+a1[1]+'</td><td>'+a1[2]+'</td></tr>');
+      html.push('<tr><td>现盘</td><td '+a3+'</td><td>'+a2[1]+'</td><td'+a4+'</td></tr>');
+    }
+    if(!data.maxinfo){
+      data.maxinfo={beginDaXiaoZhi1:"-",beginPanKou:"-",beginDaXiaoZhi2:"-",endDaXiaoZhi1:"-",endPanKou:"-",endDaXiaoZhi2:"-"};
+    }
+    if(!data.mininfo){
+      data.mininfo={beginDaXiaoZhi1:"-",beginPanKou:"-",beginDaXiaoZhi2:"-",endDaXiaoZhi1:"-",endPanKou:"-",endDaXiaoZhi2:"-"};
+    }
+    html.push('<tr><td rowspan="2">最大值</td><td>初盘</td><td>'+data.maxinfo.beginDaXiaoZhi1+'</td><td>'+data.maxinfo.beginPanKou+'</td><td>'+data.maxinfo.beginDaXiaoZhi2+'</td></tr>');
+    html.push('<tr><td>现盘</td><td>'+data.maxinfo.endDaXiaoZhi1+'</td><td>'+data.maxinfo.endPanKou+'</td><td>'+data.maxinfo.endDaXiaoZhi2+'</td><td></td></tr>');
+    html.push('<tr><td rowspan="2">最小值</td><td>初盘</td><td>'+data.mininfo.beginDaXiaoZhi1+'</td><td>'+data.mininfo.beginPanKou+'</td><td>'+data.mininfo.beginDaXiaoZhi2+'</td></tr>');
+    html.push('<tr><td>现盘</td><td>'+data.mininfo.endDaXiaoZhi1+'</td><td>'+data.mininfo.endPanKou+'</td><td>'+data.mininfo.endDaXiaoZhi2+'</td><td></td></tr>');
+    html.push('</tbody></table>');
+    $('#lenka3').html(html.join(''));//大小
+  }
 }
 
 $(".VSTitle").live('click',function(){

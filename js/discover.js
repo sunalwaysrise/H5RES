@@ -20,27 +20,27 @@ cp2y.discover={
       }
   },
   leagueInit:function(a,b,t){
-      this.leagueCondition.leagueName=a;//设置联赛名称
-      this.leagueCondition.league=b;//设置联赛ID
-      if(t){
-          $(t).siblings().removeClass('on');$(t).addClass('on');
-      }
-      dom.t.children('b').html(a);
-      cp2y.dialog.loading();
-      $.getScript(WebAppUrl.zs+'league/session/'+b+'?callback=cp2y.discover.getSeason',function(){});//jsonp 获取所有赛季
+    this.leagueCondition.leagueName=a;//设置联赛名称
+    this.leagueCondition.league=b;//设置联赛ID
+    if(t){
+      $(t).siblings().removeClass('on');$(t).addClass('on');
+    }
+    dom.t.children('b').html(a);
+    cp2y.dialog.loading();
+    $.getScript(WebAppUrl.zs+'league/session/'+b+'?callback=cp2y.discover.getSeason',function(){});//jsonp 获取所有赛季
   },
   getSeason:function(data){
-      cp2y.dialog.clearLoading();
-      if(data.flag==1){
-          var i=0,data=data.scorewardlist,len=data.length,html=[];
-          for(i;i<len;i++){
-              html.push('<option value='+data[i].sid+'>'+data[i].name+'</option>');
-          }
-          $('#chooseSeason').html(html.join(''));
-          this.leagueCondition.season=data[0].sid;//自动设置赛季
-          $('#curSeason').html(cp2y.discover.leagueCondition.leagueName+data[0].name);
-          this.setSeason();
+    cp2y.dialog.clearLoading();
+    if(data.flag==1){
+      var i=0,data=data.scorewardlist,len=data.length,html=[];
+      for(i;i<len;i++){
+        html.push('<option value='+data[i].sid+'>'+data[i].name+'</option>');
       }
+      $('#chooseSeason').html(html.join(''));
+      this.leagueCondition.season=data[0].sid;//自动设置赛季
+      $('#curSeason').html(cp2y.discover.leagueCondition.leagueName+data[0].name);
+      this.setSeason();
+    }
   },
   setSeason:function(o){//用户选择选择赛季
     if(o){
