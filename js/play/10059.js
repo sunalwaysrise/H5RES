@@ -60,16 +60,7 @@ _.a0 = {
 						html.push('<var>' + data2[j].matchCode.substr(8,3) + '</var>');
 						html.push('<time>' + data2[j].sellEndTime.substr(11, 5) + '截止</time>');
 						html.push('</strong><div>');
-						var rq='';
-						if(cp2y.buy.jcType==1){
-							rq= data2[j].rate;
-							if(rq>0){
-								rq="<var class='rr'>(+"+rq+")</var>";
-							}else{
-								rq="<var class='yy'>("+rq+")</var>";
-							}
-						}
-						html.push('<i data="3" data_s="' + data2[j].sheng + '" data_class="a' + data2[j].matchCode + '_3" class="jcBet a' + data2[j].matchCode + '_3"><span>' + data2[j].hostName +rq+ '</span><b>主胜' + data2[j].sheng + '</b></i>');
+						html.push('<i data="3" data_s="' + data2[j].sheng + '" data_class="a' + data2[j].matchCode + '_3" class="jcBet a' + data2[j].matchCode + '_3"><span>' + data2[j].hostName + '</span><b>主胜' + data2[j].sheng + '</b></i>');
 						
 						html.push('<i data="1" data_s="' + data2[j].ping + '" data_class="a' + data2[j].matchCode + '_1" class="jcBet a' + data2[j].matchCode + '_1"><span>VS</span><b>平' + data2[j].ping + '</b></i>');
 						html.push('<i data="0" data_s="' + data2[j].fu + '" data_class="a' + data2[j].matchCode + '_0" class="jcBet a' + data2[j].matchCode + '_0"><span>' + data2[j].guestName + '</span><b>主负' + data2[j].fu + '</b></i>');
@@ -111,16 +102,6 @@ _.a1 = {
 	playType: "让球胜平负",
 	maxMatch: 8,
 	url: "/lottery/rqspf/",
-	bet: _.a0.bet
-};
-
-_.a5 = {
-	jcType:5,
-	bt: _.bt,
-	playName: _.playName,
-	playType: "混合投注",
-	maxMatch: 8,
-	url: "/lottery/jzhh/",
 	bet: function () {
 		$.ajax({
 			url: WebAppUrl.HOME_APP_URL + this.url,
@@ -140,36 +121,28 @@ _.a5 = {
 				for (i; i < len; i++) {
 					var j = 0,
 						data2 = data[i].matches,
-						jlen = data2.length;
+						jlen = data2.length,rq;
 					html.push("<div class='tip tip2'>"+ data[i].dayKey +"(" + data[i].dayOfWeekStr + ")<b class='fr'>比赛场次：<span>" + data[i].matchCount + "场</span></b></div><ul>");
 					for (j; j < jlen; j++) {
 						var betCounter = data2[j].betCounter ? data2[j].betCounter.split(',') : ["-", "-", "-"];
-						html.push('<li class="' + data2[j].leagueName + '"><div class="jc_line1 jc_line11"  data="{no:' + data2[j].matchCode + ',end:false,name:\'' + data[i].dayOfWeekStr + data2[j].matchCode.substr(8,3)+ '\',h:\'' + data2[j].hostName + '\',g:\'' + data2[j].guestName + '\',rq:\'' + data2[j].rate + '\',dw:\'' + data[i].dayOfWeekStr + '\'}">');
+						html.push('<li class="' + data2[j].leagueName + '"><div class="jc_line1"  data="{no:' + data2[j].matchCode + ',end:false,name:\'' + data[i].dayOfWeekStr+data2[j].matchCode.substr(8,3)+ '\',h:\'' + data2[j].hostName + '\',g:\'' + data2[j].guestName + '\',rq:\'' + data2[j].rate + '\',dw:\'' + data[i].dayOfWeekStr + '\'}">');
 						html.push('<strong><em>' + data2[j].leagueName + '</em>');
-						html.push('<var>' + data2[j].matchCode.substr(8,3)  + '</var>');
+						html.push('<var>' + data2[j].matchCode.substr(8,3) + '</var>');
 						html.push('<time>' + data2[j].sellEndTime.substr(11, 5) + '截止</time>');
-						html.push('</strong>');
-						/* 胜平负 开始 */
-						html.push('<div class="mb10"><i data="3" data_s="' + data2[j].sheng + '" data_class="a' + data2[j].matchCode + '_3" class="jcBet a' + data2[j].matchCode + '_3"><span>' + data2[j].hostName + '</span><b>主胜' + data2[j].sheng + '</b></i>');
+						html.push('</strong><div>');
+                        rq= data2[j].rate;
+                        if(rq>0){
+                            rq="<var class='rr'>(+"+rq+")</var>";
+                        }else{
+                            rq="<var class='yy'>("+rq+")</var>";
+                        }
+						html.push('<i data="3" data_s="' + data2[j].rqSheng + '" data_class="a' + data2[j].matchCode + '_3" class="jcBet a' + data2[j].matchCode + '_3"><span>' + data2[j].hostName +rq+ '</span><b>主胜' + data2[j].rqSheng + '</b></i>');
 						
-						html.push('<i data="1" data_s="' + data2[j].ping + '" data_class="a' + data2[j].matchCode + '_1" class="jcBet a' + data2[j].matchCode + '_1"><span>VS</span><b>平' + data2[j].ping + '</b></i>');
-						html.push('<i data="0" data_s="' + data2[j].fu + '" data_class="a' + data2[j].matchCode + '_0" class="jcBet a' + data2[j].matchCode + '_0"><span>' + data2[j].guestName + '</span><b>主负' + data2[j].fu + '</b></i>');
-						html.push('</div>');
-						/* 让球胜平负 开始 */
-						var rq='';
-						rq= data2[j].rate;
-						if(rq>0){
-							rq="<var class='rr'>(+"+rq+")</var>";
-						}else{
-							rq="<var class='yy'>("+rq+")</var>";
-						}
-						html.push('<div><i data="403" data_s="' + data2[j].rqSheng + '" data_class="a' + data2[j].matchCode + '_403" class="jcBet a' + data2[j].matchCode + '_403"><span>' + data2[j].hostName +rq+'</span><b>主胜' + data2[j].rqSheng + '</b></i>');
-						
-						html.push('<i data="401" data_s="' + data2[j].rqPing + '" data_class="a' + data2[j].matchCode + '_401" class="jcBet a' + data2[j].matchCode + '_401"><span>VS</span><b>平' + data2[j].rqPing + '</b></i>');
-						html.push('<i data="400" data_s="' + data2[j].rqFu + '" data_class="a' + data2[j].matchCode + '_400" class="jcBet a' + data2[j].matchCode + '_400"><span>' + data2[j].guestName + '</span><b>主负' + data2[j].rqFu + '</b></i>');
-						html.push('</div>');
-						/* 让球胜平负 截止 */
-						html.push('</div><div class="jc_line2"><table class="jc_table"  onclick="cp2y.discoverUtil.init('+data2[j].matchCode+');">');
+						html.push('<i data="1" data_s="' + data2[j].rqPing + '" data_class="a' + data2[j].matchCode + '_1" class="jcBet a' + data2[j].matchCode + '_1"><span>VS</span><b>平' + data2[j].rqPing + '</b></i>');
+                      
+						html.push('<i data="0" data_s="' + data2[j].rqFu + '" data_class="a' + data2[j].matchCode + '_0" class="jcBet a' + data2[j].matchCode + '_0"><span>' + data2[j].guestName + '</span><b>主负' + data2[j].rqFu + '</b></i>');
+                      
+						html.push('</div></div><div class="jc_line2"><table class="jc_table"  onclick="cp2y.discoverUtil.init('+data2[j].matchCode+');">');
 						html.push('<tr><td>两队排名</td><td>'+(data2[j].hostRank ? data2[j].hostRank : '--')+'</td><td>'+(data2[j].visitRank ? data2[j].visitRank : '--')+'</td><td rowspan="4" style="display:none;"></td></tr>');
 						var historyScore=(data2[j].historyScore?data2[j].historyScore:'-,-,-').split(',');
 						html.push('<tr><td>历史交锋</td><td colspan="2">主队'+historyScore[0]+'胜'+historyScore[1]+'平'+historyScore[2]+'负</td></tr>');
@@ -198,6 +171,96 @@ _.a5 = {
 			}
 		});
 	}
+};
+
+_.a5 = {
+  jcType:5,
+  bt: _.bt,
+  playName: _.playName,
+  playType: "混合投注",
+  maxMatch: 8,
+  url: "/lottery/jzhh/",
+  bet: function () {
+    $.ajax({
+      url: WebAppUrl.HOME_APP_URL + this.url,
+      beforeSend: function () {
+        cp2y.dialog.loading();
+      },
+      success: function (data) {
+        cp2y.dialog.clearLoading();
+        cp2y.buy.sels = data.sels.split(',');
+        cp2y.buy.betType = data.betType;
+        var leagues = data.leagues.split(','),
+            data = data.data,
+            html = [],
+            i = 0,
+            len = data.length,classBet,pl;
+        cp2y.buy.issue = data[0].issueId;
+        for (i; i < len; i++) {
+          var j = 0,
+              data2 = data[i].matches,
+              jlen = data2.length;
+          html.push("<div class='tip tip2'>"+ data[i].dayKey +"(" + data[i].dayOfWeekStr + ")<b class='fr'>比赛场次：<span>" + data[i].matchCount + "场</span></b></div><ul>");
+          for (j; j < jlen; j++) {
+            var betCounter = data2[j].betCounter ? data2[j].betCounter.split(',') : ["-", "-", "-"];
+            html.push('<li class="' + data2[j].leagueName + '"><div class="jc_line1 jc_line11"  data="{no:' + data2[j].matchCode + ',end:false,name:\'' + data[i].dayOfWeekStr + data2[j].matchCode.substr(8,3)+ '\',h:\'' + data2[j].hostName + '\',g:\'' + data2[j].guestName + '\',rq:\'' + data2[j].rate + '\',dw:\'' + data[i].dayOfWeekStr + '\'}">');
+            html.push('<strong><em>' + data2[j].leagueName + '</em>');
+            html.push('<var>' + data2[j].matchCode.substr(8,3)  + '</var>');
+            html.push('<time>' + data2[j].sellEndTime.substr(11, 5) + '截止</time>');
+            html.push('</strong>');
+            /* 胜平负 开始 */
+            (data2[j].sheng)?(function(){pl=data2[j].sheng;classBet='jcBet'})():(function(){pl='--';classBet=""})();
+            html.push('<div class="mb10"><i data="3" data_s="' + pl + '" data_class="a' + data2[j].matchCode + '_3" class="'+classBet+' a' + data2[j].matchCode + '_3"><span>' + data2[j].hostName + '</span><b>主胜' + pl + '</b></i>');
+            (data2[j].ping)?(function(){pl=data2[j].ping;classBet='jcBet'})():(function(){pl='--';classBet=""})();
+            html.push('<i data="1" data_s="' + pl + '" data_class="a' + data2[j].matchCode + '_1" class="'+classBet+' a' + data2[j].matchCode + '_1"><span>VS</span><b>平' + pl + '</b></i>');
+            (data2[j].fu)?(function(){pl=data2[j].fu;classBet='jcBet'})():(function(){pl='--';classBet=""})();
+            html.push('<i data="0" data_s="' +pl+ '" data_class="a' + data2[j].matchCode + '_0" class="'+classBet+' a' + data2[j].matchCode + '_0"><span>' + data2[j].guestName + '</span><b>主负' + pl+ '</b></i>');
+            html.push('</div>');
+            /* 让球胜平负 开始 */
+            var rq='';
+            rq= data2[j].rate;
+            if(rq>0){
+                rq="<var class='rr'>(+"+rq+")</var>";
+            }else{
+                rq="<var class='yy'>("+rq+")</var>";
+            }
+            (data2[j].rqSheng)?(function(){pl=data2[j].rqSheng;classBet='jcBet'})():(function(){pl='--';classBet=""})();
+            html.push('<div><i data="403" data_s="' +pl+ '" data_class="a' + data2[j].matchCode + '_403" class="'+classBet+' a' + data2[j].matchCode + '_403"><span>' + data2[j].hostName +rq+'</span><b>主胜' +pl+ '</b></i>');
+            (data2[j].rqPing)?(function(){pl=data2[j].rqPing;classBet='jcBet'})():(function(){pl='--';classBet=""})();
+            html.push('<i data="401" data_s="' +pl+ '" data_class="a' + data2[j].matchCode + '_401" class="'+classBet+' a' + data2[j].matchCode + '_401"><span>VS</span><b>平' +pl+ '</b></i>');
+            (data2[j].rqFu)?(function(){pl=data2[j].rqFu;classBet='jcBet'})():(function(){pl='--';classBet=""})();
+            html.push('<i data="400" data_s="' +pl+ '" data_class="a' + data2[j].matchCode + '_400" class="'+classBet+' a' + data2[j].matchCode + '_400"><span>' + data2[j].guestName + '</span><b>主负' +pl+ '</b></i>');
+            html.push('</div>');
+            /* 让球胜平负 截止 */
+            html.push('</div><div class="jc_line2"><table class="jc_table"  onclick="cp2y.discoverUtil.init('+data2[j].matchCode+');">');
+            html.push('<tr><td>两队排名</td><td>'+(data2[j].hostRank ? data2[j].hostRank : '--')+'</td><td>'+(data2[j].visitRank ? data2[j].visitRank : '--')+'</td><td rowspan="4" style="display:none;"></td></tr>');
+            var historyScore=(data2[j].historyScore?data2[j].historyScore:'-,-,-').split(',');
+            html.push('<tr><td>历史交锋</td><td colspan="2">主队'+historyScore[0]+'胜'+historyScore[1]+'平'+historyScore[2]+'负</td></tr>');
+            html.push('<tr><td>平均赔率</td><td colspan="2"><table class="jc_table2"><tr><td>' + (data2[j].odds3 ? data2[j].odds3 : '--') + '</td><td>' + (data2[j].odds1 ? data2[j].odds1 : '--') + '</td><td>' + (data2[j].odds0 ? data2[j].odds0 : '--') + '</td></tr></table></td></tr>');
+            html.push('<tr><td>投注比例</td><td colspan="2"><table class="jc_table2"><tr><td>' + betCounter[0] + '</td><td>' + betCounter[1] + '</td><td>' + betCounter[2] + '</td></tr></table></td></tr>');
+            html.push('</table></div></li>');
+          }
+          html.push("</ul>");
+        }
+        jcDom.choose.html(html.join(''));
+        i = 0;
+        len = leagues.length;
+        html = [];
+        for (i; i < len; i++) {
+            html.push('<a class="on">' + leagues[i] + '</a>');
+        }
+        jcDom.lcs.html(html.join(''));
+        $("#choose .jcBet").click(function () {
+            cp2y.buy.select($(this), false);
+        });
+        cp2y.buy.showLine2();
+        window.scrollTo(0,0);
+      },
+      error: function () {
+        cp2y.dialog.clearLoading();
+      }
+    });
+  }
 };
 
 _.a6 = {

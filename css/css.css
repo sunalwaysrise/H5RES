@@ -446,7 +446,7 @@ background-repeat:no-repeat;background-size:contain;display:block;-moz-animation
 #DBox .DBoxB:last-child{border-left:0;width:149px;}
 #DBox .DBoxB2{border-right:0;width:300px!important;}
 #DBox2{position:absolute;z-index:9998;width:300px;height:130px;background:#fff;display:none;}
-#DBoxC2{width:300px;height:90px;line-height:90px;text-align:center;font-weight:bold;float:left;}
+#DBoxC2{width:300px;height:70px;line-height:25px;padding-top:20px;text-align:center;font-weight:bold;float:left;}
 #DBox2 .DBoxB2{width:300px;height:38px;text-align:center;float:left;line-height:38px;border-top:1px #C0ECFE solid;background:#E9F9FE;color:#43C1F8;}
 .btn2{margin:8px;background:#0894D2;height:40px;text-align:center;line-height:40px;color:#fff;border-radius:5px;}
 .table1{width:300px;margin:10px auto 0;margin-bottom:45px;}
@@ -532,6 +532,8 @@ background:-o-linear-gradient(top,#fff,#f9f9f9);}
 .jcScheme2 td a{color:#1AB5F7;}
 .jcScheme2{width:100%;text-align:center;border-top:1px #ddd solid;}
 .jcScheme2 td{border:1px #ddd solid;padding:5px 0;}
+.jcScheme2 td.txcl{text-align:left;padding:8px 0;}
+.jcScheme2 td.txcl i{font-style:normal;margin:0 5px;}
 .jcScheme2 thead{background:#F2F2F2;}
 .red{color:red;}
 .green{color:green;}
