@@ -51,7 +51,7 @@ body{color:#000;font-family:songti,YaHei,microsoft YaHei,Helvetica,Tahoma,sans-s
 .banner nav a{width:6px;height:6px;border-radius:3px;background:rgba(0,0,0,0.5);display:inline-block;margin:0 2px;}
 .banner nav a.cur{background:rgba(255,255,255,.75);}
 #bannerWarp li{float:left;}
-#bannerWarp li img{width:100%;}
+#bannerWarp li img{width:100%;max-height:200px;}
 #closeBanner{position:absolute;right:5px;top:50%;margin-top:-15px;width:30px;height:30px;
 background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAb1BMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+pUA8cAAAAJXRSTlMAAQIDBQoLDA4PHCEiKywtPD1ES0xNVFVWWVpbaWpxcnZ3fH2AuxGnOQAAAVJJREFUeF7t1sFygjAQgOEFTEGwCEghKkgw+/7P2M6U2Ew3JOt48MJ/c8YPMko2wDva2orySg7z/T4Pssqjp2jW3NDq1mRsKk4a/6VPgmc/FTpSJYPGLa7UxiG7u+Bql53fxmf0dPbfu0Vvrc+WGOi4boUK4fkjuGh1SKVNZHpQoYXv9QIKgLj/s30MUCxY71dwg0sCfnRnWxC41LhtNFlfN9p8kAZPkRPn+Kgz2rqQKXfiGqmmFisnlkg1tSideESqqcXRiRVSTS0qJ9ZINbWoWbj/xT3B7GVTrfg/GNUj+6/qqJb8h4Tqiv94Up0HNoY01miyMdhbsuNsScgew8BYo61hkMFKpwWoIu3Rqk8LzxhiD0AlXhm9Lwz9L/CV+I+bBLztrvyDjpasH7EJhCvdh/sRWImWvla0ArhlzWTTqcmefJWq5TBrPQ+yziN4S1tb3/Yblmvv3aqwAAAAAElFTkSuQmCC) right center no-repeat;
 background-size: contain;}
@@ -109,6 +109,7 @@ background-position:center center;background-repeat:no-repeat;background-size:co
 #changePlayType span{width:100%;line-height:5px;display:inline-block;height:5px;float:left}
 #choose{margin-top:10px;z-index:9991;padding:5px 5px 60px 5px;overflow:hidden;}
 #choose p{text-indent:5px;float:left;width:100%;color:#888;}
+#choose p b{font-weight:normal;color:#C80406;}
 #choose a{width:38px;text-align:center;margin:5px;line-height:38px;height:38px;border-radius:20px;font-size:18px;border:1px #E0E0E0 solid;float:left;background:#fff;
 box-shadow: 0px 1px 2px 0 #f0f0f0;}
 #choose a.gb{color:#DA2013;}
@@ -535,6 +536,7 @@ background:-o-linear-gradient(top,#fff,#f9f9f9);}
 .jcScheme2 td.txcl{text-align:left;padding:8px 0;}
 .jcScheme2 td.txcl i{font-style:normal;margin:0 5px;}
 .jcScheme2 thead{background:#F2F2F2;}
+.jcScheme3 tbody tr td{font-size:12px;}
 .red{color:red;}
 .green{color:green;}
 #userUtil{display:none;position:fixed;left:0;right:0;bottom:0;top:0;background:#fff;z-index:9999;}
@@ -965,7 +967,8 @@ header.newsHeader a {height:45px;}
 #dpgL1 div.cur:nth-child(2) article p{color:#fff!important;}
 
 #dpgL3{height:25px;line-height:25px;text-align:left;padding:0 5px;color:#eab35d;font-size:11px;background:#fffbef;}
-#dpgL4{width:100%;height:150px;left:0;bottom:0;background:rgb(231,231,231);padding:35px 0 20px 0;}
+#dpgL4{width:100%;height:150px;left:0;bottom:0;background:rgb(231,231,231);padding:35px 0 20px 0;position:relative;}
+#openPD{width:100px;height:20px;line-height:20px;position:absolute;left:50%;margin-left:-50px;text-align:center;top:10px;color:#2889EA;}
 .dpgL4{height:42px;font-size:14px;text-align:center;width:230px;margin:0 auto;}
 .dpgL4 p{width:30px;text-align:center;color:#2c2c2c;}
 .dpgL4 p,.dpgL4 span{float:left;line-height:40px;height:40px;font-size:18px;}
@@ -975,7 +978,7 @@ header.newsHeader a {height:45px;}
 .dpgL4 span{width:85px;background:rgb(253,253,253);height:40px;border-top:1px rgb(213,213,213) solid;border-bottom:1px rgb(213,213,213) solid;}
 #dpgL4 p:nth-child(2){text-align:center;font-size:11px;color:#888;}
 .dpgL3{width:290px;height:40px;line-height:40px;margin:0 auto;text-align:center;background:#2889EA;border-radius:20px;color:#fff;font-size:16px;}
-p.dpgL41{font-size:13px!important;height:22px;line-height:22px;padding-top:10px;color:#2c2c2c!important;}
+p.dpgL41{font-size:13px!important;height:22px;line-height:22px;padding-top:10px;color:#2c2c2c!important;text-align:center;}
 p.dpgL41 span{color:#f60;}
 .dpgL42{text-align:center;line-height:22px;height:33px;color:#888;font-size:12px;}
 
@@ -1008,3 +1011,6 @@ p.dpgL41 span{color:#f60;}
 .VST62{color:rgb(253,110,69);}
 #getST{display:none;}
 #STC{margin-top:45px;}
+#pdDetail{display:none;}
+#pdDetailCon{padding:50px 5px 5px 5px;}
+.pkIcon{padding-right:3px;}

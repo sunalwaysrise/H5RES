@@ -26,10 +26,47 @@ cp2y.util={
 			len2=b1.length;
 		}
 		if(lotteryId ==10059 || lotteryId ==10058){
-			for(j;j<len2;j++){
-				bolls.push('<em>'+b1[j]+'</em>');
-			}
-		}else{
+          for(j;j<len2;j++){
+            bolls.push('<em>'+b1[j]+'</em>');
+          }
+		}else if(lotteryId==10082){
+          var pk,pk1,pk2;
+          for(j;j<len2;j++){
+            pk=[b1[j].substring(0,1),b1[j].substring(1,3)];
+            switch(pk[0]){
+              case '1':
+                pk1='黑桃';
+                break;
+              case '2':
+                pk1='红桃';
+                break;
+              case '3':
+                pk1='梅花';
+                break;
+              case '4':
+                pk1='方块';
+                break;
+            }
+            switch(pk[1]){
+              case '01':
+                pk2='A';
+                break;
+              case '11':
+                pk2='J';
+                break;
+              case '12':
+                pk2='Q';
+                break;
+              case '13':
+                pk2='K';
+                break;
+              default:
+                pk2=pk[1];
+                break;
+            }
+            bolls.push('<var class="pkIcon">'+pk1+':'+pk2+'</var>');
+          }
+        }else{
 			for(j;j<len2;j++){
 				bolls.push('<b class="draw1">'+b1[j]+'</b>');
 			}
@@ -352,24 +389,24 @@ $.extend(String.prototype,{
 			idcard_array = idcard.split('');
 		//地区检验
 		if (!area[parseInt(idcard.substr(0, 2))]){
-			return errors[4];
+          return errors[4];
 		}
 		//身份号码位数及格式检验
 		switch(idcard.length) {
-			case 15:
-				var ereg;
-				if ((parseInt(idcard.substr(6, 2)) + 1900) % 4 == 0 || ((parseInt(idcard.substr(6, 2)) + 1900) % 100 == 0 && (parseInt(idcard.substr(6, 2)) + 1900) % 4 == 0 )){
-					ereg = /^[1-9][0-9]{5}[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}$/;
-				}else{
-					ereg = /^[1-9][0-9]{5}[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|1[0-9]|2[0-8]))[0-9]{3}$/;
-				}
-				if (ereg.test(idcard)){
-					return errors[0];
-				}else{
-					return errors[2];
-				}
-				break;
-			case 18:
+          case 15:
+            var ereg;
+            if ((parseInt(idcard.substr(6, 2)) + 1900) % 4 == 0 || ((parseInt(idcard.substr(6, 2)) + 1900) % 100 == 0 && (parseInt(idcard.substr(6, 2)) + 1900) % 4 == 0 )){
+                ereg = /^[1-9][0-9]{5}[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}$/;
+            }else{
+                ereg = /^[1-9][0-9]{5}[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|1[0-9]|2[0-8]))[0-9]{3}$/;
+            }
+            if (ereg.test(idcard)){
+                return errors[0];
+            }else{
+                return errors[2];
+            }
+            break;
+		  case 18:
 				if (parseInt(idcard.substr(6, 4)) % 4 == 0 || (parseInt(idcard.substr(6, 4)) % 100 == 0 && parseInt(idcard.substr(6, 4)) % 4 == 0)){
 					ereg = /^[1-9][0-9]{5}(19|20)[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}[0-9Xx]$/;
 				//闰年出生日期的合

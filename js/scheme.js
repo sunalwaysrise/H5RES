@@ -179,14 +179,15 @@ cp2y.user={
         html.push('</body></table>');
       }
       if(data.schemeData.schemeContent[0].betType==430 ){
-        var S=data.schemeData.schemeContent[0].schemeItems['2串1'];
+        var S=data.schemeData.schemeContent[0].schemeItems['2串1'],o1,o2;
         i=0;len=S.length;
         html.push('<p class="jcScheme1">配对明细</p><table class="jcScheme2"><tbody>');
         for(i;i<len;i++){
-          html.push('<tr><td class="txcl"><i>'+(i+1)+'</i>'+S[i].match[0]+'('+S[i].matchbet[0]+S[i].matchodds[0]+') X '+S[i].match[1]+'('+S[i].matchbet[1]+S[i].matchodds[1]+')</td><td></td></tr>');
+          o1=S[i].matchodds[0]?S[i].matchodds[0]:'--';
+          o2=S[i].matchodds[1]?S[i].matchodds[1]:'--';
+          html.push('<tr><td class="txcl"><i>'+(i+1)+'</i>'+S[i].match[0]+'('+S[i].matchbet[0]+o1+') X '+S[i].match[1]+'('+S[i].matchbet[1]+o2+')</td><td></td></tr>');
         }
         html.push('</body></table>');
-        
       }
     }else{
       html.push('<div class="userTip4">该方案未公开</div>');
@@ -232,10 +233,20 @@ cp2y.user={
     html.push('</div>');
     html.push('<div class="traceDetail">');
     if(len>1){
-      var len2=len;
+      var len2=len,klpk;
       if(len2>3){len2=3;}
       for(i;i<len2;i++){
-        html.push('<div class="traceDetailL"><div><p>'+data.traceData[i].issue+'期：'+data.traceData[i].multiple+'倍，'+data.traceData[i].money+'元</p><p>开奖号码：'+data.traceData[i].drawNumber+'</p></div><div>');
+        if(data.lotteryId==10082){
+          if(data.traceData[i].drawNumber=="未开奖"){
+            klpk=data.traceData[i].drawNumber;
+          }else{
+            klpk=cp2y.util.setboll(data.traceData[i].drawNumber,10082);
+          }
+          //klpk=cp2y.util.setboll(data.traceData[i].drawNumber,10082);
+        }else{
+          klpk=data.traceData[i].drawNumber;
+        }
+        html.push('<div class="traceDetailL"><div><p>'+data.traceData[i].issue+'期：'+data.traceData[i].multiple+'倍，'+data.traceData[i].money+'元</p><p>开奖号码：'+klpk+'</p></div><div>');
         if(data.traceData[i].prize){
             html.push('<p>'+data.traceData[i].status+'</p><p class="has501">'+data.traceData[i].prize+'元</p>');
         }else{
@@ -249,8 +260,19 @@ cp2y.user={
       }
     }else{
       //未追号
+      var klpk;
       for(i;i<len;i++){
-        html.push('<div class="traceDetailL"><div><p>'+data.traceData[i].issue+'期：'+data.traceData[i].multiple+'倍，'+data.traceData[i].money+'元</p><p>开奖号码：'+data.traceData[i].drawNumber+'</p></div><div>');
+        if(data.lotteryId==10082){
+          if(data.traceData[i].drawNumber=="未开奖"){
+            klpk=data.traceData[i].drawNumber;
+          }else{
+            klpk=cp2y.util.setboll(data.traceData[i].drawNumber,10082);
+          }
+          //klpk=cp2y.util.setboll(data.traceData[i].drawNumber,10082);
+        }else{
+          klpk=data.traceData[i].drawNumber;
+        }
+        html.push('<div class="traceDetailL"><div><p>'+data.traceData[i].issue+'期：'+data.traceData[i].multiple+'倍，'+data.traceData[i].money+'元</p><p>开奖号码：'+klpk+'</p></div><div>');
         if(data.traceData[i].prize){
           html.push('<p>'+data.traceData[i].status+'</p><p class="has501">'+data.traceData[i].prize+'元</p>');
         }else{
@@ -367,6 +389,7 @@ cp2y.user={
       success:function(data){
         cp2y.user.sId=sId;
         cp2y.dialog.clearLoading();
+        cp2y.user.lotteryId=data.lotteryId;
         var html=[];
         schemeDom.t.html(data.lotteryName+"-方案");
         html.push(cp2y.user.schemeStatus(data));
@@ -406,9 +429,18 @@ cp2y.user={
       url:WebAppUrl.HOME_APP_URL+"/lottery/scheme_join_trace_detail",
       data:{"schemeId":id,"type":t},
       success:function(data){
-        var i=3,len=data.traceData.length,html=[];
+        var i=3,len=data.traceData.length,html=[],klpk;
         for(i;i<len;i++){
-          html.push('<div class="traceDetailL"><div><p>'+data.traceData[i].issue+'期：'+data.traceData[i].multiple+'倍，'+data.traceData[i].money+'元</p><p>开奖号码：'+data.traceData[i].drawNumber+'</p></div><div>');
+          if(cp2y.user.lotteryId==10082){
+            if(data.traceData[i].drawNumber=="未开奖"){
+              klpk=data.traceData[i].drawNumber;
+            }else{
+              klpk=cp2y.util.setboll(data.traceData[i].drawNumber,10082);
+            }
+          }else{
+            klpk=data.traceData[i].drawNumber;
+          }
+          html.push('<div class="traceDetailL"><div><p>'+data.traceData[i].issue+'期：'+data.traceData[i].multiple+'倍，'+data.traceData[i].money+'元</p><p>开奖号码：'+klpk+'</p></div><div>');
           if(data.traceData[i].prize){
             html.push('<p>'+data.traceData[i].status+'</p><p class="has501">'+data.traceData[i].prize+'元</p>');
           }else{

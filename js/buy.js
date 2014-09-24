@@ -3,358 +3,358 @@
  */
 var autoRunMark;
 cp2y.issues={
-	hideNext:function(e){
-		$(e).next().hide();
-	},
-	simpleIssues:[],
-	getSimpleIssues:function(p){
-		dom.MainStep31.show();
-		dom.MainStep32.hide();
-		dom.Zhuihao.html('高级追号');
-		dom.ZhihaoTi.html('普通追号');
-		dom.Zhuihao.off().on('click',function(){
-			$(this).html('普通追号');
-			dom.ZhihaoTi.html('高级追号');
-			cp2y.issues.getIssues();
-		});
-		if(p==1){
-			dom.Issues.focus();
-			dom.Issues.select();
-		}else{
-			dom.Muls.focus();
-			dom.Muls.select();
-		}
-		$.ajax({
-			url:WebAppUrl.HOME_APP_URL+"/lottery/commontraceIssueList",
-			anysc:false,
-			data:{lotteryId:_.bt,random:new Date().getTime()},
-			beforeSend:function(){
-				cp2y.dialog.loading();
-			},
-			success:function(data){
-				cp2y.dialog.clearLoading();
-				if(data.flag==1){
-					var i=0,data,html=[],len,t;
-					if(BT.lotto.indexOf(_.bt)!=-1 || BT.sz.indexOf(_.bt)!=-1){
-						data=data.dataList;len=data.length;
-						cp2y.issues.simpleIssues=data;
-						html.push('<li><input id="simpleIss1" name="simpleIssueBtn" class="radioType" onclick="cp2y.issues.setSimple3(13);" type="radio"><label for="simpleIss1">追半个月(13期)</label></li>');
-						html.push('<li><input id="simpleIss2" name="simpleIssueBtn" class="radioType" onclick="cp2y.issues.setSimple3(30);" type="radio"><label for="simpleIss2">追1个月(30期)</label></li>');
-						html.push('<li><input id="simpleIss3" name="simpleIssueBtn" class="radioType" onclick="cp2y.issues.setSimple3('+len+');" type="radio"><label for="simpleIss3">最大('+len+'期)</label></li>');
-					}else{
-						data=data.dataList;len=data.length;
-						cp2y.issues.simpleIssues=data;
-						for(i;i<3;i++){
-							t=i==0?"今天":i==1?"明天":"后天";
-							html.push('<li><input id="simpleIss'+i+'" class="issueCheck simpleIssueBtn" onclick="cp2y.issues.setSimple();" type="checkbox" data="'+i+'">');
-							html.push('<label for="simpleIss'+i+'">'+t+data[i].issueList.length+'期</label></li>');
-						}
-					}
-					dom.SimpleIssues.html(html.join(''));
-					
-				}
-			},
-			error:function(){cp2y.dialog.clearLoading();}
-		});
-	},
-	setSimple:function(){
-		cp2y.buy.issues={};
-		var data,i=0,len,ty=$("#muls").val(),simpleIssueBtn=$(".simpleIssueBtn"),datas=[];
-		for(i;i<3;i++){
-			if(simpleIssueBtn.eq(i).attr('checked')){
-				data=this.simpleIssues[i].issueList;
-				var j=0,jlen=data.length;
-				for(j;j<jlen;j++){
-					datas.push(data[j].issueId);
-				}
-			}
-		};i=0;len=datas.length;
-		for(i;i<len;i++){
-			cp2y.buy.issues[datas[i]]=ty;
-		}
-	},
-	setSimple2:function(_this){	
-		$(_this).next().show();
-		cp2y.buy.issues={};
-		if(!$(_this).val().isInt()){
-			$(_this).val(1);
-		}
-		if(BT.lotto.indexOf(_.bt)!=-1 || BT.sz.indexOf(_.bt)!=-1){
-			if(!$(_this).val().isInt()){
-				$(_this).val(1);
-			}else if($(_this).val()>50){
-				$(_this).val(50);
-			}
-			var isNum=$(_this).val(),data,i=0,len,ty=$("#muls").val();
-			for(i;i<isNum;i++){
-				cp2y.buy.issues[cp2y.issues.simpleIssues[i].issueId]=ty;
-			}
-		}else{
-			var i=0,issues=[],isNum=$(_this).val(),ty=$("#muls").val();
-			for(i;i<3;i++){
-				var j=0,len=this.simpleIssues[i].issueList.length;
-				for(j;j<len;j++){
-					issues.push(this.simpleIssues[i].issueList[j].issueId);
-				}
-			}
-			if(isNum>issues.length){
-				$(_this).val(issues.length);
-				isNum=issues.length;
-			};i=0;
-			for(i;i<isNum;i++){
-				cp2y.buy.issues[issues[i]]=ty;
-			}
-		}
-	},
-	setSimple3:function(l){
-		cp2y.buy.issues={};
-		var i=0,len,ty=$("#muls").val();
-		for(i;i<l;i++){
-			cp2y.buy.issues[cp2y.issues.simpleIssues[i].issueId]=ty;
-		}
-	},
-	setMul:function(_this){
-		$(_this).next().show();
-		if(!$(_this).val().isInt()){
-			$(_this).val(1);
-		}
-		if($(_this).val()>9998){
-			$(_this).val(9999);
-		}
-		var i=0,ty=$(_this).val();
-		for(i in cp2y.buy.issues){
-			cp2y.buy.issues[i]=ty;
-		}
-	},
-	getIssues:function(){
-		dom.MainStep31.hide();
-		dom.MainStep32.show();
-		dom.Zhuihao.html('普通追号');
-		dom.ZhihaoTi.html('高级追号');
-		dom.Zhuihao.off().on('click',function(){
-			$(this).html('高级追号');
-			dom.ZhihaoTi.html('普通追号');
-			cp2y.issues.getSimpleIssues();
-		});
-		$.ajax({
-			url:WebAppUrl.HOME_APP_URL+"/lottery/traceIssueList",
-			anysc:false,
-			data:{lotteryId:_.bt,random:new Date().getTime()},
-			beforeSend:function(){
-				cp2y.dialog.loading();
-			},
-			success:function(data){
-				cp2y.dialog.clearLoading();
-				if(data.flag==1){
-					var issue=data.dataList,i=0,len=issue.length,html=[];
-					html.push('<div class="IssuesTop"><span><input id="setIssues" class="input3" type="number" min="0" onblur="cp2y.issues.setIssues(this)"/><b>期</b></span>');
-					html.push('<span><input id="selfMul" type="number" class="input3" min="0" onblur="cp2y.issues.selfMuls(this)"/><b>倍</b></span>');
-					html.push('<span>累加<input id="selfMul2" type="number" class="input3 input31" min="0" onblur="cp2y.issues.selfMuls2(this)"/><b>倍</b></span></div>');
-					html.push('<ul id="IssuesLists">');
-					for(i;i<len;i++){
-						html.push('<li><span><input class="issueCheck" onclick="cp2y.issues.setIssue(this,-1)" type="checkbox" data="'+issue[i].issueId+'"/>'+cp2y.util.setIssue1(issue[i].issue)+'期</span>');
-						html.push('<span><input class="input2 selfMul" onblur="cp2y.issues.selfMul(this,-1)" type="number"  min="1" max="100" value="0" data="'+issue[i].issueId+'"/>倍</span><span></span></li>');
-					}
-					html.push('</ul>');
-					dom.IssuesList.html(html.join(''));
-				}
-			},
-			error:function(){cp2y.dialog.clearLoading();}
-		});
-	},
-	setIssues:function(o){
-		var len=$(o).val(),i=0,IssuesLists=$("#IssuesLists"),cur=$("#IssuesLists").children(".cur"),curlen=cur.length,totalL=IssuesLists.children('li').length;
-		//清除所有
-		if(len>totalL){
-			len=totalL;
-			$(o).val(totalL);
-		}
-		for(x in cp2y.buy.issues){
-			delete cp2y.buy.issues[x];
-		}
-		for(i;i<curlen;i++){
-			cur.eq(i).removeClass('cur');
-			cur.eq(i).find(".issueCheck").attr('checked',null);
-			cur.eq(i).find(".selfMul").val(0);
-			cur.eq(i).children('span').eq(2).html("");
-		}
-		i=0;
-		//重新计算
-		for(i;i<len;i++){
-			this.setIssue(IssuesLists.children("li").eq(i).find('.issueCheck'),0,i);
-		}
-	},
-	setIssue:function(obj,type,i){
-		var selfMul2=$("#selfMul2").val(),selfMul=$("#selfMul").val(),ty;
-		if(selfMul2){
-			if(!i){i=1;}
-			ty=(i+1)*selfMul2;
-		}else if(selfMul){
-			ty=selfMul;
-		}else{
-			ty=1;
-		}
-		if(type==0){
-			obj.attr('checked','checked');
-			obj.parent().parent().addClass('cur');
-			obj.parent().next().children("input").val(ty);
-			obj.parent().next().next().html(ty*2+" 元");
-			cp2y.buy.issues[obj.attr("data")]=ty;
-		}else if(type==-1){
-			if($(obj).attr('checked')=='checked'){
-				$(obj).attr('checked', null);
-				$(obj).parent().parent().removeClass('cur');
-				$(obj).parent().next().children("input").val(0);
-				delete cp2y.buy.issues[$(obj).attr("data")];
-				$(obj).parent().next().next().html('');
-			}else{
-				$(obj).attr('checked','checked');
-				$(obj).parent().parent().addClass('cur');
-				$(obj).parent().next().children("input").val(ty);
-				cp2y.buy.issues[$(obj).attr("data")]=ty;
-				$(obj).parent().next().next().html(ty*2+" 元");
-			}
-		}
-	},
-	selfMuls:function(o){
-		$("#selfMul2").val('');
-		var i=0,IssuesLists=$("#IssuesLists").children(".cur"),len=IssuesLists.length,val=$(o).val();
-		if(!val){val=1;$(o).val(1);}
-		for(i;i<len;i++){
-			this.selfMul(IssuesLists.eq(i),0,val);
-		}
-	},
-	selfMul:function(obj,type,val){
-		if(type==0){
-			var o=obj.find(".selfMul");
-			o.val(val);
-			obj.children("span").eq(2).html(val*2+" 元");
-			cp2y.buy.issues[o.attr("data")]=val;
-		}else if(type==-1){
-			var o=$(obj);
-			if(o.val()>0){
-				o.parent().prev().children("input").attr('checked','checked');
-				cp2y.buy.issues[o.attr("data")]=o.val();
-				o.parent().next().html(o.val()*2+" 元");
-			}else if(o.val()==0){
-				o.parent().prev().children("input").attr('checked',null);
-				o.parent().parent().removeClass('cur');
-				delete cp2y.buy.issues[o.attr("data")];
-				o.parent().next().html('');
-			}
-		}
-	},
-	selfMuls2:function(o){
-		$("#selfMul").val('');
-		var i=0,IssuesLists=$("#IssuesLists").children(".cur"),len=IssuesLists.length,val=$(o).val(),o;
-		if(!val){val=1;$(o).val(1);}
-		for(i;i<len;i++){
-			o=IssuesLists.eq(i).find(".selfMul");
-			o.val((i+1)*val);
-			cp2y.buy.issues[o.attr("data")]=(i+1)*val;
-			IssuesLists.eq(i).children('span').eq(2).html((i+1)*val*2+" 元");
-		}
-	},
-	setMulSimpleBox:function(){
-		var b=cp2y.buy.Mul?cp2y.buy.Mul:1;
-		var html='<input type="tel" id="MulBox" placeholder="输入倍数" class="input4 mt40 tc" value="'+b+'" /><a onclick="cp2y.issues.setMulSimple()" class="btn1 mt10">确认</a>',o={
-			t:'倍数',
-			c:html
-		};
-		cp2y.input.openBox(o);
-	},
-	setMulSimple:function(){
-		var t=$('#MulBox');
-		if(!t.val().isInt()){
-			t.val(1);
-		}else if(t.val()>9998){
-			t.val(9999);
-		}
-		var i=0,ty=t.val();
-		for(i in cp2y.buy.issues){
-			cp2y.buy.issues[i]=ty;
-		}
-		cp2y.buy.Mul=ty;
-		dom.Muls.html(ty);
-		cp2y.input.closeBox();
-		cp2y.buy.complete2();
-	},
-	setIssueSimpleBox:function(){
-		var b=0,html=[],c1='',c2='',c3='';
-		for(xx in cp2y.buy.issues){
-			b++;
-		}
-		if(b>1){
-			//c1='style="display:block"'
-		}else if(b==0){
-			b=1;
-			cp2y.buy.issues[cp2y.buy.currentIssueId]=cp2y.buy.Mul;
-		}
-		if(cp2y.buy.burstIntoStop){
-			c2='checked';
-		}
-		if(cp2y.buy.prizeStop){
-			c3=cp2y.buy.prizeStop;
-		}
-		html.push('<input type="tel" onblur="cp2y.issues.setIssueSimple();" id="IssueBox" placeholder="输入期数" class="input4 mt40 tc" value="'+b+'" />');
-		html.push('<div class="mt10" id="setSthSimple" '+c1+'>');
-		if(BT.kk.indexOf(_.bt)!=-1){
-		html.push('<div><span>追号开始前，号码开出停止追号</span><input onblur="cp2y.buy.setBurstIntoStop(this)" type="checkbox" class="input8" '+c2+' /></div>');
-		}
-		html.push('<div>中出<input class="input9" type="tel" onblur="cp2y.buy.setPrizeStop(this)" min="0" placeholder="多少" value="'+c3+'" />元停止追号</div>');
-		html.push('</div><a onclick="cp2y.issues.closeSetIssueSimple();" class="btn1 mt10">确认</a>');
-		var o={
-			t:'期数',
-			c:html.join('')
-		};
-		cp2y.input.openBox(o);
-	},
-	setIssueSimple:function(){
-		var t=$('#IssueBox');
-		if(!t.val().isInt()){
-			t.val(1);
-		}
-		$.ajax({
-			url:WebAppUrl.HOME_APP_URL+"/lottery/traceIssueList",
-			beforeSend:function(){cp2y.dialog.loading();},
-			data:{lotteryId:_.bt,random:new Date().getTime()},
-			success:function(data){
-				cp2y.dialog.clearLoading();
-				if(data.flag==1){
-					var issue=data.dataList,i=0,len=issue.length,isNum=t.val(),data,i=0,len,ty=cp2y.buy.Mul;
-					if(BT.lotto.indexOf(_.bt)!=-1 || BT.sz.indexOf(_.bt)!=-1){
-						if(t.val()>50){
-							t.val(50);
-						}
-						cp2y.buy.issues={};
-						try{
-							for(i;i<isNum;i++){
-								cp2y.buy.issues[issue[i].issueId]=ty;
-							}
-						}catch(e){}
-					}else{
-						if(isNum>len){
-							t.val(len);
-							isNum=len;
-						};i=0;
-						cp2y.buy.issues={};
-						for(i;i<isNum;i++){
-							cp2y.buy.issues[issue[i].issueId]=ty;
-						}
-					}
-					if(t.val()>1){
-						$('#setSthSimple').show();						
-					}else{
-						$('#setSthSimple').hide();
-					}
-					dom.Issues.html(t.val());
-					
-				}
-			},
-			error:function(){cp2y.dialog.clearLoading();}
-		});
-	},
-	closeSetIssueSimple:function(){
+  hideNext:function(e){
+      $(e).next().hide();
+  },
+  simpleIssues:[],
+  getSimpleIssues:function(p){
+      dom.MainStep31.show();
+      dom.MainStep32.hide();
+      dom.Zhuihao.html('高级追号');
+      dom.ZhihaoTi.html('普通追号');
+      dom.Zhuihao.off().on('click',function(){
+          $(this).html('普通追号');
+          dom.ZhihaoTi.html('高级追号');
+          cp2y.issues.getIssues();
+      });
+      if(p==1){
+          dom.Issues.focus();
+          dom.Issues.select();
+      }else{
+          dom.Muls.focus();
+          dom.Muls.select();
+      }
+      $.ajax({
+          url:WebAppUrl.HOME_APP_URL+"/lottery/commontraceIssueList",
+          anysc:false,
+          data:{lotteryId:_.bt,random:new Date().getTime()},
+          beforeSend:function(){
+              cp2y.dialog.loading();
+          },
+          success:function(data){
+              cp2y.dialog.clearLoading();
+              if(data.flag==1){
+                  var i=0,data,html=[],len,t;
+                  if(BT.lotto.indexOf(_.bt)!=-1 || BT.sz.indexOf(_.bt)!=-1){
+                      data=data.dataList;len=data.length;
+                      cp2y.issues.simpleIssues=data;
+                      html.push('<li><input id="simpleIss1" name="simpleIssueBtn" class="radioType" onclick="cp2y.issues.setSimple3(13);" type="radio"><label for="simpleIss1">追半个月(13期)</label></li>');
+                      html.push('<li><input id="simpleIss2" name="simpleIssueBtn" class="radioType" onclick="cp2y.issues.setSimple3(30);" type="radio"><label for="simpleIss2">追1个月(30期)</label></li>');
+                      html.push('<li><input id="simpleIss3" name="simpleIssueBtn" class="radioType" onclick="cp2y.issues.setSimple3('+len+');" type="radio"><label for="simpleIss3">最大('+len+'期)</label></li>');
+                  }else{
+                      data=data.dataList;len=data.length;
+                      cp2y.issues.simpleIssues=data;
+                      for(i;i<3;i++){
+                          t=i==0?"今天":i==1?"明天":"后天";
+                          html.push('<li><input id="simpleIss'+i+'" class="issueCheck simpleIssueBtn" onclick="cp2y.issues.setSimple();" type="checkbox" data="'+i+'">');
+                          html.push('<label for="simpleIss'+i+'">'+t+data[i].issueList.length+'期</label></li>');
+                      }
+                  }
+                  dom.SimpleIssues.html(html.join(''));
+
+              }
+          },
+          error:function(){cp2y.dialog.clearLoading();}
+      });
+  },
+  setSimple:function(){
+      cp2y.buy.issues={};
+      var data,i=0,len,ty=$("#muls").val(),simpleIssueBtn=$(".simpleIssueBtn"),datas=[];
+      for(i;i<3;i++){
+          if(simpleIssueBtn.eq(i).attr('checked')){
+              data=this.simpleIssues[i].issueList;
+              var j=0,jlen=data.length;
+              for(j;j<jlen;j++){
+                  datas.push(data[j].issueId);
+              }
+          }
+      };i=0;len=datas.length;
+      for(i;i<len;i++){
+          cp2y.buy.issues[datas[i]]=ty;
+      }
+  },
+  setSimple2:function(_this){	
+      $(_this).next().show();
+      cp2y.buy.issues={};
+      if(!$(_this).val().isInt()){
+          $(_this).val(1);
+      }
+      if(BT.lotto.indexOf(_.bt)!=-1 || BT.sz.indexOf(_.bt)!=-1){
+          if(!$(_this).val().isInt()){
+              $(_this).val(1);
+          }else if($(_this).val()>50){
+              $(_this).val(50);
+          }
+          var isNum=$(_this).val(),data,i=0,len,ty=$("#muls").val();
+          for(i;i<isNum;i++){
+              cp2y.buy.issues[cp2y.issues.simpleIssues[i].issueId]=ty;
+          }
+      }else{
+          var i=0,issues=[],isNum=$(_this).val(),ty=$("#muls").val();
+          for(i;i<3;i++){
+              var j=0,len=this.simpleIssues[i].issueList.length;
+              for(j;j<len;j++){
+                  issues.push(this.simpleIssues[i].issueList[j].issueId);
+              }
+          }
+          if(isNum>issues.length){
+              $(_this).val(issues.length);
+              isNum=issues.length;
+          };i=0;
+          for(i;i<isNum;i++){
+              cp2y.buy.issues[issues[i]]=ty;
+          }
+      }
+  },
+  setSimple3:function(l){
+      cp2y.buy.issues={};
+      var i=0,len,ty=$("#muls").val();
+      for(i;i<l;i++){
+          cp2y.buy.issues[cp2y.issues.simpleIssues[i].issueId]=ty;
+      }
+  },
+  setMul:function(_this){
+      $(_this).next().show();
+      if(!$(_this).val().isInt()){
+          $(_this).val(1);
+      }
+      if($(_this).val()>9998){
+          $(_this).val(9999);
+      }
+      var i=0,ty=$(_this).val();
+      for(i in cp2y.buy.issues){
+          cp2y.buy.issues[i]=ty;
+      }
+  },
+  getIssues:function(){
+      dom.MainStep31.hide();
+      dom.MainStep32.show();
+      dom.Zhuihao.html('普通追号');
+      dom.ZhihaoTi.html('高级追号');
+      dom.Zhuihao.off().on('click',function(){
+          $(this).html('高级追号');
+          dom.ZhihaoTi.html('普通追号');
+          cp2y.issues.getSimpleIssues();
+      });
+      $.ajax({
+          url:WebAppUrl.HOME_APP_URL+"/lottery/traceIssueList",
+          anysc:false,
+          data:{lotteryId:_.bt,random:new Date().getTime()},
+          beforeSend:function(){
+              cp2y.dialog.loading();
+          },
+          success:function(data){
+              cp2y.dialog.clearLoading();
+              if(data.flag==1){
+                  var issue=data.dataList,i=0,len=issue.length,html=[];
+                  html.push('<div class="IssuesTop"><span><input id="setIssues" class="input3" type="number" min="0" onblur="cp2y.issues.setIssues(this)"/><b>期</b></span>');
+                  html.push('<span><input id="selfMul" type="number" class="input3" min="0" onblur="cp2y.issues.selfMuls(this)"/><b>倍</b></span>');
+                  html.push('<span>累加<input id="selfMul2" type="number" class="input3 input31" min="0" onblur="cp2y.issues.selfMuls2(this)"/><b>倍</b></span></div>');
+                  html.push('<ul id="IssuesLists">');
+                  for(i;i<len;i++){
+                      html.push('<li><span><input class="issueCheck" onclick="cp2y.issues.setIssue(this,-1)" type="checkbox" data="'+issue[i].issueId+'"/>'+cp2y.util.setIssue1(issue[i].issue)+'期</span>');
+                      html.push('<span><input class="input2 selfMul" onblur="cp2y.issues.selfMul(this,-1)" type="number"  min="1" max="100" value="0" data="'+issue[i].issueId+'"/>倍</span><span></span></li>');
+                  }
+                  html.push('</ul>');
+                  dom.IssuesList.html(html.join(''));
+              }
+          },
+          error:function(){cp2y.dialog.clearLoading();}
+      });
+  },
+  setIssues:function(o){
+      var len=$(o).val(),i=0,IssuesLists=$("#IssuesLists"),cur=$("#IssuesLists").children(".cur"),curlen=cur.length,totalL=IssuesLists.children('li').length;
+      //清除所有
+      if(len>totalL){
+          len=totalL;
+          $(o).val(totalL);
+      }
+      for(x in cp2y.buy.issues){
+          delete cp2y.buy.issues[x];
+      }
+      for(i;i<curlen;i++){
+          cur.eq(i).removeClass('cur');
+          cur.eq(i).find(".issueCheck").attr('checked',null);
+          cur.eq(i).find(".selfMul").val(0);
+          cur.eq(i).children('span').eq(2).html("");
+      }
+      i=0;
+      //重新计算
+      for(i;i<len;i++){
+          this.setIssue(IssuesLists.children("li").eq(i).find('.issueCheck'),0,i);
+      }
+  },
+  setIssue:function(obj,type,i){
+      var selfMul2=$("#selfMul2").val(),selfMul=$("#selfMul").val(),ty;
+      if(selfMul2){
+          if(!i){i=1;}
+          ty=(i+1)*selfMul2;
+      }else if(selfMul){
+          ty=selfMul;
+      }else{
+          ty=1;
+      }
+      if(type==0){
+          obj.attr('checked','checked');
+          obj.parent().parent().addClass('cur');
+          obj.parent().next().children("input").val(ty);
+          obj.parent().next().next().html(ty*2+" 元");
+          cp2y.buy.issues[obj.attr("data")]=ty;
+      }else if(type==-1){
+          if($(obj).attr('checked')=='checked'){
+              $(obj).attr('checked', null);
+              $(obj).parent().parent().removeClass('cur');
+              $(obj).parent().next().children("input").val(0);
+              delete cp2y.buy.issues[$(obj).attr("data")];
+              $(obj).parent().next().next().html('');
+          }else{
+              $(obj).attr('checked','checked');
+              $(obj).parent().parent().addClass('cur');
+              $(obj).parent().next().children("input").val(ty);
+              cp2y.buy.issues[$(obj).attr("data")]=ty;
+              $(obj).parent().next().next().html(ty*2+" 元");
+          }
+      }
+  },
+  selfMuls:function(o){
+      $("#selfMul2").val('');
+      var i=0,IssuesLists=$("#IssuesLists").children(".cur"),len=IssuesLists.length,val=$(o).val();
+      if(!val){val=1;$(o).val(1);}
+      for(i;i<len;i++){
+          this.selfMul(IssuesLists.eq(i),0,val);
+      }
+  },
+  selfMul:function(obj,type,val){
+      if(type==0){
+          var o=obj.find(".selfMul");
+          o.val(val);
+          obj.children("span").eq(2).html(val*2+" 元");
+          cp2y.buy.issues[o.attr("data")]=val;
+      }else if(type==-1){
+          var o=$(obj);
+          if(o.val()>0){
+              o.parent().prev().children("input").attr('checked','checked');
+              cp2y.buy.issues[o.attr("data")]=o.val();
+              o.parent().next().html(o.val()*2+" 元");
+          }else if(o.val()==0){
+              o.parent().prev().children("input").attr('checked',null);
+              o.parent().parent().removeClass('cur');
+              delete cp2y.buy.issues[o.attr("data")];
+              o.parent().next().html('');
+          }
+      }
+  },
+  selfMuls2:function(o){
+      $("#selfMul").val('');
+      var i=0,IssuesLists=$("#IssuesLists").children(".cur"),len=IssuesLists.length,val=$(o).val(),o;
+      if(!val){val=1;$(o).val(1);}
+      for(i;i<len;i++){
+          o=IssuesLists.eq(i).find(".selfMul");
+          o.val((i+1)*val);
+          cp2y.buy.issues[o.attr("data")]=(i+1)*val;
+          IssuesLists.eq(i).children('span').eq(2).html((i+1)*val*2+" 元");
+      }
+  },
+  setMulSimpleBox:function(){
+      var b=cp2y.buy.Mul?cp2y.buy.Mul:1;
+      var html='<input type="tel" id="MulBox" placeholder="输入倍数" class="input4 mt40 tc" value="'+b+'" /><a onclick="cp2y.issues.setMulSimple()" class="btn1 mt10">确认</a>',o={
+          t:'倍数',
+          c:html
+      };
+      cp2y.input.openBox(o);
+  },
+  setMulSimple:function(){
+      var t=$('#MulBox');
+      if(!t.val().isInt()){
+          t.val(1);
+      }else if(t.val()>9998){
+          t.val(9999);
+      }
+      var i=0,ty=t.val();
+      for(i in cp2y.buy.issues){
+          cp2y.buy.issues[i]=ty;
+      }
+      cp2y.buy.Mul=ty;
+      dom.Muls.html(ty);
+      cp2y.input.closeBox();
+      cp2y.buy.complete2();
+  },
+  setIssueSimpleBox:function(){
+    var b=0,html=[],c1='',c2='',c3='';
+    for(xx in cp2y.buy.issues){
+      b++;
+    }
+    if(b>1){
+      //c1='style="display:block"'
+    }else if(b==0){
+      b=1;
+      cp2y.buy.issues[cp2y.buy.currentIssueId]=cp2y.buy.Mul;
+    }
+    if(cp2y.buy.burstIntoStop){
+      c2='checked';
+    }
+    if(cp2y.buy.prizeStop){
+      c3=cp2y.buy.prizeStop;
+    }
+    html.push('<input type="tel" onblur="cp2y.issues.setIssueSimple();" id="IssueBox" placeholder="输入期数" class="input4 mt40 tc" value="'+b+'" />');
+    html.push('<div class="mt10" id="setSthSimple" '+c1+'>');
+    if(BT.kk.indexOf(_.bt)!=-1){
+    html.push('<div><span>追号开始前，号码开出停止追号</span><input onblur="cp2y.buy.setBurstIntoStop(this)" type="checkbox" class="input8" '+c2+' /></div>');
+    }
+    html.push('<div>中出<input class="input9" type="tel" onblur="cp2y.buy.setPrizeStop(this)" min="0" placeholder="多少" value="'+c3+'" />元停止追号</div>');
+    html.push('</div><a onclick="cp2y.issues.closeSetIssueSimple();" class="btn1 mt10">确认</a>');
+    var o={
+      t:'期数',
+      c:html.join('')
+    };
+    cp2y.input.openBox(o);
+  },
+  setIssueSimple:function(){
+      var t=$('#IssueBox');
+      if(!t.val().isInt()){
+          t.val(1);
+      }
+      $.ajax({
+          url:WebAppUrl.HOME_APP_URL+"/lottery/traceIssueList",
+          beforeSend:function(){cp2y.dialog.loading();},
+          data:{lotteryId:_.bt,random:new Date().getTime()},
+          success:function(data){
+              cp2y.dialog.clearLoading();
+              if(data.flag==1){
+                  var issue=data.dataList,i=0,len=issue.length,isNum=t.val(),data,i=0,len,ty=cp2y.buy.Mul;
+                  if(BT.lotto.indexOf(_.bt)!=-1 || BT.sz.indexOf(_.bt)!=-1){
+                      if(t.val()>50){
+                          t.val(50);
+                      }
+                      cp2y.buy.issues={};
+                      try{
+                          for(i;i<isNum;i++){
+                              cp2y.buy.issues[issue[i].issueId]=ty;
+                          }
+                      }catch(e){}
+                  }else{
+                      if(isNum>len){
+                          t.val(len);
+                          isNum=len;
+                      };i=0;
+                      cp2y.buy.issues={};
+                      for(i;i<isNum;i++){
+                          cp2y.buy.issues[issue[i].issueId]=ty;
+                      }
+                  }
+                  if(t.val()>1){
+                      $('#setSthSimple').show();						
+                  }else{
+                      $('#setSthSimple').hide();
+                  }
+                  dom.Issues.html(t.val());
+
+              }
+          },
+          error:function(){cp2y.dialog.clearLoading();}
+      });
+  },
+  closeSetIssueSimple:function(){
 		cp2y.input.closeBox();
 		cp2y.buy.complete2();
 	}
@@ -785,65 +785,65 @@ cp2y.buy={
 	currentIssueId:"",//当前奖期
 	issueStatus:"",
 	reCountDown:function(){//从后台切出时重计算
-		if(autoRunMark){
-			clearTimeout(autoRunMark);
-			this.countDown();
-		}
+      if(autoRunMark){
+        clearTimeout(autoRunMark);
+        this.countDown();
+      }
 	},
 	countDown:function(){
-		$.ajax({
-			url:WebAppUrl.HOME_APP_URL+"/lottery/query_cur_issue",
-			dataType:'text',
-			//anysc:false,
-			beforeSend:function(){},
-			data:{lotteryId:_.bt,random:new Date().getTime()},
-			success : function(result) {
-				if (result == "" || result.indexOf('ERROR') != -1){return false;}
-				var o = eval("("+result+")");
-				if(o.flag!=1){return false;}
-				cp2y.buy.serverTime = parseInt(o.time);
-				cp2y.buy.currentIssue = o.issue;
-				cp2y.buy.currentIssueId = o.issueId;
-				//cp2y.buy.issueStatus = o.flag;
-				cp2y.buy.sellEndTime = o.sellEndTime;
-				if(BT.kk.indexOf(_.bt)!=-1){
-					dom.curIssue.html(cp2y.util.setIssue1(o.issue));
-				}else{
-					dom.curIssue.html(cp2y.util.setIssue2(o.issue));	
-				}
-				if(cp2y.buy.serverTime>1001){
-					cp2y.buy.autoRun();
-				}else{
-					setTimeout('cp2y.buy.countDown()',5000);
-				}
-            }
-		});
+      $.ajax({
+        url:WebAppUrl.HOME_APP_URL+"/lottery/query_cur_issue",
+        dataType:'text',
+        //anysc:false,
+        beforeSend:function(){},
+        data:{lotteryId:_.bt,random:new Date().getTime()},
+        success : function(result) {
+          if (result == "" || result.indexOf('ERROR') != -1){return false;}
+          var o = eval("("+result+")");
+          if(o.flag!=1){return false;}
+          cp2y.buy.serverTime = parseInt(o.time);
+          cp2y.buy.currentIssue = o.issue;
+          cp2y.buy.currentIssueId = o.issueId;
+          //cp2y.buy.issueStatus = o.flag;
+          cp2y.buy.sellEndTime = o.sellEndTime;
+          if(BT.kk.indexOf(_.bt)!=-1){
+            dom.curIssue.html(cp2y.util.setIssue1(o.issue));
+          }else{
+            dom.curIssue.html(cp2y.util.setIssue2(o.issue));	
+          }
+          if(cp2y.buy.serverTime>1001){
+            cp2y.buy.autoRun();
+          }else{
+            setTimeout('cp2y.buy.countDown()',5000);
+          }
+        }
+      });
 	},
 	autoRun:function(){
-		cp2y.buy.serverTime -= 1000;
-		if (cp2y.buy.serverTime <= 0){
-			cp2y.buy.countDown();
-		}else{
-			var day = Math.floor(cp2y.buy.serverTime / (24 * 60 * 60 * 1000)),tmp,hour,munites,second,html='';
-			tmp = cp2y.buy.serverTime - (day * 24 * 60 * 60 * 1000);
-			hour = Math.floor(tmp / (60 * 60 * 1000));
-			tmp = cp2y.buy.serverTime - (day * 24 * 60 * 60 * 1000) - (hour * 60 * 60 * 1000);
-			munites = Math.floor(tmp / (60 * 1000));
-			tmp = cp2y.buy.serverTime - (day * 24 * 60 * 60 * 1000) - (hour * 60 * 60 * 1000) - (munites * 60 * 1000);
-			second = Math.floor(tmp / 1000);
-			if(day){
-				html+=day+"天";
-			}
-			if(hour){
-				html+=hour+"小时";
-			}
-			munites=munites<10?'0'+munites:munites;
-			second=second<10?'0'+second:second;
-			html+=munites+':'+second;
-			dom.curCountDown.html(html);
-			try{clearTimeout(autoRunMark);}catch(e){}
-			autoRunMark=setTimeout('cp2y.buy.autoRun()', 1000);
-		}
+      cp2y.buy.serverTime -= 1000;
+      if (cp2y.buy.serverTime <= 0){
+        cp2y.buy.countDown();
+      }else{
+        var day = Math.floor(cp2y.buy.serverTime / (24 * 60 * 60 * 1000)),tmp,hour,munites,second,html='';
+        tmp = cp2y.buy.serverTime - (day * 24 * 60 * 60 * 1000);
+        hour = Math.floor(tmp / (60 * 60 * 1000));
+        tmp = cp2y.buy.serverTime - (day * 24 * 60 * 60 * 1000) - (hour * 60 * 60 * 1000);
+        munites = Math.floor(tmp / (60 * 1000));
+        tmp = cp2y.buy.serverTime - (day * 24 * 60 * 60 * 1000) - (hour * 60 * 60 * 1000) - (munites * 60 * 1000);
+        second = Math.floor(tmp / 1000);
+        if(day){
+          html+=day+"天";
+        }
+        if(hour){
+          html+=hour+"小时";
+        }
+        munites=munites<10?'0'+munites:munites;
+        second=second<10?'0'+second:second;
+        html+=munites+':'+second;
+        dom.curCountDown.html(html);
+        try{clearTimeout(autoRunMark);}catch(e){}
+        autoRunMark=setTimeout('cp2y.buy.autoRun()', 1000);
+      }
 	},
 	//合买相关参数
 	saleType:0,//默认关闭
@@ -852,147 +852,185 @@ cp2y.buy={
 	BaoDi:0,//保底金额
 	openStatus:1,
 	pay:function(){//购买
-		return cp2y.dialog.confirm("确认付款?",function(){
-			cp2y.buy.saleType=1;
-			cp2y.buy.submit();
-		});
+      return cp2y.dialog.confirm("确认付款?",function(){
+        cp2y.buy.saleType=1;
+        cp2y.buy.submit();
+      });
 	},
 	pay2:function(){//合买
-		return cp2y.dialog.confirm("确认付款?",function(){
-			cp2y.buy.saleType=0;
-			cp2y.buy.submit(1);
-		});
+      return cp2y.dialog.confirm("确认付款?",function(){
+        cp2y.buy.saleType=0;
+        cp2y.buy.submit(1);
+      });
 	},
 	submit:function(isHemai){
-		cp2y.dialog.closeConfirm();
-		var getBets=this.getBets(),issueIds=[],i=0,len=getBets.length,issueCount=0,
-			multiple=[],burstIntoStop=this.burstIntoStop,prizeStop=this.prizeStop,
-			schemeNumber={},schemeNumbers='',money=dom.Money.html();
-		for(i in cp2y.buy.issues){
-			issueCount++;
-			issueIds.push(i);
-			multiple.push(cp2y.buy.Mul);
-		}
-		if(money>100000000){
-			return cp2y.dialog.alert('金额过大');
-		}
-		if(issueCount==0){
-			issueCount=1;
-			multiple.push(1);
-			issueIds.push(this.currentIssueId);
-		}//未追号选择当期
-		i=0;
-		for(i;i<len;i++){
-			if(schemeNumber[getBets[i].input]==undefined){
-				schemeNumber[getBets[i].input]=[];
-			}
-			schemeNumber[getBets[i].input].push(getBets[i].code);
-		}
-		i=0;
-		for(i in schemeNumber){
-			schemeNumbers+=i+"="+schemeNumber[i].join("|")+";";
-		}//号码拼接
-		var data={
-			lotteryId:_.bt,//彩票ID
-			schemeAmount:money,//方案金额
-			buyAmount:money,//购买金额
-			buyType:this.saleType//方案购买类型
-		};
-		data.issueId=issueIds[0];//奖期
-		data.issueIds=issueIds.join(",");//追号奖期ID
-		data.issueCount=issueCount;//购买奖期数
-		data.multiple=cp2y.buy.Mul;//倍数
-		data.multiples=multiple.join(',');//倍数
-		data.schemeNumber=schemeNumbers.substr(0,schemeNumbers.length-1);//方案号码
-		data.burstIntoStop=burstIntoStop;//开出停止追号,0/1
-		data.prizeStop=prizeStop;//中奖停止追号,0：不限；其他：指
-		if(BT.kk.indexOf(_.bt)!=-1){
-			data.burstIntoStop=cp2y.buy.burstIntoStop;
-		}
-		if(_.bt==10026){
-			var additional=$("#additional").attr("checked")?1:0;
-			data.additional=additional;
-		}
-		if(isHemai==1){//合买
-			data.buyAmount=this.RenGou;
-			data.safeguardMoney=this.BaoDi;//保底
-			data.minParticipant=this.ZuiDiRenGou;//最少参与
-			data.remuneration=this.YongJin;//佣金
-			data.open=this.openStatus;//合买方案公开情况
-			data.schemeDesc=$('#schemeDesc').val()//方案描述
-		}
-		$.ajax({
-			url:WebAppUrl.HOME_APP_URL+"/core/lottery/buy_lottery",
-			data:data,
-			type:"post",
-			beforeSend:function(){
-				cp2y.dialog.loading();
-			},
-			success:function(data){
-				cp2y.dialog.clearLoading();
-				if(typeof data=="string"){
-					data=eval("("+data+")");
-				};
-				if (data.flag == -1) {
-					return cp2y.quick.user.signInBox();
-				} else if (data.flag == 2) {
-					return cp2y.dialog.confirm("余额不足，去充值？", function () {
-						cp2y.dialog.closeConfirm();
-						//cp2y.quick.user.rechargeBox();
-						location.href = WebAppUrl.HOME_APP_URL + '/recharge/index';
-					});
-				} else if (data.flag == 1) {
-					location.href = WebAppUrl.HOME_APP_URL + '/lottery/detail#scheme=' + data.schemeId;
-				} else {
-					cp2y.dialog.alert(data.message);
-				}
-			}
-		});
+      cp2y.dialog.closeConfirm();
+      var getBets=this.getBets(),issueIds=[],i=0,len=getBets.length,issueCount=0,
+          multiple=[],burstIntoStop=this.burstIntoStop,prizeStop=this.prizeStop,
+          schemeNumber={},schemeNumbers='',money,dLen=[];
+      for(i in cp2y.buy.issues){
+        issueCount++;
+        issueIds.push(i);
+        multiple.push(this.Mul);
+      }
+      i=0;
+      for(i;i<issueCount;i++){
+        if(this.currentIssueId!=issueIds[i]){
+          dLen.push(issueIds[i]);
+        }else{
+          break;
+        }
+      }
+      issueIds.splice(0,dLen.length);
+      multiple.splice(0,dLen.length);
+      if(issueIds.length==0){
+        issueCount=1;
+        multiple.push(1);
+        issueIds.push(this.currentIssueId);
+      }//未追号选择当期
+      i=0;
+      for(i;i<len;i++){
+        if(schemeNumber[getBets[i].input]==undefined){
+          schemeNumber[getBets[i].input]=[];
+        }
+        schemeNumber[getBets[i].input].push(getBets[i].code);
+      }
+      i=0;
+      for(i in schemeNumber){
+        schemeNumbers+=i+"="+schemeNumber[i].join("|")+";";
+      }//号码拼接
+      var data={
+        lotteryId:_.bt,//彩票ID
+        buyType:this.saleType//方案购买类型
+      };
+      if(_.bt==10026){
+        var additional=$("#additional").attr("checked")?1:0;
+        data.additional=additional;
+      }
+      /*重置内存中的奖期*/
+      i=0;
+      for(i;i<dLen.length;i++){
+        delete cp2y.buy.issues[dLen[i]]
+      }
+      dom.Issues.html(issueIds.length);
+      /*重算金额*/
+      money=issueIds.length*this.Mul*2*dom.Bets.html();
+      if(data.additional){
+        money*=1.5;
+      }
+      dom.Money.html(money);
+      if(money>100000000){
+        return cp2y.dialog.alert('金额过大');
+      }
+      data.schemeAmount=money;
+      data.buyAmount=money;
+      data.issueId=issueIds[0];//奖期
+      data.issueIds=issueIds.join(",");//追号奖期ID
+      data.issueCount=issueCount;//购买奖期数
+      data.multiple=cp2y.buy.Mul;//倍数
+      data.multiples=multiple.join(',');//倍数
+      data.schemeNumber=schemeNumbers.substr(0,schemeNumbers.length-1);//方案号码
+      data.burstIntoStop=burstIntoStop;//开出停止追号,0/1
+      data.prizeStop=prizeStop;//中奖停止追号,0：不限；其他：指
+      if(BT.kk.indexOf(_.bt)!=-1){
+        data.burstIntoStop=cp2y.buy.burstIntoStop;
+      }
+      if(isHemai==1){//合买
+        data.buyAmount=this.RenGou;
+        data.safeguardMoney=this.BaoDi;//保底
+        data.minParticipant=this.ZuiDiRenGou;//最少参与
+        data.remuneration=this.YongJin;//佣金
+        data.open=this.openStatus;//合买方案公开情况
+        data.schemeDesc=$('#schemeDesc').val()//方案描述
+      }
+      $.ajax({
+        url:WebAppUrl.HOME_APP_URL+"/core/lottery/buy_lottery",
+        data:data,
+        type:"post",
+        beforeSend:function(){
+          cp2y.dialog.loading();
+        },
+        success:function(data){
+          cp2y.dialog.clearLoading();
+          if(typeof data=="string"){
+            data=eval("("+data+")");
+          };
+          if (data.flag == -1) {
+            return cp2y.quick.user.signInBox();
+          } else if (data.flag == 2) {
+            return cp2y.dialog.confirm("余额不足，去充值？", function () {
+              cp2y.dialog.closeConfirm();
+              //cp2y.quick.user.rechargeBox();
+              location.href = WebAppUrl.HOME_APP_URL + '/recharge/index';
+            });
+          } else if (data.flag == 1) {
+            location.href = WebAppUrl.HOME_APP_URL + '/lottery/detail#scheme=' + data.schemeId;
+          } else {
+            cp2y.dialog.alert(data.message);
+          }
+        }
+      });
 	},
 	hemai:function(){//合买
-		var money=dom.Money.html(),getBets,issueCount=0,issueIds=[]/*期数*/,multiple=[]/*倍数*/,i=0,len,units=0,mul;
-		if(money>100000000){
-			return cp2y.dialog.alert('金额过大');
-		}
-		$("#hemaiTitle").html(cp2y.buy.playName);
-		dom.MainStep2.hide();
-		$("#hemai").show();
-		for(i in cp2y.buy.issues){
-			issueCount++;
-			issueIds.push(i);
-			multiple.push(cp2y.buy.issues[i]);
-		}
-		if(issueCount==0){
-			issueCount=1;
-			multiple.push(1);
-			issueIds.push(this.currentIssueId);
-		}//未追号选择当期
-		getBets=this.getBets();
-		len=getBets.length;i=0;
-		for(i;i<len;i++){
-			units+=Number(getBets[i].bets);
-		}
-		this.saleType=1;
-		if((multiple.join(',')+',').replace(new RegExp(multiple[0]+',','gi'),'')==''){
-			mul=multiple[0];
-		}else{
-			mul="不同";
-		}
-		$('#HMissue').html(issueCount);
-		$('#HMmoney').html(money);
-		$('#HMunits').html(units);
-		$('#HMmul').html(mul);
-		var rg=Math.ceil((money*5)/100),db=Math.ceil(money/10);
-		$('#HMrengou').attr({'placeholder':'最少认购5%('+rg+'元)'});
-		$('#HMbaodi').attr({'placeholder':'若保底，最少保10%('+db+'元)'});
-		this.RenGou=rg;
-		this.ZuiDiRenGou=1;
-		this.BaoDi=0;
-		this.YongJin=0;
-		$('#HMrengou').val('');
-		$('#HMzuidirengou').val(1);
-		$('#HMbaodi').val('');
-		$('#HMyongjin').html('0%');
+      var money,getBets,issueCount=0,issueIds=[]/*期数*/,multiple=[]/*倍数*/,i=0,len,units=0,mul;
+      $("#hemaiTitle").html(cp2y.buy.playName);
+      dom.MainStep2.hide();
+      $("#hemai").show();
+      for(i in cp2y.buy.issues){
+        issueCount++;
+        issueIds.push(i);
+        multiple.push(cp2y.buy.issues[i]);
+      }
+      for(i;i<issueCount;i++){
+        if(this.currentIssueId!=issueIds[i]){
+          dLen.push(issueIds[i]);
+        }else{
+          break;
+        }
+      }
+      issueIds.splice(0,dLen.length);
+      multiple.splice(0,dLen.length);
+      if(issueIds.length==0){
+        issueCount=1;
+        multiple.push(1);
+        issueIds.push(this.currentIssueId);
+      }//未追号选择当期
+      getBets=this.getBets();
+      len=getBets.length;i=0;
+      for(i;i<len;i++){
+        units+=Number(getBets[i].bets);
+      }
+      this.saleType=1;
+      if((multiple.join(',')+',').replace(new RegExp(multiple[0]+',','gi'),'')==''){
+        mul=multiple[0];
+      }else{
+        mul="不同";
+      }
+      money=units*mul[0]*issueIds.length;
+      if(_.bt==10026){
+        var additional=$("#additional").attr("checked")?1:0;
+        if(additional){
+          money*=1.5;
+        }
+      }
+      if(money>100000000){
+        return cp2y.dialog.alert('金额过大');
+      }
+      $('#HMissue').html(issueIds.length);
+      $('#HMmoney').html(money);
+      $('#HMunits').html(units);
+      $('#HMmul').html(mul);
+      var rg=Math.ceil((money*5)/100),db=Math.ceil(money/10);
+      $('#HMrengou').attr({'placeholder':'最少认购5%('+rg+'元)'});
+      $('#HMbaodi').attr({'placeholder':'若保底，最少保10%('+db+'元)'});
+      this.RenGou=rg;
+      this.ZuiDiRenGou=1;
+      this.BaoDi=0;
+      this.YongJin=0;
+      $('#HMrengou').val('');
+      $('#HMzuidirengou').val(1);
+      $('#HMbaodi').val('');
+      $('#HMyongjin').html('0%');
 	},
 	setRenGou:function(e){
 		var m=$(e).val(),M=Number(dom.Money.html()),rg;

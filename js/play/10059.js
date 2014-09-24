@@ -70,7 +70,7 @@ _.a0 = {
 						html.push('<tr><td>历史交锋</td><td colspan="2">主队'+historyScore[0]+'胜'+historyScore[1]+'平'+historyScore[2]+'负</td></tr>');
 						html.push('<tr><td>平均赔率</td><td colspan="2"><table class="jc_table2"><tr><td>' + (data2[j].odds3 ? data2[j].odds3 : '--') + '</td><td>' + (data2[j].odds1 ? data2[j].odds1 : '--') + '</td><td>' + (data2[j].odds0 ? data2[j].odds0 : '--') + '</td></tr></table></td></tr>');
 						html.push('<tr><td>投注比例</td><td colspan="2"><table class="jc_table2"><tr><td>' + betCounter[0] + '</td><td>' + betCounter[1] + '</td><td>' + betCounter[2] + '</td></tr></table></td></tr>');
-						html.push('</table></div></li>');
+						html.push('<tr><td colspan="4">查看赛事详情&gt;&gt;</td></tr></table></div></li>');
 					}
 					html.push("</ul>");
 				}
@@ -148,7 +148,7 @@ _.a1 = {
 						html.push('<tr><td>历史交锋</td><td colspan="2">主队'+historyScore[0]+'胜'+historyScore[1]+'平'+historyScore[2]+'负</td></tr>');
 						html.push('<tr><td>平均赔率</td><td colspan="2"><table class="jc_table2"><tr><td>' + (data2[j].odds3 ? data2[j].odds3 : '--') + '</td><td>' + (data2[j].odds1 ? data2[j].odds1 : '--') + '</td><td>' + (data2[j].odds0 ? data2[j].odds0 : '--') + '</td></tr></table></td></tr>');
 						html.push('<tr><td>投注比例</td><td colspan="2"><table class="jc_table2"><tr><td>' + betCounter[0] + '</td><td>' + betCounter[1] + '</td><td>' + betCounter[2] + '</td></tr></table></td></tr>');
-						html.push('</table></div></li>');
+						html.push('<tr><td colspan="4">查看赛事详情&gt;&gt;</td></tr></table></div></li>');
 					}
 					html.push("</ul>");
 				}
@@ -238,7 +238,7 @@ _.a5 = {
             html.push('<tr><td>历史交锋</td><td colspan="2">主队'+historyScore[0]+'胜'+historyScore[1]+'平'+historyScore[2]+'负</td></tr>');
             html.push('<tr><td>平均赔率</td><td colspan="2"><table class="jc_table2"><tr><td>' + (data2[j].odds3 ? data2[j].odds3 : '--') + '</td><td>' + (data2[j].odds1 ? data2[j].odds1 : '--') + '</td><td>' + (data2[j].odds0 ? data2[j].odds0 : '--') + '</td></tr></table></td></tr>');
             html.push('<tr><td>投注比例</td><td colspan="2"><table class="jc_table2"><tr><td>' + betCounter[0] + '</td><td>' + betCounter[1] + '</td><td>' + betCounter[2] + '</td></tr></table></td></tr>');
-            html.push('</table></div></li>');
+            html.push('<tr><td colspan="4">查看赛事详情&gt;&gt;</td></tr></table></div></li>');
           }
           html.push("</ul>");
         }
@@ -304,7 +304,7 @@ _.a6 = {
             html.push('<tr><td>历史交锋</td><td colspan="2">主队'+historyScore[0]+'胜'+historyScore[1]+'平'+historyScore[2]+'负</td></tr>');
             html.push('<tr><td>平均赔率</td><td colspan="2"><table class="jc_table2"><tr><td>' + (data2[j].odds3 ? data2[j].odds3 : '--') + '</td><td>' + (data2[j].odds1 ? data2[j].odds1 : '--') + '</td><td>' + (data2[j].odds0 ? data2[j].odds0 : '--') + '</td></tr></table></td></tr>');
             html.push('<tr><td>投注比例</td><td colspan="2"><table class="jc_table2"><tr><td>' + betCounter[0] + '</td><td>' + betCounter[1] + '</td><td>' + betCounter[2] + '</td></tr></table></td></tr>');
-            html.push('</table></div></li>');
+            html.push('<tr><td colspan="4">查看赛事详情&gt;&gt;</td></tr></table></div></li>');
           }
           html.push("</ul>");
         }
@@ -359,9 +359,9 @@ _.a10={
               vhn='主不败';vh=403;vhr=data2[j].rqSheng;vgn='客胜';vg=0;vgr=data2[j].fu;
             }
             if(vhr>vgr){
-              minV=[vgr,data2[j].matchCode,data2[j].hostName,vh,vhn,vhr,data2[j].guestName,vg,vgn,vgr,data[i].dayOfWeekStr+'0'+(j+1).addZero()];
+              minV=[vgr,data2[j].matchCode,data2[j].hostName,vh,vhn,vhr,data2[j].guestName,vg,vgn,vgr,data[i].dayOfWeekStr+'0'+data2[j].matchCode.substr(9,2)];
             }else{
-              minV=[vhr,data2[j].matchCode,data2[j].hostName,vh,vhn,vhr,data2[j].guestName,vg,vgn,vgr,data[i].dayOfWeekStr+'0'+(j+1).addZero()];
+              minV=[vhr,data2[j].matchCode,data2[j].hostName,vh,vhn,vhr,data2[j].guestName,vg,vgn,vgr,data[i].dayOfWeekStr+'0'+data2[j].matchCode.substr(9,2)];
             }
             Dgp.push(minV);
             html.push('<div data="{name:\''+data[i].dayOfWeekStr +data2[j].matchCode.substr(8,3)+'\',time:\''+data2[j].sellEndTime.substr(11, 5)+'\',matchCode:\''+data2[j].matchCode+'\',hostName:\''+data2[j].hostName+'\',hostV:\''+vh+'\',hostTitle:\''+vhn+'\',hostRate:\''+vhr+'\',guestName:\''+data2[j].guestName+'\',guestV:\''+vg+'\',guestTitle:\''+vgn+'\',guestRate:\''+vgr+'\'}" id="Y'+data2[j].matchCode+'" onclick="cp2y.buy.addContent(this);">投注</div></li>');
