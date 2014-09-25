@@ -105,6 +105,7 @@ cp2y.mainPage=function(){
 						tmp='<p><span>'+cp2y.util.setIssue2(data.list[i].lastIssue)+'期奖号:</span>'+cp2y.util.splitNumber2(data.list[i].drawNumber)+'</p>';
 						break;
 					case 10038:
+                    case 10024:
 					case 10046:
 					case 10025:
 					case 10066:

@@ -972,7 +972,7 @@ cp2y.buy={
       });
 	},
 	hemai:function(){//合买
-      var money,getBets,issueCount=0,issueIds=[]/*期数*/,multiple=[]/*倍数*/,i=0,len,units=0,mul;
+      var money,getBets,issueCount=0,issueIds=[]/*期数*/,multiple=[]/*倍数*/,i=0,len,units=0,mul,dLen=[];
       $("#hemaiTitle").html(cp2y.buy.playName);
       dom.MainStep2.hide();
       $("#hemai").show();
@@ -1006,7 +1006,7 @@ cp2y.buy={
       }else{
         mul="不同";
       }
-      money=units*mul[0]*issueIds.length;
+      money=units*multiple[0]*issueIds.length;
       if(_.bt==10026){
         var additional=$("#additional").attr("checked")?1:0;
         if(additional){
