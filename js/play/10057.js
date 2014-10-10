@@ -139,7 +139,7 @@ _.a1={
               html.push('</strong><div class="dbStyle1" >');
               html.push('<p onclick="cp2y.buy.bdShow(this);"><span>'+data2[j].bjdcMatch.hostName+'</span><span>VS</span><span>'+data2[j].bjdcMatch.guestName+'</span></p>');
               html.push('<code></code>');
-              html.push('<article class="dbContent"><h3>'+data2[j].bjdcMatch.hostName+' VS '+data2[j].bjdcMatch.guestName+'</h3>');
+              html.push('<section class="dbContent"><h3>'+data2[j].bjdcMatch.hostName+' VS '+data2[j].bjdcMatch.guestName+'</h3>');
               html.push('<ul>' +
                 '<li class="jcBet a'+data2[j].matchKey+'_0" data="0" data_s="'+data2[j].bjdcSp.ss+'" data_class="a'+data2[j].matchKey+'_0">胜胜<br/>'+data2[j].bjdcSp.ss+'</li>' +
                 '<li class="jcBet a'+data2[j].matchKey+'_1" data="1" data_s="'+data2[j].bjdcSp.sp+'" data_class="a'+data2[j].matchKey+'_1">胜平<br/>'+data2[j].bjdcSp.sp+'</li>' +
@@ -151,7 +151,7 @@ _.a1={
                 '<li class="jcBet a'+data2[j].matchKey+'_7" data="7" data_s="'+data2[j].bjdcSp.fp+'" data_class="a'+data2[j].matchKey+'_7">负平<br/>'+data2[j].bjdcSp.fp+'</li>' +
                 '<li class="jcBet a'+data2[j].matchKey+'_8" data="8" data_s="'+data2[j].bjdcSp.ff+'" data_class="a'+data2[j].matchKey+'_8">负负<br/>'+data2[j].bjdcSp.ff+'</li>' +
                 '</ul>');
-              html.push('<nav><var onclick="cp2y.buy.bdUnSelect(this);">取消选择</var><var onclick="cp2y.buy.bdSelect2(this,false);">确定</var></nav></article>');
+              html.push('<nav><var onclick="cp2y.buy.bdUnSelect(this);">取消选择</var><var onclick="cp2y.buy.bdSelect2(this,false);">确定</var></nav></section>');
               html.push('</div></div></li>');
             }
             html.push("</ul>");
@@ -216,7 +216,7 @@ _.a2={
             html.push('</strong><div class="dbStyle1" >');
             html.push('<p onclick="cp2y.buy.bdShow(this);"><span>'+data2[j].bjdcMatch.hostName+'</span><span>VS</span><span>'+data2[j].bjdcMatch.guestName+'</span></p>');
             html.push('<code></code>');
-            html.push('<article class="dbContent"><h3>'+data2[j].bjdcMatch.hostName+' VS '+data2[j].bjdcMatch.guestName+'</h3><aside><main>');
+            html.push('<section class="dbContent"><h3>'+data2[j].bjdcMatch.hostName+' VS '+data2[j].bjdcMatch.guestName+'</h3><aside><main>');
             html.push('<h4>主胜</h4>');
 
             //['1:0','2:0','2:1','3:0','3:1','3:2','4:0','4:1','4:2','胜其他','0:0','1:1','2:2','3:3','平其他','0:1','0:2','1:2','0:3','1:3','2:3','0:4','1:4','2:4','负其他']
@@ -253,7 +253,7 @@ _.a2={
               '<li class="jcBet a'+data2[j].matchKey+'_23" data="23" data_s="'+data2[j].bjdcSp.f24+'" data_class="a'+data2[j].matchKey+'_23">2:4<br/>'+data2[j].bjdcSp.f24+'</li>' +
               '<li class="jcBet a'+data2[j].matchKey+'_24" data="24" data_s="'+data2[j].bjdcSp.fother+'" data_class="a'+data2[j].matchKey+'_24">负其他<br/>'+data2[j].bjdcSp.fother+'</li>' +
               '</ul></main></aside>');
-            html.push('<nav><var onclick="cp2y.buy.bdUnSelect(this);">取消选择</var><var onclick="cp2y.buy.bdSelect2(this,false);">确定</var></nav></article>');
+            html.push('<nav><var onclick="cp2y.buy.bdUnSelect(this);">取消选择</var><var onclick="cp2y.buy.bdSelect2(this,false);">确定</var></nav></section>');
             html.push('</div></div></li>');
           }
           html.push("</ul>");
@@ -318,7 +318,7 @@ _.a3={
             html.push('</strong><div class="dbStyle1" >');
             html.push('<p onclick="cp2y.buy.bdShow(this);"><span>'+data2[j].bjdcMatch.hostName+'</span><span>VS</span><span>'+data2[j].bjdcMatch.guestName+'</span></p>');
             html.push('<code></code>');
-            html.push('<article class="dbContent"><h3>'+data2[j].bjdcMatch.hostName+' VS '+data2[j].bjdcMatch.guestName+'</h3>');
+            html.push('<section class="dbContent"><h3>'+data2[j].bjdcMatch.hostName+' VS '+data2[j].bjdcMatch.guestName+'</h3>');
             html.push('<ul>' +
               '<li class="jcBet a'+data2[j].matchKey+'_0" data="0" data_s="'+data2[j].bjdcSp.t0+'" data_class="a'+data2[j].matchKey+'_0">0<br/>'+data2[j].bjdcSp.t0+'</li>' +
               '<li class="jcBet a'+data2[j].matchKey+'_1" data="1" data_s="'+data2[j].bjdcSp.t1+'" data_class="a'+data2[j].matchKey+'_1">1<br/>'+data2[j].bjdcSp.t1+'</li>' +
@@ -329,7 +329,7 @@ _.a3={
               '<li class="jcBet a'+data2[j].matchKey+'_6" data="6" data_s="'+data2[j].bjdcSp.t6+'" data_class="a'+data2[j].matchKey+'_6">6<br/>'+data2[j].bjdcSp.t6+'</li>' +
               '<li class="jcBet a'+data2[j].matchKey+'_7" data="7" data_s="'+data2[j].bjdcSp.t7+'" data_class="a'+data2[j].matchKey+'_7">7+<br/>'+data2[j].bjdcSp.t7+'</li>' +
               '</ul>');
-            html.push('<nav><var onclick="cp2y.buy.bdUnSelect(this);">取消选择</var><var onclick="cp2y.buy.bdSelect2(this,false);">确定</var></nav></article>');
+            html.push('<nav><var onclick="cp2y.buy.bdUnSelect(this);">取消选择</var><var onclick="cp2y.buy.bdSelect2(this,false);">确定</var></nav></section>');
             html.push('</div></div></li>');
           }
           html.push("</ul>");
@@ -394,14 +394,14 @@ _.a4={
             html.push('</strong><div class="dbStyle1" >');
             html.push('<p onclick="cp2y.buy.bdShow(this);"><span>'+data2[j].bjdcMatch.hostName+'</span><span>VS</span><span>'+data2[j].bjdcMatch.guestName+'</span></p>');
             html.push('<code></code>');
-            html.push('<article class="dbContent"><h3>'+data2[j].bjdcMatch.hostName+' VS '+data2[j].bjdcMatch.guestName+'</h3>');
+            html.push('<section class="dbContent"><h3>'+data2[j].bjdcMatch.hostName+' VS '+data2[j].bjdcMatch.guestName+'</h3>');
             html.push('<ul>' +
               '<li class="jcBet a'+data2[j].matchKey+'_0" data="0" data_s="'+data2[j].bjdcSp.shangD+'" data_class="a'+data2[j].matchKey+'_0">上单<br/>'+data2[j].bjdcSp.t0+'</li>' +
               '<li class="jcBet a'+data2[j].matchKey+'_1" data="1" data_s="'+data2[j].bjdcSp.shangS+'" data_class="a'+data2[j].matchKey+'_1">上双<br/>'+data2[j].bjdcSp.t1+'</li>' +
               '<li class="jcBet a'+data2[j].matchKey+'_2" data="2" data_s="'+data2[j].bjdcSp.xiaD+'" data_class="a'+data2[j].matchKey+'_2">下单<br/>'+data2[j].bjdcSp.t2+'</li>' +
               '<li class="jcBet a'+data2[j].matchKey+'_3" data="3" data_s="'+data2[j].bjdcSp.xiaS+'" data_class="a'+data2[j].matchKey+'_3">下双<br/>'+data2[j].bjdcSp.t3+'</li>' +
               '</ul>');
-            html.push('<nav><var onclick="cp2y.buy.bdUnSelect(this);">取消选择</var><var onclick="cp2y.buy.bdSelect2(this,false);">确定</var></nav></article>');
+            html.push('<nav><var onclick="cp2y.buy.bdUnSelect(this);">取消选择</var><var onclick="cp2y.buy.bdSelect2(this,false);">确定</var></nav></section>');
             html.push('</div></div></li>');
           }
           html.push("</ul>");

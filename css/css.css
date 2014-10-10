@@ -143,6 +143,7 @@ color:#fff;border-color:#1E73CD;box-shadow:0px 1px 2px 0 #a6a6a6;font-weight:bol
 #choose a.gb3.yb{background:green;color:#fff;}
 #choose a.gb.lgb{width:270px;line-height:36px;}
 #choose a.gb.lgb em{font-style:normal;padding:0 5px;}
+
 #choose article{width:40px;height:50px;border:3px #fafafa solid;float:left;margin:10px 7px;border-radius:5px;}
 #choose article.on,#choose article#pks2.on{border-color:#ff2b21;}
 #choose article section{width:36px;height:48px;padding-left:2px;border:1px #d8d8d8 solid;display:block;border-radius:5px;}
@@ -575,6 +576,12 @@ background:-o-linear-gradient(top,#fff,#f9f9f9);}
 .jc_line1 i:nth-child(3){float:right;margin-top:-62px;}
 .jc_line3 i{width:45%;}
 .jc_line3 i:nth-child(2){float:right;width:45%;}
+.jc_line5 p.dxf{height:30px;line-height:30px;text-align:center;}
+.jc_line5 p.dxf em{font-style:normal;color:#767676;}
+.jc_line5 p.dxf em:last-child{color:#f80;padding-left:10px;}
+.jc_line5 i{height:20px;padding:5px 0;}
+.jc_line5 i:nth-child(2){width:45%;float:left;}
+.jc_line5 i:nth-child(3){float:right;width:45%;margin:0;}
 .jc_table{width:100%;}
 .jc_table tr{height:35px;}
 .jc_table td{border:1px #ddd solid;padding:0;background:#F2F3F5;text-align:center;}

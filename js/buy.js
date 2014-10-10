@@ -4,7 +4,7 @@
 var autoRunMark;
 cp2y.issues={
   hideNext:function(e){
-      $(e).next().hide();
+    $(e).next().hide();
   },
   simpleIssues:[],
   getSimpleIssues:function(p){
@@ -312,52 +312,51 @@ cp2y.issues={
   setIssueSimple:function(){
       var t=$('#IssueBox');
       if(!t.val().isInt()){
-          t.val(1);
+         t.val(1);
       }
-      $.ajax({
-          url:WebAppUrl.HOME_APP_URL+"/lottery/traceIssueList",
-          beforeSend:function(){cp2y.dialog.loading();},
-          data:{lotteryId:_.bt,random:new Date().getTime()},
-          success:function(data){
-              cp2y.dialog.clearLoading();
-              if(data.flag==1){
-                  var issue=data.dataList,i=0,len=issue.length,isNum=t.val(),data,i=0,len,ty=cp2y.buy.Mul;
-                  if(BT.lotto.indexOf(_.bt)!=-1 || BT.sz.indexOf(_.bt)!=-1){
-                      if(t.val()>50){
-                          t.val(50);
-                      }
-                      cp2y.buy.issues={};
-                      try{
-                          for(i;i<isNum;i++){
-                              cp2y.buy.issues[issue[i].issueId]=ty;
-                          }
-                      }catch(e){}
-                  }else{
-                      if(isNum>len){
-                          t.val(len);
-                          isNum=len;
-                      };i=0;
-                      cp2y.buy.issues={};
-                      for(i;i<isNum;i++){
-                          cp2y.buy.issues[issue[i].issueId]=ty;
-                      }
-                  }
-                  if(t.val()>1){
-                      $('#setSthSimple').show();						
-                  }else{
-                      $('#setSthSimple').hide();
-                  }
-                  dom.Issues.html(t.val());
-
-              }
-          },
-          error:function(){cp2y.dialog.clearLoading();}
-      });
   },
   closeSetIssueSimple:function(){
-		cp2y.input.closeBox();
-		cp2y.buy.complete2();
-	}
+    $.ajax({
+      url:WebAppUrl.HOME_APP_URL+"/lottery/traceIssueList",
+      beforeSend:function(){cp2y.dialog.loading();},
+      data:{lotteryId:_.bt,random:new Date().getTime()},
+      success:function(data){
+        cp2y.dialog.clearLoading();
+        if(data.flag==1){
+          var t=$('#IssueBox'),issue=data.dataList,i=0,len=issue.length,isNum=t.val(),data,i=0,len,ty=cp2y.buy.Mul;
+          if(BT.lotto.indexOf(_.bt)!=-1 || BT.sz.indexOf(_.bt)!=-1){
+            if(t.val()>50){
+              t.val(50);
+            }
+            cp2y.buy.issues={};
+            try{
+              for(i;i<isNum;i++){
+                cp2y.buy.issues[issue[i].issueId]=ty;
+              }
+            }catch(e){}
+          }else{
+            if(isNum>len){
+              t.val(len);
+              isNum=len;
+            };i=0;
+            cp2y.buy.issues={};
+            for(i;i<isNum;i++){
+              cp2y.buy.issues[issue[i].issueId]=ty;
+            }
+          }
+          if(t.val()>1){
+            $('#setSthSimple').show();						
+          }else{
+            $('#setSthSimple').hide();
+          }
+          dom.Issues.html(t.val());
+          cp2y.input.closeBox();
+          cp2y.buy.complete2();
+        }
+      },
+      error:function(){cp2y.dialog.clearLoading();}
+    });
+  }
 };
 
 var dom={
@@ -922,6 +921,9 @@ cp2y.buy={
       if(money>100000000){
         return cp2y.dialog.alert('金额过大');
       }
+      if(dLen.length>0){
+        return cp2y.dialog.alert(dLen[0]+'已截止，已更新至最新奖期');
+      }
       data.schemeAmount=money;
       data.buyAmount=money;
       data.issueId=issueIds[0];//奖期
@@ -1006,7 +1008,7 @@ cp2y.buy={
       }else{
         mul="不同";
       }
-      money=units*multiple[0]*issueIds.length;
+      money=units*multiple[0]*issueIds.length*2;
       if(_.bt==10026){
         var additional=$("#additional").attr("checked")?1:0;
         if(additional){

@@ -194,6 +194,50 @@ cp2y.user={
     }
     return html.join('');
   },
+  jclqScheme:function(data){
+    var html=[],i=0,len;
+    html.push('<p class="jcScheme1">'+data.schemeData.schemeType+data.traceData[0].issue+'期,'+data.schemeData.numberType+',');
+    html.push(data.schemeData.schemeContent[0].pass+',');
+    html.push(data.traceData[0].multiple+'倍，共'+data.traceData[0].money+'元</p>');
+    var tf=false;
+    if(data.schemeData.open==4 ){
+      if(data.schemeStatus==501 || data.schemeStatus==701){
+        tf=true;
+      }
+    }
+    if(data.schemeData.open==1 || tf){
+      html.push('<table class="jcScheme2"><thead><tr><td>场次</td><td>对阵</td><td>投注</td><td>彩果</td>');
+      var td=data.schemeData.schemeContent[0].matches.matches,
+          ss='--',
+          hasDan=false;
+      len=td.length;
+      for(i;i<len;i++){
+        if(td[i].dan){hasDan=true;break;}
+      }
+      if(hasDan){
+        html.push('<td>定胆</td>');
+      }
+      html.push('</tr></thead><tbody>');
+      i=0;
+      for(i;i<len;i++){
+        var matchResult=td[i].matchResult,w='';
+        if(matchResult){
+          matchResult=matchResult.split('/').join('<br/>');
+        }else{
+          matchResult='待定';
+        }
+        html.push('<tr><td>'+td[i].basketball.name+'</td><td><a>'+td[i].basketball.host+'<br/>'+(td[i].lastScore?td[i].lastScore:'--')+'<br/>'+td[i].basketball.guest+'</a></td><td>'+td[i].msgs+'</td><td>'+matchResult+'</td>');
+        if(hasDan){
+          html.push('<td>'+(td[i].dan?"√":"×")+'</td>');
+        }
+        html.push('</tr>');
+      }
+      html.push('</body></table>');
+    }else{
+      html.push('<div class="userTip4">该方案未公开</div>');
+    }
+    return html.join('');
+  },
   numScheme:function(data){
     var html=[];
     html.push('<div class="userTip4">投'+data.schemeData.schemeNumberUnit+'注，共'+data.schemeData.schemeAmount+'元</div>');
@@ -393,8 +437,10 @@ cp2y.user={
         var html=[];
         schemeDom.t.html(data.lotteryName+"-方案");
         html.push(cp2y.user.schemeStatus(data));
-        if(BT.jc.indexOf(data.lotteryId)!=-1){
+        if(data.lotteryId == 10057 || data.lotteryId==10059){
           html.push(that.jcScheme(data));/* 竞彩足球 */
+        }else if(data.lotteryId==10058){
+          html.push(that.jclqScheme(data));/*竞彩篮球*/
         }else{
           html.push(that.numScheme(data));/* 非竞彩 */ 
         }

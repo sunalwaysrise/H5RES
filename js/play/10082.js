@@ -222,7 +222,18 @@ _.a2={
   },
   select:_.a1.select,
   count:_.a1.count,
-  random:_.a1.random,
+  random:function(u){
+    var i=0,o=[],ball=['A,2,3','2,3,4','3,4,5','4,5,6','5,6,7','6,7,8','7,8,9','8,9,10','9,10,J','10,J,Q','J,Q,K'],rb=[],ball2=['01','02','03','04','05','06','07','08','09','10','11'],rb2;
+    for(i;i<u;i++){
+      rb=ball.random({len:this.num});
+      rb2=ball2[ball.indexOf(rb)];
+      o.push('<li data_input="'+this.input+'" data_bets="1" data_code="'+rb2+'">');
+      o.push('<div><a class="r">'+rb.join('</a><a class="r">')+'</a></div>');
+      o.push('<p>'+this.playType+'：1注2元</p>');
+      o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
+    }
+    this.addRecord(o.join(''));
+  },
   addContent:_.a1.addContent
 };
 _.a3={
@@ -244,7 +255,18 @@ _.a3={
   },
   select:_.a1.select,
   count:_.a1.count,
-  random:_.a1.random,
+  random:function(u){
+    var i=0,o=[],ball=['A,A,A','2,2,2','3,3,3','4,4,4','5,5,5','6,6,6','7,7,7','8,8,8','9,9,9','10,10,10','J,J,J','Q,Q,Q','K,K,K'],rb=[],ball2=['01','02','03','04','05','06','07','08','09','10','11','12','13'],rb2;
+    for(i;i<u;i++){
+      rb=ball.random({len:this.num});
+      rb2=ball2[ball.indexOf(rb)];
+      o.push('<li data_input="'+this.input+'" data_bets="1" data_code="'+rb2+'">');
+      o.push('<div><a class="r">'+rb.join('</a><a class="r">')+'</a></div>');
+      o.push('<p>'+this.playType+'：1注2元</p>');
+      o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
+    }
+    this.addRecord(o.join(''));
+  },
   addContent:_.a1.addContent
 };
 _.a5={
