@@ -5,9 +5,10 @@ window.scrollTo(0,0);
 try{document.domain='cp2y.com';}catch(e){};
 var WebAppUrl={
 		RESOURCE_URL : "http://res.cp2y.com/h5/res/images/",
-		HOME_APP_URL : 'http://m.cp2y.com',
+		HOME_APP_URL : "http://m.cp2y.com",
 		JS_URL:"http://res2.cp2y.com/h5/res/js/play/",
-		Icon:"http://res.cp2y.com/h5/res/images/icon/"
+		Icon:"http://res.cp2y.com/h5/res/images/icon/",
+        FX:"http://m.cp2y.com/fx/yl/h"
 	},BT={
 		kk:[10037,10038,10046,10060,10061,10062,10064,10065,10066,10067,10082],
 		lotto:[10026,10032],

@@ -52,6 +52,7 @@ _.a0={
     html0.push('</section></article>');
     return html0.join('');
   },
+  updataYL:function(){},
   select:function(_this){
     $(_this).toggleClass("on");
     cp2y.buy.count();
@@ -122,6 +123,7 @@ _.a1={
   input2:"all",
   num:1,
   bx:'07',
+  updataYL:function(){},
   bet:function(){
     var html0=[],i=0;
     html0.push('<p>单选:开出的三张牌都是所选的花色即中奖<b>90元</b></p><div id="pks1">');
@@ -187,6 +189,7 @@ _.a16={
   input2:_.a1.input2,
   num:_.a1.num,
   bx:'08',
+  updataYL:function(){},
   bet:function(){
     var html0=[],i=0;
     html0.push('<p>单选:开出同花顺且为所选花色即中奖<b>2150元</b></p><div id="pks1">');
@@ -210,6 +213,7 @@ _.a2={
   input2:_.a1.input2,
   num:_.a1.num,
   bx:'09',
+  updataYL:function(){},
   bet:function(){
     var html0=[],i=0,A=['A,2,3','2,3,4','3,4,5','4,5,6','5,6,7','6,7,8','7,8,9','8,9,10','9,10,J','10,J,Q','J,Q,K'];
     html0.push('<p>单选:所选的顺子开出(不分花色)即中奖<b>400元</b></p><div id="pks1">');
@@ -243,6 +247,7 @@ _.a3={
   input2:_.a1.input2,
   num:_.a1.num,
   bx:'10',
+  updataYL:function(){},
   bet:function(){
     var html0=[],i=0,A=['A,A,A','2,2,2','3,3,3','4,4,4','5,5,5','6,6,6','7,7,7','8,8,8','9,9,9','10,10,10','J,J,J','Q,Q,Q','K,K,K'];
     html0.push('<p>单选:所选的三条开出(不分花色)即中奖<b>6400元</b></p><div id="pks1">');
@@ -278,10 +283,18 @@ _.a5={
     var html0=[],i=0,A=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
     html0.push('<p>至少选1个号</p><p>猜对任意1个开奖号(不分花色)即中<b>5元</b></p>');
     for(i;i<A.length;i++){
-      html0.push('<article data='+(i+1).addZero()+' data2='+A[i]+' onclick="cp2y.buy.select(this)"><section class="pk1 pkf2">'+A[i]+'</section></article>');
+      html0.push('<article data='+(i+1).addZero()+' data2='+A[i]+' onclick="cp2y.buy.select(this)"><section class="pk1 pkf2">'+A[i]+'</section><code></code></article>');
     }
     html0.push('</div>');
     return html0.join('');
+  },
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10167,type:3,location:0,issues:100},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
   },
   select:_.a0.select,
   count:function(){
@@ -372,11 +385,12 @@ _.a6={
     var html0=[],i=0,A=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
     html0.push('<p>至少选2个号</p><p>猜对任意2个开奖号(不分花色)即中<b>33元</b></p>');
     for(i;i<A.length;i++){
-      html0.push('<article data='+(i+1).addZero()+' data2='+A[i]+' onclick="cp2y.buy.select(this)"><section class="pk1 pkf2">'+A[i]+'</section></article>');
+      html0.push('<article data='+(i+1).addZero()+' data2='+A[i]+' onclick="cp2y.buy.select(this)"><section class="pk1 pkf2">'+A[i]+'</section><code></code></article>');
     }
     html0.push('</div>');
     return html0.join('');
   },
+  updataYL:_.a5.updataYL,
   select:_.a0.select,
   count:_.a5.count,
   random:_.a5.random,
@@ -391,11 +405,11 @@ _.a8={
     var html0=[],i=0,A=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
     html0.push('<p>至少选3个号</p><p>选号包含开奖号(不分花色)即中<b>116元</b></p>');
     for(i;i<A.length;i++){
-      html0.push('<article data='+(i+1).addZero()+' data2='+A[i]+' onclick="cp2y.buy.select(this)"><section class="pk1 pkf2">'+A[i]+'</section></article>');
+      html0.push('<article data='+(i+1).addZero()+' data2='+A[i]+' onclick="cp2y.buy.select(this)"><section class="pk1 pkf2">'+A[i]+'</section><code></code></article>');
     }
     html0.push('</div>');
     return html0.join('');
-  },
+  },updataYL:_.a5.updataYL,
   select:_.a0.select,
   count:_.a5.count,
   random:_.a5.random,
@@ -410,11 +424,11 @@ _.a10={
     var html0=[],i=0,A=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
     html0.push('<p>至少选4个号</p><p>选号包含开奖号(不分花色)即中<b>46元</b></p>');
     for(i;i<A.length;i++){
-      html0.push('<article data='+(i+1).addZero()+' data2='+A[i]+' onclick="cp2y.buy.select(this)"><section class="pk1 pkf2">'+A[i]+'</section></article>');
+      html0.push('<article data='+(i+1).addZero()+' data2='+A[i]+' onclick="cp2y.buy.select(this)"><section class="pk1 pkf2">'+A[i]+'</section><code></code></article>');
     }
     html0.push('</div>');
     return html0.join('');
-  },
+  },updataYL:_.a5.updataYL,
   select:_.a0.select,
   count:_.a5.count,
   random:_.a5.random,
@@ -429,11 +443,11 @@ _.a12={
     var html0=[],i=0,A=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
     html0.push('<p>至少选5个号</p><p>选号包含开奖号(不分花色)即中<b>22元</b></p>');
     for(i;i<A.length;i++){
-      html0.push('<article data='+(i+1).addZero()+' data2='+A[i]+' onclick="cp2y.buy.select(this)"><section class="pk1 pkf2">'+A[i]+'</section></article>');
+      html0.push('<article data='+(i+1).addZero()+' data2='+A[i]+' onclick="cp2y.buy.select(this)"><section class="pk1 pkf2">'+A[i]+'</section><code></code></article>');
     }
     html0.push('</div>');
     return html0.join('');
-  },
+  },updataYL:_.a5.updataYL,
   select:_.a0.select,
   count:_.a5.count,
   random:_.a5.random,
@@ -448,11 +462,11 @@ _.a14={
     var html0=[],i=0,A=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
     html0.push('<p>至少选6个号</p><p>选号包含开奖号(不分花色)即中<b>12元</b></p>');
     for(i;i<A.length;i++){
-      html0.push('<article data='+(i+1).addZero()+' data2='+A[i]+' onclick="cp2y.buy.select(this)"><section class="pk1 pkf2">'+A[i]+'</section></article>');
+      html0.push('<article data='+(i+1).addZero()+' data2='+A[i]+' onclick="cp2y.buy.select(this)"><section class="pk1 pkf2">'+A[i]+'</section><code></code></article>');
     }
     html0.push('</div>');
     return html0.join('');
-  },
+  },updataYL:_.a5.updataYL,
   select:_.a0.select,
   count:_.a5.count,
   random:_.a5.random,

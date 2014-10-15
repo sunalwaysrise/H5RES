@@ -21,14 +21,28 @@ _.a0={
 		var html0=[],i=1,j=1;
 		html0.push('<p>前区(至少选5个)</p>');
 		for(i;i<36;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'<code></code></a>');
 		}
 		html0.push('<p>后区(至少2个)</p>');
 		for(j;j<13;j++){
-			html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+j.addZero()+'</a>');
+			html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+j.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10088,type:4},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+35).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10088},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+  },
 	select:function(_this,b){
 		var cls=b==1?"":"bb";
 		if(b==1){
@@ -165,25 +179,41 @@ _.a1={
 	input:"draw",
 	num:7,
 	mul:1,
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10088,type:4},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+82).children("code").html(d[i]);
+        o.eq(i+70).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10088},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+        o.eq(i+35).children("code").html(d[i]);
+      }
+    });
+  },
 	bet:function(){
 		var html0=[],i=1,j=1;
 		html0.push('<p>前区胆码(选1-4个)</p>');
 		for(i;i<36;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'<code></code></a>');
 		}
 		i=1;
 		html0.push('<p>前区拖码(胆+拖≥5个)</p>');
 		for(i;i<36;i++){
-			html0.push('<a class="gb3" onclick="cp2y.buy.select(this,3)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb3" onclick="cp2y.buy.select(this,3)">'+i.addZero()+'<code></code></a>');
 		}
 		html0.push('<p>后区胆码(至多选1个)</p>');
 		for(j;j<13;j++){
-			html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+j.addZero()+'</a>');
+			html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+j.addZero()+'<code></code></a>');
 		}
 		j=1;
 		html0.push('<p>后区拖码(胆+拖≥2个)</p>');
 		for(j;j<13;j++){
-			html0.push('<a class="gb4" onclick="cp2y.buy.select(this,4)">'+j.addZero()+'</a>');
+			html0.push('<a class="gb4" onclick="cp2y.buy.select(this,4)">'+j.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},

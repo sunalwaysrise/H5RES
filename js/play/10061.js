@@ -24,7 +24,7 @@ var _ = {
     return html.join('');
   }
 };
-_.a0 = {
+_.a0={
   hasOutGet:false,
 	playName : _.playName,
 	playType : "一星",
@@ -34,10 +34,18 @@ _.a0 = {
 		var html0 = [], i = 0;
 		html0.push('<p>至少选择1个号码</p>');
 		for (i; i < 10; i++) {
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">' + i + '</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">' + i + '<code></code></a>');
 		};
 		return html0.join('');
 	},
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10134,type:1,location:5},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+  },
 	select : function(_this) {
 		$(_this).toggleClass("rb");
 		cp2y.buy.count();
@@ -91,7 +99,7 @@ _.a0 = {
 		this.step2();
 	}
 };
-_.a1 = {
+_.a1={
   hasOutGet:true,
   outGet:function(){
     var r=cp2y.util.getArgs2('w1'),r2=cp2y.util.getArgs2('w2'),r3=cp2y.util.getArgs2('w3'),r4=cp2y.util.getArgs2('w4'),i=0,o=$('.gb');
@@ -140,25 +148,51 @@ _.a1 = {
 		var html0 = [], i = 0;
 		html0.push('<p>千位</p>');
 		for (i; i < 10; i++) {
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,4)">' + i + '</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this,4)">' + i + '<code></code></a>');
 		};
 		i = 0;
 		html0.push('<p>百位</p>');
 		for (i; i < 10; i++) {
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,3)">' + i + '</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this,3)">' + i + '<code></code></a>');
 		};
 		i = 0;
 		html0.push('<p>十位</p>');
 		for (i; i < 10; i++) {
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,2)">' + i + '</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this,2)">' + i + '<code></code></a>');
 		};
 		i = 0;
 		html0.push('<p>个位</p>');
 		for (i; i < 10; i++) {
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">' + i + '</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">' + i + '<code></code></a>');
 		};
 		return html0.join('');
 	},
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10135,type:1,location:1},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10135,type:1,location:2},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+10).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10135,type:1,location:3},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+20).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10135,type:1,location:4},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+30).children("code").html(d[i]);
+      }
+    });
+  },
 	select : function(_this, x) {
 		$(_this).toggleClass("rb" + x);
 		cp2y.buy.count();
@@ -234,7 +268,7 @@ _.a1 = {
 		this.step2();
 	}
 };
-_.a2 = {
+_.a2={
   hasOutGet:true,
   outGet:function(){
     var r=cp2y.util.getArgs2('w1'),r2=cp2y.util.getArgs2('w2'),r3=cp2y.util.getArgs2('w3'),r4=cp2y.util.getArgs2('w4'),r5=cp2y.util.getArgs2('w5'),i=0,o=$('.gb');
@@ -291,30 +325,62 @@ _.a2 = {
 		var html0 = [], i = 0;
 		html0.push('<p>万位</p>');
 		for (i; i < 10; i++) {
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,5)">' + i + '</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this,5)">' + i + '<code></code></a>');
 		};
 		i = 0;
 		html0.push('<p>千位</p>');
 		for (i; i < 10; i++) {
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,4)">' + i + '</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this,4)">' + i + '<code></code></a>');
 		};
 		i = 0;
 		html0.push('<p>百位</p>');
 		for (i; i < 10; i++) {
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,3)">' + i + '</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this,3)">' + i + '<code></code></a>');
 		};
 		i = 0;
 		html0.push('<p>十位</p>');
 		for (i; i < 10; i++) {
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,2)">' + i + '</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this,2)">' + i + '<code></code></a>');
 		};
 		i = 0;
 		html0.push('<p>个位</p>');
 		for (i; i < 10; i++) {
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">' + i + '</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">' + i + '<code></code></a>');
 		};
 		return html0.join('');
 	},
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10134,type:1,location:1},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10134,type:1,location:2},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+10).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10134,type:1,location:3},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+20).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10134,type:1,location:4},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+30).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10134,type:1,location:5},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+40).children("code").html(d[i]);
+      }
+    });
+  },
 	select : function(_this, x) {
 		$(_this).toggleClass("rb" + x);
 		cp2y.buy.count();
@@ -396,12 +462,13 @@ _.a2 = {
 		this.step2();
 	}
 };
-_.a3 = {
+_.a3={
   hasOutGet:_.a0.hasOutGet,
   playName : _.playName,
   playType : "五星通选",
   input : "fiveStarAllPoly",
   num : 5,
+  updataYL:_.a2.updataYL,
   bet : _.a2.bet,
   select : _.a2.select,
   count : _.a2.count,
@@ -410,29 +477,37 @@ _.a3 = {
 };
 _.a4 = {
   hasOutGet:_.a0.hasOutGet,
-	playName : _.playName,
-	playType : "二星组选",
-	input : "twoStarGroupPoly",
-	num : 2,
-	bet : _.a0.bet,
-	select : _.a0.select,
-	count : function() {
-		var rb = [], i = 0, o = this.getBall(), len = o.length, units, s = 1;
-		for (i; i < len; i++) {
-			if (o.eq(i).hasClass("rb")) {
-				rb.push(o.eq(i));
-			}
-		};
-		if (rb.length > 0) {
-			s = 3;
-		};
-		this.setClear(s);
-		units = rb.length * (rb.length - 1) / 2;
-		dom.CurBets.html(units);
-		dom.CurMoney.html(units * 2);
-	},
-	random : _.a0.random,
-	addContent : _.a0.addContent
+  playName : _.playName,
+  playType : "二星组选",
+  input : "twoStarGroupPoly",
+  num : 2,
+  bet : _.a0.bet,
+  select : _.a0.select,
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10137},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+  },
+  count : function() {
+      var rb = [], i = 0, o = this.getBall(), len = o.length, units, s = 1;
+      for (i; i < len; i++) {
+          if (o.eq(i).hasClass("rb")) {
+              rb.push(o.eq(i));
+          }
+      };
+      if (rb.length > 0) {
+          s = 3;
+      };
+      this.setClear(s);
+      units = rb.length * (rb.length - 1) / 2;
+      dom.CurBets.html(units);
+      dom.CurMoney.html(units * 2);
+  },
+  random : _.a0.random,
+  addContent : _.a0.addContent
 };
 _.a5 = {
   hasOutGet:_.a0.hasOutGet,
@@ -440,6 +515,14 @@ _.a5 = {
 	playType : "三星组3",
 	input : "threeStarGroup3Poly",
 	num : 2,
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10136},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+  },
 	bet : _.a0.bet,
 	select : _.a0.select,
 	count : function() {
@@ -503,6 +586,7 @@ _.a6 = {
 	num : 3,
 	bet : _.a0.bet,
 	select : _.a0.select,
+  updataYL:_.a5.updataYL,
 	count : function() {
 		var rb = [], i = 0, o = this.getBall(), len = o.length, units, s = 1;
 		for (i; i < len; i++) {
@@ -542,61 +626,93 @@ _.a6 = {
 };
 _.a7 = {
   hasOutGet:_.a0.hasOutGet,
-	playName : _.playName,
-	playType : "任选1",
-	input : "renOne",
-	num : 1,
-	bet : _.a2.bet,
-	select : _.a2.select,
-	count : function() {
-		var rb1 = [], rb2 = [], rb3 = [], rb4 = [], rb5 = [], i = 0, o = this.getBall(), len = o.length, units, s = 1;
-		for (i; i < len; i++) {
-			if (o.eq(i).hasClass("rb1")) {
-				rb1.push(o.eq(i));
-			};
-			if (o.eq(i).hasClass("rb2")) {
-				rb2.push(o.eq(i));
-			};
-			if (o.eq(i).hasClass("rb3")) {
-				rb3.push(o.eq(i));
-			};
-			if (o.eq(i).hasClass("rb4")) {
-				rb4.push(o.eq(i));
-			};
-			if (o.eq(i).hasClass("rb5")) {
-				rb5.push(o.eq(i));
-			}
-		};
-		if (rb1.length > 0 || rb2.length > 0 || rb3.length > 0 || rb4.length > 0 || rb5.length > 0) {
-			s = 3;
-		};
-		this.setClear(s);
-		units = rb1.length + rb2.length + rb3.length + rb4.length + rb5.length;
-		dom.CurBets.html(units);
-		dom.CurMoney.html(units * 2);
-	},
-	random : function(u) {
-		var i = 0, o = [], ball = [], rb = [];
-		for (i; i < 10; i++) {
-			ball.push(i);
-		};
-		i = 0;
-		for (i; i < u; i++) {
-			rb = ball.random({
-				len : this.num
-			});
-			rb.unshift('-');
-			rb.unshift('-');
-			rb.push('-');
-			rb.push('-');
-			o.push('<li data_input="' + this.input + '" data_bets="1" data_code="' + rb.join(',') + '">');
-			o.push('<div><a class="r">' + rb.join('</a><a class="r">') + '</a></div>');
-			o.push('<p>' + this.playType + '：1注2元</p>');
-			o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
-		};
-		this.addRecord(o.join(''));
-	},
-	addContent : function() {
+  playName : _.playName,
+  playType : "任选1",
+  input : "renOne",
+  num : 1,
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10134,type:1,location:1},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10134,type:1,location:2},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+10).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10134,type:1,location:3},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+20).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10134,type:1,location:4},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+30).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10134,type:1,location:5},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+40).children("code").html(d[i]);
+      }
+    });
+  },
+  bet : _.a2.bet,
+  select : _.a2.select,
+  count : function() {
+      var rb1 = [], rb2 = [], rb3 = [], rb4 = [], rb5 = [], i = 0, o = this.getBall(), len = o.length, units, s = 1;
+      for (i; i < len; i++) {
+          if (o.eq(i).hasClass("rb1")) {
+              rb1.push(o.eq(i));
+          };
+          if (o.eq(i).hasClass("rb2")) {
+              rb2.push(o.eq(i));
+          };
+          if (o.eq(i).hasClass("rb3")) {
+              rb3.push(o.eq(i));
+          };
+          if (o.eq(i).hasClass("rb4")) {
+              rb4.push(o.eq(i));
+          };
+          if (o.eq(i).hasClass("rb5")) {
+              rb5.push(o.eq(i));
+          }
+      };
+      if (rb1.length > 0 || rb2.length > 0 || rb3.length > 0 || rb4.length > 0 || rb5.length > 0) {
+          s = 3;
+      };
+      this.setClear(s);
+      units = rb1.length + rb2.length + rb3.length + rb4.length + rb5.length;
+      dom.CurBets.html(units);
+      dom.CurMoney.html(units * 2);
+  },
+  random : function(u) {
+      var i = 0, o = [], ball = [], rb = [];
+      for (i; i < 10; i++) {
+          ball.push(i);
+      };
+      i = 0;
+      for (i; i < u; i++) {
+          rb = ball.random({
+              len : this.num
+          });
+          rb.unshift('-');
+          rb.unshift('-');
+          rb.push('-');
+          rb.push('-');
+          o.push('<li data_input="' + this.input + '" data_bets="1" data_code="' + rb.join(',') + '">');
+          o.push('<div><a class="r">' + rb.join('</a><a class="r">') + '</a></div>');
+          o.push('<p>' + this.playType + '：1注2元</p>');
+          o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
+      };
+      this.addRecord(o.join(''));
+  },
+  addContent : function() {
 		var rb1 = [], rb2 = [], rb3 = [], rb4 = [], rb5 = [], i = 0, o = this.getBall(), len = o.length;
 		for (i; i < len; i++) {
 			if (o.eq(i).hasClass("rb1")) {
@@ -642,95 +758,96 @@ _.a7 = {
 };
 _.a8 = {
   hasOutGet:_.a0.hasOutGet,
-	playName : _.playName,
-	playType : "任选2",
-	input : "renTwo",
-	num : 2,
-	bet : _.a7.bet,
-	select : _.a7.select,
-	combi : function(arr, num) {
-		var r = [];
-		(function f(t, a, n) {
-			if (n == 0)
-				return r.push(t);
-			for (var i = 0, l = a.length - n; i <= l; i++) {
-				f(t.concat(a[i]), a.slice(i + 1), n - 1);
-			}
-		})([], arr, num);
-		return r;
-	},
-	calcUnits : function(a) {
-		var b = [];
-		$(a).each(function(i, v) {
-			if (v.length == 0 || (v.length == 1 && v[0] == '-')) {
-				return;
-			}
-			b.push(v);
-		});
-		if (b.length < 2)
-			return 0;
-		var pos = [];
-		$(b).each(function(i, v) {
-			pos.push(i);
-		});
-		var units = 0;
-		$(this.combi(pos, 2)).each(function(i, v) {
-			units += b[v[0]].length * b[v[1]].length;
-		});
-		return units;
-	},
-	getArray : function() {
-		var o = this.getBall(), w = [], q = [], b = [], s = [], g = [], i = 0, len = o.length;
-		for (i; i < len; i++) {
-			if (o.eq(i).hasClass("rb5")) {
-				w.push(o.eq(i).html());
-			};
-			if (o.eq(i).hasClass("rb4")) {
-				q.push(o.eq(i).html());
-			};
-			if (o.eq(i).hasClass("rb3")) {
-				b.push(o.eq(i).html());
-			};
-			if (o.eq(i).hasClass("rb2")) {
-				s.push(o.eq(i).html());
-			};
-			if (o.eq(i).hasClass("rb1")) {
-				g.push(o.eq(i).html());
-			}
-		};
-		return [w, q, b, s, g];
-	},
-	count : function() {
-		var a = this.getArray(), units, s = 1;
-		if (a[0].length > 0 || a[1].length > 0 || a[2].length > 0 || a[3].length > 0 || a[4].length > 0) {
-			s = 3;
-		};
-		this.setClear(s);
-		units = this.calcUnits(a);
-		dom.CurBets.html(units);
-		dom.CurMoney.html(units * 2);
-	},
-	random : function(u) {
-		var i = 0, o = [], ball = [], rb = [];
-		for (i; i < 10; i++) {
-			ball.push(i);
-		};
-		i = 0;
-		for (i; i < u; i++) {
-			rb = ball.random({
-				len : this.num
-			});
-			rb.unshift('-');
-			rb.push('-');
-			rb.push('-');
-			o.push('<li data_input="' + this.input + '" data_bets="1" data_code="' + rb.join(',') + '">');
-			o.push('<div><a class="r">' + rb.join('</a><a class="r">') + '</a></div>');
-			o.push('<p>' + this.playType + '：1注2元</p>');
-			o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
-		};
-		this.addRecord(o.join(''));
-	},
-	addContent : function() {
+  playName : _.playName,
+  playType : "任选2",
+  input : "renTwo",
+  num : 2,
+  bet : _.a7.bet,
+  updataYL:_.a7.updataYL,
+  select : _.a7.select,
+  combi : function(arr, num) {
+      var r = [];
+      (function f(t, a, n) {
+          if (n == 0)
+              return r.push(t);
+          for (var i = 0, l = a.length - n; i <= l; i++) {
+              f(t.concat(a[i]), a.slice(i + 1), n - 1);
+          }
+      })([], arr, num);
+      return r;
+  },
+  calcUnits : function(a) {
+      var b = [];
+      $(a).each(function(i, v) {
+          if (v.length == 0 || (v.length == 1 && v[0] == '-')) {
+              return;
+          }
+          b.push(v);
+      });
+      if (b.length < 2)
+          return 0;
+      var pos = [];
+      $(b).each(function(i, v) {
+          pos.push(i);
+      });
+      var units = 0;
+      $(this.combi(pos, 2)).each(function(i, v) {
+          units += b[v[0]].length * b[v[1]].length;
+      });
+      return units;
+  },
+  getArray : function() {
+      var o = this.getBall(), w = [], q = [], b = [], s = [], g = [], i = 0, len = o.length;
+      for (i; i < len; i++) {
+          if (o.eq(i).hasClass("rb5")) {
+              w.push(o.eq(i).html());
+          };
+          if (o.eq(i).hasClass("rb4")) {
+              q.push(o.eq(i).html());
+          };
+          if (o.eq(i).hasClass("rb3")) {
+              b.push(o.eq(i).html());
+          };
+          if (o.eq(i).hasClass("rb2")) {
+              s.push(o.eq(i).html());
+          };
+          if (o.eq(i).hasClass("rb1")) {
+              g.push(o.eq(i).html());
+          }
+      };
+      return [w, q, b, s, g];
+  },
+  count : function() {
+      var a = this.getArray(), units, s = 1;
+      if (a[0].length > 0 || a[1].length > 0 || a[2].length > 0 || a[3].length > 0 || a[4].length > 0) {
+          s = 3;
+      };
+      this.setClear(s);
+      units = this.calcUnits(a);
+      dom.CurBets.html(units);
+      dom.CurMoney.html(units * 2);
+  },
+  random : function(u) {
+      var i = 0, o = [], ball = [], rb = [];
+      for (i; i < 10; i++) {
+          ball.push(i);
+      };
+      i = 0;
+      for (i; i < u; i++) {
+          rb = ball.random({
+              len : this.num
+          });
+          rb.unshift('-');
+          rb.push('-');
+          rb.push('-');
+          o.push('<li data_input="' + this.input + '" data_bets="1" data_code="' + rb.join(',') + '">');
+          o.push('<div><a class="r">' + rb.join('</a><a class="r">') + '</a></div>');
+          o.push('<p>' + this.playType + '：1注2元</p>');
+          o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
+      };
+      this.addRecord(o.join(''));
+  },
+  addContent : function() {
 		var a = this.getArray(), units = this.calcUnits(a);
 		if (units == 0) {
 			if (a[0].length > 0 || a[1].length > 0 || a[2].length > 0 || a[3].length > 0 || a[4].length > 0) {
@@ -766,6 +883,7 @@ _.a9 = {
 	playType : "大小单双",
 	input : "dxds",
 	num : 2,
+  updataYL:function(){},
 	bet : function() {
 		var html0 = [], i = 0;
 		html0.push('<p></p>');
@@ -862,44 +980,58 @@ _.a10 = {
       }
     }
   },
-	playName : _.playName,
-	playType : "二星直选",
-	input : "twoStarDirectPoly",
-	num : 2,
-	bet : function() {
-		var html0 = [], i = 0;
-		html0.push('<p>十位</p>');
-		for (i; i < 10; i++) {
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,2)">' + i + '</a>');
-		};
-		i = 0;
-		html0.push('<p>个位</p>');
-		for (i; i < 10; i++) {
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">' + i + '</a>');
-		};
-		return html0.join('');
-	},
-	select : _.a2.select,
-	count : function() {
-		var rb1 = [], rb2 = [], i = 0, o = this.getBall(), len = o.length, units, s = 1;
-		for (i; i < len; i++) {
-			if (o.eq(i).hasClass("rb1")) {
-				rb1.push(o.eq(i));
-			};
-			if (o.eq(i).hasClass("rb2")) {
-				rb2.push(o.eq(i));
-			}
-		};
-		if (rb1.length > 0 || rb2.length > 0) {
-			s = 3;
-		};
-		this.setClear(s);
-		units = rb1.length * rb2.length;
-		dom.CurBets.html(units);
-		dom.CurMoney.html(units * 2);
-	},
-	random : _.a2.random,
-	addContent : function() {
+  playName : _.playName,
+  playType : "二星直选",
+  input : "twoStarDirectPoly",
+  num : 2,
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10136,type:1,location:2},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10136,type:1,location:3},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+10).children("code").html(d[i]);
+      }
+    });
+  },
+  bet : function() {
+      var html0 = [], i = 0;
+      html0.push('<p>十位</p>');
+      for (i; i < 10; i++) {
+          html0.push('<a class="gb" onclick="cp2y.buy.select(this,2)">' + i + '<code></code></a>');
+      };
+      i = 0;
+      html0.push('<p>个位</p>');
+      for (i; i < 10; i++) {
+          html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">' + i + '<code></code></a>');
+      };
+      return html0.join('');
+  },
+  select : _.a2.select,
+  count : function() {
+      var rb1 = [], rb2 = [], i = 0, o = this.getBall(), len = o.length, units, s = 1;
+      for (i; i < len; i++) {
+          if (o.eq(i).hasClass("rb1")) {
+              rb1.push(o.eq(i));
+          };
+          if (o.eq(i).hasClass("rb2")) {
+              rb2.push(o.eq(i));
+          }
+      };
+      if (rb1.length > 0 || rb2.length > 0) {
+          s = 3;
+      };
+      this.setClear(s);
+      units = rb1.length * rb2.length;
+      dom.CurBets.html(units);
+      dom.CurMoney.html(units * 2);
+  },
+  random : _.a2.random,
+  addContent : function() {
 		var rb1 = [], rb2 = [], i = 0, o = this.getBall(), len = o.length;
 		for (i; i < len; i++) {
 			if (o.eq(i).hasClass("rb1")) {
@@ -954,52 +1086,72 @@ _.a11 = {
       }
     }
   },
-	playName : _.playName,
-	playType : "三星直选",
-	input : "threeStarDirectPoly",
-	num : 3,
-	bet : function() {
-		var html0 = [], i = 0;
-		html0.push('<p>百位</p>');
-		for (i; i < 10; i++) {
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,3)">' + i + '</a>');
-		};
-		i = 0;
-		html0.push('<p>十位</p>');
-		for (i; i < 10; i++) {
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,2)">' + i + '</a>');
-		};
-		i = 0;
-		html0.push('<p>个位</p>');
-		for (i; i < 10; i++) {
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">' + i + '</a>');
-		};
-		return html0.join('');;
-	},
-	select : _.a2.select,
-	count : function() {
-		var rb1 = [], rb2 = [], rb3 = [], i = 0, o = this.getBall(), len = o.length, units, s = 1;
-		for (i; i < len; i++) {
-			if (o.eq(i).hasClass("rb1")) {
-				rb1.push(o.eq(i));
-			};
-			if (o.eq(i).hasClass("rb2")) {
-				rb2.push(o.eq(i));
-			};
-			if (o.eq(i).hasClass("rb3")) {
-				rb3.push(o.eq(i));
-			}
-		};
-		if (rb1.length > 0 || rb2.length > 0 || rb3.length > 0) {
-			s = 3;
-		};
-		this.setClear(s);
-		units = rb1.length * rb2.length * rb3.length;
-		dom.CurBets.html(units);
-		dom.CurMoney.html(units * 2);
-	},
-	random : _.a2.random,
-	addContent : function() {
+  playName : _.playName,
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10136,type:1,location:1},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10136,type:1,location:2},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+10).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10136,type:1,location:3},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+20).children("code").html(d[i]);
+      }
+    });
+  },
+  playType : "三星直选",
+  input : "threeStarDirectPoly",
+  num : 3,
+  bet : function() {
+      var html0 = [], i = 0;
+      html0.push('<p>百位</p>');
+      for (i; i < 10; i++) {
+          html0.push('<a class="gb" onclick="cp2y.buy.select(this,3)">' + i + '<code></code></a>');
+      };
+      i = 0;
+      html0.push('<p>十位</p>');
+      for (i; i < 10; i++) {
+          html0.push('<a class="gb" onclick="cp2y.buy.select(this,2)">' + i + '<code></code></a>');
+      };
+      i = 0;
+      html0.push('<p>个位</p>');
+      for (i; i < 10; i++) {
+          html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">' + i + '<code></code></a>');
+      };
+      return html0.join('');;
+  },
+  select : _.a2.select,
+  count : function() {
+      var rb1 = [], rb2 = [], rb3 = [], i = 0, o = this.getBall(), len = o.length, units, s = 1;
+      for (i; i < len; i++) {
+          if (o.eq(i).hasClass("rb1")) {
+              rb1.push(o.eq(i));
+          };
+          if (o.eq(i).hasClass("rb2")) {
+              rb2.push(o.eq(i));
+          };
+          if (o.eq(i).hasClass("rb3")) {
+              rb3.push(o.eq(i));
+          }
+      };
+      if (rb1.length > 0 || rb2.length > 0 || rb3.length > 0) {
+          s = 3;
+      };
+      this.setClear(s);
+      units = rb1.length * rb2.length * rb3.length;
+      dom.CurBets.html(units);
+      dom.CurMoney.html(units * 2);
+  },
+  random : _.a2.random,
+  addContent : function() {
 		var rb1 = [], rb2 = [], rb3 = [], i = 0, o = this.getBall(), len = o.length;
 		for (i; i < len; i++) {
 			if (o.eq(i).hasClass("rb1")) {

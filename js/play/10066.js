@@ -53,10 +53,18 @@ _.a0={
 		var html0=[],i=1;
 		html0.push('<p>至少选择1个号码</p>');
 		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10153,type:1,location:1},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+  },
 	select:function(_this){
 		$(_this).toggleClass("rb");
 		cp2y.buy.count();
@@ -120,10 +128,18 @@ _.a1={
 		var html0=[],i=1;
 		html0.push('<p>至少选择'+cp2y.buy.num+'个号码</p>');
 		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},
+  updataYL: function(){
+    $.get(WebAppUrl.FX,{lid:10152},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+  },
 	select:_.a0.select,
 	count:_.a0.count,
 	random:_.a0.random,
@@ -142,15 +158,24 @@ _.a2={
 			html0.push('<p>胆码(选1-'+(cp2y.buy.num-1)+'个)</p>');
 		}
 		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'<code></code></a>');
 		}
 		i=1;
 		html0.push('<p>拖码(胆+拖≥'+(cp2y.buy.num+1)+'个)</p>');
 		for(i;i<12;i++){
-			html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},
+  updataYL: function(){
+    $.get(WebAppUrl.FX,{lid:10152},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+        o.eq(i+11).children("code").html(d[i]);
+      }
+    });
+  },
 	select:function(_this,b){
 		if(b==1){
 			if(!$(_this).hasClass("rb")){
@@ -238,10 +263,18 @@ _.a3={
 		var html0=[],i=1;
 		html0.push('<p>至少选择2个号码</p>');
 		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},
+  updataYL: function(){
+    $.get(WebAppUrl.FX,{lid:10154},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+  },
 	select:_.a0.select,
 	count:function(){
 		var rb=[],i=0,o=this.getBall(),len=o.length,s=1;
@@ -302,15 +335,28 @@ _.a4={
 		var html0=[],i=1;
 		html0.push('<p>选择第一位</p>');
 		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'<code></code></a>');
 		}
 		i=1;
 		html0.push('<p>选择第二位</p>');
 		for(i;i<12;i++){
-			html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},
+  updataYL: function(){
+    $.get(WebAppUrl.FX,{lid:10154,type:1,location:1},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });$.get(WebAppUrl.FX,{lid:10154,type:1,location:2},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+11).children("code").html(d[i]);
+      }
+    });
+  },
 	select:function(_this,i){
 		if(i==1){
 			$(_this).toggleClass("rb");
@@ -399,6 +445,15 @@ _.a5={
 	input:"twoDirectDraw",
 	num:2,
 	bet:_.a2.bet,
+  updataYL: function(){
+    $.get(WebAppUrl.FX,{lid:10154},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+        o.eq(i+11).children("code").html(d[i]);
+      }
+    });
+  },
 	select:function(_this,b){
 		if(b==1){
 			if(!$(_this).hasClass("rb")){
@@ -486,10 +541,11 @@ _.a6={
 		var html0=[],i=1;
 		html0.push('<p>至少选择2个号码</p>');
 		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},
+  updataYL: _.a3.updataYL,
 	select:_.a1.select,
 	count:_.a1.count,
 	random:_.a1.random,
@@ -501,6 +557,7 @@ _.a7={
 	input:"twoGroupDraw",
 	num:2,
 	bet:_.a2.bet,
+  updataYL: _.a5.updataYL,
 	select:_.a5.select,
 	count:_.a2.count,
 	random:_.a2.random,
@@ -511,6 +568,7 @@ _.a8={
 	playType:"任选3",
 	input:"threePoly",
 	num:3,
+  updataYL: _.a1.updataYL,
 	bet:_.a1.bet,
 	select:_.a1.select,
 	count:_.a1.count,
@@ -523,6 +581,7 @@ _.a9={
 	input:"threeDraw",
 	num:3,
 	bet:_.a2.bet,
+  updataYL: _.a2.updataYL,
 	select:function(_this,b){
 		if(b==1){
 			if(!$(_this).hasClass("rb")){
@@ -554,10 +613,18 @@ _.a10={
 		var html0=[],i=1;
 		html0.push('<p>至少选择3个号码</p>');
 		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10153},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+  },
 	select:_.a0.select,
 	count:function(){
 		var rb=[],i=0,o=this.getBall(),len=o.length,s=1;
@@ -606,20 +673,38 @@ _.a11={
 		var html0=[],i=1,ilen=12;
 		html0.push('<p>第一位</p>');
 		for(i;i<ilen;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'<code></code></a>');
 		}
 		i=1;
 		html0.push('<p>第二位</p>');
 		for(i;i<ilen;i++){
-			html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'<code></code></a>');
 		}
 		i=1;
 		html0.push('<p>第三位</p>');
 		for(i;i<ilen;i++){
-			html0.push('<a class="gb3" onclick="cp2y.buy.select(this,3)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb3" onclick="cp2y.buy.select(this,3)">'+i.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10153,type:1,location:1},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });$.get(WebAppUrl.FX,{lid:10153,type:1,location:2},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+11).children("code").html(d[i]);
+      }
+    });$.get(WebAppUrl.FX,{lid:10153,type:1,location:3},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+22).children("code").html(d[i]);
+      }
+    });
+  },
 	select:function(_this,b){
 		var cls=b==1?"":"bb";
 		if(b==1){
@@ -738,6 +823,14 @@ _.a12={
 		}
 		cp2y.buy.count();
 	},
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10153},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);o.eq(i+11).children("code").html(d[i]);
+      }
+    });
+  },
 	count:function(){
 		var rb=[],bb=[],i=0,o=this.getBall(),len=o.length,units=0,s=1;
 		for(i;i<len;i++){
@@ -806,10 +899,19 @@ _.a13={
 		var html0=[],i=6;
 		html0.push('<p></p>');
 		for(i;i<31;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i+'</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i+'<code></code></a>');
 		}
 		return html0.join('');
 	},
+  updataYL:function(){
+    var url='http://fx.cp2y.com/call/miss_sum.jsp?lid=10153';
+    $.get(WebAppUrl.FX,{url:encodeURI(url)},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i+3]);
+      }
+    });
+  },
 	select:function(_this){
 		$(_this).toggleClass("rb");
 		cp2y.buy.count();
@@ -872,10 +974,11 @@ _.a14={
 		var html0=[],i=1;
 		html0.push('<p>至少选择3个号码</p>');
 		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},
+  updataYL: _.a10.updataYL,
 	select:_.a0.select,
 	count:_.a0.count,
 	random:_.a0.random,
@@ -887,6 +990,7 @@ _.a15={
 	input:"threeGroupDraw",
 	num:3,
 	bet:_.a2.bet,
+  updataYL: _.a12.updataYL,
 	select:_.a9.select,
 	count:_.a2.count,
 	random:_.a2.random,
@@ -899,6 +1003,7 @@ _.a16={
 	num:1,
 	units:[0,0,0,0,0,0,1,1,2,3,4,5,7,8,10,11,12,12,13,12,12,11,10,8,7,5,4,3,2,1,1],
 	bet:_.a13.bet,
+  updataYL: _.a13.updataYL,
 	select:_.a13.select,
 	count:_.a13.count,
 	random:_.a13.random,
@@ -911,6 +1016,7 @@ _.a17={
 	input:"fourPoly",
 	num:4,
 	bet:_.a1.bet,
+  updataYL: _.a1.updataYL,
 	select:_.a0.select,
 	count:_.a0.count,
 	random:_.a0.random,
@@ -921,6 +1027,7 @@ _.a19={
 	playType:"任选5",
 	input:"fivePoly",
 	num:5,
+  updataYL: _.a1.updataYL,
 	bet:_.a1.bet,
 	select:_.a0.select,
 	count:_.a0.count,
@@ -932,6 +1039,7 @@ _.a21={
 	playType:"任选6",
 	input:"sixPoly",
 	num:6,
+  updataYL: _.a1.updataYL,
 	bet:_.a1.bet,
 	select:_.a0.select,
 	count:_.a0.count,
@@ -943,6 +1051,7 @@ _.a23={
 	playType:"任选7",
 	input:"sevenPoly",
 	num:7,
+  updataYL: _.a1.updataYL,
 	bet:_.a1.bet,
 	select:_.a0.select,
 	count:_.a0.count,
@@ -953,6 +1062,7 @@ _.a25={
 	playName:_.playName,
 	playType:"任选8",
 	input:"eightPoly",
+  updataYL: _.a1.updataYL,
 	num:8,
 	bet:_.a1.bet,
 	select:_.a0.select,
@@ -967,6 +1077,7 @@ _.a18={
 	input:"fourDraw",
 	num:4,
 	bet:_.a2.bet,
+  updataYL: _.a2.updataYL,
 	select:function(_this,b){
 		if(b==1){
 			if(!$(_this).hasClass("rb")){
@@ -995,6 +1106,7 @@ _.a20={
 	playType:"任选5胆拖",
 	input:"fiveDraw",
 	num:5,
+  updataYL: _.a2.updataYL,
 	bet:_.a2.bet,
 	select:_.a18.select,
 	count:_.a2.count,
@@ -1007,6 +1119,7 @@ _.a22={
 	playType:"任选6胆拖",
 	input:"sixDraw",
 	num:6,
+  updataYL: _.a2.updataYL,
 	bet:_.a2.bet,
 	select:_.a18.select,
 	count:_.a2.count,
@@ -1018,6 +1131,7 @@ _.a24={
 	playType:"任选7胆拖",
 	input:"sevenDraw",
 	num:7,
+  updataYL: _.a2.updataYL,
 	bet:_.a2.bet,
 	select:_.a18.select,
 	count:_.a2.count,
@@ -1028,6 +1142,7 @@ _.a26={
 	playName:_.playName,
 	playType:"任选8胆拖",
 	input:"eightDraw",
+  updataYL: _.a2.updataYL,
 	num:8,
 	bet:_.a2.bet,
 	select:_.a18.select,

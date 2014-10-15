@@ -53,9 +53,17 @@ _.a0={
     var html0=[],i=1;
     html0.push('<p>至少选择1个号码</p>');
     for(i;i<12;i++){
-        html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+        html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
     }
     return html0.join('');
+  },
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10105,type:1,location:1},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
   },
   select:function(_this){
     $(_this).toggleClass("rb");
@@ -117,11 +125,19 @@ _.a1={
 	playType:"任选2",
 	input:"twoPoly",
 	num:2,
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10103},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+  },
 	bet:function(){
 		var html0=[],i=1;
 		html0.push('<p>至少选择'+cp2y.buy.num+'个号码</p>');
 		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},
@@ -132,170 +148,187 @@ _.a1={
   hasOutGet:_.a0.hasOutGet
 };
 _.a2={
-	playName:_.playName,
-	playType:"任选2胆拖",
-	input:"twoDraw",
-	num:2,
-	bet:function(){
-		var html0=[],i=1;
-		if(cp2y.buy.num==2){
-			html0.push('<p>胆码(选'+(cp2y.buy.num-1)+'个)</p>');
-		}else{
-			html0.push('<p>胆码(选1-'+(cp2y.buy.num-1)+'个)</p>');
-		}
-		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'</a>');
-		}
-		i=1;
-		html0.push('<p>拖码(胆+拖≥'+(cp2y.buy.num+1)+'个)</p>');
-		for(i;i<12;i++){
-			html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'</a>');
-		}
-		return html0.join('');
-	},
-	select:function(_this,b){
-		if(b==1){
-			if(!$(_this).hasClass("rb")){
-				if($(".rb").size()>0){
-					return cp2y.dialog.alert("最多1个胆码");
-				}else{
-					$(_this).addClass("rb");
-					dom.c.children("a").eq($(_this).index()+10).removeClass("bb");
-				}
-			}else{
-				$(_this).removeClass("rb");
-			}
-		}else if(b==2){
-			$(_this).toggleClass("bb");
-			dom.c.children("a").eq($(_this).index()-13).removeClass("rb");
-		}
-		cp2y.buy.count();
-	},
-	count:function(){
-		var rb=[],bb=[],i=0,o=this.getBall(),len=o.length,units=0,s=1;
-		for(i;i<len;i++){
-			if(o.eq(i).hasClass("rb")){
-				rb.push(o.eq(i));
-			}else if(o.eq(i).hasClass("bb")){
-				bb.push(o.eq(i));
-			}
-		}
-		if(rb.length==0 || bb.length==0){
-			units=0;
-		}else{
-			units = cp2y.util.comp(bb.length,this.num-rb.length);
-		}
-		if(rb.length>0 || bb.length>0){s=3;}
-		this.setClear(s);
-		dom.CurBets.html(units);
-		dom.CurMoney.html('￥'+(units*2));
-	},
-	random:function(u){
-		var i=1,o=[],ball=[],t=[],d;
-		for(i;i<12;i++){ball.push(i.addZero());}
-		i=0;
-		for(i;i<u;i++){
-			t=ball.random({len:this.num});
-			d=t.pop();
-			o.push('<li data_input="'+this.input+'" data_bets="1" data_code="'+d+'#'+t.join(',')+'">');
-			o.push('<div>(<a class="r">'+d+'</a>)<a class="b">'+t.join('</a><a class="b">')+'</a></div>');
-			o.push('<p>'+this.playType+'：1注2元</p>');
-			o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
-		}
-		this.addRecord(o.join(''));
-	},
-	addContent:function(mul){
-		var d=[],t=[],i=0,o=this.getBall(),len=o.length;
-		for(i;i<len;i++){
-			if(o.eq(i).hasClass("rb")){
-				d.push(o.eq(i).html());
-			}else if(o.eq(i).hasClass("bb")){
-				t.push(o.eq(i).html());
-			}
-		}
-		this.setClear(d.length,t.length);
-		var units = cp2y.util.comp(t.length,this.num-d.length);
-		if(units==0){
-			if(d.length>0 || t.length>0){
-				return cp2y.dialog.alert('您选的方案不能构成一注');
-			}else{
-				return cp2y.buy.random(1);
-			}
-		}
-		var o='<li data_input="'+this.input+'" data_bets="'+units+'" data_code="'+d.join(',')+'#'+t.join(',')+'">'+
-			'<div>(<a class="r">'+d.join('</a><a class="r">')+'</a>)<a class="b">'+t.join('</a><a class="b">')+'</a></div>'+
-			'<p>'+this.playType+'：'+units+'注'+units*2+'元</p>'+
-			'<i class="delI" onclick="cp2y.buy.del(this)"></i></li>';
-		this.addRecord(o);
-		this.clear();
-		this.step2();
-	},
+  playName:_.playName,
+  playType:"任选2胆拖",
+  input:"twoDraw",
+  num:2,
+  bet:function(){
+      var html0=[],i=1;
+      if(cp2y.buy.num==2){
+          html0.push('<p>胆码(选'+(cp2y.buy.num-1)+'个)</p>');
+      }else{
+          html0.push('<p>胆码(选1-'+(cp2y.buy.num-1)+'个)</p>');
+      }
+      for(i;i<12;i++){
+          html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'<code></code></a>');
+      }
+      i=1;
+      html0.push('<p>拖码(胆+拖≥'+(cp2y.buy.num+1)+'个)</p>');
+      for(i;i<12;i++){
+          html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'<code></code></a>');
+      }
+      return html0.join('');
+  },
+  select:function(_this,b){
+      if(b==1){
+          if(!$(_this).hasClass("rb")){
+              if($(".rb").size()>0){
+                  return cp2y.dialog.alert("最多1个胆码");
+              }else{
+                  $(_this).addClass("rb");
+                  dom.c.children("a").eq($(_this).index()+10).removeClass("bb");
+              }
+          }else{
+              $(_this).removeClass("rb");
+          }
+      }else if(b==2){
+          $(_this).toggleClass("bb");
+          dom.c.children("a").eq($(_this).index()-13).removeClass("rb");
+      }
+      cp2y.buy.count();
+  },
+  count:function(){
+      var rb=[],bb=[],i=0,o=this.getBall(),len=o.length,units=0,s=1;
+      for(i;i<len;i++){
+          if(o.eq(i).hasClass("rb")){
+              rb.push(o.eq(i));
+          }else if(o.eq(i).hasClass("bb")){
+              bb.push(o.eq(i));
+          }
+      }
+      if(rb.length==0 || bb.length==0){
+          units=0;
+      }else{
+          units = cp2y.util.comp(bb.length,this.num-rb.length);
+      }
+      if(rb.length>0 || bb.length>0){s=3;}
+      this.setClear(s);
+      dom.CurBets.html(units);
+      dom.CurMoney.html('￥'+(units*2));
+  },
+  random:function(u){
+      var i=1,o=[],ball=[],t=[],d;
+      for(i;i<12;i++){ball.push(i.addZero());}
+      i=0;
+      for(i;i<u;i++){
+          t=ball.random({len:this.num});
+          d=t.pop();
+          o.push('<li data_input="'+this.input+'" data_bets="1" data_code="'+d+'#'+t.join(',')+'">');
+          o.push('<div>(<a class="r">'+d+'</a>)<a class="b">'+t.join('</a><a class="b">')+'</a></div>');
+          o.push('<p>'+this.playType+'：1注2元</p>');
+          o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
+      }
+      this.addRecord(o.join(''));
+  },
+  addContent:function(mul){
+      var d=[],t=[],i=0,o=this.getBall(),len=o.length;
+      for(i;i<len;i++){
+          if(o.eq(i).hasClass("rb")){
+              d.push(o.eq(i).html());
+          }else if(o.eq(i).hasClass("bb")){
+              t.push(o.eq(i).html());
+          }
+      }
+      this.setClear(d.length,t.length);
+      var units = cp2y.util.comp(t.length,this.num-d.length);
+      if(units==0){
+          if(d.length>0 || t.length>0){
+              return cp2y.dialog.alert('您选的方案不能构成一注');
+          }else{
+              return cp2y.buy.random(1);
+          }
+      }
+      var o='<li data_input="'+this.input+'" data_bets="'+units+'" data_code="'+d.join(',')+'#'+t.join(',')+'">'+
+          '<div>(<a class="r">'+d.join('</a><a class="r">')+'</a>)<a class="b">'+t.join('</a><a class="b">')+'</a></div>'+
+          '<p>'+this.playType+'：'+units+'注'+units*2+'元</p>'+
+          '<i class="delI" onclick="cp2y.buy.del(this)"></i></li>';
+      this.addRecord(o);
+      this.clear();
+      this.step2();
+  },
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10103},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+        o.eq(i+11).children("code").html(d[i]);
+      }
+    });
+  },
   hasOutGet:_.a0.hasOutGet
 };
 _.a3={
   hasOutGet:_.a0.hasOutGet,
-	playName:_.playName,
-	playType:"前2直选",
-	input:"twoDirectPoly",
-	num:2,
-	bet:function(){
-		var html0=[],i=1;
-		html0.push('<p>至少选择2个号码</p>');
-		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
-		}
-		return html0.join('');
-	},
-	select:_.a0.select,
-	count:function(){
-		var rb=[],i=0,o=this.getBall(),len=o.length,s=1;
-		for(i;i<len;i++){
-			if(o.eq(i).hasClass("rb")){
-				rb.push(o.eq(i));
-			}
-		}
-		if(rb.length>0 ){s=3;}
-		this.setClear(s);
-		var units = cp2y.util.comp(rb.length,this.num)*2;
-		dom.CurBets.html(units);
-		dom.CurMoney.html(units*2);
-	},
-	random:function(u){
-		var i=1,o=[],ball=[],rb=[];
-		for(i;i<12;i++){ball.push(i.addZero());}
-		i=0;
-		for(i;i<u;i++){
-			rb=ball.random({len:this.num});
-			o.push('<li data_input="'+this.input+'" data_bets="2" data_code="'+rb.join(",")+'">');
-			o.push('<div><a class="r">'+rb.join('</a><a class="b">')+'</a></div>');
-			o.push('<p>'+this.playType+'：2注4元</p>');
-			o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
-		}
-		this.addRecord(o.join(''));
-	},
-	addContent:function(){
-		var rb=[],i=0,o=this.getBall(),len=o.length;
-		for(i;i<len;i++){
-			if(o.eq(i).hasClass("rb")){
-				rb.push(o.eq(i).html());
-			}
-		}
-		var units = cp2y.util.comp(rb.length,this.num)*2;
-		if(units==0){
-			if(rb.length>0){
-				return cp2y.dialog.alert('您选的方案不能构成一注');
-			}else{
-				return cp2y.buy.random(1);
-			}
-		}
-		var o='<li data_input="'+this.input+'" data_bets="'+units+'" data_code="'+rb.join(',')+'">'+
-			'<div><a class="r">'+rb.join('</a><a class="r">')+'</a></div>'+
-			'<p>'+this.playType+'：'+units+'注'+units*2+'元</p>'+
-			'<i class="delI" onclick="cp2y.buy.del(this)"></i></li>';
-		this.addRecord(o);
-		this.clear();
-		this.step2();
-	}
+  playName:_.playName,
+  playType:"前2直选",
+  input:"twoDirectPoly",
+  num:2,
+  bet:function(){
+      var html0=[],i=1;
+      html0.push('<p>至少选择2个号码</p>');
+      for(i;i<12;i++){
+          html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
+      }
+      return html0.join('');
+  },
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10106},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+  },
+  select:_.a0.select,
+  count:function(){
+      var rb=[],i=0,o=this.getBall(),len=o.length,s=1;
+      for(i;i<len;i++){
+          if(o.eq(i).hasClass("rb")){
+              rb.push(o.eq(i));
+          }
+      }
+      if(rb.length>0 ){s=3;}
+      this.setClear(s);
+      var units = cp2y.util.comp(rb.length,this.num)*2;
+      dom.CurBets.html(units);
+      dom.CurMoney.html(units*2);
+  },
+  random:function(u){
+      var i=1,o=[],ball=[],rb=[];
+      for(i;i<12;i++){ball.push(i.addZero());}
+      i=0;
+      for(i;i<u;i++){
+          rb=ball.random({len:this.num});
+          o.push('<li data_input="'+this.input+'" data_bets="2" data_code="'+rb.join(",")+'">');
+          o.push('<div><a class="r">'+rb.join('</a><a class="b">')+'</a></div>');
+          o.push('<p>'+this.playType+'：2注4元</p>');
+          o.push('<i class="delI" onclick="cp2y.buy.del(this)"></i></li>');
+      }
+      this.addRecord(o.join(''));
+  },
+  addContent:function(){
+      var rb=[],i=0,o=this.getBall(),len=o.length;
+      for(i;i<len;i++){
+          if(o.eq(i).hasClass("rb")){
+              rb.push(o.eq(i).html());
+          }
+      }
+      var units = cp2y.util.comp(rb.length,this.num)*2;
+      if(units==0){
+          if(rb.length>0){
+              return cp2y.dialog.alert('您选的方案不能构成一注');
+          }else{
+              return cp2y.buy.random(1);
+          }
+      }
+      var o='<li data_input="'+this.input+'" data_bets="'+units+'" data_code="'+rb.join(',')+'">'+
+          '<div><a class="r">'+rb.join('</a><a class="r">')+'</a></div>'+
+          '<p>'+this.playType+'：'+units+'注'+units*2+'元</p>'+
+          '<i class="delI" onclick="cp2y.buy.del(this)"></i></li>';
+      this.addRecord(o);
+      this.clear();
+      this.step2();
+  }
 };
 _.a4={
   hasOutGet:true,
@@ -327,14 +360,28 @@ _.a4={
       var html0=[],i=1;
       html0.push('<p>选择第一位</p>');
       for(i;i<12;i++){
-          html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'</a>');
+          html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'<code></code></a>');
       }
       i=1;
       html0.push('<p>选择第二位</p>');
       for(i;i<12;i++){
-          html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'</a>');
+          html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'<code></code></a>');
       }
       return html0.join('');
+  },
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10106,type:1,location:1},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10106,type:1,location:2},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+11).children("code").html(d[i]);
+      }
+    });
   },
   select:function(_this,i){
       if(i==1){
@@ -425,6 +472,15 @@ _.a5={
 	input:"twoDirectDraw",
 	num:2,
 	bet:_.a2.bet,
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10106},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+        o.eq(i+11).children("code").html(d[i]);
+      }
+    });
+  },
 	select:function(_this,b){
 		if(b==1){
 			if(!$(_this).hasClass("rb")){
@@ -524,10 +580,11 @@ _.a6={
       var html0=[],i=1;
       html0.push('<p>至少选择2个号码</p>');
       for(i;i<12;i++){
-          html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+          html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
       }
       return html0.join('');
   },
+  updataYL: _.a3.updataYL,
   select:_.a1.select,
   count:_.a1.count,
   random:_.a1.random,
@@ -540,6 +597,7 @@ _.a7={
 	input:"twoGroupDraw",
 	num:2,
 	bet:_.a2.bet,
+  updataYL:_.a5.updataYL,
 	select:_.a5.select,
 	count:_.a2.count,
 	random:_.a2.random,
@@ -550,6 +608,7 @@ _.a8={
 	playName:_.playName,
 	playType:"任选3",
 	input:"threePoly",
+  updataYL: _.a1.updataYL,
 	num:3,
 	bet:_.a1.bet,
 	select:_.a1.select,
@@ -564,6 +623,7 @@ _.a9={
 	input:"threeDraw",
 	num:3,
 	bet:_.a2.bet,
+  updataYL: _.a2.updataYL,
 	select:function(_this,b){
 		if(b==1){
 			if(!$(_this).hasClass("rb")){
@@ -592,11 +652,19 @@ _.a10={
 	playType:"前3直选",
 	input:"threeDirectPoly",
 	num:3,
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10105},function(data){
+        var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+        for(i;i<len;i++){
+          o.eq(i).children("code").html(d[i]);
+        }
+      });
+  },
 	bet:function(){
 		var html0=[],i=1;
 		html0.push('<p>至少选择3个号码</p>');
 		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},
@@ -678,19 +746,39 @@ _.a11={
     var html0=[],i=1,ilen=12;
     html0.push('<p>第一位</p>');
     for(i;i<ilen;i++){
-        html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'</a>');
+        html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'<code></code></a>');
     }
     i=1;
     html0.push('<p>第二位</p>');
     for(i;i<ilen;i++){
-        html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'</a>');
+        html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'<code></code></a>');
     }
     i=1;
     html0.push('<p>第三位</p>');
     for(i;i<ilen;i++){
-        html0.push('<a class="gb3" onclick="cp2y.buy.select(this,3)">'+i.addZero()+'</a>');
+        html0.push('<a class="gb3" onclick="cp2y.buy.select(this,3)">'+i.addZero()+'<code></code></a>');
     }
     return html0.join('');
+  },
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10105,type:1,location:1},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10105,type:1,location:2},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+11).children("code").html(d[i]);
+      }
+    });
+    $.get(WebAppUrl.FX,{lid:10105,type:1,location:3},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i+22).children("code").html(d[i]);
+      }
+    });
   },
   select:function(_this,b){
     var cls=b==1?"":"bb";
@@ -793,6 +881,15 @@ _.a12={
 	input:"threeDirectDraw",
 	num:3,
 	bet:_.a2.bet,
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{lid:10105},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+        o.eq(i+11).children("code").html(d[i]);
+      }
+    });
+  },
 	select:function(_this,b){
 		if(b==1){
 			if(!$(_this).hasClass("rb")){
@@ -880,10 +977,18 @@ _.a13={
 		var html0=[],i=6;
 		html0.push('<p></p>');
 		for(i;i<31;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i+'</a>');
+			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i+'<code></code></a>');
 		}
 		return html0.join('');
 	},
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{url:encodeURI('http://fx.cp2y.com/call/miss_sum.jsp?lid=10105')},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i+3]);
+      }
+    });
+  },
 	select:function(_this){
 		$(_this).toggleClass("rb");
 		cp2y.buy.count();
@@ -958,9 +1063,17 @@ _.a14={
       var html0=[],i=1;
       html0.push('<p>至少选择3个号码</p>');
       for(i;i<12;i++){
-          html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'</a>');
+          html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
       }
       return html0.join('');
+  },
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{url:encodeURI('http://fx.cp2y.com/call/miss_number.jsp?lid=10107')},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+      }
+    });
   },
   select:_.a0.select,
   count:_.a0.count,
@@ -974,6 +1087,15 @@ _.a15={
 	input:"threeGroupDraw",
 	num:3,
 	bet:_.a2.bet,
+  updataYL:function(){
+    $.get(WebAppUrl.FX,{url:encodeURI('http://fx.cp2y.com/call/miss_number.jsp?lid=10107')},function(data){
+      var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
+      for(i;i<len;i++){
+        o.eq(i).children("code").html(d[i]);
+        o.eq(i+11).children("code").html(d[i]);
+      }
+    });
+  },
 	select:_.a9.select,
 	count:_.a2.count,
 	random:_.a2.random,
@@ -985,6 +1107,7 @@ _.a16={
   playType:"前3组选和值",
   input:"threeGroupSum",
   num:1,
+  updataYL:_.a13.updataYL,
   units:[0,0,0,0,0,0,1,1,2,3,4,5,7,8,10,11,12,12,13,12,12,11,10,8,7,5,4,3,2,1,1],
   bet:_.a13.bet,
   select:_.a13.select,
@@ -999,6 +1122,7 @@ _.a17={
   playType:"任选4",
   input:"fourPoly",
   num:4,
+  updataYL:_.a1.updataYL,
   bet:_.a1.bet,
   select:_.a0.select,
   count:_.a0.count,
@@ -1012,6 +1136,7 @@ _.a19={
   num:5,
   bet:_.a1.bet,
   select:_.a0.select,
+  updataYL:_.a1.updataYL,
   count:_.a0.count,
   random:_.a0.random,
   addContent:_.a0.addContent,
@@ -1034,6 +1159,7 @@ _.a21={
 	input:"sixPoly",
 	num:6,
 	bet:_.a1.bet,
+  updataYL:_.a1.updataYL,
 	select:_.a0.select,
 	count:_.a0.count,
 	random:_.a0.random,
@@ -1044,6 +1170,7 @@ _.a23={
 	playType:"任选7",
 	input:"sevenPoly",
 	num:7,
+  updataYL:_.a1.updataYL,
 	bet:_.a1.bet,
 	select:_.a0.select,
 	count:_.a0.count,
@@ -1055,6 +1182,7 @@ _.a25={
 	playType:"任选8",
 	input:"eightPoly",
 	num:8,
+  updataYL:_.a1.updataYL,
 	bet:_.a1.bet,
 	select:_.a0.select,
 	count:_.a0.count,
@@ -1067,6 +1195,7 @@ _.a18={
 	playType:"任选4胆拖",
 	input:"fourDraw",
 	num:4,
+  updataYL:_.a2.updataYL,
 	bet:_.a2.bet,
 	select:function(_this,b){
 		if(b==1){
@@ -1096,6 +1225,7 @@ _.a20={
 	playType:"任选5胆拖",
 	input:"fiveDraw",
 	num:5,
+  updataYL:_.a2.updataYL,
 	bet:_.a2.bet,
 	select:_.a18.select,
 	count:_.a2.count,
@@ -1109,6 +1239,7 @@ _.a22={
 	input:"sixDraw",
 	num:6,
 	bet:_.a2.bet,
+  updataYL:_.a2.updataYL,
 	select:_.a18.select,
 	count:_.a2.count,
 	random:_.a2.random,
@@ -1121,6 +1252,7 @@ _.a24={
 	num:7,
 	bet:_.a2.bet,
 	select:_.a18.select,
+  updataYL:_.a2.updataYL,
 	count:_.a2.count,
 	random:_.a2.random,
 	addContent:_.a2.addContent
@@ -1132,6 +1264,7 @@ _.a26={
 	num:8,
 	bet:_.a2.bet,
 	select:_.a18.select,
+  updataYL:_.a2.updataYL,
 	count:_.a2.count,
 	random:_.a2.random,
 	addContent:_.a2.addContent
