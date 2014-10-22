@@ -332,7 +332,7 @@ cp2y.user={
   hemai:function(data){
     var html=[],i=0;
     if(data.schemeData.type==200 ||data.schemeData.type==201||data.schemeData.type==202||data.schemeData.type==203){
-    html.push('<div class="userTip4 mt10">'+data.schemeParticipantData.totalCount+'人参与合买</div>');
+    html.push('<div class="userTip4 mt10 ">'+data.schemeParticipantData.totalCount+'人参与合买</div>');
       i=0;len=data.schemeParticipantData.listData.length;
       var tlen=len,userNames;
       if(len>3){
@@ -351,8 +351,10 @@ cp2y.user={
       }
       if(len>2){
         html.push('<div class="traceDetail oHidden" id="Participant"></div>');
-        html.push('<p class="toggleScheme" onclick="cp2y.user.Participant('+data.schemeData.schemeId+','+data.lotteryId+');cp2y.util.toggle(this,$(\'#Participant\'),\'查看更多\')" data="0">&gt;&gt;查看更多</p>');
+        html.push('<p class="toggleScheme pb40" onclick="cp2y.user.Participant('+data.schemeData.schemeId+','+data.lotteryId+');cp2y.util.toggle(this,$(\'#Participant\'),\'查看更多\')" data="0">&gt;&gt;查看更多</p>');
       }
+    }else{
+      html.push('<div class="pb40"></div>');
     }
     return html.join('');
   },
@@ -373,7 +375,7 @@ cp2y.user={
     if(data.schemeData.schemeDesc){
       html.push('<div class="schemeD1"><span>方案描述：</span><p>'+data.schemeData.schemeDesc+'</p></div>');
     }
-    html.push('<div class="schemeD1 pb40"><span>方案编号：</span><p>'+data.schemeData.schemeNumber+'</p></div>');
+    html.push('<div class="schemeD1"><span>方案编号：</span><p>'+data.schemeData.schemeNumber+'</p></div>');
     return html.join('');
   },
   btnStatus:function(data){
@@ -444,8 +446,8 @@ cp2y.user={
         }else{
           html.push(that.numScheme(data));/* 非竞彩 */ 
         }
-        html.push(that.hemai(data));/*合买列表*/
         html.push(that.detail(data));/*方案详情*/
+        html.push(that.hemai(data));/*合买列表*/
         html.push(that.btnStatus(data));/*底部状态*/
         $("#schemeDetail").html(html.join(''));
       }

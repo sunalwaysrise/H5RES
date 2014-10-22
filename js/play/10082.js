@@ -289,7 +289,7 @@ _.a5={
     return html0.join('');
   },
   updataYL:function(){
-    $.get(WebAppUrl.FX,{lid:10167,type:3,location:0,issues:100},function(data){
+    $.get(WebAppUrl.FX,{lid:10167,type:3,location:0,issues:100},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){
         o.eq(i).children("code").html(d[i]);

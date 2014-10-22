@@ -126,17 +126,14 @@ cp2y.mainPage=function(){
             break;
         }
         switch(data.list[i].lotteryId){
-          case 10032:
-            hot='a0';
-            break;
+          case 10024:
+          case 10025:
           case 10026:
+          case 10032:
             hot='a0';
             break;
           case 10046:
             hot='a14';
-            break;
-          case 10025:
-            hot='a0';
             break;
           case 10066:
             hot='a14';

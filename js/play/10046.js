@@ -51,14 +51,14 @@ _.a0={
   num:1,
   bet:function(){
     var html0=[],i=1;
-    html0.push('<p>至少选择1个号码</p>');
+    html0.push('<p>至少选择1个号码,猜中开奖的第1位即中<b>13元</b></p><p class="c8c">号码下方为该号码的当前遗漏</p>');
     for(i;i<12;i++){
-        html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
+        html0.push('<a class="gb" data="'+i.addZero()+'" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
     }
     return html0.join('');
   },
   updataYL:function(){
-    $.get(WebAppUrl.FX,{lid:10105,type:1,location:1},function(data){
+    $.get(WebAppUrl.FX,{lid:10105,type:1,location:1},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){
         o.eq(i).children("code").html(d[i]);
@@ -99,7 +99,7 @@ _.a0={
       var rb=[],i=0,o=this.getBall(),len=o.length;
       for(i;i<len;i++){
           if(o.eq(i).hasClass("rb")){
-              rb.push(o.eq(i).html());
+              rb.push(o.eq(i).attr("data"));
           }
       }
       var units = cp2y.util.comp(rb.length,this.num);
@@ -125,8 +125,9 @@ _.a1={
 	playType:"任选2",
 	input:"twoPoly",
 	num:2,
+  numP:13,
   updataYL:function(){
-    $.get(WebAppUrl.FX,{lid:10103},function(data){
+    $.get(WebAppUrl.FX,{lid:10103},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){
         o.eq(i).children("code").html(d[i]);
@@ -135,9 +136,9 @@ _.a1={
   },
 	bet:function(){
 		var html0=[],i=1;
-		html0.push('<p>至少选择'+cp2y.buy.num+'个号码</p>');
+		html0.push('<p>至少选'+cp2y.buy.num+'个号,猜对任意'+cp2y.buy.num+'个开奖号即中<b>'+cp2y.buy.numP+'元</b></p><p class="c8c">号码下方为该号码的当前遗漏</p>');
 		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
+			html0.push('<a class="gb" data="'+i.addZero()+'" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},
@@ -155,17 +156,17 @@ _.a2={
   bet:function(){
       var html0=[],i=1;
       if(cp2y.buy.num==2){
-          html0.push('<p>胆码(选'+(cp2y.buy.num-1)+'个)</p>');
+          html0.push('<p class="c8c">号码下方为该号码的当前遗漏</p><p>胆码(选'+(cp2y.buy.num-1)+'个)</p>');
       }else{
-          html0.push('<p>胆码(选1-'+(cp2y.buy.num-1)+'个)</p>');
+          html0.push('<p class="c8c">号码下方为该号码的当前遗漏</p><p>胆码(选1-'+(cp2y.buy.num-1)+'个)</p>');
       }
       for(i;i<12;i++){
-          html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'<code></code></a>');
+          html0.push('<a class="gb" data="'+i.addZero()+'" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'<code></code></a>');
       }
       i=1;
       html0.push('<p>拖码(胆+拖≥'+(cp2y.buy.num+1)+'个)</p>');
       for(i;i<12;i++){
-          html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'<code></code></a>');
+          html0.push('<a class="gb2" data="'+i.addZero()+'" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'<code></code></a>');
       }
       return html0.join('');
   },
@@ -247,7 +248,7 @@ _.a2={
       this.step2();
   },
   updataYL:function(){
-    $.get(WebAppUrl.FX,{lid:10103},function(data){
+    $.get(WebAppUrl.FX,{lid:10103},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){
         o.eq(i).children("code").html(d[i]);
@@ -265,14 +266,14 @@ _.a3={
   num:2,
   bet:function(){
       var html0=[],i=1;
-      html0.push('<p>至少选择2个号码</p>');
+      html0.push('<p>至少选择2个号码,按位猜对前2个开奖即中<b>130元</b></p><p class="c8c">号码下方为该号码的当前遗漏</p>');
       for(i;i<12;i++){
-          html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
+          html0.push('<a class="gb" data="'+i.addZero()+'" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
       }
       return html0.join('');
   },
   updataYL:function(){
-    $.get(WebAppUrl.FX,{lid:10106},function(data){
+    $.get(WebAppUrl.FX,{lid:10106},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){
         o.eq(i).children("code").html(d[i]);
@@ -310,7 +311,7 @@ _.a3={
       var rb=[],i=0,o=this.getBall(),len=o.length;
       for(i;i<len;i++){
           if(o.eq(i).hasClass("rb")){
-              rb.push(o.eq(i).html());
+              rb.push(o.eq(i).attr("data"));
           }
       }
       var units = cp2y.util.comp(rb.length,this.num)*2;
@@ -337,7 +338,7 @@ _.a4={
     if(r){
       r=r.split(',');
       for(i;i<11;i++){
-        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+        if(r.indexOf(Number(o.eq(i).attr('data')))!=-1){
           o.eq(i).addClass('rb');
         }
       }
@@ -346,7 +347,7 @@ _.a4={
     if(r2){
       r2=r2.split(',');
       for(i;i<11;i++){
-        if(r2.indexOf(Number(o2.eq(i).html()))!=-1){
+        if(r2.indexOf(Number(o2.eq(i).attr('data')))!=-1){
           o2.eq(i).addClass('bb');
         }
       }
@@ -358,25 +359,25 @@ _.a4={
   num:2,
   bet:function(){
       var html0=[],i=1;
-      html0.push('<p>选择第一位</p>');
+      html0.push('<p>每位至少选1个号,按位猜对前2个开奖即中<b>130元</b></p><p class="c8c">号码下方为该号码的当前遗漏</p><p>选择第一位</p>');
       for(i;i<12;i++){
-          html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'<code></code></a>');
+          html0.push('<a class="gb" data="'+i.addZero()+'" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'<code></code></a>');
       }
       i=1;
       html0.push('<p>选择第二位</p>');
       for(i;i<12;i++){
-          html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'<code></code></a>');
+          html0.push('<a class="gb2" data="'+i.addZero()+'" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'<code></code></a>');
       }
       return html0.join('');
   },
   updataYL:function(){
-    $.get(WebAppUrl.FX,{lid:10106,type:1,location:1},function(data){
+    $.get(WebAppUrl.FX,{lid:10106,type:1,location:1},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){
         o.eq(i).children("code").html(d[i]);
       }
     });
-    $.get(WebAppUrl.FX,{lid:10106,type:1,location:2},function(data){
+    $.get(WebAppUrl.FX,{lid:10106,type:1,location:2},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){
         o.eq(i+11).children("code").html(d[i]);
@@ -432,9 +433,9 @@ _.a4={
       var a1=[],a2=[],i=0,o=this.getBall(),len=o.length,units = 0;;
       for(i;i<len;i++){
           if(o.eq(i).hasClass("rb")){
-              a1.push(o.eq(i).html());
+              a1.push(o.eq(i).attr("data"));
           }else if(o.eq(i).hasClass("bb")){
-              a2.push(o.eq(i).html());
+              a2.push(o.eq(i).attr("data"));
           }
       }
       this.setClear(a1.length,0);
@@ -473,7 +474,7 @@ _.a5={
 	num:2,
 	bet:_.a2.bet,
   updataYL:function(){
-    $.get(WebAppUrl.FX,{lid:10106},function(data){
+    $.get(WebAppUrl.FX,{lid:10106},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){
         o.eq(i).children("code").html(d[i]);
@@ -536,9 +537,9 @@ _.a5={
 		var d=[],t=[],i=0,o=this.getBall(),len=o.length;
 		for(i;i<len;i++){
 			if(o.eq(i).hasClass("rb")){
-				d.push(o.eq(i).html());
+				d.push(o.eq(i).attr("data"));
 			}else if(o.eq(i).hasClass("bb")){
-				t.push(o.eq(i).html());
+				t.push(o.eq(i).attr("data"));
 			}
 		}
 		this.setClear(d.length,t.length);
@@ -566,7 +567,7 @@ _.a6={
     if(r){
       r=r.split(',');
       for(i;i<11;i++){
-        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+        if(r.indexOf(Number(o.eq(i).attr('data')))!=-1){
           o.eq(i).addClass('rb');
         }
       }
@@ -578,9 +579,9 @@ _.a6={
   num:2,
   bet:function(){
       var html0=[],i=1;
-      html0.push('<p>至少选择2个号码</p>');
+      html0.push('<p>至少选2个号，猜对前2个开奖号即中<b>65元</b></p><p class="c8c">号码下方为该号码的当前遗漏</p>');
       for(i;i<12;i++){
-          html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
+          html0.push('<a class="gb" data="'+i.addZero()+'" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
       }
       return html0.join('');
   },
@@ -610,6 +611,7 @@ _.a8={
 	input:"threePoly",
   updataYL: _.a1.updataYL,
 	num:3,
+  numP:19,
 	bet:_.a1.bet,
 	select:_.a1.select,
 	count:_.a1.count,
@@ -653,7 +655,7 @@ _.a10={
 	input:"threeDirectPoly",
 	num:3,
   updataYL:function(){
-    $.get(WebAppUrl.FX,{lid:10105},function(data){
+    $.get(WebAppUrl.FX,{lid:10105},function(data){var data=eval("("+data+")");
         var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
         for(i;i<len;i++){
           o.eq(i).children("code").html(d[i]);
@@ -662,9 +664,9 @@ _.a10={
   },
 	bet:function(){
 		var html0=[],i=1;
-		html0.push('<p>至少选择3个号码</p>');
+		html0.push('<p>每位至少选1个号,按位猜对前3个开奖即中<b>1170元</b></p><p class="c8c">号码下方为该号码的当前遗漏</p>');
 		for(i;i<12;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
+			html0.push('<a class="gb" data="'+i.addZero()+'" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},
@@ -687,7 +689,7 @@ _.a10={
 		var rb=[],i=0,o=this.getBall(),len=o.length;
 		for(i;i<len;i++){
 			if(o.eq(i).hasClass("rb")){
-				rb.push(o.eq(i).html());
+				rb.push(o.eq(i).attr("data"));
 			}
 		}
 		var units = cp2y.util.comp(rb.length,this.num)*6;
@@ -714,7 +716,7 @@ _.a11={
     if(r){
       r=r.split(',');
       for(i;i<11;i++){
-        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+        if(r.indexOf(Number(o.eq(i).attr('data')))!=-1){
           o.eq(i).addClass('rb');
         }
       }
@@ -723,7 +725,7 @@ _.a11={
     if(r2){
       r2=r2.split(',');
       for(i;i<11;i++){
-        if(r2.indexOf(Number(o2.eq(i).html()))!=-1){
+        if(r2.indexOf(Number(o2.eq(i).attr('data')))!=-1){
           o2.eq(i).addClass('bb');
         }
       }
@@ -732,7 +734,7 @@ _.a11={
     if(r3){
       r3=r3.split(',');
       for(i;i<11;i++){
-        if(r3.indexOf(Number(o3.eq(i).html()))!=-1){
+        if(r3.indexOf(Number(o3.eq(i).attr('data')))!=-1){
           o3.eq(i).addClass('yb');
         }
       }
@@ -744,36 +746,36 @@ _.a11={
   num:3,
   bet:function(){
     var html0=[],i=1,ilen=12;
-    html0.push('<p>第一位</p>');
+    html0.push('<p>每位至少选1个号,按位猜对前3个开奖即中<b>1170元</b></p><p class="c8c">号码下方为该号码的当前遗漏</p><p>第一位</p>');
     for(i;i<ilen;i++){
-        html0.push('<a class="gb" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'<code></code></a>');
+        html0.push('<a class="gb" data="'+i.addZero()+'" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'<code></code></a>');
     }
     i=1;
     html0.push('<p>第二位</p>');
     for(i;i<ilen;i++){
-        html0.push('<a class="gb2" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'<code></code></a>');
+        html0.push('<a class="gb2" data="'+i.addZero()+'" onclick="cp2y.buy.select(this,2)">'+i.addZero()+'<code></code></a>');
     }
     i=1;
     html0.push('<p>第三位</p>');
     for(i;i<ilen;i++){
-        html0.push('<a class="gb3" onclick="cp2y.buy.select(this,3)">'+i.addZero()+'<code></code></a>');
+        html0.push('<a class="gb3" data="'+i.addZero()+'" onclick="cp2y.buy.select(this,3)">'+i.addZero()+'<code></code></a>');
     }
     return html0.join('');
   },
   updataYL:function(){
-    $.get(WebAppUrl.FX,{lid:10105,type:1,location:1},function(data){
+    $.get(WebAppUrl.FX,{lid:10105,type:1,location:1},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){
         o.eq(i).children("code").html(d[i]);
       }
     });
-    $.get(WebAppUrl.FX,{lid:10105,type:1,location:2},function(data){
+    $.get(WebAppUrl.FX,{lid:10105,type:1,location:2},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){
         o.eq(i+11).children("code").html(d[i]);
       }
     });
-    $.get(WebAppUrl.FX,{lid:10105,type:1,location:3},function(data){
+    $.get(WebAppUrl.FX,{lid:10105,type:1,location:3},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){
         o.eq(i+22).children("code").html(d[i]);
@@ -795,11 +797,11 @@ _.a11={
     var a1=[],a2=[],a3=[],i=0,o=this.getBall(),len=o.length,units=0,s=1;
     for(i;i<len;i++){
         if(o.eq(i).hasClass("rb")){
-            a1.push(o.eq(i).html());
+            a1.push(o.eq(i).attr("data"));
         }else if(o.eq(i).hasClass("bb")){
-            a2.push(o.eq(i).html());
+            a2.push(o.eq(i).attr("data"));
         }else if(o.eq(i).hasClass("yb")){
-            a3.push(o.eq(i).html());
+            a3.push(o.eq(i).attr("data"));
         }
     }
     if(a1.length==0 || a2.length==0|| a3.length==0){
@@ -882,7 +884,7 @@ _.a12={
 	num:3,
 	bet:_.a2.bet,
   updataYL:function(){
-    $.get(WebAppUrl.FX,{lid:10105},function(data){
+    $.get(WebAppUrl.FX,{lid:10105},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){
         o.eq(i).children("code").html(d[i]);
@@ -945,9 +947,9 @@ _.a12={
 		var rb=[],bb=[],i=0,o=this.getBall(),len=o.length;
 		for(i;i<len;i++){
 			if(o.eq(i).hasClass("rb")){
-				rb.push(o.eq(i).html());
+				rb.push(o.eq(i).attr("data"));
 			}else if(o.eq(i).hasClass("bb")){
-				bb.push(o.eq(i).html());
+				bb.push(o.eq(i).attr("data"));
 			}
 		}
 		var units = cp2y.util.comp(bb.length,this.num-rb.length)*6;
@@ -975,14 +977,14 @@ _.a13={
 	units:[0,0,0,0,0,0,6,6,12,18,24,30,42,48,60,66,72,72,78,72,72,66,60,48,42,30,24,18,12,6,6],
 	bet:function(){
 		var html0=[],i=6;
-		html0.push('<p></p>');
+		html0.push('<p class="c8c">号码下方为该号码的当前遗漏</p>');
 		for(i;i<31;i++){
-			html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i+'<code></code></a>');
+			html0.push('<a class="gb" data="'+i.addZero()+'" onclick="cp2y.buy.select(this)">'+i+'<code></code></a>');
 		}
 		return html0.join('');
 	},
   updataYL:function(){
-    $.get(WebAppUrl.FX,{url:encodeURI('http://fx.cp2y.com/call/miss_sum.jsp?lid=10105')},function(data){
+    $.get(WebAppUrl.FX,{url:encodeURI('http://fx.cp2y.com/call/miss_sum.jsp?lid=10105')},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){
         o.eq(i).children("code").html(d[i+3]);
@@ -1023,7 +1025,7 @@ _.a13={
 		var rb=[],i=0,o=this.getBall(),len=o.length,units=0;
 		for(i;i<len;i++){
 			if(o.eq(i).hasClass("rb")){
-				rb.push(o.eq(i).html());
+				rb.push(o.eq(i).attr("data"));
 				units+=this.units[o.eq(i).html()];
 			}
 		}
@@ -1049,7 +1051,7 @@ _.a14={
     if(r){
       r=r.split(',');
       for(i;i<11;i++){
-        if(r.indexOf(Number(o.eq(i).html()))!=-1){
+        if(r.indexOf(Number(o.eq(i).attr('data')))!=-1){
           o.eq(i).addClass('rb');
         }
       }
@@ -1061,14 +1063,14 @@ _.a14={
   num:3,
   bet:function(){
       var html0=[],i=1;
-      html0.push('<p>至少选择3个号码</p>');
+      html0.push('<p>至少选3个号，猜对前3个开奖号即中<b>195元</b></p><p class="c8c">号码下方为该号码的当前遗漏</p>');
       for(i;i<12;i++){
-          html0.push('<a class="gb" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
+          html0.push('<a class="gb" data="'+i.addZero()+'" onclick="cp2y.buy.select(this)">'+i.addZero()+'<code></code></a>');
       }
       return html0.join('');
   },
   updataYL:function(){
-    $.get(WebAppUrl.FX,{url:encodeURI('http://fx.cp2y.com/call/miss_number.jsp?lid=10107')},function(data){
+    $.get(WebAppUrl.FX,{url:encodeURI('http://fx.cp2y.com/call/miss_number.jsp?lid=10107')},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){
         o.eq(i).children("code").html(d[i]);
@@ -1088,7 +1090,7 @@ _.a15={
 	num:3,
 	bet:_.a2.bet,
   updataYL:function(){
-    $.get(WebAppUrl.FX,{url:encodeURI('http://fx.cp2y.com/call/miss_number.jsp?lid=10107')},function(data){
+    $.get(WebAppUrl.FX,{url:encodeURI('http://fx.cp2y.com/call/miss_number.jsp?lid=10107')},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){
         o.eq(i).children("code").html(d[i]);
@@ -1122,6 +1124,7 @@ _.a17={
   playType:"任选4",
   input:"fourPoly",
   num:4,
+  numP:78,
   updataYL:_.a1.updataYL,
   bet:_.a1.bet,
   select:_.a0.select,
@@ -1134,6 +1137,7 @@ _.a19={
   playType:"任选5",
   input:"fivePoly",
   num:5,
+  numP:540,
   bet:_.a1.bet,
   select:_.a0.select,
   updataYL:_.a1.updataYL,
@@ -1146,7 +1150,7 @@ _.a19={
     if(r){
         r=r.split(',');
         for(i;i<11;i++){
-            if(r.indexOf(Number(o.eq(i).html()))!=-1){
+            if(r.indexOf(Number(o.eq(i).attr('data')))!=-1){
                 o.eq(i).addClass('rb');
             }
         }
@@ -1158,6 +1162,7 @@ _.a21={
 	playType:"任选6",
 	input:"sixPoly",
 	num:6,
+  numP:90,
 	bet:_.a1.bet,
   updataYL:_.a1.updataYL,
 	select:_.a0.select,
@@ -1170,6 +1175,7 @@ _.a23={
 	playType:"任选7",
 	input:"sevenPoly",
 	num:7,
+  numP:26,
   updataYL:_.a1.updataYL,
 	bet:_.a1.bet,
 	select:_.a0.select,
@@ -1182,6 +1188,7 @@ _.a25={
 	playType:"任选8",
 	input:"eightPoly",
 	num:8,
+  numP:9,
   updataYL:_.a1.updataYL,
 	bet:_.a1.bet,
 	select:_.a0.select,

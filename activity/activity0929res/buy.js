@@ -10,7 +10,7 @@ var _={
 },autoRunMark,inApp=false;
 cp2y.buy={
   init:function(){
-    var h1=['<p>红球(至少选6个)</p>'],h2=['<p>蓝球(至少1个)</p>'],i= 1,j=1;
+    var h1=[],h2=[],i= 1,j=1;
     for(i;i<34;i++){
       h1.push('<a onclick="cp2y.buy.selected(this,0)">'+i.addZero()+'</a>');
     }
@@ -20,12 +20,6 @@ cp2y.buy={
     }
     $("#blue").html(h2.join(''));
     this.getIssues();
-    $("#nav a").click(function(){
-      $(this).siblings().removeClass("cur");
-      $(this).addClass("cur");
-      $("#Ncon div").hide();
-      $("#Ncon div").eq($(this).index()).show()
-    });
   },
   countDown:function(){
     $.ajax({
@@ -175,6 +169,28 @@ cp2y.buy={
       $(o).addClass('on');
       this.push($(o).html(),i);
     };
+    if($(".on").size()>0){
+      $("#Nadd").show();
+    }else{
+      $("#Nadd").hide();
+    }
+    //this.output();
+  },
+  add:function(){
+    var r=this.red.sort(),b=this.blue.sort(),m=this.count(),h=[];
+    if(m==0){
+      return cp2y.dialog.alert('不构成一注');
+    }
+    h.push('<li data="'+m+'" data1="'+r.join(" ")+'" data2="'+b.join(" ")+'"><div><a>'+this.red.join("</a><a>")+'</a><span></span><b>'+this.blue.join("</b><b>")+'</b></div>');
+    h.push('<p class="Nct">复式:<span>'+m+'</span>注</p>');
+    h.push('<p class="Ncl" onclick="cp2y.buy.del(this);"></p></li>');
+    $("#scheme").append(h.join(''));
+    this.clear();
+    $("#Nadd").hide();
+    this.output();
+  },
+  del:function(o){
+    $(o).parent().remove();
     this.output();
   },
   count:function(){
@@ -204,7 +220,7 @@ cp2y.buy={
   },
   random:function(){
     //if(this.red.length>0 || this.blue.length>0){
-      this.clear();
+    this.clear();
     //}
     var i=0,r=[],b=[],ball=[],ball2=[];
     for(var i=1;i<34;i++){
@@ -222,10 +238,14 @@ cp2y.buy={
     this.red=r;
     $("#blue a").eq(Number(b[0])-1).addClass("on");
     this.blue=b;
-    this.output();
+    //this.output();
+    $("#Nadd").show();
   },
   output:function(){
-    var m=this.count(), s,d;
+    var s,d,i=0,D=$("#scheme li"),len=D.length,m=0;
+    for(i;i<len;i++){
+      m+=Number(D.eq(i).attr("data"));
+    }
     this.red.sort();
     this.blue.sort();
     s=m*this.issuesLens*this.mul*2;
@@ -236,9 +256,9 @@ cp2y.buy={
     }else{
       d=Math.ceil(s*95/100);
     }
-    $("#scheme").html('<a>'+this.red.join("</a><a>")+'</a><span></span><b>'+this.blue.join("</b><b>")+'</b>');
-    $("#bets,#bets2").html(m);
+    $("#bets").html(m);
     $("#p1").html(s);
+    this.s=s;
     $("#p2").html(d);
     $("#mul,#mul2").html(this.mul);
   },
@@ -246,7 +266,7 @@ cp2y.buy={
     cp2y.buy.red=[];
     cp2y.buy.blue=[];
     $('.on').removeClass("on");
-    cp2y.buy.output();
+    //cp2y.buy.output();
 //    return cp2y.dialog.confirm('您要清除所选号码么？',function(){
 //      cp2y.buy.red=[];
 //      cp2y.buy.blue=[];
@@ -285,28 +305,31 @@ cp2y.buy={
       multiples:'',
       burstIntoStop:0,
       prizeStop:0,
-      schemeNumber:"poly="+this.red.join(" ")+"#"+this.blue.join(" "),
+      schemeNumber:"",
       privilege:true,
       schemeAmount:0,
       buyAmount:0,
       discount:0//折扣金额
-    },i=0,m=[],iu=[];
+    },i=0,m=[],iu=[],D=$("#scheme li"),len=D.length,sN=[];
+    for(i;i<len;i++){
+      sN.push(D.eq(i).attr('data1')+"#"+D.eq(i).attr('data2'));
+    }
+    d.schemeNumber="poly="+sN.join("|");
+    i=0;
     for(i;i<this.issuesLens;i++){
       iu.push(this.issues[i]);
       m.push(this.mul);
     }
     d.issueIds=iu.join(',');
     d.multiples=m.join(',');
-    var s=this.count();
-    s=s*this.issuesLens*this.mul*2;
-    d.buyAmount=s;
-    d.schemeAmount=s;
+    d.buyAmount=this.s;
+    d.schemeAmount=this.s;
     if(this.issuesLens==154){
-      d.discount=Math.ceil(s*9/10);
+      d.discount=Math.ceil(this.s*9/10);
     }else if(this.issuesLens==79){
-      d.discount=Math.ceil(s*92/100);
+      d.discount=Math.ceil(this.s*92/100);
     }else{
-      d.discount=Math.ceil(s*95/100);
+      d.discount=Math.ceil(this.s*95/100);
     }
     $.ajax({
       url:WebAppUrl.HOME_APP_URL+"/core/lottery/buy_lottery",
@@ -314,6 +337,7 @@ cp2y.buy={
       type:"post",
       beforeSend:function(){cp2y.dialog.loading();},
       success:function(data){
+        
         cp2y.dialog.clearLoading();
         if(typeof data=="string"){
           data=eval("("+data+")");
@@ -331,6 +355,7 @@ cp2y.buy={
           }
         } else if (data.flag == 1) {
           if(inApp){
+            cp2y.dialog.closeConfirm();
             return cp2y.dialog.alert("购买成功，请去购彩记录中查看");
           }else{
             location.href = WebAppUrl.HOME_APP_URL + '/lottery/detail#scheme=' + data.schemeId;
