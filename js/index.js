@@ -118,6 +118,9 @@ cp2y.mainPage=function(){
           case 10057:
             tmp='<p>浮动奖金，2元可中500万</p>';
             break;
+          case 10058:
+            tmp='<p>竞彩篮球</p>';
+            break;
           case 10059:
             tmp='<p>2串1，易中奖</p>';
             break;
@@ -151,6 +154,7 @@ cp2y.mainPage=function(){
           case 10065:
             hot='a3';
             break;
+          case 10058:
           case 10059:
           case 10057:
             hot='a0';

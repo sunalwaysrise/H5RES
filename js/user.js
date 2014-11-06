@@ -171,12 +171,18 @@ cp2y.user={
 					cp2y.dialog.loading();
 				},
 				success:function(data){
-					cp2y.dialog.clearLoading();
-					if(data.flag==1){
-						userDom.GoIndex3.click();
-					}else{
-						cp2y.dialog.alert(data.message);
-					}
+                  cp2y.dialog.clearLoading();
+                  if(data.flag==1){
+                    var l=sessionStorage.getItem('is11');
+                    if(l!=null){
+                      sessionStorage.removeItem('is11');
+                      location.href=WebAppUrl.HOME_APP_URL+l;
+                    }else{
+                      location.href.reload();
+                    }
+                  }else{
+                      cp2y.dialog.alert(data.message);
+                  }
 				}
 			});
 		}

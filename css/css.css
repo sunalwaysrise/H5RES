@@ -332,70 +332,70 @@ background-position:center center;background-repeat:no-repeat;background-size:co
 .logStep span:nth-of-type(2){width:44%;left:28%;}
 .logStep span:nth-of-type(3){left:72%;}
 .logStep i{width:12px;height:12px;border-radius:6px;position:absolute;top:10px;}
-.logStep i:nth-of-type(4){left:10%;}
-.logStep i:nth-of-type(5){left:50%;margin-left:-6px;}
-.logStep i:nth-of-type(6){right:10%;}
+.logStep i:nth-of-type(1){left:10%;}
+.logStep i:nth-of-type(2){left:50%;margin-left:-6px;}
+.logStep i:nth-of-type(3){right:10%;}
 .logStep a{width:80px;position:absolute;top:25px;height:20px;line-height:20px;text-align:center;margin-left:-40px;text-indent:0;color:#E4E4E4;}
-.logStep a:nth-of-type(7){left:10%;}
-.logStep a:nth-of-type(8){left:50%;}
-.logStep a:nth-of-type(9){right:10%;margin-left:0;margin-right:-35px;}
+.logStep a:nth-of-type(1){left:10%;}
+.logStep a:nth-of-type(2){left:50%;}
+.logStep a:nth-of-type(3){right:10%;margin-left:0;margin-right:-35px;}
 .logStep code{margin-left:-20px;position:absolute;left:72%;top:9px;width:40px;font-size:12px;height:14px;line-height:14px;text-align:center;background:#CAEBFF;display:none;}
 .logStep1 span{background:#CAEBFF;}/*认购中*/
 .logStep1 span:nth-of-type(2){background:#E4E4E4;}
 .logStep1 span:nth-of-type(3){background:#E4E4E4;}
-.logStep1 i:nth-of-type(4){background:#CAEBFF;}
-.logStep1 i:nth-of-type(5){background:#E4E4E4;}
-.logStep1 i:nth-of-type(6){background:#E4E4E4;}
-.logStep1 a:nth-of-type(7){color:#000;}
+.logStep1 i:nth-of-type(1){background:#CAEBFF;}
+.logStep1 i:nth-of-type(2){background:#E4E4E4;}
+.logStep1 i:nth-of-type(3){background:#E4E4E4;}
+.logStep1 a:nth-of-type(1){color:#000;}
 .logStep2 span{background:#CAEBFF;}/*委托中*/
 .logStep2 span:nth-of-type(2){background:#E4E4E4;}
 .logStep2 span:nth-of-type(3){background:#E4E4E4;}
-.logStep2 i:nth-of-type(4){background:#CAEBFF;}
-.logStep2 i:nth-of-type(5){background:#E4E4E4;}
-.logStep2 i:nth-of-type(6){background:#E4E4E4;}
-.logStep2 a:nth-of-type(7){color:#000;}
+.logStep2 i:nth-of-type(1){background:#CAEBFF;}
+.logStep2 i:nth-of-type(2){background:#E4E4E4;}
+.logStep2 i:nth-of-type(3){background:#E4E4E4;}
+.logStep2 a:nth-of-type(1){color:#000;}
 .logStep3 span{background:#CAEBFF;}/*出票成功*/
 .logStep3 span:nth-of-type(2){background:#CAEBFF;}
 .logStep3 span:nth-of-type(3){background:#E4E4E4;}
-.logStep3 i:nth-of-type(4){background:#CAEBFF;}
-.logStep3 i:nth-of-type(5){background:#CAEBFF;}
-.logStep3 i:nth-of-type(6){background:#E4E4E4;}
-.logStep3 a:nth-of-type(7){color:#000;}
-.logStep3 a:nth-of-type(8){color:#000;}
+.logStep3 i:nth-of-type(1){background:#CAEBFF;}
+.logStep3 i:nth-of-type(2){background:#CAEBFF;}
+.logStep3 i:nth-of-type(3){background:#E4E4E4;}
+.logStep3 a:nth-of-type(1){color:#000;}
+.logStep3 a:nth-of-type(2){color:#000;}
 .logStep4 span{background:#CAEBFF;}/*追号中*/
 .logStep4 span:nth-of-type(2){background:#CAEBFF;}
 .logStep4 span:nth-of-type(3){background:#E4E4E4;}
 .logStep4 code{display:block;}
-.logStep4 i:nth-of-type(4){background:#CAEBFF;}
-.logStep4 i:nth-of-type(5){background:#CAEBFF;}
-.logStep4 i:nth-of-type(6){background:#E4E4E4;}
-.logStep4 a:nth-of-type(7){color:#000;}
-.logStep4 a:nth-of-type(8){color:#000;}
+.logStep4 i:nth-of-type(1){background:#CAEBFF;}
+.logStep4 i:nth-of-type(2){background:#CAEBFF;}
+.logStep4 i:nth-of-type(3){background:#E4E4E4;}
+.logStep4 a:nth-of-type(1){color:#000;}
+.logStep4 a:nth-of-type(2){color:#000;}
 .logStep5 span{background:#CAEBFF;}/*中奖*/
 .logStep5 span:nth-of-type(2){background:#CAEBFF;}
 .logStep5 span:nth-of-type(3){background:#CAEBFF;}
-.logStep5 i:nth-of-type(4){background:#CAEBFF;}
-.logStep5 i:nth-of-type(5){background:#CAEBFF;}
-.logStep5 i:nth-of-type(6){background:#F0A058;}
-.logStep5 a:nth-of-type(7){color:#000;}
-.logStep5 a:nth-of-type(8){color:#000;}
-.logStep5 a:nth-of-type(9){color:#F0A058;}
+.logStep5 i:nth-of-type(1){background:#CAEBFF;}
+.logStep5 i:nth-of-type(2){background:#CAEBFF;}
+.logStep5 i:nth-of-type(3){background:#F0A058;}
+.logStep5 a:nth-of-type(1){color:#000;}
+.logStep5 a:nth-of-type(2){color:#000;}
+.logStep5 a:nth-of-type(3){color:#F0A058;}
 .logStep6 span{background:#CAEBFF;}/*未中奖*/
 .logStep6 span:nth-of-type(2){background:#CAEBFF;}
 .logStep6 span:nth-of-type(3){background:#CAEBFF;}
-.logStep6 i:nth-of-type(4){background:#CAEBFF;}
-.logStep6 i:nth-of-type(5){background:#CAEBFF;}
-.logStep6 i:nth-of-type(6){background:#CAEBFF;}
-.logStep6 a:nth-of-type(7){color:#000;}
-.logStep6 a:nth-of-type(8){color:#000;}
-.logStep6 a:nth-of-type(9){color:#000;}
+.logStep6 i:nth-of-type(1){background:#CAEBFF;}
+.logStep6 i:nth-of-type(2){background:#CAEBFF;}
+.logStep6 i:nth-of-type(3){background:#CAEBFF;}
+.logStep6 a:nth-of-type(1){color:#000;}
+.logStep6 a:nth-of-type(2){color:#000;}
+.logStep6 a:nth-of-type(3){color:#000;}
 .logStep7 span{background:#CAEBFF;}/*撤单*/
 .logStep7 span:nth-of-type(2){background:#E4E4E4;}
 .logStep7 span:nth-of-type(3){background:#E4E4E4;}
-.logStep7 i:nth-of-type(4){background:#CAEBFF;}
-.logStep7 i:nth-of-type(5){background:#E4E4E4;}
-.logStep7 i:nth-of-type(6){background:#E4E4E4;}
-.logStep7 a:nth-of-type(7){color:#000;}
+.logStep7 i:nth-of-type(1){background:#CAEBFF;}
+.logStep7 i:nth-of-type(2){background:#E4E4E4;}
+.logStep7 i:nth-of-type(3){background:#E4E4E4;}
+.logStep7 a:nth-of-type(1){color:#000;}
 .logStep7 code{display:block;left:32%;}
 .userTip4{height:40px;line-height:40px;background:#ECF8FF;padding-left:10px;}
 .schemeDetail{padding:0 10px;}
@@ -574,16 +574,19 @@ background:-o-linear-gradient(top,#fff,#f9f9f9);}
 .jc_line1 div i span var.rr{color:#C80406;}
 .jc_line1 div i span var.yy{color:#E1A77F;}
 .jc_line1 div i b{width:100%;display:block;font-weight:normal;color:#888;font-size:12px;}
+
 .jc_line1 div i:nth-of-type(1){width:35%;position:absolute;left:0;top:0;}
 .jc_line1 div i:nth-of-type(2){width:18%;margin:0 auto;display: block;}
+
 .jc_line1 div i:nth-of-type(3){width:35%;position:absolute;right:0;top:0;}
-.jc_line3 div i,.jc_line1 div i:nth-of-type(1){width:45%;}
+
+.jc_line3 div i{width:49%!important;}
 .jc_line3 div i:nth-of-type(2){float:right;width:45%;}
-.jc_line5 p.dxf{height:30px;line-height:30px;text-align:center;}
+.jc_line5 p.dxf{height:30px!important;line-height:30px!important;text-align:center;}
 .jc_line5 p.dxf em{font-style:normal;color:#767676;}
-.jc_line5 p.dxf em:last-of-type{color:#f80;padding-left:10px;}
-.jc_line5 i{height:20px;padding:5px 0;}
-.jc_line5 i:nth-of-type(2){width:45%;float:left;}
+.jc_line5 p.dxf em:nth-of-type(2){color:#f80;padding:0 5px;}
+.jc_line5 i{height:20px!important;padding:5px 0!important;position:relative!important;width:45%!important;}
+.jc_line5 i:nth-of-type(2){width:45%!important;float:left!important;}
 .jc_line5 i:nth-of-type(3){float:left;width:45%;margin:0;}
 .jc_table{width:100%;}
 .jc_table tr{height:35px;}
@@ -909,7 +912,7 @@ header.newsHeader a {height:45px;}
 .NmoreSet{position:absolute;right:0;top:40px;width:80px;border-left:1px rgba(255,255,255,.6) solid;border-right:1px rgba(255,255,255,.6) solid;display:none;}
 .NmoreSet i{position:absolute;width:0;height:0;top:-20px;right:10px;line-height:0;border-width:10px;border-style:solid;border-color:transparent transparent rgba(0,0,0,.6) transparent;}
 .NmoreSet a{width:35px;height:35px;width:80px;line-height:40px;background:rgba(0,0,0,.6);text-align:center;border-bottom:1px rgba(255,255,255,.6) solid;display:block;color:#fff;font-size:13px;}
-.dbStyle1{height:65px;border:1px #d4d5d6 solid;text-align:center;display:block;font-style:normal;line-height:21px;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#f6f6f6');background: -webkit-linear-gradient(top,#fff,#f6f6f6);background: -moz-linear-gradient(top,#fff,#f6f6f6);background: -o-linear-gradient(top,#fff,#f6f6f6);}
+.dbStyle1{height:65px;border:1px #d4d5d6 solid;text-align:center;display:block;font-style:normal;line-height:21px;filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#f6f6f6');background: -webkit-linear-gradient(top,#fff,#f6f6f6);background: -moz-linear-gradient(top,#fff,#f6f6f6);background: -o-linear-gradient(top,#fff,#f6f6f6);overflow:hidden;}
 .dbStyle1.on{border:1px #1DA437 solid;background:#1DA437;color:#fff;}
 .dbStyle1.on p span{color:#fff;}
 .dbStyle1 p{line-height:65px;}

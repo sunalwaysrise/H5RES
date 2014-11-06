@@ -161,9 +161,9 @@ _.a1={
 	num:7,
 	mul:1,
 	hasOutGet:false,
-	bet:function(){
-		var html0=[],i=1,ilen=34,j=1,jlen=17;
-		html0.push('<p class="c8c">号码下方为该号码的当前遗漏</p>var data=eval("("+data+")");<p>红球胆码(选1-5个)</p>');
+	bet:function(){      
+        var html0=[],i=1,ilen=34,j=1,jlen=17;
+		html0.push('<p>红球胆码(选1-5个)</p>');
 		for(i;i<ilen;i++){
 			html0.push('<a class="gb" data="'+i.addZero()+'" onclick="cp2y.buy.select(this,1)">'+i.addZero()+'<code></code></a>');
 		}
@@ -174,11 +174,11 @@ _.a1={
 		}
 		html0.push('<p>蓝球(至少选1个)</p>');
 		for(j;j<jlen;j++){
-			html0.push('<a class="gb2" data="'+j.addZero()+'" onclick="cp2y.buy.select(this,2)">'+j.addZero()+'<code></code></a>');
+			html0.push('<a class="gb2" data="'+i.addZero()+'" onclick="cp2y.buy.select(this,2)">'+j.addZero()+'<code></code></a>');
 		}
 		return html0.join('');
 	},
-  updataYL:function(){
+    updataYL:function(){
     $.get(WebAppUrl.FX,{lid:10002,type:4},function(data){var data=eval("("+data+")");
       var i=0,d=data.data.miss.split(','),len=d.length,o=cp2y.buy.getBall();
       for(i;i<len;i++){

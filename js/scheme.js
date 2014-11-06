@@ -220,13 +220,22 @@ cp2y.user={
       html.push('</tr></thead><tbody>');
       i=0;
       for(i;i<len;i++){
-        var matchResult=td[i].matchResult,w='';
+        var matchResult=td[i].matchResult,w='',ddRate='';
         if(matchResult){
           matchResult=matchResult.split('/').join('<br/>');
         }else{
           matchResult='待定';
         }
-        html.push('<tr><td>'+td[i].basketball.name+'</td><td><a>'+td[i].basketball.host+'<br/>'+(td[i].lastScore?td[i].lastScore:'--')+'<br/>'+td[i].basketball.guest+'</a></td><td>'+td[i].msgs+'</td><td>'+matchResult+'</td>');
+        if(data.schemeData.numberType=="让分胜负复式"){
+          if(td[i].resultMatch.rate>0){
+            ddRate="<span class='red'>+"+td[i].resultMatch.rate+"</span>";
+          }else if(td[i].resultMatch.rate<0){
+            ddRate="<span class='green'>"+td[i].resultMatch.rate+"</span>";
+          }else{
+            ddRate="";
+          }
+        }
+        html.push('<tr><td>'+td[i].basketball.name+'</td><td><a>'+td[i].basketball.guest+'<br/>'+(td[i].lastScore?td[i].lastScore:'--')+'<br/>'+td[i].basketball.host+ddRate+'</a></td><td>'+td[i].msgs+'</td><td>'+matchResult+'</td>');
         if(hasDan){
           html.push('<td>'+(td[i].dan?"√":"×")+'</td>');
         }
