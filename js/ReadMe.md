@@ -1,5 +1,5 @@
-js  			//JS目录  [ 所有发布的资源都必须压缩加密 发布格式 xx.min.js ]
-├─zepto.min.js      库文件
+js  			//JS目录  [ 所有发布的资源都必须压缩加密 发布格式 xx.min.js ]\n
+├─zepto.min.js      	库文件
 ├─base.js      		基本文件 min
 ├─index.js  		首页文件
 ├─draw.js      		开奖 min
@@ -12,7 +12,7 @@ js  			//JS目录  [ 所有发布的资源都必须压缩加密 发布格式 xx.
 ├─recharge.js 		充值部分文件 min
 ├─withDraw.js 		提款 min
 ├─capital.js 		资金明细 min
-├─log.js 			购彩记录 min
+├─log.js 		购彩记录 min
 ├─scheme.js 		方案详情 min
 ├─userUtil.js  		流程中用户交互文件 min
 ├─[Event]     		活动JS文件夹
